@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>새봄묵상 카카오톡으로 보내기</title>
+<style>
+  :root{--bg:#F5F2EA;--card:#fff;--ink:#22302A;--muted:#6B7368;--leaf:#3F6B4C}
+  @media (prefers-color-scheme:dark){:root{--bg:#141A16;--card:#1D2520;--ink:#E8EDE6;--muted:#9AA79C;--leaf:#8DBE97}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;display:flex;justify-content:center;padding:24px 16px}
+  main{width:100%;max-width:520px;background:var(--card);border-radius:18px;padding:22px 20px 26px;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+  h1{font-size:1.2rem;margin:0 0 6px}
+  p{color:var(--muted);margin:0 0 16px;line-height:1.6;font-size:.95rem}
+  img{width:100%;height:auto;border-radius:12px;display:block;margin:0 0 18px;background:#eee}
+  button{font:inherit;font-size:1.1rem;font-weight:800;border:0;border-radius:14px;background:#FEE500;color:#191919;padding:16px 20px;width:100%;cursor:pointer}
+  button:focus-visible{outline:3px solid var(--leaf);outline-offset:3px}
+  .msg{min-height:1.4em;margin-top:12px;font-size:.9rem;color:var(--leaf)}
+  a{color:var(--leaf)}
+</style>
+</head>
+<body>
+<main>
+  <h1>오늘의 새봄묵상 보내기</h1>
+  <p>아래 노란 버튼을 누르고 받을 친구나 단톡방을 고르시면<br>이 그림 카드가 그대로 전달됩니다.</p>
+  <img id="pic" alt="새봄묵상 카드">
+  <button id="send" type="button">💬 카카오톡으로 보내기</button>
+  <div class="msg" id="msg" role="status"></div>
+</main>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.3/kakao.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+  var BASE="https://cheol0929-thejoy.github.io/saebom/";
+  var d=(new URLSearchParams(location.search).get("d")||"").trim();
+  var msg=document.getElementById("msg"), btn=document.getElementById("send");
+  if(!/^\d{4}$/.test(d)){msg.textContent="묵상 날짜가 없습니다. 새봄묵상 페이지에서 다시 눌러 주세요.";btn.disabled=true;return;}
+  document.getElementById("pic").src=BASE+d+"/share.jpg";
+  var ready=false;
+  try{ if(window.Kakao){ if(!Kakao.isInitialized()) Kakao.init("18f90d0a89fa7ab9aa74779f9fae1c5e"); ready=Kakao.isInitialized(); } }catch(e){}
+  btn.addEventListener("click",function(){
+    if(!ready){msg.innerHTML='카카오 연결이 안 됩니다. 대신 이 주소를 복사해 보내 주세요:<br><a href="'+BASE+d+'.html">'+BASE+d+'.html</a>';return;}
+    try{ Kakao.Share.sendScrap({requestUrl:BASE+d+".html"}); msg.textContent="카카오톡이 열리면 보낼 곳을 골라 주세요."; }
+    catch(e){ msg.textContent="보내기를 시작하지 못했습니다. 잠시 뒤 다시 눌러 주세요."; }
+  });
+})();
+</script>
+</body>
+</html>
