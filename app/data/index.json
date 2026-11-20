@@ -1,6 +1,21 @@
 {
- "generated_for": "2026-11-20",
+ "generated_for": "2026-11-21",
  "days": [
+  {
+   "id": "d20261121",
+   "iso": "2026-11-21",
+   "short": "11.21",
+   "date": "2026년 11월 21일 토요일",
+   "title": "여호와는 선하시며 그의 이름이 아름다우니",
+   "ref": "시편 135편 1~7절",
+   "book": "시편",
+   "topics": [
+    "예배"
+   ],
+   "special": false,
+   "hasPastorAudio": true,
+   "hasAiAudio": false
+  },
   {
    "id": "d20261120",
    "iso": "2026-11-20",
