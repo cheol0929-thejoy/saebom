@@ -212,12 +212,19 @@ header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;fon
 .tts .st{width:calc(40 * var(--u));height:calc(40 * var(--u));font-size:calc(13 * var(--u));padding:0}
 .tts .rate{flex:none;box-sizing:border-box;width:calc(91 * var(--u));-webkit-appearance:none;appearance:none;font-size:calc(13 * var(--u));line-height:1.2;min-height:0;height:calc(40 * var(--u));padding:0 calc(15 * var(--u)) 0 calc(7 * var(--u));background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 10.5 * var(--u)) 54%,calc(100% - 6.5 * var(--u)) 54%;background-size:calc(4 * var(--u)) calc(4 * var(--u));background-repeat:no-repeat}
 .tts .vsel button{font-size:calc(13 * var(--u));line-height:1.2;min-height:0;min-width:calc(40 * var(--u));height:calc(40 * var(--u));padding:0 calc(4 * var(--u))}
+/* ===== v2.1: 묵상 알림 숫자 (worker-9) — header logo bubble (absolute: no layout shift) + settings card, theme vars only ===== */
+header.top .brandrow{position:relative}
+header.top .unread{position:absolute;left:36px;top:-2px;min-width:20px;height:20px;box-sizing:border-box;padding:0 5px;border-radius:10px;background:var(--gold);color:var(--bg);font:700 12px/20px var(--sans);text-align:center;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px var(--bg);pointer-events:none}
+header.top .unread[hidden]{display:none}
+@media (max-width:400px){header.top .unread{left:28px}}
+#set-badge .lines{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;word-break:keep-all}
+/* ===== /v2.1 ===== */
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <a class="brandrow home" href="#"><img class="mark" src="icons/icon.svg" alt="" width="52" height="52"><div class="brand">새봄묵상<small>새봄교회 매일 묵상</small></div><span class="sr"> · 오늘 묵상으로</span></a>
+    <a class="brandrow home" href="#"><img class="mark" src="icons/icon.svg" alt="" width="52" height="52"><span id="unread" class="unread" hidden></span><div class="brand">새봄묵상<small>새봄교회 매일 묵상</small></div><span class="sr"> · 오늘 묵상으로</span></a>
     <div class="topr">
       <div class="sizer" aria-label="글자 크기">
         <button id="fs-down" type="button">글자 작게</button>
@@ -256,6 +263,7 @@ header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;fon
     <section class="card" id="set-help"><h2>사용 안내</h2>
       <ul class="howto">
         <li><b>아이콘 누르기</b> — 위쪽 SAEBOM 아이콘을 누르면 어느 화면에서든 오늘 묵상(홈)으로 돌아갑니다.</li>
+        <li><b>묵상 알림 숫자</b> — 위쪽 아이콘에 뜨는 숫자는 아직 열어 보지 않은 묵상 날 수입니다. 아래 「묵상 알림 숫자」에서 자세히 봅니다.</li>
         <li><b>속도</b> — 속도는 천천히·보통·조금 빠르게·빠르게 중에 고르고, 마지막 선택을 기억합니다. 보통 속도도 듣기 편하게 조금 빠르게 맞춘 음성입니다.</li>
         <li><b>음성</b> — 담임목사·남성·여성 중 고를 수 있습니다. 그날 준비된 음성만 누를 수 있습니다.</li>
         <li><b>글자 작게·크게</b> — 위쪽 「글자 작게」「글자 크게」로 글씨 크기를 바꿉니다.</li>
@@ -271,6 +279,14 @@ header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;fon
       <a class="btn" id="ics" href="saebom-0500.ics" download="새봄묵상_매일오전5시.ics">달력에 매일 오전 5시 알림 넣기</a>
       <p class="small">파일을 열면 달력 앱이 「추가」를 묻습니다. 알림을 끄려면 달력에서 이 일정을 지우면 됩니다.</p>
       <p class="small">카카오톡: 자동 알림 메시지는 비용이 들어 보내지 않습니다. 묵상 화면 아래 「카카오톡으로 보내기」로 가족·이웃에게 오늘 묵상을 보낼 수 있습니다.</p></section>
+    <section class="card" id="set-badge"><h2>묵상 알림 숫자</h2>
+      <ul class="lines">
+        <li>위쪽 아이콘의 숫자는 아직 열어 보지 않은 묵상 날 수입니다 (최대&nbsp;7)</li>
+        <li>그날 묵상을 열면 줄어듭니다</li>
+        <li>앱을 열 때·돌아올 때·매일 새벽 5시에 새로 셉니다</li>
+        <li>이 폰에만 저장됩니다</li>
+        <li id="badge-sup" data-mode="app">이 폰은 앱 안에서만 숫자가 보입니다</li>
+      </ul></section>
     <section class="card" id="set-info"><h2>앱 정보 · 업데이트</h2>
       <dl><dt>버전</dt><dd id="ver">-</dd><dt>빌드</dt><dd id="build">-</dd><dt>마지막 확인</dt><dd id="upd-chk">-</dd><dt>상태</dt><dd id="upd-st" role="status" aria-live="polite">-</dd><dt>묵상</dt><dd id="datainfo">-</dd><dt>성경</dt><dd>개역개정</dd><dt>문의</dt><dd>새봄교회</dd></dl>
       <button type="button" class="btn" id="upd-btn">지금 확인</button>

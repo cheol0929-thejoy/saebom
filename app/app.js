@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-b247f56a74", APP_VER="2.0.3", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
+var VERSION="v1-48352a3b19", APP_VER="2.1.0", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://claude.ai/artifact/83acT3uNMUC3NGidY5284F";
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -84,7 +84,7 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
         <p class="share-msg" role="status"></p></section>
     </article>
   </div>`; /* v2.0.2 owner 05:28 (via CEO): 이전/다음 묵상 카드 없앰 - 옆으로 밀기·화살표 키·지난 묵상 찾기로 넘긴다 */
-  CURRENT=e.id;dayIn(dir);
+  CURRENT=e.id;dayIn(dir);unreadSync(e.iso); /* v2.1: 이 날을 열었다 */
   renderArchive();
   }).catch(()=>{if(tok!==RTOK)return;PENDING=null;document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없어 이 날 묵상을 불러오지 못했습니다. 최근 14일은 인터넷 없이도 볼 수 있습니다.</p>';});
 }
@@ -182,7 +182,7 @@ var REG=null;if("serviceWorker" in navigator)navigator.serviceWorker.getRegistra
 function checkNew(){if(document.visibilityState!=="visible")return;if(typeof updCheck==="function")updCheck(); /* v2.0.3: 새 판 확인 + 마지막 확인 시각 기록 */const a=document.getElementById("player");if(a&&!a.paused)return;
   /* F36 (Gemini quick r1): 같은 날이고 그날 자료가 그대로면 다시 그리지 않는다 — 같은 <audio> 가 남아 멈춘 위치·상태가 그대로(음원 서버가 Range 를 안 받아 새 재생기에서는 위치를 되돌릴 수 없음). 날이 바뀌었거나 자료가 바뀌었을 때만 다시 그린다. */
   const was=CURRENT,top=VISIBLE[0]&&VISIBLE[0].id,old=VISIBLE.find(x=>x.id===was),oldTxt=old&&DAYS[old.iso]?JSON.stringify(DAYS[old.iso]):null;
-  loadIndex().then(()=>{newDayNote(top);if(!document.getElementById("settings").hidden)return;const h=normId(location.hash.slice(1)),want=h&&h!==top?h:"",meta=VISIBLE.find(x=>x.id===want||x.iso===want)||VISIBLE[0];
+  loadIndex().then(()=>{newDayNote(top);unreadSync();if(!document.getElementById("settings").hidden)return;const h=normId(location.hash.slice(1)),want=h&&h!==top?h:"",meta=VISIBLE.find(x=>x.id===want||x.iso===want)||VISIBLE[0];
     const same=!!(meta&&meta.id===was&&oldTxt!==null&&document.getElementById("day"));
     return (same?loadDay(meta.iso).then(e=>JSON.stringify(e)===oldTxt):Promise.resolve(false)).then(keep=>{if(keep){if(VISIBLE[0]&&VISIBLE[0].id!==top)refreshNav(meta.iso);return;} /* B r2 (Gemini M2): 같은 날이면 #day(재생기)는 그대로, 날짜 띠·앞뒤·목록만 새로 */return render(/^\d{4}-\d{2}-\d{2}$/.test(want)?"d"+want.replace(/-/g,""):want).then(()=>{if(typeof applyRate==="function")applyRate();});});}).catch(()=>offlineFlag(true));}
 document.addEventListener("visibilitychange",checkNew);
@@ -210,6 +210,7 @@ function instUI(){const $=id=>document.getElementById(id),sa=isStandalone(),done
 function showSettings(top){applyTheme(THEME);
   instUI();
   updUI();
+  const bs=document.getElementById("badge-sup");if(bs){const m=badgeMode();bs.textContent=m==="icon"?"홈 화면 앱 아이콘에도 숫자가 보입니다":"이 폰은 앱 안에서만 숫자가 보입니다";bs.dataset.mode=m;}unreadSync(); /* v2.1 */
   const n=DATA_IDX&&DATA_IDX.days.length?DATA_IDX.days.length:0;document.getElementById("datainfo").textContent=VISIBLE[0]?(VISIBLE[0].short+" 묵상까지 · "+VISIBLE.length+"일"):"-";
   if(top!==false)window.scrollTo(0,0);}
 
@@ -329,3 +330,28 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 setInterval(()=>{if(UPD.pending)updTry("tick");},5000);
 setInterval(()=>{if(document.visibilityState==="visible")updCheck();},30*60e3);
 /* ===== /v2.0.3 ===== */
+/* ===== v2.1: 묵상 알림 숫자 (worker-9, 2026-11-21 · CEO 11-20 명세) — 아직 열어 보지 않은 묵상 날 수, 최대 7. 이 폰(localStorage "unread")에만 저장 · 서버·푸시 없음.
+   센 날 = 목록(index.json)에 있는 묵상 날(달력 날 아님), 한국 시간 05:00 규칙으로 열린 날 중 가장 최근 7일. 이 폰에서 v2.1 을 처음 연 날(from)보다 앞선 날은 세지 않는다(새로 깔아도 0에서 시작).
+   새로 세는 때: 그날 묵상이 그려질 때(=열기) · 앱으로 돌아올 때(visibilitychange) · 목록을 다시 받을 때 · 매일 05:00(한국 시간). 아이콘 숫자는 navigator.setAppBadge 가 있을 때만(안드로이드 크롬은 지원 안 함 — 앱 안 숫자만). ===== */
+var UNREAD_MAX=7,UNREAD_N=-1;
+function unreadSync(openedIso){if(!DATA_IDX)return;const t=todayKST();
+  const days=(DATA_IDX.days||[]).map(x=>x.iso).filter((i,k,a)=>i&&i<=t&&a.indexOf(i)===k).sort().reverse(),win=days.slice(0,UNREAD_MAX);
+  let s=null;try{s=JSON.parse(localStorage.getItem("unread")||"null");}catch(err){}
+  if(!s||typeof s.from!=="string"||!Array.isArray(s.seen))s={from:days[0]||t,seen:[]};
+  if(openedIso&&s.seen.indexOf(openedIso)<0)s.seen.push(openedIso);
+  const lo=win.length?win[win.length-1]:t;s.seen=s.seen.filter(i=>typeof i==="string"&&i>=lo&&i>=s.from); /* 창(최근 7일) 밖은 지운다 — 저장이 늘지 않음 */
+  const n=Math.min(UNREAD_MAX,win.filter(i=>i>=s.from&&s.seen.indexOf(i)<0).length);
+  try{localStorage.setItem("unread",JSON.stringify(s));}catch(err){}
+  unreadShow(n);return n;}
+function unreadShow(n){const el=document.getElementById("unread");if(el){el.hidden=!n;el.innerHTML=n?'<b aria-hidden="true">'+n+'</b><span class="sr">안 읽은 묵상 '+n+'일</span>':"";}
+  if(n===UNREAD_N)return;UNREAD_N=n;
+  try{if("setAppBadge" in navigator){const p=n?navigator.setAppBadge(n):(navigator.clearAppBadge?navigator.clearAppBadge():navigator.setAppBadge(0));if(p&&p.catch)p.catch(()=>{});}}catch(err){}}
+/* 아이콘에도 숫자가 보이는가 — 정직하게: API 가 있고, 홈 화면 앱으로 열렸고, 안드로이드·리눅스가 아니고, 아이폰이면 알림 허용까지 된 경우만 "icon". 나머지는 "app"(앱 안 숫자만) */
+function badgeMode(){const ua=navigator.userAgent,api="setAppBadge" in navigator,inst=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  if(!api||!inst||/Android/i.test(ua)||(/Linux/i.test(ua)&&!IOS))return "app";
+  if(IOS&&!(window.Notification&&Notification.permission==="granted"))return "app";
+  return "icon";}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")unreadSync();});
+function unreadAt0500(){const t=nowMs(),D=864e5,off=((t-20*3600e3)%D+D)%D;setTimeout(()=>{unreadSync();unreadAt0500();},D-off+2000);} /* 05:00 KST = 20:00 UTC, 목록 다시 받기(at0500, +3 s)보다 먼저 — 받아 둔 목록으로 센다 */
+unreadAt0500();
+/* ===== /v2.1 ===== */

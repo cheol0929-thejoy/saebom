@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 서비스워커 (perf A 2026-11-20: 구글 글꼴 대신 날짜별 글꼴 fonts/<날짜>-r|b.woff2 저장 · 새 날 알림 메시지 / 재작업 2026-11-20: 음성은 저장 안 함 = 페이지 자산 주소 그대로) — 껍데기는 캐시 우선(판 이름 = 빌드 해시), index.json·날짜별 묵상은 네트워크 우선(안 되면 저장본), 그림은 이름이 바뀌면 새로 받음, 최근 14일 보관 */
-var SHELL="saebom-shell-v1-b247f56a74", DATA="saebom-data";
-var APP_VER="2.0.3", BUILT="2026-11-21"; /* v2.0.3: 사람이 읽는 판(manifest.webmanifest 의 version 이 원본 - stamp_app.py 가 여기와 app.js 에 똑같이 넣는다) */
+var SHELL="saebom-shell-v1-48352a3b19", DATA="saebom-data";
+var APP_VER="2.1.0", BUILT="2026-11-21"; /* v2.0.3: 사람이 읽는 판(manifest.webmanifest 의 version 이 원본 - stamp_app.py 가 여기와 app.js 에 똑같이 넣는다) */
 var SHELL_FILES=["./","index.html","app.css","app.js","manifest.webmanifest","icons/icon-48.png","icons/icon-96.png","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-192.png","icons/icon-maskable-512.png","icons/apple-touch-icon.png","icons/icon.svg","icons/favicon.svg","icons/favicon-16.png","icons/favicon-32.png","guide/android.svg","guide/ios.svg","saebom-0500.ics"];
 var KEEP=14;
 self.addEventListener("install",function(ev){ev.waitUntil(caches.open(SHELL).then(function(c){return c.addAll(SHELL_FILES.map(function(u){return new Request(u,{cache:"reload"});})); /* v2.0.3: 새 판은 브라우저 HTTP 캐시(Pages 10분)를 거치지 않고 받는다 - 새 SW 이름에 예전 파일이 담기지 않게 */}).then(function(){return self.skipWaiting();}));});
