@@ -14,6 +14,8 @@
   "기도"
  ],
  "ref": "마가복음 1장 32~39절",
+ "audio": "audio/2026-10-19.mp3",
+ "dur": "10분 39초",
  "verses": [
   [
    32,
@@ -83,6 +85,7 @@
  ],
  "verse": "새벽 아직도 밝기 전에 예수께서 일어나 나가 한적한 곳으로 가사 거기서 기도하시더니",
  "verseRef": "마가복음 1장 35절",
+ "audio_base": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/",
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261019",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1019",
  "hasPastorAudio": true,

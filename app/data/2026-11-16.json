@@ -14,6 +14,12 @@
   "예수 그리스도와 십자가"
  ],
  "ref": "이사야 42장 1~7절",
+ "audio": "audio/2026-11-16.mp3",
+ "dur": "7분 52초",
+ "audio_f": "audio/2026-11-16-f.mp3",
+ "dur_f": "7분 26초",
+ "audio_m": "audio/2026-11-16-m.mp3",
+ "dur_m": "8분 2초",
  "verses": [
   [
    1,
@@ -83,6 +89,7 @@
  ],
  "verse": "상한 갈대를 꺾지 아니하며 꺼져가는 등불을 끄지 아니하고 진실로 정의를 시행할 것이며",
  "verseRef": "이사야 42장 3절",
+ "audio_base": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/",
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261116",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1116",
  "hasPastorAudio": true,

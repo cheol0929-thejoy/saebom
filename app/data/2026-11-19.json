@@ -14,6 +14,12 @@
   "고난과 소망"
  ],
  "ref": "시편 71편 14~21절",
+ "audio": "audio/2026-11-19.mp3",
+ "dur": "8분 28초",
+ "audio_f": "audio/2026-11-19-f.mp3",
+ "dur_f": "8분 7초",
+ "audio_m": "audio/2026-11-19-m.mp3",
+ "dur_m": "8분 40초",
  "verses": [
   [
    14,
@@ -86,6 +92,7 @@
  ],
  "verse": "하나님이여 내가 늙어 백발이 될 때에도 나를 버리지 마시며 내가 주의 힘을 후대에 전하고 주의 능력을 장래의 모든 사람에게 전하기까지 나를 버리지 마소서",
  "verseRef": "시편 71편 18절",
+ "audio_base": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/",
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261119",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1119",
  "hasPastorAudio": true,

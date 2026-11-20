@@ -8,8 +8,13 @@
    "date": "2026년 11월 20일 금요일",
    "title": "이를 낮추시고 저를 높이시느니라",
    "ref": "시편 75편 1~10절",
+   "book": "시편",
+   "topics": [
+    "하나님"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261119",
@@ -18,8 +23,13 @@
    "date": "2026년 11월 19일 목요일",
    "title": "백발이 될 때에도 나를 버리지 마소서",
    "ref": "시편 71편 14~21절",
+   "book": "시편",
+   "topics": [
+    "고난과 소망"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": true
   },
   {
    "id": "d20261118",
@@ -28,8 +38,13 @@
    "date": "2026년 11월 18일 수요일",
    "title": "감사로 하나님께 제사를 드리며",
    "ref": "시편 50편 7~15절",
+   "book": "시편",
+   "topics": [
+    "예배"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261117",
@@ -38,8 +53,13 @@
    "date": "2026년 11월 17일 화요일",
    "title": "주와 같은 이 없나이다",
    "ref": "예레미야 10장 3~10절",
+   "book": "예레미야",
+   "topics": [
+    "하나님"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261116",
@@ -48,8 +68,13 @@
    "date": "2026년 11월 16일 월요일",
    "title": "상한 갈대를 꺾지 아니하며",
    "ref": "이사야 42장 1~7절",
+   "book": "이사야",
+   "topics": [
+    "예수 그리스도와 십자가"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": true
   },
   {
    "id": "d20261114",
@@ -58,8 +83,13 @@
    "date": "2026년 11월 14일 토요일",
    "title": "구원의 우물들에서",
    "ref": "이사야 12장 1~6절",
+   "book": "이사야",
+   "topics": [
+    "감사와 기쁨"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261113",
@@ -68,8 +98,13 @@
    "date": "2026년 11월 13일 금요일",
    "title": "나는 누구이오며",
    "ref": "사무엘하 7장 18~22절",
+   "book": "사무엘하",
+   "topics": [
+    "기도"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261112",
@@ -78,8 +113,13 @@
    "date": "2026년 11월 12일 목요일",
    "title": "여호와가 너를 위하여 집을 짓고",
    "ref": "사무엘하 7장 8~16절",
+   "book": "사무엘하",
+   "topics": [
+    "예수 그리스도와 십자가"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261111",
@@ -88,8 +128,13 @@
    "date": "2026년 11월 11일 수요일",
    "title": "여호와 앞에서 뛰놀리라",
    "ref": "사무엘하 6장 14~22절",
+   "book": "사무엘하",
+   "topics": [
+    "예배"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261110",
@@ -98,8 +143,13 @@
    "date": "2026년 11월 10일 화요일",
    "title": "영원하신 팔이 네 아래에",
    "ref": "신명기 33장 25~29절",
+   "book": "신명기",
+   "topics": [
+    "고난과 소망"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261109",
@@ -108,8 +158,13 @@
    "date": "2026년 11월 9일 월요일",
    "title": "모든 성도가 그의 수중에 있으며",
    "ref": "신명기 33장 1~5절",
+   "book": "신명기",
+   "topics": [
+    "하나님"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261107",
@@ -118,8 +173,13 @@
    "date": "2026년 11월 7일 토요일",
    "title": "내가 여기 있나이다",
    "ref": "이사야 6장 1~8절",
+   "book": "이사야",
+   "topics": [
+    "예배"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261106",
@@ -128,8 +188,13 @@
    "date": "2026년 11월 6일 금요일",
    "title": "모든 은택을 잊지 말지어다",
    "ref": "시편 103편 1~5절",
+   "book": "시편",
+   "topics": [
+    "감사와 기쁨"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261105",
@@ -138,8 +203,13 @@
    "date": "2026년 11월 5일 목요일",
    "title": "생명을 택하라",
    "ref": "신명기 30장 11~20절",
+   "book": "신명기",
+   "topics": [
+    "말씀"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261104",
@@ -148,8 +218,13 @@
    "date": "2026년 11월 4일 수요일",
    "title": "아침마다 새로우니",
    "ref": "예레미야애가 3장 19~26절",
+   "book": "예레미야애가",
+   "topics": [
+    "고난과 소망"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261103",
@@ -158,8 +233,13 @@
    "date": "2026년 11월 3일 화요일",
    "title": "얼굴에 근심 빛이 없더라",
    "ref": "사무엘상 1장 10~18절",
+   "book": "사무엘상",
+   "topics": [
+    "기도"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261102",
@@ -168,8 +248,13 @@
    "date": "2026년 11월 2일 월요일",
    "title": "성령의 열매",
    "ref": "갈라디아서 5장 22~26절",
+   "book": "갈라디아서",
+   "topics": [
+    "성령"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261031",
@@ -178,8 +263,14 @@
    "date": "2026년 10월 31일 토요일",
    "title": "나만 잘났어",
    "ref": "에스더 5장 11~13절",
+   "book": "에스더",
+   "topics": [
+    "이웃 사랑과 섬김",
+    "은혜와 용서"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261030",
@@ -188,8 +279,14 @@
    "date": "2026년 10월 30일 금요일",
    "title": "금년에도 그대로 두소서",
    "ref": "누가복음 13장 8~9절",
+   "book": "누가복음",
+   "topics": [
+    "가정",
+    "은혜와 용서"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261028",
@@ -198,8 +295,13 @@
    "date": "2026년 10월 28일 수요일",
    "title": "이것을 네가 믿느냐",
    "ref": "요한복음 11장 21~27절",
+   "book": "요한복음",
+   "topics": [
+    "죽음과 영생"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261027",
@@ -208,8 +310,13 @@
    "date": "2026년 10월 27일 화요일",
    "title": "날마다 더하게 하시니라",
    "ref": "사도행전 2장 42~47절",
+   "book": "사도행전",
+   "topics": [
+    "교회 공동체"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261026",
@@ -218,8 +325,13 @@
    "date": "2026년 10월 26일 월요일",
    "title": "어머니께서 가시는 곳에",
    "ref": "룻기 1장 14~18절",
+   "book": "룻기",
+   "topics": [
+    "가정"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261025",
@@ -228,8 +340,13 @@
    "date": "2026년 10월 25일 주일",
    "title": "자기를 비우신 주님",
    "ref": "빌립보서 2장 5~11절",
+   "book": "빌립보서",
+   "topics": [
+    "예수 그리스도와 십자가"
+   ],
    "special": true,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261024",
@@ -238,8 +355,13 @@
    "date": "2026년 10월 24일 토요일",
    "title": "여호와의 집에 올라가자",
    "ref": "시편 122편 1~9절",
+   "book": "시편",
+   "topics": [
+    "예배"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261023",
@@ -248,8 +370,13 @@
    "date": "2026년 10월 23일 금요일",
    "title": "주께 하듯",
    "ref": "골로새서 3장 17절, 22~24절",
+   "book": "골로새서",
+   "topics": [
+    "일상과 일터"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261022",
@@ -258,8 +385,13 @@
    "date": "2026년 10월 22일 목요일",
    "title": "그 아홉은 어디 있느냐",
    "ref": "누가복음 17장 11~19절",
+   "book": "누가복음",
+   "topics": [
+    "감사와 기쁨"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261021",
@@ -268,8 +400,13 @@
    "date": "2026년 10월 21일 수요일",
    "title": "보여 줄 땅으로",
    "ref": "창세기 12장 1~4절",
+   "book": "창세기",
+   "topics": [
+    "믿음과 순종"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261020",
@@ -278,8 +415,13 @@
    "date": "2026년 10월 20일 화요일",
    "title": "그러나 나는",
    "ref": "하박국 3장 16~19절",
+   "book": "하박국",
+   "topics": [
+    "고난과 소망"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261019",
@@ -288,8 +430,13 @@
    "date": "2026년 10월 19일 월요일",
    "title": "아직 밝기 전에",
    "ref": "마가복음 1장 32~39절",
+   "book": "마가복음",
+   "topics": [
+    "기도"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261018",
@@ -298,8 +445,13 @@
    "date": "2026년 10월 18일 주일",
    "title": "마른 뼈에 부는 바람",
    "ref": "에스겔 37장 1~10절",
+   "book": "에스겔",
+   "topics": [
+    "성령"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   },
   {
    "id": "d20261017",
@@ -308,8 +460,13 @@
    "date": "2026년 10월 17일 토요일",
    "title": "수건을 두르신 주님",
    "ref": "요한복음 13장 3~8절, 12~15절",
+   "book": "요한복음",
+   "topics": [
+    "이웃 사랑과 섬김"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261016",
@@ -318,8 +475,13 @@
    "date": "2026년 10월 16일 금요일",
    "title": "시냇가에 심은 나무",
    "ref": "시편 1편 1~6절",
+   "book": "시편",
+   "topics": [
+    "말씀"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261015",
@@ -328,8 +490,13 @@
    "date": "2026년 10월 15일 목요일",
    "title": "만 달란트의 은혜",
    "ref": "마태복음 18장 21~27절",
+   "book": "마태복음",
+   "topics": [
+    "은혜와 용서"
+   ],
    "special": false,
-   "hasPastorAudio": true
+   "hasPastorAudio": true,
+   "hasAiAudio": false
   },
   {
    "id": "d20261014",
@@ -338,8 +505,13 @@
    "date": "2026년 10월 14일 수요일",
    "title": "여호와가 그들의 기업이 되심이라",
    "ref": "여호수아 13장 8~33절",
+   "book": "여호수아",
+   "topics": [
+    "하나님"
+   ],
    "special": false,
-   "hasPastorAudio": false
+   "hasPastorAudio": false,
+   "hasAiAudio": true
   }
  ]
 }

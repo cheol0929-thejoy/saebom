@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" width="360" height="300" font-family="Noto Sans KR, Malgun Gothic, sans-serif">
+<rect width="360" height="300" fill="#ffffff"/>
+<rect x="20" y="14" width="200" height="272" rx="26" fill="#F2F2F7" stroke="#8E8E93" stroke-width="3"/>
+<rect x="30" y="236" width="180" height="40" rx="8" fill="#fff" stroke="#D1D1D6"/>
+<g transform="translate(120 256)" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M-7 -2 v10 h14 v-10"/><path d="M0 4 v-15"/><path d="M-5 -6 l5 -5 l5 5"/></g>
+<circle cx="120" cy="254" r="17" fill="none" stroke="#D93025" stroke-width="3"/>
+<path d="M138 246 L176 196" stroke="#D93025" stroke-width="3"/>
+<rect x="150" y="70" width="196" height="132" rx="12" fill="#fff" stroke="#D1D1D6" stroke-width="2"/>
+<text x="166" y="98" font-size="14" fill="#1C1C1E">복사</text>
+<text x="166" y="126" font-size="14" fill="#1C1C1E">읽기 목록에 추가</text>
+<rect x="156" y="138" width="184" height="32" rx="6" fill="#FCE8E6" stroke="#D93025" stroke-width="2"/>
+<text x="166" y="160" font-size="15" font-weight="700" fill="#1C1C1E">홈 화면에 추가 ⊕</text>
+<text x="166" y="190" font-size="14" fill="#1C1C1E">책갈피 추가</text>
+<text x="236" y="236" font-size="13" fill="#5F6368">① 공유 버튼</text>
+<text x="236" y="254" font-size="13" fill="#5F6368">② 「홈 화면에 추가」</text>
+<text x="236" y="272" font-size="13" fill="#5F6368">③ 「추가」</text></svg>

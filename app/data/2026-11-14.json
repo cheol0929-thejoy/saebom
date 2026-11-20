@@ -14,6 +14,12 @@
   "감사와 기쁨"
  ],
  "ref": "이사야 12장 1~6절",
+ "audio": "",
+ "dur": "",
+ "audio_f": "audio/2026-11-14-f.mp3",
+ "dur_f": "6분 37초",
+ "audio_m": "audio/2026-11-14-m.mp3",
+ "dur_m": "7분 6초",
  "verses": [
   [
    1,
@@ -75,6 +81,7 @@
  ],
  "verse": "그러므로 너희가 기쁨으로 구원의 우물들에서 물을 길으리로다",
  "verseRef": "이사야 12장 3절",
+ "audio_base": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/",
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261114",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1114",
  "hasPastorAudio": false,

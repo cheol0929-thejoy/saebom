@@ -1,0 +1,2 @@
+# keep the calendar file byte-exact (RFC 5545 needs CRLF line endings)
+*.ics -text

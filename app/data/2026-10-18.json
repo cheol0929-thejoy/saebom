@@ -14,6 +14,11 @@
   "성령"
  ],
  "ref": "에스겔 37장 1~10절",
+ "audio": "",
+ "audio_f": "audio/2026-10-18-f.mp3",
+ "dur_f": "7분 43초",
+ "audio_m": "audio/2026-10-18-m.mp3",
+ "dur_m": "8분 26초",
  "verses": [
   [
    1,
@@ -94,6 +99,7 @@
  ],
  "verse": "내가 생기를 너희에게 들어가게 하리니 너희가 살아나리라",
  "verseRef": "에스겔 37장 5절",
+ "audio_base": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/",
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261018",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1018",
  "hasPastorAudio": false,

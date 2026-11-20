@@ -14,6 +14,8 @@
   "이웃 사랑과 섬김"
  ],
  "ref": "요한복음 13장 3~8절, 12~15절",
+ "audio": "audio/2026-10-17-v2.mp3",
+ "dur": "10분 10초",
  "verses": [
   [
    3,
@@ -93,6 +95,7 @@
  ],
  "verse": "내가 너희에게 행한 것 같이 너희도 행하게 하려 하여 본을 보였노라",
  "verseRef": "요한복음 13장 15절",
+ "audio_base": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/",
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261017",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1017",
  "hasPastorAudio": true,

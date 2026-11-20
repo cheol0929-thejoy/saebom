@@ -14,6 +14,12 @@
   "기도"
  ],
  "ref": "사무엘하 7장 18~22절",
+ "audio": "",
+ "dur": "",
+ "audio_f": "audio/2026-11-13-f.mp3",
+ "dur_f": "6분 36초",
+ "audio_m": "audio/2026-11-13-m.mp3",
+ "dur_m": "7분 11초",
  "verses": [
   [
    18,
@@ -73,6 +79,7 @@
  ],
  "verse": "주 여호와여 나는 누구이오며 내 집은 무엇이기에 나를 여기까지 이르게 하셨나이까",
  "verseRef": "사무엘하 7장 18절",
+ "audio_base": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/",
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261113",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1113",
  "hasPastorAudio": false,
