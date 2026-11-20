@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-f87b3f16eb";
+var VERSION="v1-b6b50cd7e0";
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://claude.ai/artifact/83acT3uNMUC3NGidY5284F";
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -71,8 +71,8 @@ function render(id){
         <p class="verse">“${esc(e.verse)}”<cite>${esc(e.verseRef)}</cite></p></section>
       <section class="share"><h2>오늘 묵상 나눠요</h2>
         <p>오늘 묵상을 가족과 이웃에게 보내 주세요.</p>
-        ${e.share===null?'<p class="small">이 날은 카카오톡 공유 카드가 없습니다.</p>':`<a class="kakao-btn" href="https://cheol0929-thejoy.github.io/saebom/kakao.html?d=${esc((e.iso||"").slice(5).replace("-",""))}" target="_blank" rel="noopener">💬 카카오톡으로 보내기</a>
-        <button type="button" class="share-btn" data-title="${esc(e.title)}" data-url="https://cheol0929-thejoy.github.io/saebom/${esc((e.iso||"").slice(5).replace("-",""))}.html">🔗 링크 복사하기</button>`}
+        ${e.share===null?'<p class="small">이 날은 카카오톡 공유 카드가 없습니다.</p>':`<a class="kakao-btn" href="${esc((typeof e.share==="string"&&e.share)||(e.share&&e.share.url)||("https://cheol0929-thejoy.github.io/saebom/kakao.html?d="+(e.iso||"").slice(5).replace("-","")))}" target="_blank" rel="noopener">💬 카카오톡으로 보내기</a>
+        <button type="button" class="share-btn" data-title="${esc(e.title)}" data-url="${esc((e.share&&typeof e.share==="object"&&e.share.page)||e.card_page||("https://cheol0929-thejoy.github.io/saebom/"+(e.iso||"").slice(5).replace("-","")+".html"))}">🔗 링크 복사하기</button>`}
         <p class="share-msg" role="status"></p></section>
     </article>
   </div>`;
@@ -169,7 +169,11 @@ function boot(){loadIndex().then(route).catch(()=>{document.getElementById("toda
 /* 앱으로 돌아올 때마다 목록을 다시 받는다 — 05:00 넘어 새 묵상, 나중에 붙은 녹음·그림 반영 */
 var REG=null;if("serviceWorker" in navigator)navigator.serviceWorker.getRegistration().then(r=>{REG=r||null;}).catch(()=>{});
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState!=="visible")return;try{if(REG)REG.update();else if("serviceWorker" in navigator)navigator.serviceWorker.getRegistration().then(r=>{REG=r||null;if(REG)REG.update();});}catch(err){}const a=document.getElementById("player");if(a&&!a.paused)return;
-  const was=CURRENT,top=VISIBLE[0]&&VISIBLE[0].id;loadIndex().then(()=>{if(document.getElementById("settings").hidden){const h=location.hash.slice(1);render(h&&h!==top?h:"").then(()=>{if(typeof applyRate==="function")applyRate();});}}).catch(()=>offlineFlag(true));});
+  /* F36 (Gemini quick r1): 같은 날이고 그날 자료가 그대로면 다시 그리지 않는다 — 같은 <audio> 가 남아 멈춘 위치·상태가 그대로(음원 서버가 Range 를 안 받아 새 재생기에서는 위치를 되돌릴 수 없음). 날이 바뀌었거나 자료가 바뀌었을 때만 다시 그린다. */
+  const was=CURRENT,top=VISIBLE[0]&&VISIBLE[0].id,old=VISIBLE.find(x=>x.id===was),oldTxt=old&&DAYS[old.iso]?JSON.stringify(DAYS[old.iso]):null;
+  loadIndex().then(()=>{if(!document.getElementById("settings").hidden)return;const h=location.hash.slice(1),want=h&&h!==top?h:"",meta=VISIBLE.find(x=>x.id===want)||VISIBLE[0];
+    const same=!!(meta&&meta.id===was&&oldTxt!==null&&document.getElementById("day"));
+    return (same?loadDay(meta.iso).then(e=>JSON.stringify(e)===oldTxt):Promise.resolve(false)).then(keep=>{if(keep)return;return render(want).then(()=>{if(typeof applyRate==="function")applyRate();});});}).catch(()=>offlineFlag(true));});
 window.addEventListener("online",()=>offlineFlag(false));window.addEventListener("offline",()=>offlineFlag(true));
 /* 밝게/어둡게 (이 기기에서만 기억, 기본 = 어둡게 = 페이지와 같음) */
 function applyTheme(t){document.documentElement.setAttribute("data-theme",t);const m=document.getElementById("tc");if(m)m.content=t==="light"?"#F6F4EE":"#000000";
