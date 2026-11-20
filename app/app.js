@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-28af2441e7";
+var VERSION="v1-3f5496eba2";
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://claude.ai/artifact/83acT3uNMUC3NGidY5284F";
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -42,11 +42,11 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
   const ab=e.audio_base||"";
   /* B: 자료 v2 voices[].src = 구간 요청(Range) 되는 음성 주소 우선, 실패하면 data-fb(voices[].fallback 또는 v1 주소) */
   const one=(k,a,du,l,s)=>{const v=(e.voices||[]).find(x=>x.key===k)||null,v1=e[a]?ab+e[a]:"";return [k,(v&&v.src)||v1,e[du]||(v&&v.dur)||"",l,s,(v&&v.fallback)||v1];};
-  const ALL=[one("p","audio","dur","신철 목사 음성","목사"),one("f","audio_f","dur_f","여성 낭독","여"),one("m","audio_m","dur_m","남성 낭독","남")];
-  const SRC=ALL.filter(x=>x[1]);
+  const ALL=[one("p","audio","dur","신철 목사 음성","담임목사"),one("m","audio_m","dur_m","남성 낭독","남성"),one("f","audio_f","dur_f","여성 낭독","여성")]; /* 오너 지시 21:10 (v2.0.1): 순서·이름 담임목사·남성·여성 */
+  const SRC=["p","f","m"].map(k=>ALL.find(x=>x[0]===k)).filter(x=>x[1]); /* v2.0.1: 단추 순서만 바꿈 — 고른 목소리가 없는 날 기본 순서는 예전 그대로(목사→여성→남성) */
   const pick=(ALL[0][1]&&!VCLICK)?ALL[0]:(SRC.find(x=>x[0]===VOICE)||SRC[0]);
   const cur=pick?{src:pick[1],dur:pick[2]||"",kind:pick[0],fb:pick[5]||""}:null;
-  const RL=[[0.9,"0.9배"],[1,"1.0배 (보통)"],[1.25,"1.25배"],[1.5,"1.5배"],[1.75,"1.75배"]]; /* 오너 지시 2026-11-20 21:21: 배속 0.9/1.0/1.25/1.5/1.75, 처음 = 1.0 (음성 파일 자체가 1.15배로 다듬어짐) */
+  const RL=[[0.8,"천천히"],[1,"보통"],[1.2,"조금 빠르게"],[1.5,"빠르게"]]; /* v2.0.1 오너 지시(CEO 23:19): 예전 선택 상자, 처음 = 보통, 모든 목소리 같은 기준(BASE=1) */
   const audio=cur
     ? `<div class="tts"><span class="lab">듣기</span><button type="button" class="sk" id="sk-b" data-skip="-15" aria-label="15초 뒤로"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4V1L7 5l5 4V6a7 7 0 1 1-7 7H3a9 9 0 1 0 9-9z"/></svg><span aria-hidden="true">15</span></button><button type="button" class="pp" id="pp" aria-label="재생">▶</button><button type="button" class="sk fw" id="sk-f" data-skip="15" aria-label="15초 앞으로"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4V1l5 4-5 4V6a7 7 0 1 0 7 7h2a9 9 0 1 1-9-9z"/></svg><span aria-hidden="true">15</span></button><span class="brk" aria-hidden="true"></span><button type="button" class="st" id="st" aria-label="처음으로" disabled>■</button><select class="rate" id="rate" aria-label="읽는 속도">${RL.map(([r,l])=>`<option value="${r}"${r===RATE?" selected":""}>${l}</option>`).join("")}</select><span class="vsel" role="group" aria-label="목소리">${ALL.map(x=>`<button type="button" data-voice="${x[0]}" class="${pick&&x[0]===pick[0]?"on":""}" aria-pressed="${pick&&x[0]===pick[0]}"${x[1]?"":" disabled"} title="${x[3]}${x[1]?"":" · 아직 없습니다"}">${x[4]}</button>`).join("")}</span></div>
        <div class="bar"><span class="tm"><span id="cur">0:00</span> / <span id="tot">${esc(cur.dur?cur.dur.replace(/(\d+)분 (\d+)초/,(m,a,b)=>a+":"+b.padStart(2,"0")):"--:--")}</span></span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="재생 위치"></div>
@@ -54,7 +54,7 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
        ${cur.kind!=="p"?`<p class="aiNote">${cur.kind==="f"?"여성":"남성"} AI 음성으로 읽어 드립니다</p>`:""}
        ${IOS?'<p class="iosNote"><a href="'+esc(ARTIFACT+"#"+e.id)+'" target="_blank" rel="noopener">재생이 안 되면 묵상 페이지에서 듣기</a></p>':""}`
     : `<p class="aiNote">오늘 묵상 음성은 준비 중입니다.</p>`;
-  document.getElementById("today").innerHTML=dayStrip(e)+`
+  document.getElementById("today").innerHTML=`
   <div class="wrap" style="padding:0" id="day" data-iso="${esc(e.iso)}">
     <div class="hero">
       <span class="date">${esc(e.date)}</span>${e.special?'<span class="special">✝ 주일 특별묵상</span>':""}
@@ -124,10 +124,10 @@ function route(){const h=location.hash.slice(1);const set=h==="settings"||h.inde
   return render(/^\d{4}-\d{2}-\d{2}$/.test(h)?"d"+h.replace(/-/g,""):h).then(()=>{if(typeof applyRate==="function")applyRate();});} /* B: 딥링크 #YYYY-MM-DD */
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0);});
 /* 재생 속도·목소리: 이 기기에서만 기억 */
-var RATES=[0.9,1,1.25,1.5,1.75];
+var RATES=[0.8,1,1.2,1.5]; /* v2.0.1 오너 지시(CEO 23:19): 예전 선택 상자로 — 천천히 0.8·보통 1.0·조금 빠르게 1.2·빠르게 1.5, 처음 = 보통 */
 var RATE=1;
 var BASE=1; /* 오너 지시 21:11: 고른 배속을 모든 목소리(목사님·AI)에 그대로 (페이지의 목사님 1.2배 기준은 쓰지 않음) */
-try{let r=parseFloat(localStorage.getItem("rate2"));if(!isNaN(r)&&!RATES.includes(r)){r=RATES.reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a);localStorage.setItem("rate2",r);} /* 예전 0.8→0.9, 1.2→1.25 */if(RATES.includes(r))RATE=r;}catch(err){}
+try{let r=parseFloat(localStorage.getItem("rate2"));const MIG={"0.9":0.8,"1.25":1.2,"1.75":1.5};if(MIG[r])r=MIG[r];else if(!isNaN(r)&&!RATES.includes(r))r=RATES.reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a);if(!isNaN(r)&&String(r)!==localStorage.getItem("rate2"))localStorage.setItem("rate2",r); /* v2.0 배속 0.9→0.8, 1.25→1.2, 1.75→1.5 */if(RATES.includes(r))RATE=r;}catch(err){}
 const fmtT=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0");};
 const baseOf=a=>a&&a.dataset.kind&&a.dataset.kind!=="p"?1:BASE;
 function applyRate(){const a=document.getElementById("player");if(a){a.preservesPitch=true;a.webkitPreservesPitch=true;a.mozPreservesPitch=true; /* 오너 21:20: 빠르게 들어도 목소리 높이 그대로 (mp3 는 손대지 않음) */a.playbackRate=RATE*baseOf(a);a.defaultPlaybackRate=RATE*baseOf(a);}
@@ -202,16 +202,8 @@ function showSettings(top){applyTheme(THEME);
   const n=DATA_IDX&&DATA_IDX.days.length?DATA_IDX.days.length:0;document.getElementById("datainfo").textContent=VISIBLE[0]?(VISIBLE[0].short+" 묵상까지 · "+VISIBLE.length+"일"):"-";
   if(top!==false)window.scrollTo(0,0);}
 
-/* ===== B: 재생기·탐색 (worker-5, 2026-11-20) — ±15초·날짜별 위치 기억·잠금화면(Media Session)·날짜 띠·좌우 넘기기·딥링크·새 묵상 알림 ===== */
-const WD=["일","월","화","수","목","금","토"];
+/* ===== B: 재생기·탐색 (worker-5, 2026-11-20) — ±15초·날짜별 위치 기억·잠금화면(Media Session)·좌우 넘기기 (v2.0.1: 월~토 날짜 띠는 오너 지시로 뺐다)·딥링크·새 묵상 알림 ===== */
 function nbr(iso){const i=VISIBLE.findIndex(x=>x.iso===iso);return {older:i>=0?VISIBLE[i+1]||null:null,newer:i>0?VISIBLE[i-1]:null};}
-/* 월~토 날짜 띠: 그 주의 열린 날만 누를 수 있다 (주일 특별묵상은 ‹이전·다음›·넘기기·목록으로) */
-function dayStrip(e){
-  const d=new Date(e.iso+"T00:00:00Z"),mon=d.getTime()-((d.getUTCDay()+6)%7)*864e5;let h="";
-  for(let k=0;k<6;k++){const c=new Date(mon+k*864e5),iso=c.toISOString().slice(0,10),m=VISIBLE.find(x=>x.iso===iso),on=iso===e.iso;
-    const lab=(c.getUTCMonth()+1)+"월 "+c.getUTCDate()+"일 "+WD[c.getUTCDay()]+"요일";const inner='<i>'+WD[c.getUTCDay()]+'</i><b>'+c.getUTCDate()+'</b>'; /* 보이는 글 = 이름의 앞부분 (Lighthouse label-content-name-mismatch) */
-    h+=m?'<a class="dc'+(on?' on':'')+'" href="#'+esc(m.id)+'"'+(on?' aria-current="date"':'')+'>'+inner+'<span class="sr"> '+lab+' 묵상'+(on?' (보는 중)':'')+'</span></a>':'<span class="dc off">'+inner+'<span class="sr"> '+lab+' 묵상 없음</span></span>';}
-  return '<nav class="daystrip" aria-label="이번 주 묵상 날짜">'+h+'</nav>';}
 function pager(e){const n=nbr(e.iso);const one=(x,cls,lab)=>x?'<a class="'+cls+'" href="#'+esc(x.id)+'" rel="'+(cls==="pv"?"prev":"next")+'"><small>'+lab+'</small><span>'+esc(x.short)+' '+esc(x.title)+'</span></a>':'<span class="'+cls+' none" aria-hidden="true"></span>';
   return '<nav class="pager" aria-label="앞뒤 묵상">'+one(n.older,"pv","‹ 이전 묵상")+one(n.newer,"nx","다음 묵상 ›")+'</nav>';}
 let NAVDIR="";
@@ -219,8 +211,8 @@ function go(dir){if(!document.getElementById("settings").hidden)return false;con
   if(!x){toast(dir==="next"?"가장 최근 묵상입니다":"더 이전 묵상이 없습니다");return false;}NAVDIR=dir;location.hash=x.id;return true;}
 function dayIn(dir){const d=document.getElementById("day");if(d&&dir)d.classList.add(dir==="next"?"in-next":"in-prev");}
 function normId(h){return /^\d{4}-\d{2}-\d{2}$/.test(h)?"d"+h.replace(/-/g,""):h;}
-function refreshNav(iso){const e={iso:iso},s=document.querySelector("#today .daystrip"),p=document.querySelector("#today .pager");if(s)s.outerHTML=dayStrip(e);if(p)p.outerHTML=pager(e);renderArchive();}
-document.addEventListener("click",ev=>{const a=ev.target.closest(".pager a,.daystrip a");if(!a)return;const cur=(document.getElementById("day")||{dataset:{}}).dataset.iso||"",to=VISIBLE.find(x=>"#"+x.id===a.getAttribute("href"));if(to)NAVDIR=to.iso>cur?"next":"prev";});
+function refreshNav(iso){const e={iso:iso},p=document.querySelector("#today .pager");if(p)p.outerHTML=pager(e);renderArchive();}
+document.addEventListener("click",ev=>{const a=ev.target.closest(".pager a");if(!a)return;const cur=(document.getElementById("day")||{dataset:{}}).dataset.iso||"",to=VISIBLE.find(x=>"#"+x.id===a.getAttribute("href"));if(to)NAVDIR=to.iso>cur?"next":"prev";});
 /* 좌우로 넘기기: 왼쪽으로 밀면 다음(새) 묵상, 오른쪽으로 밀면 이전 묵상 — 재생 막대·선택 상자 위에서는 넘기지 않는다 */
 (function(){const m=document.getElementById("today");if(!m)return;let sx=0,sy=0,st=0,ok=false;
   m.addEventListener("touchstart",ev=>{ok=ev.touches.length===1&&!ev.target.closest("input,select,textarea,.bar");if(!ok)return;sx=ev.touches[0].clientX;sy=ev.touches[0].clientY;st=Date.now();},{passive:true});

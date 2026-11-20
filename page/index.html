@@ -47,7 +47,7 @@ h1{font-family:var(--serif);font-weight:700;font-size:2.1rem;line-height:1.3;mar
 .tts .pp{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--leaf);color:var(--paper);font-size:1.1rem;cursor:pointer;display:grid;place-items:center}
 .tts .st{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:.8rem;cursor:pointer}
 .tts .st:disabled{opacity:.35;cursor:default}
-.tts .rate{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:5px 8px;min-height:38px;max-width:7em}
+.tts .rate{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:5px 8px;min-height:38px;max-width:none}
 .tts .vsel{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex:none}
 .tts .vsel button{font:inherit;font-size:.8rem;border:0;background:transparent;color:var(--muted);padding:5px 9px;min-height:38px;cursor:pointer}
 .tts .vsel button.on{background:var(--leaf);color:var(--paper);font-weight:700}
@@ -178,11 +178,11 @@ function todayKST(){
 const VISIBLE=(()=>{const t=todayKST();const v=ENTRIES.filter(x=>!x.iso||x.iso<=t).sort((a,b)=>(b.iso||"").localeCompare(a.iso||""));return v;})();
 function renderNow(id){
   const e=FULL[id];
-  const ALL=[["p",e.audio,e.dur,"신철 목사 음성","목사"],["f",e.audio_f,e.dur_f,"여성 낭독","여"],["m",e.audio_m,e.dur_m,"남성 낭독","남"]];
-  const SRC=ALL.filter(x=>x[1]);
+  const ALL=[["p",e.audio,e.dur,"신철 목사 음성","담임목사"],["m",e.audio_m,e.dur_m,"남성 낭독","남성"],["f",e.audio_f,e.dur_f,"여성 낭독","여성"]];
+  const SRC=["p","f","m"].map(k=>ALL.find(x=>x[0]===k)).filter(x=>x[1]); /* v2.0.1: 단추 순서만 바꿈 — 고른 목소리가 없는 날 기본 순서는 예전 그대로(목사→여성→남성) */
   const pick=(e.audio&&!VCLICK)?ALL[0]:(SRC.find(x=>x[0]===VOICE)||SRC[0]);
   const cur=pick?{src:pick[1],dur:pick[2]||"",kind:pick[0]}:null;
-  const RL=[[0.9,"0.9배"],[1,"1.0배 (기본)"],[1.25,"1.25배"],[1.5,"1.5배"],[1.75,"1.75배"]];
+  const RL=[[0.8,"천천히"],[1,"보통"],[1.2,"조금 빠르게"],[1.5,"빠르게"]];
   const audio=cur
     ? `<div class="tts"><span class="lab">듣기</span><button type="button" class="pp" id="pp" aria-label="재생">▶</button><button type="button" class="st" id="st" aria-label="처음으로" disabled>■</button><select class="rate" id="rate" aria-label="읽는 속도">${RL.map(([r,l])=>`<option value="${r}"${r===RATE?" selected":""}>${l}</option>`).join("")}</select><span class="vsel" role="group" aria-label="목소리">${ALL.map(x=>`<button type="button" data-voice="${x[0]}" class="${pick&&x[0]===pick[0]?"on":""}" aria-pressed="${pick&&x[0]===pick[0]}"${x[1]?"":" disabled"} title="${x[3]}${x[1]?"":" · 아직 없습니다"}">${x[4]}</button>`).join("")}</span></div>
        <div class="bar"><span class="tm"><span id="cur">0:00</span> / <span id="tot">${esc(cur.dur?cur.dur.replace(/(\d+)분 (\d+)초/,(m,a,b)=>a+":"+b.padStart(2,"0")):"--:--")}</span></span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="재생 위치"></div>
@@ -256,10 +256,10 @@ document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",
 function route(){render(location.hash.slice(1));if(typeof applyRate==="function")applyRate();}
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0);});
 /* 재생 속도·목소리: 이 기기에서만 기억 */
-var RATES=[0.9,1,1.25,1.5,1.75];
+var RATES=[0.8,1,1.2,1.5];
 var RATE=1;
 var BASE=1;
-try{const r=parseFloat(localStorage.getItem("rate_page"));if(RATES.includes(r))RATE=r;}catch(err){}
+try{let r=parseFloat(localStorage.getItem("rate_page"));const MIG={"0.9":0.8,"1.25":1.2,"1.75":1.5};if(MIG[r]){r=MIG[r];localStorage.setItem("rate_page",r);}if(RATES.includes(r))RATE=r;}catch(err){}
 const fmtT=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0");};
 const baseOf=a=>a&&a.dataset.kind&&a.dataset.kind!=="p"?1:BASE;
 function applyRate(){const a=document.getElementById("player");if(a){a.preservesPitch=true;a.webkitPreservesPitch=true;a.mozPreservesPitch=true;a.playbackRate=RATE*baseOf(a);a.defaultPlaybackRate=RATE*baseOf(a);}
