@@ -145,14 +145,8 @@ footer{color:var(--muted);font-size:.75rem;text-align:center}
 .tts .sk svg{width:30px;height:30px;display:block}
 .tts .sk span{position:absolute;left:50%;top:50%;transform:translate(-50%,-36%);font:700 11px/1 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.04em}
 .bar input[type=range]{min-height:44px}
-.tts .sk:focus-visible,.pager a:focus-visible,.toast button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.tts .sk:focus-visible,.toast button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.pager{display:flex;gap:10px;max-width:640px;width:100%;margin:6px auto 0}
-.pager>*{flex:1 1 0;min-width:0;min-height:60px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:8px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);text-decoration:none;font:400 15px/1.35 var(--sans)}
-.pager .nx{align-items:flex-end;text-align:right}
-.pager small{color:var(--leaf);font-size:13px;font-weight:700}
-.pager span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pager .none{visibility:hidden}
 @keyframes dayin-next{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
 @keyframes dayin-prev{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
 #day.in-next{animation:dayin-next .18s ease-out}
@@ -181,3 +175,16 @@ header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;fon
 #set-help .howto{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:1rem;line-height:1.6;color:var(--ink)}
 #set-help .howto b{color:var(--leaf)}
 /* ===== /B ===== */
+/* ===== v2.0.2 owner 05:09 (via CEO): all player controls in ONE row (-15 · play · +15 · stop · speed · voices), never wraps. Speed select: fixed compact width (91u) that still shows the longest label 조금 빠르게 in full.
+   Every size is a multiple of one unit --u = min(1px, row width / natural row width 420 px), so a narrow phone scales the whole row
+   proportionally; label fonts are px*u (not rem) so 글자 크게 cannot push the row past the screen. Seek bar + time stay on the line below. ===== */
+.tts{--u:min(1px,calc((100vw - 32px) / 420));flex-wrap:nowrap;gap:calc(2 * var(--u));max-width:100%}
+.tts .brk{display:none}
+@media (max-width:560px){.tts .lab{display:none}}
+.tts .sk{width:calc(40 * var(--u));height:calc(40 * var(--u))}
+.tts .sk svg{width:calc(25 * var(--u));height:calc(25 * var(--u))}
+.tts .sk span{font-size:calc(9.5 * var(--u))}
+.tts .pp{width:calc(56 * var(--u));height:calc(56 * var(--u));font-size:calc(19 * var(--u))}
+.tts .st{width:calc(40 * var(--u));height:calc(40 * var(--u));font-size:calc(13 * var(--u));padding:0}
+.tts .rate{flex:none;box-sizing:border-box;width:calc(91 * var(--u));-webkit-appearance:none;appearance:none;font-size:calc(13 * var(--u));line-height:1.2;min-height:0;height:calc(40 * var(--u));padding:0 calc(15 * var(--u)) 0 calc(7 * var(--u));background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 10.5 * var(--u)) 54%,calc(100% - 6.5 * var(--u)) 54%;background-size:calc(4 * var(--u)) calc(4 * var(--u));background-repeat:no-repeat}
+.tts .vsel button{font-size:calc(13 * var(--u));line-height:1.2;min-height:0;min-width:calc(40 * var(--u));height:calc(40 * var(--u));padding:0 calc(4 * var(--u))}

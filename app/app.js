@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-d2506e540e";
+var VERSION="v1-b74eba5e4a";
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://claude.ai/artifact/83acT3uNMUC3NGidY5284F";
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -83,7 +83,7 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
         <button type="button" class="share-btn" data-title="${esc(e.title)}" data-url="${esc((e.share&&typeof e.share==="object"&&e.share.page)||e.card_page||("https://cheol0929-thejoy.github.io/saebom/"+(e.iso||"").slice(5).replace("-","")+".html"))}">🔗 링크 복사하기</button>`}
         <p class="share-msg" role="status"></p></section>
     </article>
-  </div>`+pager(e);
+  </div>`; /* v2.0.2 owner 05:28 (via CEO): 이전/다음 묵상 카드 없앰 - 옆으로 밀기·화살표 키·지난 묵상 찾기로 넘긴다 */
   CURRENT=e.id;dayIn(dir);
   renderArchive();
   }).catch(()=>{if(tok!==RTOK)return;PENDING=null;document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없어 이 날 묵상을 불러오지 못했습니다. 최근 14일은 인터넷 없이도 볼 수 있습니다.</p>';});
@@ -204,15 +204,12 @@ function showSettings(top){applyTheme(THEME);
 
 /* ===== B: 재생기·탐색 (worker-5, 2026-11-20) — ±15초·날짜별 위치 기억·잠금화면(Media Session)·좌우 넘기기 (v2.0.1: 월~토 날짜 띠는 오너 지시로 뺐다)·딥링크·새 묵상 알림 ===== */
 function nbr(iso){const i=VISIBLE.findIndex(x=>x.iso===iso);return {older:i>=0?VISIBLE[i+1]||null:null,newer:i>0?VISIBLE[i-1]:null};}
-function pager(e){const n=nbr(e.iso);const one=(x,cls,lab)=>x?'<a class="'+cls+'" href="#'+esc(x.id)+'" rel="'+(cls==="pv"?"prev":"next")+'"><small>'+lab+'</small><span>'+esc(x.short)+' '+esc(x.title)+'</span></a>':'<span class="'+cls+' none" aria-hidden="true"></span>';
-  return '<nav class="pager" aria-label="앞뒤 묵상">'+one(n.older,"pv","‹ 이전 묵상")+one(n.newer,"nx","다음 묵상 ›")+'</nav>';}
 let NAVDIR="";
 function go(dir){if(!document.getElementById("settings").hidden)return false;const iso=(document.getElementById("day")||{dataset:{}}).dataset.iso;const n=nbr(iso),x=dir==="next"?n.newer:n.older;
   if(!x){toast(dir==="next"?"가장 최근 묵상입니다":"더 이전 묵상이 없습니다");return false;}NAVDIR=dir;location.hash=x.id;return true;}
 function dayIn(dir){const d=document.getElementById("day");if(d&&dir)d.classList.add(dir==="next"?"in-next":"in-prev");}
 function normId(h){return /^\d{4}-\d{2}-\d{2}$/.test(h)?"d"+h.replace(/-/g,""):h;}
-function refreshNav(iso){const e={iso:iso},p=document.querySelector("#today .pager");if(p)p.outerHTML=pager(e);renderArchive();}
-document.addEventListener("click",ev=>{const a=ev.target.closest(".pager a");if(!a)return;const cur=(document.getElementById("day")||{dataset:{}}).dataset.iso||"",to=VISIBLE.find(x=>"#"+x.id===a.getAttribute("href"));if(to)NAVDIR=to.iso>cur?"next":"prev";});
+function refreshNav(iso){renderArchive();}
 /* 좌우로 넘기기: 왼쪽으로 밀면 다음(새) 묵상, 오른쪽으로 밀면 이전 묵상 — 재생 막대·선택 상자 위에서는 넘기지 않는다 */
 (function(){const m=document.getElementById("today");if(!m)return;let sx=0,sy=0,st=0,ok=false;
   m.addEventListener("touchstart",ev=>{ok=ev.touches.length===1&&!ev.target.closest("input,select,textarea,.bar");if(!ok)return;sx=ev.touches[0].clientX;sy=ev.touches[0].clientY;st=Date.now();},{passive:true});
