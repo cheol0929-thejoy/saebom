@@ -16,9 +16,9 @@
  ],
  "ref": "빌립보서 2장 5~11절",
  "audio_f": "audio/2026-10-25-f.mp3",
- "dur_f": "8분 27초",
+ "dur_f": "7분 21초",
  "audio_m": "audio/2026-10-25-m.mp3",
- "dur_m": "9분 14초",
+ "dur_m": "8분 2초",
  "verses": [
   [
    5,
@@ -104,5 +104,29 @@
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261025",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1025",
  "hasPastorAudio": false,
- "hasAiAudio": true
+ "hasAiAudio": true,
+ "v": 2,
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 낭독",
+   "short": "여",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-10-25_f.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-10-25-f.mp3",
+   "path": "audio/2026-10-25-f.mp3",
+   "dur": "7분 21초"
+  },
+  {
+   "key": "m",
+   "label": "남성 낭독",
+   "short": "남",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-10-25_m.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-10-25-m.mp3",
+   "path": "audio/2026-10-25-m.mp3",
+   "dur": "8분 2초"
+  }
+ ],
+ "pastor_release_url": null,
+ "card": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1025",
+ "card_page": "https://cheol0929-thejoy.github.io/saebom/1025.html"
 }

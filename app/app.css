@@ -4,7 +4,7 @@
   --leaf:#8DBE97; --leaf-soft:#1A221C; --gold:#D3B370;
   color-scheme:dark;
   --serif:"Gowun Batang","Noto Serif KR",serif;
-  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --sans:"Noto Sans KR","Noto Sans CJK KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",Roboto,sans-serif; /* perf A: no webfont - installed Noto Sans KR/CJK (Android system Korean font = same design), else system Korean sans */
   --fs:19px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -17,9 +17,10 @@ html{font-size:var(--fs)}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.6;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px}
 .wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+#today{min-height:100vh} /* perf A: content arrives after JS - keep the archive/footer below the fold so nothing shifts (CLS 0) */
 header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .brandrow{display:flex;align-items:center;gap:.55em}
-.mark{height:2.6em;width:auto;max-width:none;flex:none;display:block}
+.mark{height:2.6em;width:auto;aspect-ratio:1/1;max-width:none;flex:none;display:block}
 .brand{font-family:var(--serif);font-weight:700;color:var(--leaf);font-size:1.05rem;letter-spacing:.02em}
 .brand small{display:block;font-family:var(--sans);font-weight:400;color:var(--muted);font-size:.72rem;letter-spacing:.04em}
 .sizer{display:flex;gap:6px}
@@ -133,3 +134,57 @@ footer{color:var(--muted);font-size:.75rem;text-align:center}
 #settings .small{color:var(--muted);font-size:.85rem}
 #settings dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
 #settings dt{color:var(--muted)}#settings dd{margin:0}
+
+/* ===== B: player/nav (worker-5) — appended block, vars only ===== */
+.tts .pp{width:60px;height:60px}
+.tts .st{width:44px;height:44px}
+.tts .rate,.tts .vsel button,.sizer button{min-height:44px}
+.tts .vsel button{min-width:44px}
+.tts .brk{flex-basis:100%;height:0}
+.tts .sk{flex:none;position:relative;width:48px;height:48px;padding:0;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.tts .sk svg{width:30px;height:30px;display:block}
+.tts .sk span{position:absolute;left:50%;top:50%;transform:translate(-50%,-36%);font:700 11px/1 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.bar input[type=range]{min-height:44px}
+.tts .sk:focus-visible,.daystrip .dc:focus-visible,.pager a:focus-visible,.toast button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.daystrip{display:flex;gap:4px;width:100%;max-width:640px;height:56px;margin:0 auto 2px}
+.daystrip .dc{flex:1 1 0;min-width:44px;height:56px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:12px;color:var(--ink);text-decoration:none;font:500 16px/1.1 var(--sans);font-variant-numeric:tabular-nums}
+.daystrip .dc i{font-style:normal;font-size:12px;color:var(--muted)}
+.daystrip .dc.on{background:var(--leaf);color:var(--paper)}
+.daystrip .dc.on i{color:var(--paper)}
+.daystrip .dc.off{color:var(--muted)}
+.daystrip .dc.off b{font-weight:400}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.pager{display:flex;gap:10px;max-width:640px;width:100%;margin:6px auto 0}
+.pager>*{flex:1 1 0;min-width:0;min-height:60px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:8px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);text-decoration:none;font:400 15px/1.35 var(--sans)}
+.pager .nx{align-items:flex-end;text-align:right}
+.pager small{color:var(--leaf);font-size:13px;font-weight:700}
+.pager span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager .none{visibility:hidden}
+@keyframes dayin-next{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@keyframes dayin-prev{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+#day.in-next{animation:dayin-next .18s ease-out}
+#day.in-prev{animation:dayin-prev .18s ease-out}
+.toast{position:fixed;z-index:50;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:4px 4px 4px 16px;border-radius:14px;background:var(--ink);color:var(--bg);font:500 15px/1.35 var(--sans);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.toast.show{animation:toastin .18s ease-out}
+@keyframes toastin{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translateX(-50%)}}
+.toast button{min-width:44px;min-height:44px;border:0;background:transparent;color:var(--bg);font:700 15px/1 var(--sans);cursor:pointer;padding:0 10px}
+.toast .tact{text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){#day.in-next,#day.in-prev,.toast.show{animation:none}}
+/* owner 21:11: sticky header - fixed 60px height (CLS 0), px sizes so 글자 크게 cannot push it into overlap */
+html{scroll-padding-top:68px}
+header.top{position:sticky;top:0;z-index:40;height:60px;box-sizing:border-box;flex-wrap:nowrap;gap:8px;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
+header.top .brandrow{display:flex;align-items:center;gap:6px;min-width:0;min-height:44px;color:inherit;text-decoration:none;border-radius:10px}
+header.top .brandrow:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header.top .mark{height:40px;width:40px}
+header.top .brand{font-size:20px;white-space:nowrap;line-height:1.2}
+header.top .brand small{font-size:14px}
+header.top .topr{flex:none;flex-wrap:nowrap}
+header.top .sizer button,header.top .gear{font-size:15px;line-height:1;padding:0 8px;min-height:44px;white-space:nowrap}
+header.top{position:sticky}
+header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;font-size:11px;line-height:1.2} /* Codex m1: inside the 60px header box */
+@media (max-width:440px){header.top .brand small{display:none}}
+@media (max-width:400px){header.top .brand{font-size:16px}header.top .mark{height:34px;width:34px}header.top .sizer button,header.top .gear{font-size:13px;padding:0 6px}header.top .topr,header.top .sizer{gap:4px}}
+/* owner 21:18: 사용 안내 - body size type, theme vars only */
+#set-help .howto{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:1rem;line-height:1.6;color:var(--ink)}
+#set-help .howto b{color:var(--leaf)}
+/* ===== /B ===== */

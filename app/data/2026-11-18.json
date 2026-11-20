@@ -17,9 +17,9 @@
  "audio": "",
  "dur": "",
  "audio_f": "audio/2026-11-18-f.mp3",
- "dur_f": "6분 39초",
+ "dur_f": "5분 47초",
  "audio_m": "audio/2026-11-18-m.mp3",
- "dur_m": "7분 8초",
+ "dur_m": "6분 12초",
  "verses": [
   [
    7,
@@ -99,5 +99,29 @@
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261118",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1118",
  "hasPastorAudio": false,
- "hasAiAudio": true
+ "hasAiAudio": true,
+ "v": 2,
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 낭독",
+   "short": "여",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-18_f.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-11-18-f.mp3",
+   "path": "audio/2026-11-18-f.mp3",
+   "dur": "5분 47초"
+  },
+  {
+   "key": "m",
+   "label": "남성 낭독",
+   "short": "남",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-18_m.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-11-18-m.mp3",
+   "path": "audio/2026-11-18-m.mp3",
+   "dur": "6분 12초"
+  }
+ ],
+ "pastor_release_url": null,
+ "card": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1118",
+ "card_page": "https://cheol0929-thejoy.github.io/saebom/1118.html"
 }

@@ -18,15 +18,203 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <script>/* 밝게/어둡게: 그리기 전에 적용 (기본 = 페이지와 같은 어둡게) */try{var th=localStorage.getItem("theme");if(th==="light"||th==="dark")document.documentElement.setAttribute("data-theme",th);}catch(e){}</script>
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="app.css">
+<style id="appcss">/* = app.css (inline_css.py) */
+/* Layout: single reading column like a printed devotional booklet; date strip on top, audio card, then 본문→관찰→해석→적용→기도, archive list at the end */
+:root{
+  --bg:#000000; --paper:#121212; --ink:#ECEDEA; --muted:#A4AAA4; --line:#2A2D2A;
+  --leaf:#8DBE97; --leaf-soft:#1A221C; --gold:#D3B370;
+  color-scheme:dark;
+  --serif:"Gowun Batang","Noto Serif KR",serif;
+  --sans:"Noto Sans KR","Noto Sans CJK KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",Roboto,sans-serif; /* perf A: no webfont - installed Noto Sans KR/CJK (Android system Korean font = same design), else system Korean sans */
+  --fs:19px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#000000; --paper:#121212; --ink:#ECEDEA; --muted:#A4AAA4; --line:#2A2D2A;
+  --leaf:#8DBE97; --leaf-soft:#1A221C; --gold:#D3B370; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000000; --paper:#121212; --ink:#ECEDEA; --muted:#A4AAA4; --line:#2A2D2A;
+  --leaf:#8DBE97; --leaf-soft:#1A221C; --gold:#D3B370; color-scheme:dark}
+html{font-size:var(--fs)}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px}
+.wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+#today{min-height:100vh} /* perf A: content arrives after JS - keep the archive/footer below the fold so nothing shifts (CLS 0) */
+header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brandrow{display:flex;align-items:center;gap:.55em}
+.mark{height:2.6em;width:auto;aspect-ratio:1/1;max-width:none;flex:none;display:block}
+.brand{font-family:var(--serif);font-weight:700;color:var(--leaf);font-size:1.05rem;letter-spacing:.02em}
+.brand small{display:block;font-family:var(--sans);font-weight:400;color:var(--muted);font-size:.72rem;letter-spacing:.04em}
+.sizer{display:flex;gap:6px}
+.sizer button{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer;min-height:40px}
+.sizer button:focus-visible,.play:focus-visible,.arch a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-block:6px 4px}
+.date{color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+h1{font-family:var(--serif);font-weight:700;font-size:2.1rem;line-height:1.3;margin:0;text-wrap:balance}
+.ref{color:var(--leaf);font-weight:500;font-size:.95rem}
+.tts{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:2px auto 0}
+@media (max-width:460px){.tts .lab{display:none}.tts{gap:6px}}
+.tts .lab{font-size:.9rem;color:var(--muted)}
+.tts .pp{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--leaf);color:var(--paper);font-size:1.1rem;cursor:pointer;display:grid;place-items:center}
+.tts .st{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:.8rem;cursor:pointer}
+.tts .st:disabled{opacity:.35;cursor:default}
+.tts .rate{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:5px 8px;min-height:38px;max-width:7em}
+.tts .vsel{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex:none}
+.tts .vsel button{font:inherit;font-size:.8rem;border:0;background:transparent;color:var(--muted);padding:5px 9px;min-height:38px;cursor:pointer}
+.tts .vsel button.on{background:var(--leaf);color:var(--paper);font-weight:700}
+.tts .vsel button:disabled{opacity:.35;cursor:default}
+.tts .vsel button:focus-visible,.tts .pp:focus-visible,.tts .st:focus-visible,.tts .rate:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bar{display:flex;align-items:center;gap:12px;margin:0 auto;width:100%;max-width:640px}
+.bar .tm{flex:none;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar input[type=range]{flex:1;min-width:40px;accent-color:var(--leaf);height:32px}
+.aiNote{color:var(--muted);font-size:.78rem;text-align:center;margin:-6px 0 0}
+article{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;gap:30px}
+section{display:flex;flex-direction:column;gap:8px}
+h2{margin:0;font-size:.8rem;letter-spacing:.14em;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+p{margin:0}
+.scripture{font-family:var(--serif);font-size:1.02rem;line-height:1.7}
+.scripture .v{display:block;padding-left:2.1em;text-indent:-2.1em}
+.scripture sup{font-family:var(--sans);font-size:.65rem;color:var(--leaf);font-weight:700;display:inline-block;width:2.1em;text-indent:0;vertical-align:.35em}
+.key{border-left:3px solid var(--leaf);padding:4px 0 4px 14px;font-family:var(--serif);font-weight:700;font-size:1.08rem}
+.practice{background:var(--leaf-soft);border-radius:10px;padding:14px 16px}
+.special{display:inline-block;font-size:.78rem;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:2px 12px;letter-spacing:.04em}
+.sub{margin:10px 0 0;font-size:1rem;font-weight:700;display:flex;align-items:center;gap:8px;word-break:keep-all}
+.sub i{font-style:normal;font-size:.72rem;color:var(--bg);background:var(--leaf);border-radius:999px;padding:2px 10px}
+h1,h2,.arch a .t{word-break:keep-all}
+.share{background:var(--leaf-soft);border-radius:14px;padding:16px 18px;text-align:center}
+.share h2{justify-content:center}
+.share p{margin:0}
+.share-btn{font:inherit;font-weight:700;border:1px solid var(--leaf);border-radius:999px;background:transparent;color:var(--leaf);padding:10px 20px;cursor:pointer;align-self:center}
+.kakao-btn{display:block;align-self:stretch;font-weight:800;font-size:1.05rem;text-decoration:none;border-radius:14px;background:#FEE500;color:#191919;padding:15px 18px}
+.kakao-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.share-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.share-msg{color:var(--leaf);font-size:.9rem;min-height:1.2em}
+.practice b{color:var(--leaf);display:block;font-size:.85rem;margin-bottom:4px}
+.prayer p{font-family:var(--serif)}
+ol.req{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:8px}
+.verse{text-align:center;font-family:var(--serif);font-size:1.12rem;line-height:1.65;padding:8px 4px}
+.verse cite{display:block;font-style:normal;font-family:var(--sans);color:var(--muted);font-size:.8rem;margin-top:6px}
+.arch{display:flex;flex-direction:column;gap:10px}
+.arch h3{margin:0;font-size:.95rem}
+.arch ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.arch li{border-bottom:1px solid var(--line)}
+.arch a{display:flex;gap:14px;align-items:baseline;padding:12px 4px;color:var(--ink);text-decoration:none}
+.arch a .d{color:var(--muted);font-size:.8rem;font-variant-numeric:tabular-nums;min-width:4.6em}
+.arch a[aria-current="true"]{color:var(--leaf);font-weight:700}
+.arch a .t{flex:1;min-width:0}
+.arch a .r{display:block;color:var(--muted);font-size:.8rem;font-weight:400;margin-top:2px}
+.arch a .ear{color:var(--leaf);font-size:.8rem;white-space:nowrap}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tabs button{font:inherit;font-size:.9rem;font-weight:700;min-height:48px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--paper)}
+.tabs button:focus-visible,.arch summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.grp{display:flex;flex-direction:column;gap:4px}
+.grp h4{margin:12px 0 2px;font-size:.8rem;letter-spacing:.12em;color:var(--gold)}
+.arch details{border-bottom:1px solid var(--line)}
+.arch details:first-of-type{border-top:1px solid var(--line)}
+.arch summary{cursor:pointer;padding:13px 4px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.arch summary::-webkit-details-marker{display:none}
+.arch summary::after{content:"펼치기";font-weight:400;font-size:.75rem;color:var(--muted)}
+.arch details[open] summary::after{content:"접기"}
+.arch summary .n{color:var(--muted);font-weight:400}
+.arch details ul{border-top:1px dashed var(--line);margin-bottom:8px;padding-left:10px}
+.arch .empty{color:var(--muted);font-size:.85rem;margin:6px 0}
+strong{font-weight:700;color:var(--ink)}
+.verse strong,.key strong{color:inherit}
+.pic{margin:0;display:flex;flex-direction:column;gap:8px}
+.pic img{width:100%;height:auto;border-radius:12px;display:block;background:var(--leaf-soft)}
+.pic figcaption{text-align:center;color:var(--muted);font-size:.78rem}
+footer{color:var(--muted);font-size:.75rem;text-align:center}
+@media (max-width:480px){h1{font-size:1.75rem}article{padding:22px 16px}}
+
+/* ===== 앱 추가분 (재작업 2026-11-20) — 위는 묵상 페이지 CSS 그대로 ===== */
+:root[data-theme="light"]{
+  --bg:#F6F4EE; --paper:#FFFFFF; --ink:#1E211E; --muted:#5C635D; --line:#DEE1DA;
+  --leaf:#2F6B43; --leaf-soft:#EAF2EB; --gold:#80601E; color-scheme:light}
+.topr{display:flex;gap:6px;align-items:center}
+.gear{font:inherit;font-size:.8rem;line-height:inherit;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer;min-height:40px;box-sizing:border-box;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}  /* = .sizer button (보이는 높이 40px = 글자 버튼과 같음) */
+.gear{min-height:44px;border:2px solid transparent;box-shadow:inset 0 0 0 1px var(--line);background-clip:padding-box;border-radius:10px}  /* 누르는 영역 44px, 보이는 버튼 40px = 글자 버튼과 같음 (Gemini r1 MAJOR 2) */
+.gear:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.offline{color:var(--gold);font-size:.75rem;width:100%;text-align:right}
+.iosNote{text-align:center;font-size:.8rem;margin:-4px 0 0}
+.iosNote a{color:var(--leaf)}
+.loadmsg{color:var(--muted);text-align:center;padding:40px 0}
+#settings{display:flex;flex-direction:column;gap:22px}
+#settings .back{color:var(--leaf);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;min-height:44px;padding:8px 4px;align-self:flex-start}
+#settings h1{font-size:1.6rem;text-align:left}
+#settings section.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 18px;display:flex;flex-direction:column;gap:12px}
+#settings .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#settings .seg button{font:inherit;font-weight:700;min-height:48px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;cursor:pointer}
+#settings .seg button[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--paper)}
+#settings .seg button:focus-visible,#settings .btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+#settings .btn{display:block;text-align:center;font:inherit;font-weight:700;border:1px solid var(--leaf);border-radius:999px;background:transparent;color:var(--leaf);padding:12px 18px;text-decoration:none;cursor:pointer}
+#settings .btn.fill{background:var(--leaf);color:var(--paper)}
+#settings .guide{display:flex;flex-direction:column;gap:8px}
+#settings .guide img{width:100%;max-width:360px;align-self:center;border-radius:12px;border:1px solid var(--line);background:#fff}
+#settings ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+#settings .small{color:var(--muted);font-size:.85rem}
+#settings dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
+#settings dt{color:var(--muted)}#settings dd{margin:0}
+
+/* ===== B: player/nav (worker-5) — appended block, vars only ===== */
+.tts .pp{width:60px;height:60px}
+.tts .st{width:44px;height:44px}
+.tts .rate,.tts .vsel button,.sizer button{min-height:44px}
+.tts .vsel button{min-width:44px}
+.tts .brk{flex-basis:100%;height:0}
+.tts .sk{flex:none;position:relative;width:48px;height:48px;padding:0;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.tts .sk svg{width:30px;height:30px;display:block}
+.tts .sk span{position:absolute;left:50%;top:50%;transform:translate(-50%,-36%);font:700 11px/1 var(--sans);font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.bar input[type=range]{min-height:44px}
+.tts .sk:focus-visible,.daystrip .dc:focus-visible,.pager a:focus-visible,.toast button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.daystrip{display:flex;gap:4px;width:100%;max-width:640px;height:56px;margin:0 auto 2px}
+.daystrip .dc{flex:1 1 0;min-width:44px;height:56px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:12px;color:var(--ink);text-decoration:none;font:500 16px/1.1 var(--sans);font-variant-numeric:tabular-nums}
+.daystrip .dc i{font-style:normal;font-size:12px;color:var(--muted)}
+.daystrip .dc.on{background:var(--leaf);color:var(--paper)}
+.daystrip .dc.on i{color:var(--paper)}
+.daystrip .dc.off{color:var(--muted)}
+.daystrip .dc.off b{font-weight:400}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.pager{display:flex;gap:10px;max-width:640px;width:100%;margin:6px auto 0}
+.pager>*{flex:1 1 0;min-width:0;min-height:60px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:8px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);text-decoration:none;font:400 15px/1.35 var(--sans)}
+.pager .nx{align-items:flex-end;text-align:right}
+.pager small{color:var(--leaf);font-size:13px;font-weight:700}
+.pager span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager .none{visibility:hidden}
+@keyframes dayin-next{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@keyframes dayin-prev{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+#day.in-next{animation:dayin-next .18s ease-out}
+#day.in-prev{animation:dayin-prev .18s ease-out}
+.toast{position:fixed;z-index:50;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:4px 4px 4px 16px;border-radius:14px;background:var(--ink);color:var(--bg);font:500 15px/1.35 var(--sans);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.toast.show{animation:toastin .18s ease-out}
+@keyframes toastin{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translateX(-50%)}}
+.toast button{min-width:44px;min-height:44px;border:0;background:transparent;color:var(--bg);font:700 15px/1 var(--sans);cursor:pointer;padding:0 10px}
+.toast .tact{text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){#day.in-next,#day.in-prev,.toast.show{animation:none}}
+/* owner 21:11: sticky header - fixed 60px height (CLS 0), px sizes so 글자 크게 cannot push it into overlap */
+html{scroll-padding-top:68px}
+header.top{position:sticky;top:0;z-index:40;height:60px;box-sizing:border-box;flex-wrap:nowrap;gap:8px;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
+header.top .brandrow{display:flex;align-items:center;gap:6px;min-width:0;min-height:44px;color:inherit;text-decoration:none;border-radius:10px}
+header.top .brandrow:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header.top .mark{height:40px;width:40px}
+header.top .brand{font-size:20px;white-space:nowrap;line-height:1.2}
+header.top .brand small{font-size:14px}
+header.top .topr{flex:none;flex-wrap:nowrap}
+header.top .sizer button,header.top .gear{font-size:15px;line-height:1;padding:0 8px;min-height:44px;white-space:nowrap}
+header.top{position:sticky}
+header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;font-size:11px;line-height:1.2} /* Codex m1: inside the 60px header box */
+@media (max-width:440px){header.top .brand small{display:none}}
+@media (max-width:400px){header.top .brand{font-size:16px}header.top .mark{height:34px;width:34px}header.top .sizer button,header.top .gear{font-size:13px;padding:0 6px}header.top .topr,header.top .sizer{gap:4px}}
+/* owner 21:18: 사용 안내 - body size type, theme vars only */
+#set-help .howto{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:1rem;line-height:1.6;color:var(--ink)}
+#set-help .howto b{color:var(--leaf)}
+/* ===== /B ===== */
+</style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="brandrow"><img class="mark" src="icons/icon.svg" alt="새봄묵상" width="50" height="50"><div class="brand">새봄묵상<small>새봄교회 매일 묵상</small></div></div>
+    <a class="brandrow home" href="#"><img class="mark" src="icons/icon.svg" alt="" width="50" height="50"><div class="brand">새봄묵상<small>새봄교회 매일 묵상</small></div><span class="sr"> · 오늘 묵상으로</span></a>
     <div class="topr">
       <div class="sizer" aria-label="글자 크기">
         <button id="fs-down" type="button">글자 작게</button>
@@ -52,6 +240,15 @@
   <div id="settings" hidden>
     <a class="back" href="#">← 묵상으로</a>
     <h1>설정</h1>
+    <section class="card" id="set-help"><h2>사용 안내</h2>
+      <ul class="howto">
+        <li><b>아이콘 누르기</b> — 위쪽 SAEBOM 아이콘을 누르면 어느 화면에서든 오늘 묵상(홈)으로 돌아갑니다.</li>
+        <li><b>배속</b> — 0.9배부터 1.75배까지 고를 수 있고, 마지막에 고른 배속을 기억합니다. 보통(1.0) 속도는 듣기 편하게 조금 빠르게 맞춘 음성입니다.</li>
+        <li><b>음성</b> — 담임목사·남성·여성 중 고를 수 있습니다. 그날 준비된 음성만 누를 수 있습니다.</li>
+        <li><b>글자 작게·크게</b> — 위쪽 「글자 작게」「글자 크게」로 글씨 크기를 바꿉니다.</li>
+        <li><b>밝게·어둡게</b> — 이 설정 화면의 「화면」에서 고릅니다.</li>
+        <li><b>날짜 넘기기</b> — 묵상 화면을 옆으로 밀면 앞뒤 날짜로 넘어갑니다.</li>
+      </ul></section>
     <section class="card" id="set-theme"><h2>화면</h2>
       <div class="seg" role="group" aria-label="화면 밝기"><button type="button" data-theme-set="light">밝게</button><button type="button" data-theme-set="dark">어둡게</button></div>
       <p class="small">이 휴대폰에서만 기억합니다. 처음에는 묵상 페이지처럼 어둡게 보입니다.</p></section>
@@ -71,12 +268,13 @@
       <p class="small">파일을 열면 달력 앱이 「추가」를 묻습니다. 알림을 끄려면 달력에서 이 일정을 지우면 됩니다.</p>
       <p class="small">카카오톡: 자동 알림 메시지는 비용이 들어 보내지 않습니다. 묵상 화면 아래 「카카오톡으로 보내기」로 가족·이웃에게 오늘 묵상을 보낼 수 있습니다.</p></section>
     <section class="card" id="set-info"><h2>앱 정보</h2>
-      <dl><dt>버전</dt><dd id="ver">v1-0000000000</dd><dt>묵상</dt><dd id="datainfo">-</dd><dt>성경</dt><dd>개역개정</dd><dt>문의</dt><dd>새봄교회</dd></dl></section>
+      <dl><dt>버전</dt><dd id="ver">v1-0000000000</dd><dt>묵상</dt><dd id="datainfo">-</dd><dt>성경</dt><dd>개역개정</dd><dt>문의</dt><dd>새봄교회</dd></dl>
+      <p class="small">아이콘이 예전 그림이면 홈 화면 아이콘을 지우고 다시 추가해 주세요</p></section>
   </div>
 
   <footer>새봄교회 · 성경 본문은 개역개정</footer>
 </div>
-<script src="app.js"></script>
+<script src="app.js" defer></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js");});}</script>
 </body>
 </html>

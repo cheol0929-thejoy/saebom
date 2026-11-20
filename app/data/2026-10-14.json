@@ -16,9 +16,9 @@
  "ref": "여호수아 13장 8~33절",
  "audio": "",
  "audio_f": "audio/2026-10-14-f.mp3",
- "dur_f": "6분 22초",
+ "dur_f": "5분 32초",
  "audio_m": "audio/2026-10-14-m.mp3",
- "dur_m": "6분 51초",
+ "dur_m": "5분 57초",
  "verses": [
   [
    14,
@@ -71,5 +71,29 @@
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261014",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1014",
  "hasPastorAudio": false,
- "hasAiAudio": true
+ "hasAiAudio": true,
+ "v": 2,
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 낭독",
+   "short": "여",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-10-14_f.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-10-14-f.mp3",
+   "path": "audio/2026-10-14-f.mp3",
+   "dur": "5분 32초"
+  },
+  {
+   "key": "m",
+   "label": "남성 낭독",
+   "short": "남",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-10-14_m.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-10-14-m.mp3",
+   "path": "audio/2026-10-14-m.mp3",
+   "dur": "5분 57초"
+  }
+ ],
+ "pastor_release_url": null,
+ "card": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1014",
+ "card_page": "https://cheol0929-thejoy.github.io/saebom/1014.html"
 }

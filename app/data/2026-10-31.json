@@ -17,9 +17,9 @@
  "ref": "에스더 5장 11~13절",
  "audio": "",
  "audio_f": "audio/2026-10-31-f.mp3",
- "dur_f": "8분 14초",
+ "dur_f": "7분 10초",
  "audio_m": "audio/2026-10-31-m.mp3",
- "dur_m": "8분 55초",
+ "dur_m": "7분 45초",
  "verses": [
   [
    11,
@@ -78,5 +78,29 @@
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261031",
  "share": null,
  "hasPastorAudio": false,
- "hasAiAudio": true
+ "hasAiAudio": true,
+ "v": 2,
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 낭독",
+   "short": "여",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-10-31_f.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-10-31-f.mp3",
+   "path": "audio/2026-10-31-f.mp3",
+   "dur": "7분 10초"
+  },
+  {
+   "key": "m",
+   "label": "남성 낭독",
+   "short": "남",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-10-31_m.mp3",
+   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-10-31-m.mp3",
+   "path": "audio/2026-10-31-m.mp3",
+   "dur": "7분 45초"
+  }
+ ],
+ "pastor_release_url": null,
+ "card": null,
+ "card_page": null
 }
