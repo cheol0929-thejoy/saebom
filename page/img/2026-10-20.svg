@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="잎 없는 무화과나무 너머, 높은 바위 위에 사슴 한 마리가 서 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F0E4"/><stop offset="1" stop-color="#EADFC8"/></linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.15" r="0.6"><stop offset="0" stop-color="#FFF6DA" stop-opacity="1"/><stop offset="1" stop-color="#FFF6DA" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <!-- dry field -->
+  <path d="M0 520 C 250 500, 520 510, 760 505 C 900 502, 1050 510, 1200 515 L1200 675 L0 675 Z" fill="#D9C6A2"/>
+  <g stroke="#BFA77E" stroke-width="2.5" stroke-linecap="round" opacity="0.8" fill="none">
+    <path d="M90 600 l40 -18 l28 14 l40 -16"/><path d="M380 640 l32 -14 l26 10"/><path d="M640 610 l30 -14 l30 12"/>
+  </g>
+  <!-- high rocks on right -->
+  <path d="M760 520 L 820 360 L 870 330 L 930 250 L 990 230 L 1040 170 L 1100 160 L 1150 220 L 1200 240 L 1200 520 Z" fill="#B49B78"/>
+  <path d="M820 360 L 870 330 L 930 250 L 990 230 L 1040 170 L 1100 160 L 1120 190 L 1060 210 L 1000 270 L 940 290 L 880 370 L 830 400 Z" fill="#C7B08B"/>
+  <!-- deer on the peak -->
+  <g fill="#6F4A2E" transform="translate(1062 108)">
+    <path d="M10 42 C 14 30, 34 26, 52 30 C 60 31, 64 36, 62 44 L 58 46 C 46 48, 26 48, 14 46 Z"/>
+    <path d="M56 34 C 60 22, 64 14, 70 8 L 76 10 C 72 18, 68 26, 64 36 Z"/>
+    <path d="M68 8 C 74 4, 82 6, 84 10 C 80 12, 74 12, 70 12 Z"/>
+    <path d="M71 6 l-3 -9 M74 5 l2 -9" stroke="#6F4A2E" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="16" y="44" width="4" height="22" rx="2"/><rect x="26" y="45" width="4" height="22" rx="2"/>
+    <rect x="48" y="44" width="4" height="22" rx="2"/><rect x="56" y="43" width="4" height="22" rx="2"/>
+  </g>
+  <!-- bare fig tree on left -->
+  <g stroke="#7E5535" stroke-linecap="round" fill="none">
+    <path d="M300 545 C 296 480, 300 430, 290 380" stroke-width="22"/>
+    <path d="M292 410 C 250 380, 220 350, 190 300" stroke-width="12"/>
+    <path d="M294 400 C 340 370, 380 340, 410 290" stroke-width="12"/>
+    <path d="M290 380 C 285 340, 290 300, 300 250" stroke-width="10"/>
+    <path d="M215 335 C 195 320, 175 318, 150 322" stroke-width="6"/>
+    <path d="M385 320 C 405 310, 430 310, 455 318" stroke-width="6"/>
+    <path d="M300 280 C 280 260, 265 240, 258 215" stroke-width="5"/>
+    <path d="M300 270 C 320 250, 335 235, 345 210" stroke-width="5"/>
+  </g>
+  <ellipse cx="300" cy="548" rx="70" ry="10" fill="#9C7F58" opacity="0.45"/>
+  <!-- fallen leaves -->
+  <g fill="#B98A5C" opacity="0.8">
+    <ellipse cx="250" cy="560" rx="10" ry="5" transform="rotate(-20 250 560)"/><ellipse cx="350" cy="566" rx="9" ry="4" transform="rotate(25 350 566)"/><ellipse cx="400" cy="556" rx="8" ry="4" transform="rotate(-10 400 556)"/>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="메마른 골짜기에 사방에서 바람이 불어오고, 갈라진 땅에서 새싹이 돋아난다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F0E4"/><stop offset="1" stop-color="#EDE3CC"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.15" r="0.7"><stop offset="0" stop-color="#FFF8E6" stop-opacity="1"/><stop offset="1" stop-color="#FFF8E6" stop-opacity="0"/></radialGradient>
+    <radialGradient id="green" cx="0.5" cy="0.9" r="0.35"><stop offset="0" stop-color="#C7D7A8" stop-opacity="0.9"/><stop offset="1" stop-color="#C7D7A8" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <!-- valley walls -->
+  <path d="M0 250 C 120 240, 220 300, 330 360 C 420 410, 480 440, 520 470 L 0 675 Z" fill="#CDB28C"/>
+  <path d="M1200 240 C 1080 235, 980 300, 870 360 C 780 410, 720 440, 680 470 L 1200 675 Z" fill="#C6A982"/>
+  <path d="M0 330 C 150 340, 300 420, 470 480 L 0 675 Z" fill="#B99B74" opacity="0.7"/>
+  <path d="M1200 320 C 1050 335, 900 420, 730 480 L 1200 675 Z" fill="#B3946C" opacity="0.7"/>
+  <!-- valley floor -->
+  <path d="M0 520 C 300 470, 900 470, 1200 520 L 1200 675 L 0 675 Z" fill="#DCC6A0"/>
+  <g fill="none" stroke="#B89C72" stroke-width="2.5" stroke-linecap="round" opacity="0.8">
+    <path d="M200 600 l40 -20 l30 15 l40 -18"/><path d="M820 590 l35 -18 l25 14 l45 -20"/><path d="M420 640 l30 -14 l28 10"/><path d="M700 640 l26 -12 l32 12"/>
+  </g>
+  <rect width="1200" height="675" fill="url(#green)"/>
+  <!-- wind from four directions -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.85">
+    <path d="M60 170 C 200 150, 320 190, 420 260 C 470 300, 520 300, 540 270 C 555 245, 530 225, 510 240"/>
+    <path d="M1140 160 C 1000 145, 880 190, 780 260 C 730 300, 680 300, 660 270 C 645 245, 670 225, 690 240"/>
+    <path d="M600 40 C 600 120, 580 200, 600 300"/>
+    <path d="M90 420 C 220 400, 380 420, 520 500"/>
+    <path d="M1110 410 C 980 395, 820 420, 680 500"/>
+  </g>
+  <g fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <path d="M120 200 C 230 190, 320 220, 390 270"/><path d="M1080 195 C 970 185, 880 220, 810 270"/>
+  </g>
+  <!-- sprout -->
+  <path d="M600 560 C 598 520, 600 495, 604 470" stroke="#5E8A5C" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M603 490 C 570 470, 545 475, 530 495 C 560 505, 585 503, 603 490 Z" fill="#7FAA6E"/>
+  <path d="M604 478 C 630 450, 660 448, 678 465 C 655 485, 625 488, 604 478 Z" fill="#6E9C62"/>
+  <ellipse cx="600" cy="562" rx="40" ry="8" fill="#9C7F58" opacity="0.5"/>
+</svg>

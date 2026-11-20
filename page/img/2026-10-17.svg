@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="물이 담긴 질그릇 대야와 그 가장자리에 걸쳐 놓은 흰 수건">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6F0E4"/>
+      <stop offset="1" stop-color="#E7DAC3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.28" cy="0.12" r="0.75">
+      <stop offset="0" stop-color="#FFF8E6" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFF8E6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="clay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8A5E3B"/>
+      <stop offset="0.35" stop-color="#B98A5C"/>
+      <stop offset="0.6" stop-color="#A97A4E"/>
+      <stop offset="1" stop-color="#6F4A2E"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C9DCD6"/>
+      <stop offset="1" stop-color="#8FB0AA"/>
+    </linearGradient>
+    <linearGradient id="linen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF8F0"/>
+      <stop offset="1" stop-color="#E9E1D0"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9C7A8"/>
+      <stop offset="1" stop-color="#CDB792"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect y="470" width="1200" height="205" fill="url(#floor)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <!-- soft light rays from upper left -->
+  <g fill="#FFFBEF" opacity="0.35">
+    <polygon points="180,0 300,0 760,470 600,470"/>
+    <polygon points="360,0 420,0 860,470 790,470"/>
+  </g>
+
+  <!-- shadow -->
+  <ellipse cx="610" cy="585" rx="330" ry="34" fill="#6B5236" opacity="0.28"/>
+
+  <!-- basin body -->
+  <path d="M330 395 C 345 500, 455 575, 600 578 C 745 575, 855 500, 870 395 Z" fill="url(#clay)"/>
+  <!-- foot -->
+  <path d="M520 566 C 545 590, 655 590, 680 566 L 670 586 C 640 600, 560 600, 530 586 Z" fill="#6F4A2E"/>
+  <!-- glaze band -->
+  <path d="M352 445 C 430 488, 770 488, 848 445" fill="none" stroke="#E2C79A" stroke-width="5" opacity="0.6"/>
+  <path d="M372 470 C 450 510, 750 510, 828 470" fill="none" stroke="#E2C79A" stroke-width="2.5" opacity="0.45"/>
+  <!-- rim -->
+  <ellipse cx="600" cy="395" rx="272" ry="62" fill="#C99A68"/>
+  <ellipse cx="600" cy="398" rx="250" ry="52" fill="#7E5535"/>
+  <!-- water -->
+  <ellipse cx="600" cy="404" rx="240" ry="45" fill="url(#water)"/>
+  <g fill="none" stroke="#F4FAF7" stroke-linecap="round" opacity="0.85">
+    <ellipse cx="540" cy="404" rx="70" ry="13" stroke-width="3"/>
+    <ellipse cx="540" cy="404" rx="120" ry="23" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="540" cy="404" rx="170" ry="32" stroke-width="1.5" opacity="0.35"/>
+  </g>
+  <ellipse cx="470" cy="392" rx="46" ry="7" fill="#FFFFFF" opacity="0.55"/>
+
+  <!-- falling drop -->
+  <path d="M540 300 C 532 318, 528 330, 540 338 C 552 330, 548 318, 540 300 Z" fill="#B7D0CA" stroke="#F4FAF7" stroke-width="2"/>
+
+  <!-- towel draped over right rim -->
+  <path d="M705 356 C 760 346, 830 350, 872 378 C 890 392, 888 410, 878 424
+           C 892 470, 896 520, 884 560 C 870 570, 840 572, 820 566
+           C 826 520, 822 470, 806 430 C 780 420, 742 418, 712 410 Z"
+        fill="url(#linen)" stroke="#CFC2A8" stroke-width="2"/>
+  <g fill="none" stroke="#D6CBB4" stroke-width="2.2" stroke-linecap="round">
+    <path d="M730 372 C 770 368, 820 374, 852 392"/>
+    <path d="M846 432 C 856 476, 858 520, 852 556"/>
+    <path d="M826 440 C 834 480, 836 520, 834 560"/>
+  </g>
+  <!-- towel fringe -->
+  <g stroke="#CFC2A8" stroke-width="2" stroke-linecap="round">
+    <line x1="826" y1="566" x2="824" y2="580"/><line x1="838" y1="569" x2="837" y2="583"/>
+    <line x1="850" y1="570" x2="850" y2="584"/><line x1="862" y1="569" x2="863" y2="583"/>
+    <line x1="874" y1="566" x2="876" y2="580"/>
+  </g>
+</svg>

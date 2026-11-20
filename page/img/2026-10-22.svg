@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="갈림길 흙길 위로 여러 발자국이 멀리 가고, 한 사람의 발자국만 돌아서 되돌아오고 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BFD6DE"/>
+      <stop offset="0.7" stop-color="#F3E7CF"/>
+      <stop offset="1" stop-color="#F6EAD2"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.18" cy="0.75" r="0.45">
+      <stop offset="0" stop-color="#FFF8E4" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFF8E4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9B184"/>
+      <stop offset="1" stop-color="#A88B5C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <!-- far hills -->
+  <path d="M0 360 C 180 320, 320 340, 470 330 C 650 318, 820 345, 980 330 C 1080 322, 1150 330, 1200 335 L1200 675 L0 675 Z" fill="#AFB59A" opacity="0.6"/>
+  <path d="M0 390 C 250 372, 520 384, 760 378 C 960 372, 1100 384, 1200 380 L1200 675 L0 675 Z" fill="url(#land)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <!-- small village walls far right -->
+  <g fill="#9C8668" opacity="0.75">
+    <rect x="980" y="352" width="46" height="26"/><rect x="1032" y="346" width="34" height="32"/><rect x="1070" y="356" width="40" height="22"/>
+  </g>
+  <!-- road from foreground left to village right -->
+  <path d="M0 640 C 260 600, 520 520, 760 450 C 880 416, 960 392, 1010 380 L1030 382 C 980 398, 900 426, 790 466 C 560 548, 320 640, 120 675 L0 675 Z" fill="#EBD9B4"/>
+  <!-- light at left where one returns -->
+  <circle cx="200" cy="520" r="46" fill="#FFF4D6" opacity="0.85"/>
+  <!-- many footprints going away toward village -->
+  <g fill="#B79A6A" opacity="0.75">
+    <ellipse cx="560" cy="540" rx="5" ry="8" transform="rotate(-70 560 540)"/>
+    <ellipse cx="610" cy="520" rx="5" ry="8" transform="rotate(-70 610 520)"/>
+    <ellipse cx="660" cy="500" rx="4.5" ry="7.5" transform="rotate(-70 660 500)"/>
+    <ellipse cx="710" cy="480" rx="4.5" ry="7" transform="rotate(-70 710 480)"/>
+    <ellipse cx="760" cy="462" rx="4" ry="6.5" transform="rotate(-70 760 462)"/>
+    <ellipse cx="810" cy="444" rx="3.5" ry="6" transform="rotate(-70 810 444)"/>
+    <ellipse cx="860" cy="428" rx="3" ry="5" transform="rotate(-70 860 428)"/>
+    <ellipse cx="575" cy="560" rx="5" ry="8" transform="rotate(-70 575 560)"/>
+    <ellipse cx="628" cy="538" rx="5" ry="8" transform="rotate(-70 628 538)"/>
+    <ellipse cx="680" cy="516" rx="4.5" ry="7.5" transform="rotate(-70 680 516)"/>
+    <ellipse cx="730" cy="496" rx="4.5" ry="7" transform="rotate(-70 730 496)"/>
+    <ellipse cx="780" cy="476" rx="4" ry="6.5" transform="rotate(-70 780 476)"/>
+    <ellipse cx="830" cy="458" rx="3.5" ry="6" transform="rotate(-70 830 458)"/>
+    <ellipse cx="880" cy="440" rx="3" ry="5" transform="rotate(-70 880 440)"/>
+  </g>
+  <!-- one set turning back toward the light -->
+  <g fill="#7A5A33">
+    <ellipse cx="520" cy="560" rx="6" ry="10" transform="rotate(-70 520 560)"/>
+    <ellipse cx="470" cy="582" rx="6" ry="10" transform="rotate(110 470 582)"/>
+    <ellipse cx="420" cy="572" rx="6.5" ry="10.5" transform="rotate(110 420 572)"/>
+    <ellipse cx="370" cy="594" rx="6.5" ry="10.5" transform="rotate(110 370 594)"/>
+    <ellipse cx="320" cy="582" rx="7" ry="11" transform="rotate(110 320 582)"/>
+    <ellipse cx="272" cy="602" rx="7" ry="11" transform="rotate(110 272 602)"/>
+  </g>
+  <!-- grass tufts -->
+  <g stroke="#8C7A4E" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round">
+    <path d="M90 470 l6 -16 M96 470 l0 -18 M102 470 l-5 -15"/>
+    <path d="M1100 520 l6 -16 M1106 520 l0 -18 M1112 520 l-5 -15"/>
+    <path d="M640 620 l6 -14 M646 620 l0 -16 M652 620 l-5 -13"/>
+  </g>
+</svg>

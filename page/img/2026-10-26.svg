@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="보리밭 사이로 난 길 위에 두 사람의 발자국이 나란히 멀리 언덕 위 마을을 향해 이어진다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3E3C4"/><stop offset="0.6" stop-color="#F7ECD6"/><stop offset="1" stop-color="#EEDDBB"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.62" cy="0.3" r="0.4">
+      <stop offset="0" stop-color="#FFF6DD" stop-opacity="1"/><stop offset="1" stop-color="#FFF6DD" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9B868"/><stop offset="1" stop-color="#B8913F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#sun)"/>
+  <circle cx="740" cy="200" r="38" fill="#FFF1CC"/>
+  <path d="M0 350 C 200 320, 400 335, 600 318 C 800 302, 1000 330, 1200 320 L1200 675 L0 675 Z" fill="#C9B98F" opacity="0.6"/>
+  <g fill="#BFAE86">
+    <rect x="540" y="276" width="34" height="26"/><rect x="578" y="268" width="28" height="34"/><rect x="610" y="280" width="36" height="22"/><rect x="650" y="272" width="24" height="30"/>
+  </g>
+  <path d="M0 380 C 260 360, 520 372, 760 362 C 960 354, 1100 368, 1200 364 L1200 675 L0 675 Z" fill="url(#field)"/>
+  <g stroke="#A88435" stroke-width="2" opacity="0.55" stroke-linecap="round">
+    <path d="M60 470 l4 -22 M90 500 l4 -24 M140 450 l3 -20 M200 520 l4 -24 M980 470 l-4 -22 M1040 510 l-4 -24 M1100 455 l-3 -20 M1150 530 l-4 -24 M260 580 l4 -26 M960 590 l-4 -26"/>
+  </g>
+  <path d="M430 675 C 500 600, 560 520, 600 450 C 620 410, 615 380, 608 304 L620 304 C 628 380, 640 412, 625 452 C 600 522, 600 600, 690 675 Z" fill="#EAD9B2"/>
+  <g fill="#9E8152" opacity="0.8">
+    <ellipse cx="520" cy="640" rx="7" ry="11" transform="rotate(-20 520 640)"/>
+    <ellipse cx="560" cy="650" rx="7" ry="11" transform="rotate(-20 560 650)"/>
+    <ellipse cx="546" cy="596" rx="6" ry="10" transform="rotate(-25 546 596)"/>
+    <ellipse cx="582" cy="604" rx="6" ry="10" transform="rotate(-25 582 604)"/>
+    <ellipse cx="568" cy="552" rx="5.5" ry="9" transform="rotate(-28 568 552)"/>
+    <ellipse cx="600" cy="560" rx="5.5" ry="9" transform="rotate(-28 600 560)"/>
+    <ellipse cx="588" cy="510" rx="5" ry="8" transform="rotate(-30 588 510)"/>
+    <ellipse cx="614" cy="516" rx="5" ry="8" transform="rotate(-30 614 516)"/>
+    <ellipse cx="602" cy="472" rx="4.5" ry="7" transform="rotate(-32 602 472)"/>
+    <ellipse cx="624" cy="476" rx="4.5" ry="7" transform="rotate(-32 624 476)"/>
+  </g>
+</svg>

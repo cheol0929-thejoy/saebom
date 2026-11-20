@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="이른 아침 빛이 드는 작업대 위에 빗자루와 대야, 접은 수건과 작은 등잔이 놓여 있다">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EFE4D0"/>
+      <stop offset="1" stop-color="#E2D2B6"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF6DD" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFF6DD" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A57A4E"/>
+      <stop offset="1" stop-color="#7D5734"/>
+    </linearGradient>
+    <linearGradient id="clay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8A5E3B"/><stop offset="0.4" stop-color="#B98A5C"/><stop offset="1" stop-color="#6F4A2E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#wall)"/>
+  <!-- window -->
+  <rect x="140" y="70" width="220" height="200" rx="6" fill="#F9EFD6" stroke="#B49A72" stroke-width="8"/>
+  <line x1="250" y1="70" x2="250" y2="270" stroke="#B49A72" stroke-width="6"/>
+  <line x1="140" y1="170" x2="360" y2="170" stroke="#B49A72" stroke-width="6"/>
+  <polygon points="150,80 360,80 900,470 520,470" fill="url(#beam)" opacity="0.6"/>
+  <!-- floor -->
+  <rect y="560" width="1200" height="115" fill="#CDB792"/>
+  <!-- workbench -->
+  <rect x="300" y="450" width="760" height="28" rx="4" fill="url(#wood)"/>
+  <rect x="330" y="478" width="26" height="110" fill="#6F4A2E"/>
+  <rect x="1004" y="478" width="26" height="110" fill="#6F4A2E"/>
+  <rect x="330" y="540" width="700" height="14" fill="#7D5734" opacity="0.8"/>
+  <!-- basin on bench -->
+  <path d="M430 400 C 438 440, 480 452, 530 452 C 580 452, 622 440, 630 400 Z" fill="url(#clay)"/>
+  <ellipse cx="530" cy="400" rx="100" ry="20" fill="#C99A68"/>
+  <ellipse cx="530" cy="402" rx="88" ry="15" fill="#9DBDB6"/>
+  <!-- folded towels -->
+  <rect x="680" y="420" width="130" height="16" rx="4" fill="#F7F2E6" stroke="#D3C6AA" stroke-width="2"/>
+  <rect x="686" y="404" width="118" height="16" rx="4" fill="#FBF8F0" stroke="#D3C6AA" stroke-width="2"/>
+  <!-- lamp -->
+  <path d="M880 440 C 880 420, 950 420, 950 440 Z" fill="#9C6B3E"/>
+  <path d="M948 430 l26 -6 l-4 10 Z" fill="#9C6B3E"/>
+  <path d="M972 420 C 966 404, 976 394, 978 386 C 984 396, 990 406, 980 422 Z" fill="#F6B95A"/>
+  <circle cx="977" cy="410" r="24" fill="#FFE2A0" opacity="0.35"/>
+  <!-- broom leaning on wall -->
+  <line x1="1110" y1="240" x2="1070" y2="560" stroke="#8B6640" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1050 540 L1092 540 L1110 640 L1030 640 Z" fill="#C7A25F"/>
+  <g stroke="#A88444" stroke-width="2">
+    <line x1="1048" y1="560" x2="1040" y2="636"/><line x1="1062" y1="560" x2="1058" y2="636"/>
+    <line x1="1076" y1="560" x2="1078" y2="636"/><line x1="1090" y1="560" x2="1098" y2="636"/>
+  </g>
+</svg>

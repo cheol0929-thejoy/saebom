@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="경계로 나뉜 밭과 언덕들 가운데, 빛이 머무는 작은 성막 장막">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F0E4"/><stop offset="1" stop-color="#EDE4CF"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.55"><stop offset="0" stop-color="#FFF6DA" stop-opacity="1"/><stop offset="1" stop-color="#FFF6DA" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <!-- far hills -->
+  <path d="M0 300 C 180 250, 330 280, 480 260 C 650 236, 820 270, 980 250 C 1080 238, 1150 250, 1200 258 L1200 675 L0 675 Z" fill="#D9DCBF"/>
+  <!-- patchwork fields -->
+  <g stroke="#F3EBD8" stroke-width="4">
+    <path d="M0 330 L 300 300 L 330 380 L 0 410 Z" fill="#C7B57C"/>
+    <path d="M300 300 L 560 285 L 540 360 L 330 380 Z" fill="#B3C28E"/>
+    <path d="M640 285 L 900 295 L 880 370 L 660 360 Z" fill="#D2BF85"/>
+    <path d="M900 295 L 1200 300 L 1200 390 L 880 370 Z" fill="#A9BC86"/>
+    <path d="M0 410 L 330 380 L 300 480 L 0 520 Z" fill="#A4B983"/>
+    <path d="M330 380 L 540 360 L 500 470 L 300 480 Z" fill="#D6C48C"/>
+    <path d="M660 360 L 880 370 L 920 480 L 700 470 Z" fill="#BACB93"/>
+    <path d="M880 370 L 1200 390 L 1200 500 L 920 480 Z" fill="#CDB97F"/>
+    <path d="M0 520 L 300 480 L 260 675 L 0 675 Z" fill="#C3B079"/>
+    <path d="M920 480 L 1200 500 L 1200 675 L 960 675 Z" fill="#AFC28A"/>
+  </g>
+  <!-- the unallotted middle: a path to the tent -->
+  <path d="M540 360 L 660 360 L 700 470 L 960 675 L 260 675 L 500 470 Z" fill="#EFE6D0"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <g fill="#FFFBEF" opacity="0.45"><polygon points="560,0 640,0 700,420 500,420"/></g>
+  <!-- tabernacle tent -->
+  <ellipse cx="600" cy="505" rx="150" ry="20" fill="#7A6040" opacity="0.25"/>
+  <path d="M470 500 L 470 430 L 730 430 L 730 500 Z" fill="#E9DFC6" stroke="#BCA77C" stroke-width="2"/>
+  <path d="M455 432 L 600 382 L 745 432 Z" fill="#B88B5A" stroke="#8E6340" stroke-width="2"/>
+  <g stroke="#BCA77C" stroke-width="2"><line x1="520" y1="430" x2="520" y2="500"/><line x1="680" y1="430" x2="680" y2="500"/></g>
+  <path d="M575 500 L 575 450 L 625 450 L 625 500 Z" fill="#6A8FA0"/>
+  <path d="M578 452 L 600 445 L 622 452" fill="none" stroke="#A8843E" stroke-width="3"/>
+  <!-- light rising -->
+  <g stroke="#FFF2C8" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <line x1="600" y1="370" x2="600" y2="300"/><line x1="575" y1="375" x2="555" y2="315"/><line x1="625" y1="375" x2="645" y2="315"/>
+  </g>
+</svg>

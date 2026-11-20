@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 번지는 들판 한가운데 돌 우물과 두레박, 흘러넘치는 물">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3E3C4"/>
+      <stop offset="0.45" stop-color="#F6E9CF"/>
+      <stop offset="0.72" stop-color="#E7D3A8"/>
+      <stop offset="1" stop-color="#C9B486"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6DD" stop-opacity="1"/>
+      <stop offset="0.35" stop-color="#F7E2A8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#F7E2A8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A9B98B"/>
+      <stop offset="1" stop-color="#8FA373"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8CA66E"/>
+      <stop offset="1" stop-color="#6E8A58"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7E9A62"/>
+      <stop offset="1" stop-color="#5E7748"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C7B59A"/>
+      <stop offset="1" stop-color="#8E7B61"/>
+    </linearGradient>
+    <linearGradient id="stoneDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9F8C70"/>
+      <stop offset="1" stop-color="#6F5E48"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7A5A3A"/>
+      <stop offset="0.5" stop-color="#9A7349"/>
+      <stop offset="1" stop-color="#6A4C30"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CFE7EC"/>
+      <stop offset="1" stop-color="#7FB3BF"/>
+    </linearGradient>
+    <linearGradient id="waterDeep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8CC0CA"/>
+      <stop offset="1" stop-color="#4E8793"/>
+    </linearGradient>
+    <linearGradient id="clay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8E5A3A"/>
+      <stop offset="0.5" stop-color="#C08559"/>
+      <stop offset="1" stop-color="#7E4F32"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF4D0" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#FFF4D0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 하늘 -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <!-- 새벽 해 -->
+  <circle cx="600" cy="230" r="300" fill="url(#sun)"/>
+  <circle cx="600" cy="232" r="78" fill="#FFF3D2" opacity="0.95"/>
+  <!-- 빛살 -->
+  <g stroke="#FFF2CC" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round">
+    <line x1="600" y1="232" x2="600" y2="20"/>
+    <line x1="600" y1="232" x2="420" y2="60"/>
+    <line x1="600" y1="232" x2="780" y2="60"/>
+    <line x1="600" y1="232" x2="300" y2="170"/>
+    <line x1="600" y1="232" x2="900" y2="170"/>
+    <line x1="600" y1="232" x2="250" y2="330"/>
+    <line x1="600" y1="232" x2="950" y2="330"/>
+  </g>
+
+  <!-- 먼 언덕 -->
+  <path d="M0 400 C 150 340, 300 330, 450 372 C 560 400, 640 395, 760 360 C 900 322, 1050 330, 1200 380 L1200 460 L0 460 Z" fill="url(#hillFar)" opacity="0.85"/>
+  <!-- 가까운 언덕 -->
+  <path d="M0 450 C 200 405, 380 420, 520 445 C 700 475, 860 430, 1200 440 L1200 540 L0 540 Z" fill="url(#hillNear)"/>
+  <!-- 땅 -->
+  <rect x="0" y="500" width="1200" height="175" fill="url(#ground)"/>
+  <path d="M0 505 C 300 485, 600 520, 1200 495 L1200 560 L0 560 Z" fill="#6F8B58"/>
+
+  <!-- 흐르는 물길 (우물에서 앞으로) -->
+  <path d="M560 560 C 540 600, 500 630, 440 675 L 760 675 C 700 630, 660 600, 640 560 Z" fill="url(#water)" opacity="0.9"/>
+  <path d="M585 568 C 575 600, 560 630, 540 675 L 660 675 C 640 630, 625 600, 615 568 Z" fill="#DFF0F2" opacity="0.55"/>
+
+  <!-- 우물 기둥 (나무) -->
+  <rect x="455" y="300" width="22" height="260" rx="6" fill="url(#wood)"/>
+  <rect x="723" y="300" width="22" height="260" rx="6" fill="url(#wood)"/>
+  <!-- 가로 지붕대 -->
+  <rect x="440" y="286" width="320" height="22" rx="8" fill="url(#wood)"/>
+  <!-- 작은 지붕 -->
+  <path d="M430 290 L600 215 L770 290 Z" fill="#8F6A42"/>
+  <path d="M452 283 L600 228 L748 283 Z" fill="#B48A5C"/>
+  <!-- 도르래 -->
+  <circle cx="600" cy="318" r="22" fill="#6F5538"/>
+  <circle cx="600" cy="318" r="12" fill="#A97F55"/>
+  <!-- 밧줄 -->
+  <path d="M600 340 L600 405" stroke="#D9C39A" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- 우물 몸통 (돌) -->
+  <ellipse cx="600" cy="470" rx="150" ry="40" fill="url(#stoneDark)"/>
+  <path d="M450 470 L450 560 Q 600 610 750 560 L750 470 Q 600 520 450 470 Z" fill="url(#stone)"/>
+  <!-- 돌 무늬 -->
+  <g fill="none" stroke="#6F5E48" stroke-opacity="0.45" stroke-width="2.5">
+    <path d="M450 500 Q 600 548 750 500"/>
+    <path d="M450 530 Q 600 578 750 530"/>
+    <path d="M490 486 L 492 515"/><path d="M540 500 L 541 528"/><path d="M600 505 L 600 533"/><path d="M660 500 L 659 528"/><path d="M710 486 L 708 515"/>
+    <path d="M515 517 L 516 545"/><path d="M570 530 L 570 560"/><path d="M630 530 L 630 560"/><path d="M685 517 L 684 545"/>
+  </g>
+  <!-- 우물 안 물 -->
+  <ellipse cx="600" cy="470" rx="120" ry="28" fill="url(#waterDeep)"/>
+  <ellipse cx="600" cy="466" rx="85" ry="16" fill="#9ED0D8" opacity="0.6"/>
+  <ellipse cx="570" cy="462" rx="30" ry="6" fill="#E6F4F6" opacity="0.7"/>
+
+  <!-- 두레박 -->
+  <path d="M560 405 L640 405 L632 462 L568 462 Z" fill="#8A6A48"/>
+  <path d="M560 405 L640 405 L636 430 L564 430 Z" fill="#A98157"/>
+  <path d="M560 405 Q 600 395 640 405" stroke="#D9C39A" stroke-width="4" fill="none"/>
+  <!-- 넘치는 물 -->
+  <path d="M566 406 Q 600 398 634 406 Q 600 418 566 406 Z" fill="#CFE7EC"/>
+  <path d="M630 412 C 650 430, 655 450, 648 470" stroke="#CFE7EC" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M572 412 C 552 432, 548 452, 556 470" stroke="#CFE7EC" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <!-- 물방울 반짝임 -->
+  <g fill="#FFFBEA">
+    <circle cx="660" cy="440" r="4"/><circle cx="545" cy="446" r="3.5"/><circle cx="668" cy="470" r="3"/>
+    <circle cx="610" cy="388" r="3"/><circle cx="586" cy="384" r="2.5"/><circle cx="536" cy="470" r="2.5"/>
+  </g>
+  <!-- 은은한 빛 -->
+  <circle cx="600" cy="420" r="140" fill="url(#glow)"/>
+
+  <!-- 질그릇 물동이 -->
+  <g transform="translate(360 520)">
+    <ellipse cx="0" cy="62" rx="40" ry="10" fill="#4A5E3C" opacity="0.45"/>
+    <path d="M-30 0 Q -48 30 -30 60 L 30 60 Q 48 30 30 0 Z" fill="url(#clay)"/>
+    <ellipse cx="0" cy="0" rx="30" ry="9" fill="#5C3A26"/>
+    <ellipse cx="0" cy="0" rx="22" ry="6" fill="#7FB3BF"/>
+    <path d="M-30 20 Q 0 30 30 20" stroke="#5C3A26" stroke-opacity="0.5" stroke-width="2" fill="none"/>
+  </g>
+  <!-- 작은 물동이 -->
+  <g transform="translate(830 540)">
+    <ellipse cx="0" cy="44" rx="30" ry="8" fill="#4A5E3C" opacity="0.45"/>
+    <path d="M-22 0 Q -36 22 -22 44 L 22 44 Q 36 22 22 0 Z" fill="url(#clay)"/>
+    <ellipse cx="0" cy="0" rx="22" ry="7" fill="#5C3A26"/>
+    <ellipse cx="0" cy="0" rx="16" ry="4.5" fill="#7FB3BF"/>
+  </g>
+
+  <!-- 풀과 꽃 -->
+  <g stroke="#4F6B3E" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M300 600 q 6 -30 14 -46"/><path d="M312 600 q -2 -32 10 -52"/><path d="M322 600 q 10 -24 20 -34"/>
+    <path d="M900 600 q 6 -30 14 -46"/><path d="M912 600 q -2 -32 10 -52"/><path d="M922 600 q 10 -24 20 -34"/>
+    <path d="M160 580 q 6 -24 12 -38"/><path d="M172 580 q 0 -28 8 -42"/>
+    <path d="M1040 575 q 6 -24 12 -38"/><path d="M1052 575 q 0 -28 8 -42"/>
+    <path d="M250 640 q 6 -22 12 -34"/><path d="M262 640 q 0 -26 8 -38"/>
+    <path d="M960 640 q 6 -22 12 -34"/><path d="M972 640 q 0 -26 8 -38"/>
+  </g>
+  <g fill="#F2E3A0">
+    <circle cx="314" cy="552" r="6"/><circle cx="322" cy="546" r="5"/><circle cx="342" cy="566" r="5"/>
+    <circle cx="914" cy="552" r="6"/><circle cx="922" cy="546" r="5"/><circle cx="942" cy="566" r="5"/>
+    <circle cx="180" cy="538" r="5"/><circle cx="1060" cy="533" r="5"/>
+    <circle cx="270" cy="602" r="5"/><circle cx="980" cy="602" r="5"/>
+  </g>
+  <g fill="#E9B7A3">
+    <circle cx="330" cy="560" r="4"/><circle cx="930" cy="560" r="4"/><circle cx="262" cy="612" r="4"/><circle cx="972" cy="612" r="4"/>
+  </g>
+</svg>

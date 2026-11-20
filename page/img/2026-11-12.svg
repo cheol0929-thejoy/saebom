@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 번지는 언덕 위에 백향목 궁이 아니라 소박한 돌집 한 채가 세워져 가고, 그 곁에 양 떼가 머무는 양 우리와 목자의 지팡이가 놓였으며, 집 위로 하늘에서 내려오는 빛줄기 안에 영원을 뜻하는 별들이 반짝인다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#232B3A"/>
+      <stop offset="0.4" stop-color="#6E6866"/>
+      <stop offset="0.72" stop-color="#E0C292"/>
+      <stop offset="1" stop-color="#F5E6CC"/>
+    </linearGradient>
+    <radialGradient id="dawn" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF5D8" stop-opacity="1"/>
+      <stop offset="0.5" stop-color="#F5D9A6" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#F5D9A6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF6DC" stop-opacity="0.95"/>
+      <stop offset="0.6" stop-color="#FFEBB8" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FFEBB8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7C9466"/>
+      <stop offset="1" stop-color="#3F5035"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FA87A"/>
+      <stop offset="1" stop-color="#55684A"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6D5B4"/>
+      <stop offset="1" stop-color="#B89E74"/>
+    </linearGradient>
+    <linearGradient id="stoneDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C7B18B"/>
+      <stop offset="1" stop-color="#8E7756"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A86F44"/>
+      <stop offset="1" stop-color="#6B4426"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9A6B3E"/>
+      <stop offset="1" stop-color="#5E3E21"/>
+    </linearGradient>
+    <linearGradient id="wool" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBF5E6"/>
+      <stop offset="1" stop-color="#DED2B8"/>
+    </linearGradient>
+    <radialGradient id="winglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE9A8" stop-opacity="1"/>
+      <stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- sky and dawn -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="600" cy="300" r="320" fill="url(#dawn)"/>
+
+  <!-- stars: eternity -->
+  <g fill="#FFF6DD">
+    <circle cx="110" cy="70" r="2.2" opacity="0.8"/><circle cx="250" cy="120" r="1.6" opacity="0.7"/><circle cx="380" cy="55" r="1.8" opacity="0.8"/>
+    <circle cx="830" cy="80" r="2" opacity="0.8"/><circle cx="990" cy="45" r="1.6" opacity="0.7"/><circle cx="1110" cy="130" r="2.1" opacity="0.8"/>
+    <circle cx="170" cy="180" r="1.3" opacity="0.6"/><circle cx="1040" cy="200" r="1.4" opacity="0.6"/>
+    <!-- brighter stars inside the beam -->
+    <g>
+      <path d="M600 60 L604 72 L616 76 L604 80 L600 92 L596 80 L584 76 L596 72 Z" opacity="0.95"/>
+      <path d="M548 130 L551 138 L559 141 L551 144 L548 152 L545 144 L537 141 L545 138 Z" opacity="0.85"/>
+      <path d="M655 118 L658 126 L666 129 L658 132 L655 140 L652 132 L644 129 L652 126 Z" opacity="0.85"/>
+      <path d="M612 190 L614 196 L620 198 L614 200 L612 206 L610 200 L604 198 L610 196 Z" opacity="0.8"/>
+      <path d="M572 220 L574 226 L580 228 L574 230 L572 236 L570 230 L564 228 L570 226 Z" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- beam of light from heaven onto the house -->
+  <path d="M560 0 L640 0 L760 440 L440 440 Z" fill="url(#beam)"/>
+
+  <!-- hills -->
+  <path d="M-20 380 L160 310 L320 350 L470 310 L600 335 L740 305 L900 350 L1060 305 L1220 380 L1220 420 L-20 420 Z" fill="#5C6C5E" opacity="0.85"/>
+  <path d="M-20 450 Q200 390 420 410 Q600 320 780 410 Q1000 390 1220 450 L1220 700 L-20 700 Z" fill="url(#hill)"/>
+  <!-- near ground -->
+  <path d="M-20 560 Q300 520 600 540 Q900 520 1220 560 L1220 700 L-20 700 Z" fill="url(#ground)"/>
+
+  <!-- glow at the house -->
+  <ellipse cx="600" cy="480" rx="250" ry="120" fill="url(#winglow)" opacity="0.7"/>
+
+  <!-- the house being built: stone walls, roof half-laid -->
+  <g>
+    <!-- back wall -->
+    <path d="M470 560 L470 430 L730 430 L730 560 Z" fill="url(#stoneDark)"/>
+    <!-- front stone courses -->
+    <g stroke="#8E7756" stroke-width="1.5">
+      <rect x="470" y="536" width="52" height="24" fill="url(#stone)"/><rect x="522" y="536" width="60" height="24" fill="url(#stone)"/><rect x="582" y="536" width="48" height="24" fill="url(#stone)"/><rect x="630" y="536" width="56" height="24" fill="url(#stone)"/><rect x="686" y="536" width="44" height="24" fill="url(#stone)"/>
+      <rect x="470" y="512" width="40" height="24" fill="url(#stone)"/><rect x="510" y="512" width="56" height="24" fill="url(#stone)"/><rect x="662" y="512" width="68" height="24" fill="url(#stone)"/>
+      <rect x="470" y="488" width="58" height="24" fill="url(#stone)"/><rect x="528" y="488" width="38" height="24" fill="url(#stone)"/><rect x="662" y="488" width="30" height="24" fill="url(#stone)"/><rect x="692" y="488" width="38" height="24" fill="url(#stone)"/>
+      <rect x="470" y="464" width="46" height="24" fill="url(#stone)"/><rect x="516" y="464" width="50" height="24" fill="url(#stone)"/><rect x="662" y="464" width="68" height="24" fill="url(#stone)"/>
+      <rect x="470" y="440" width="60" height="24" fill="url(#stone)"/><rect x="530" y="440" width="36" height="24" fill="url(#stone)"/><rect x="662" y="440" width="40" height="24" fill="url(#stone)"/>
+      <!-- top course not yet finished on the right -->
+      <rect x="470" y="416" width="48" height="24" fill="url(#stone)"/><rect x="518" y="416" width="48" height="24" fill="url(#stone)"/>
+    </g>
+    <!-- doorway filled with dawn light -->
+    <path d="M566 560 L566 500 Q614 460 662 500 L662 560 Z" fill="#FFF0C8"/>
+    <path d="M566 560 L566 500 Q614 460 662 500 L662 560" fill="none" stroke="#B89E74" stroke-width="3"/>
+    <!-- roof beams, half done -->
+    <path d="M460 416 L600 340 L740 416" fill="none" stroke="url(#wood)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M460 416 L600 340 L740 416" fill="none" stroke="#D9A86B" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M520 384 L520 416 M560 362 L560 416 M640 362 L640 416" stroke="url(#wood)" stroke-width="7" stroke-linecap="round"/>
+    <!-- tiles laid on the left slope only -->
+    <path d="M466 420 L598 346 L598 362 L488 424 Z" fill="url(#roof)"/>
+    <path d="M482 428 L598 364 L598 380 L504 432 Z" fill="url(#roof)" opacity="0.9"/>
+    <!-- stones descending in the light, being set by heaven -->
+    <g stroke="#8E7756" stroke-width="1.5" fill="url(#stone)">
+      <rect x="672" y="398" width="48" height="22" rx="2" opacity="0.95"/>
+      <rect x="636" y="330" width="44" height="20" rx="2" opacity="0.8"/>
+      <rect x="598" y="270" width="40" height="18" rx="2" opacity="0.6"/>
+    </g>
+    <path d="M696 398 L696 352 M658 330 L658 292 M618 270 L618 236" stroke="#FFF6DC" stroke-opacity="0.7" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- sheepfold (양 우리) and sheep at the left -->
+  <g transform="translate(250 560)">
+    <!-- fence -->
+    <g stroke="url(#wood)" stroke-width="7" stroke-linecap="round" fill="none">
+      <path d="M-120 20 L-120 -30 M-80 20 L-80 -34 M-40 20 L-40 -30 M0 20 L0 -34 M40 20 L40 -30"/>
+      <path d="M-124 -18 L44 -22 M-124 2 L44 -2"/>
+    </g>
+    <!-- sheep (no faces, just woolly bodies and small dark heads turned away) -->
+    <g>
+      <ellipse cx="-90" cy="-40" rx="30" ry="20" fill="url(#wool)" stroke="#CDBE9C" stroke-width="2"/>
+      <ellipse cx="-62" cy="-46" rx="10" ry="8" fill="#5A4636"/>
+      <ellipse cx="-20" cy="-36" rx="32" ry="21" fill="url(#wool)" stroke="#CDBE9C" stroke-width="2"/>
+      <ellipse cx="10" cy="-42" rx="10" ry="8" fill="#5A4636"/>
+      <ellipse cx="-55" cy="-10" rx="26" ry="17" fill="url(#wool)" stroke="#CDBE9C" stroke-width="2"/>
+      <ellipse cx="-80" cy="-14" rx="9" ry="7" fill="#5A4636"/>
+    </g>
+    <!-- shepherd's staff leaning on the fence -->
+    <path d="M70 40 L96 -110 Q102 -140 84 -148 Q70 -152 66 -136" fill="none" stroke="url(#wood)" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <!-- small tent (장막) with a soft glow at the right -->
+  <g transform="translate(940 545)">
+    <path d="M-110 20 L-30 -80 L50 20 Z" fill="#8B7A5E"/>
+    <path d="M-30 -80 L110 -60 L50 20 Z" fill="#6E6048"/>
+    <path d="M-40 20 L-30 -30 L-20 20 Z" fill="#FFF0C8"/>
+    <path d="M-110 20 L50 20 L110 -60" fill="none" stroke="#5A4A36" stroke-width="2"/>
+    <circle cx="-30" cy="-5" r="40" fill="url(#winglow)" opacity="0.5"/>
+  </g>
+
+  <!-- path from the fold to the house -->
+  <path d="M330 640 C400 600 450 580 520 570 L560 570 C600 580 620 600 640 640 Z" fill="#D9C39A" opacity="0.6"/>
+
+  <!-- grasses -->
+  <g stroke="#8CB07A" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M120 630 q8 -34 18 -4 M140 636 q4 -40 16 -8 M100 640 q2 -28 12 -6"/>
+    <path d="M1080 630 q8 -34 18 -4 M1100 636 q4 -40 16 -8 M1060 640 q2 -28 12 -6"/>
+    <path d="M420 600 q6 -26 14 -2 M438 606 q3 -30 12 -6"/>
+    <path d="M770 600 q6 -26 14 -2 M788 606 q3 -30 12 -6"/>
+    <path d="M700 655 q6 -24 14 -2 M860 660 q6 -24 14 -2 M360 660 q6 -24 14 -2"/>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="새벽 햇살이 떠오르는 언덕 아래, 돌이 굴려진 바위 무덤 입구에서 빛이 흘러나온다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3D9B1"/><stop offset="0.6" stop-color="#F7E6C8"/><stop offset="1" stop-color="#EFDDBA"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.78" cy="0.42" r="0.45">
+      <stop offset="0" stop-color="#FFF6DA" stop-opacity="1"/><stop offset="1" stop-color="#FFF6DA" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF8E2" stop-opacity="1"/><stop offset="1" stop-color="#FFE7AE" stop-opacity="0.2"/>
+    </radialGradient>
+    <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B59D7E"/><stop offset="1" stop-color="#8E7659"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#sun)"/>
+  <circle cx="936" cy="290" r="62" fill="#FFF3CF"/>
+  <g stroke="#FFF1C4" stroke-width="4" stroke-linecap="round" opacity="0.7">
+    <line x1="936" y1="200" x2="936" y2="150"/><line x1="1010" y1="232" x2="1046" y2="198"/>
+    <line x1="862" y1="232" x2="826" y2="198"/><line x1="1030" y1="290" x2="1080" y2="290"/>
+  </g>
+  <path d="M0 400 Q300 330 620 380 T1200 360 L1200 675 L0 675 Z" fill="#D9C39C"/>
+  <path d="M0 470 Q350 420 700 460 T1200 450 L1200 675 L0 675 Z" fill="#C9B086"/>
+  <!-- rock hill with tomb -->
+  <path d="M120 600 Q160 300 420 260 Q640 240 720 400 Q760 500 760 600 Z" fill="url(#rock)"/>
+  <path d="M330 600 L330 450 Q330 370 420 370 Q510 370 510 450 L510 600 Z" fill="url(#glow)"/>
+  <path d="M330 600 L330 450 Q330 370 420 370 Q510 370 510 450 L510 600" fill="none" stroke="#7A6248" stroke-width="8"/>
+  <!-- light rays from tomb -->
+  <g fill="#FFF4D2" opacity="0.45">
+    <path d="M360 600 L250 675 L470 675 Z"/><path d="M420 600 L420 675 L620 675 Z"/>
+  </g>
+  <!-- rolled stone -->
+  <circle cx="620" cy="520" r="88" fill="#A68D6E" stroke="#7A6248" stroke-width="8"/>
+  <circle cx="620" cy="520" r="40" fill="none" stroke="#8E7659" stroke-width="5" opacity="0.6"/>
+  <rect y="600" width="1200" height="75" fill="#B89C72"/>
+  <!-- lilies -->
+  <g stroke="#6F8B5A" stroke-width="5" stroke-linecap="round">
+    <line x1="840" y1="640" x2="840" y2="560"/><line x1="880" y1="640" x2="885" y2="575"/><line x1="920" y1="640" x2="915" y2="585"/>
+  </g>
+  <g fill="#FFFDF4" stroke="#D9C9A0" stroke-width="2">
+    <path d="M840 560 l-16 -26 l16 8 l16 -8 z"/><path d="M885 575 l-15 -24 l15 7 l15 -7 z"/><path d="M915 585 l-14 -22 l14 7 l14 -7 z"/>
+  </g>
+</svg>

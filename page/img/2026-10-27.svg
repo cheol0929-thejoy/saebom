@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="등잔불이 켜진 집 안 긴 식탁 위에 떡과 잔, 여러 개의 그릇이 둘러 놓여 있다">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EBDCC2"/><stop offset="1" stop-color="#DCC7A4"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="0.5" cy="0.32" r="0.5">
+      <stop offset="0" stop-color="#FFF1C9" stop-opacity="0.95"/><stop offset="1" stop-color="#FFF1C9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9C6E43"/><stop offset="1" stop-color="#76502F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#wall)"/>
+  <rect width="1200" height="675" fill="url(#lamp)"/>
+  <rect x="420" y="70" width="140" height="180" rx="70" fill="#F7EBD0" stroke="#B89E74" stroke-width="6"/>
+  <rect x="640" y="70" width="140" height="180" rx="70" fill="#F7EBD0" stroke="#B89E74" stroke-width="6"/>
+  <rect y="560" width="1200" height="115" fill="#C7AE85"/>
+  <!-- table -->
+  <path d="M150 400 L1050 400 L1100 470 L100 470 Z" fill="url(#wood)"/>
+  <rect x="100" y="470" width="1000" height="18" fill="#6A472A"/>
+  <rect x="150" y="488" width="22" height="90" fill="#6A472A"/><rect x="1028" y="488" width="22" height="90" fill="#6A472A"/>
+  <!-- bread loaves -->
+  <g fill="#D8A25E" stroke="#B07B3A" stroke-width="2">
+    <ellipse cx="560" cy="420" rx="70" ry="22"/><ellipse cx="660" cy="424" rx="54" ry="18"/>
+  </g>
+  <g stroke="#B07B3A" stroke-width="2" fill="none"><path d="M520 414 q10 -8 20 0 M560 412 q10 -8 20 0 M630 418 q10 -8 20 0"/></g>
+  <!-- cups -->
+  <g fill="#B88A55" stroke="#8E6537" stroke-width="2">
+    <path d="M330 412 l40 0 l-6 30 l-28 0 Z"/><path d="M820 412 l40 0 l-6 30 l-28 0 Z"/><path d="M450 422 l34 0 l-5 26 l-24 0 Z"/><path d="M740 422 l34 0 l-5 26 l-24 0 Z"/>
+  </g>
+  <!-- bowls -->
+  <g fill="#C49A68" stroke="#8E6537" stroke-width="2">
+    <path d="M220 430 q30 28 60 0 Z"/><path d="M920 430 q30 28 60 0 Z"/><path d="M380 446 q26 22 52 0 Z"/><path d="M780 446 q26 22 52 0 Z"/>
+  </g>
+  <!-- lamp -->
+  <path d="M580 300 C 580 286, 620 286, 620 300 Z" fill="#9C6B3E"/><path d="M618 294 l18 -4 l-3 8 Z" fill="#9C6B3E"/>
+  <path d="M634 286 C 630 274, 638 266, 640 260 C 644 268, 648 276, 640 288 Z" fill="#F6B95A"/>
+  <line x1="600" y1="300" x2="600" y2="400" stroke="#7A5A3A" stroke-width="4"/>
+</svg>

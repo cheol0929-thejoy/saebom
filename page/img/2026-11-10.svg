@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 번지는 하늘 아래 바위 위에 등불 켜진 장막이 서 있고, 그 아래 땅이 두 팔처럼 넓게 받쳐 주며 풀잎마다 이슬이 맺혀 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#26323F"/>
+      <stop offset="0.4" stop-color="#6E6A6A"/>
+      <stop offset="0.72" stop-color="#DDBF93"/>
+      <stop offset="1" stop-color="#F3E4CB"/>
+    </linearGradient>
+    <radialGradient id="dawn" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF3D4" stop-opacity="1"/>
+      <stop offset="0.4" stop-color="#F3D7A2" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#F3D7A2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lampglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE9A8" stop-opacity="0.85"/>
+      <stop offset="0.5" stop-color="#F4C66A" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F4C66A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E9D6B5"/>
+      <stop offset="0.5" stop-color="#F7EBD3"/>
+      <stop offset="1" stop-color="#D8C19B"/>
+    </linearGradient>
+    <linearGradient id="tentShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#B99B70"/>
+      <stop offset="1" stop-color="#D9C19B"/>
+    </linearGradient>
+    <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9C8B74"/>
+      <stop offset="1" stop-color="#6B5A45"/>
+    </linearGradient>
+    <linearGradient id="arm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C39A68"/>
+      <stop offset="1" stop-color="#7E5A3A"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6F8A5C"/>
+      <stop offset="1" stop-color="#3E4F33"/>
+    </linearGradient>
+    <radialGradient id="dew" cx="0.35" cy="0.35" r="0.65">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="0.6" stop-color="#CFE3F2" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#9FC0D8" stop-opacity="0.5"/>
+    </radialGradient>
+  </defs>
+
+  <!-- sky and dawn light -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="600" cy="300" r="290" fill="url(#dawn)"/>
+  <!-- fading stars -->
+  <g fill="#FFF6DD" opacity="0.7">
+    <circle cx="120" cy="70" r="2.2"/><circle cx="260" cy="40" r="1.6"/><circle cx="410" cy="95" r="1.8"/>
+    <circle cx="820" cy="60" r="2"/><circle cx="960" cy="110" r="1.5"/><circle cx="1090" cy="50" r="2.2"/>
+    <circle cx="700" cy="30" r="1.4"/><circle cx="190" cy="150" r="1.3"/><circle cx="1010" cy="170" r="1.4"/>
+  </g>
+
+  <!-- far hills -->
+  <path d="M-20 400 L150 300 L300 370 L470 280 L640 380 L800 290 L960 370 L1100 310 L1220 400 Z" fill="#5A6866" opacity="0.8"/>
+  <path d="M-20 430 L180 370 L360 420 L560 360 L760 430 L940 380 L1220 440 Z" fill="#4A5950" opacity="0.9"/>
+
+  <!-- ground -->
+  <path d="M-20 455 Q300 410 600 470 T1220 455 L1220 700 L-20 700 Z" fill="url(#ground)"/>
+
+  <!-- two great arms of earth rising from both sides to carry the rock -->
+  <path d="M-20 600 C120 560 230 540 330 560 C430 580 500 600 600 600 L600 660 C480 660 380 650 300 640 C200 630 90 640 -20 690 Z" fill="url(#arm)"/>
+  <path d="M1220 600 C1080 560 970 540 870 560 C770 580 700 600 600 600 L600 660 C720 660 820 650 900 640 C1000 630 1110 640 1220 690 Z" fill="url(#arm)"/>
+  <path d="M60 612 C200 590 320 600 440 620" stroke="#E2BC8A" stroke-opacity="0.45" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M1140 612 C1000 590 880 600 760 620" stroke="#E2BC8A" stroke-opacity="0.45" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M110 650 C220 640 330 648 430 660" stroke="#5E3F28" stroke-opacity="0.35" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M1090 650 C980 640 870 648 770 660" stroke="#5E3F28" stroke-opacity="0.35" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- rock the tent stands on -->
+  <path d="M380 600 C400 540 470 520 600 520 C730 520 800 540 820 600 C760 612 640 616 600 616 C560 616 440 612 380 600 Z" fill="url(#rock)"/>
+  <path d="M430 560 C500 540 700 540 770 560" stroke="#B8A58A" stroke-opacity="0.6" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- warm glow from the tent -->
+  <ellipse cx="600" cy="470" rx="250" ry="150" fill="url(#lampglow)"/>
+
+  <!-- tent (장막) -->
+  <g>
+    <path d="M600 330 L430 540 L770 540 Z" fill="url(#tent)" stroke="#9C7E55" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M600 330 L770 540 L690 540 L600 395 Z" fill="url(#tentShade)" opacity="0.55"/>
+    <!-- open flap with lamp light inside -->
+    <path d="M600 400 L545 540 L655 540 Z" fill="#F2B95C"/>
+    <path d="M600 400 L560 540 L640 540 Z" fill="#FFE39A"/>
+    <path d="M600 400 L580 540 L620 540 Z" fill="#FFF6D8"/>
+    <!-- lamp inside -->
+    <g transform="translate(600 510)">
+      <ellipse cx="0" cy="-10" rx="30" ry="26" fill="#FFF4CC" opacity="0.8"/>
+      <path d="M-16 6 C-18 -2 -10 -6 0 -6 C10 -6 18 -2 16 6 C12 12 -12 12 -16 6 Z" fill="#8C5A32" stroke="#5F3C20" stroke-width="1.5"/>
+      <path d="M0 -26 C6 -18 7 -13 4 -8 C2 -5 -2 -5 -4 -8 C-7 -13 -6 -18 0 -26 Z" fill="#F7C45C"/>
+      <path d="M0 -20 C3 -16 3 -13 2 -10 C1 -8 -1 -8 -2 -10 C-3 -13 -3 -16 0 -20 Z" fill="#FFF8E0"/>
+    </g>
+    <!-- tent pole top and guy ropes -->
+    <line x1="600" y1="318" x2="600" y2="340" stroke="#7A5A38" stroke-width="4" stroke-linecap="round"/>
+    <line x1="470" y1="490" x2="400" y2="560" stroke="#9C7E55" stroke-width="2.5"/>
+    <line x1="730" y1="490" x2="800" y2="560" stroke="#9C7E55" stroke-width="2.5"/>
+    <circle cx="400" cy="560" r="4" fill="#6B5A45"/><circle cx="800" cy="560" r="4" fill="#6B5A45"/>
+  </g>
+
+  <!-- grasses with dew -->
+  <g stroke="#88AA72" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M120 560 q8 -34 18 -4 M140 566 q4 -40 16 -8 M100 570 q2 -28 12 -6"/>
+    <path d="M1060 565 q8 -34 18 -4 M1080 571 q4 -40 16 -8 M1040 575 q2 -28 12 -6"/>
+    <path d="M250 520 q6 -26 14 -2 M268 526 q3 -30 12 -6"/>
+    <path d="M930 525 q6 -26 14 -2 M948 531 q3 -30 12 -6"/>
+    <path d="M330 660 q6 -24 14 -2 M860 665 q6 -24 14 -2"/>
+  </g>
+  <g fill="url(#dew)">
+    <circle cx="137" cy="530" r="5"/><circle cx="155" cy="530" r="4"/><circle cx="111" cy="546" r="3.5"/>
+    <circle cx="1077" cy="535" r="5"/><circle cx="1095" cy="535" r="4"/><circle cx="1051" cy="551" r="3.5"/>
+    <circle cx="263" cy="497" r="4"/><circle cx="279" cy="499" r="3.5"/>
+    <circle cx="943" cy="502" r="4"/><circle cx="959" cy="504" r="3.5"/>
+    <circle cx="343" cy="639" r="3.5"/><circle cx="873" cy="644" r="3.5"/>
+  </g>
+</svg>

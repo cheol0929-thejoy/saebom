@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 번지는 언덕길 위에 멜대와 밧줄이 땅에 내려져 있고, 그 곁에 은과 금 띠로 꾸민 둥근 나무 기둥이 받침대에 못 박힌 채 기울어 서 있으며, 하늘의 빛이 길을 품처럼 감싼다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3E7CF"/>
+      <stop offset="0.55" stop-color="#E8D4AE"/>
+      <stop offset="1" stop-color="#D9BC8C"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.08" r="0.75">
+      <stop offset="0" stop-color="#FFF6DC" stop-opacity="1"/>
+      <stop offset="0.35" stop-color="#F6E3B4" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#F6E3B4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9FA56E"/>
+      <stop offset="0.5" stop-color="#7E8A52"/>
+      <stop offset="1" stop-color="#5E6A3C"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9C39A"/>
+      <stop offset="1" stop-color="#B99A68"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6B4A2E"/>
+      <stop offset="0.45" stop-color="#9C7049"/>
+      <stop offset="1" stop-color="#5A3C24"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#B8893A"/>
+      <stop offset="0.5" stop-color="#F0D08A"/>
+      <stop offset="1" stop-color="#A97A2E"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9A9EA3"/>
+      <stop offset="0.5" stop-color="#E9ECEE"/>
+      <stop offset="1" stop-color="#8E9398"/>
+    </linearGradient>
+    <linearGradient id="pole" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A47A4E"/>
+      <stop offset="1" stop-color="#5E3F26"/>
+    </linearGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF4D6" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="softer" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+
+  <!-- sky and dawn glow -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <circle cx="600" cy="60" r="150" fill="#FFF3D2" opacity="0.55" filter="url(#softer)"/>
+
+  <!-- light rays, wrapping like arms -->
+  <g opacity="0.9">
+    <path d="M600 20 L300 460 L480 460 Z" fill="url(#ray)"/>
+    <path d="M600 20 L720 460 L900 460 Z" fill="url(#ray)"/>
+    <path d="M600 20 L500 460 L700 460 Z" fill="url(#ray)" opacity="0.8"/>
+  </g>
+  <path d="M190 470 C 250 290, 420 180, 600 170 C 780 180, 950 290, 1010 470" fill="none" stroke="#FFF1C9" stroke-width="22" stroke-linecap="round" opacity="0.55" filter="url(#soft)"/>
+  <path d="M250 500 C 310 350, 450 260, 600 250 C 750 260, 890 350, 950 500" fill="none" stroke="#FFF7DF" stroke-width="10" stroke-linecap="round" opacity="0.5" filter="url(#soft)"/>
+
+  <!-- far hills -->
+  <path d="M0 430 C 180 380, 330 400, 470 372 C 600 345, 760 362, 900 340 C 1030 320, 1120 350, 1200 332 L1200 675 L0 675 Z" fill="#AEB07E" opacity="0.8"/>
+  <path d="M0 470 C 200 430, 350 452, 520 420 C 700 385, 880 420, 1200 392 L1200 675 L0 675 Z" fill="url(#ground)"/>
+
+  <!-- path up the hill -->
+  <path d="M470 675 C 520 600, 540 540, 575 470 C 600 420, 650 400, 730 395 L 760 395 C 690 410, 650 440, 625 480 C 600 540, 620 600, 650 675 Z" fill="url(#path)" opacity="0.95"/>
+  <path d="M490 675 C 535 600, 555 545, 585 480" fill="none" stroke="#EADBB7" stroke-width="3" opacity="0.5"/>
+
+  <!-- grass tufts -->
+  <g stroke="#4E5C33" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8">
+    <path d="M300 600 q 6 -24 12 0 M312 598 q 4 -18 10 -2 M290 604 q 2 -16 8 -4"/>
+    <path d="M880 560 q 6 -24 12 0 M892 558 q 4 -18 10 -2 M870 564 q 2 -16 8 -4"/>
+    <path d="M180 640 q 6 -24 12 0 M192 638 q 4 -18 10 -2"/>
+    <path d="M1000 620 q 6 -24 12 0 M1012 618 q 4 -18 10 -2"/>
+    <path d="M760 630 q 6 -24 12 0 M772 628 q 4 -18 10 -2"/>
+  </g>
+
+  <!-- idol: round wooden pillar on a nailed base, leaning -->
+  <g transform="translate(735 512) rotate(7)">
+    <!-- base block with nails -->
+    <rect x="-70" y="-26" width="140" height="34" rx="4" fill="#4A3421"/>
+    <rect x="-70" y="-26" width="140" height="8" fill="#6B4A2E"/>
+    <g fill="#B8B4AD" stroke="#55514B" stroke-width="1.2">
+      <rect x="-56" y="-36" width="4" height="12" rx="1"/>
+      <rect x="-28" y="-36" width="4" height="12" rx="1"/>
+      <rect x="24" y="-36" width="4" height="12" rx="1"/>
+      <rect x="52" y="-36" width="4" height="12" rx="1"/>
+    </g>
+    <g fill="#D8D4CC"><circle cx="-54" cy="-37" r="3.5"/><circle cx="-26" cy="-37" r="3.5"/><circle cx="26" cy="-37" r="3.5"/><circle cx="54" cy="-37" r="3.5"/></g>
+    <!-- pillar -->
+    <rect x="-34" y="-250" width="68" height="226" rx="6" fill="url(#wood)"/>
+    <ellipse cx="0" cy="-250" rx="34" ry="9" fill="#B08758"/>
+    <!-- decorative bands -->
+    <rect x="-36" y="-226" width="72" height="14" rx="3" fill="url(#gold)"/>
+    <rect x="-36" y="-182" width="72" height="9" rx="3" fill="url(#silver)"/>
+    <rect x="-36" y="-130" width="72" height="14" rx="3" fill="url(#gold)"/>
+    <rect x="-36" y="-80" width="72" height="9" rx="3" fill="url(#silver)"/>
+    <!-- draped blue-purple cloth -->
+    <path d="M-34 -205 C -20 -190, -30 -160, -34 -145 L -34 -205 Z" fill="#5C5A9A" opacity="0.9"/>
+    <path d="M34 -205 C 20 -190, 30 -160, 34 -145 L 34 -205 Z" fill="#7A4F8A" opacity="0.9"/>
+    <!-- wood grain -->
+    <g stroke="#4F3521" stroke-width="1.5" opacity="0.45" fill="none">
+      <path d="M-14 -240 v 60 M8 -170 v 30 M-6 -110 v 24 M14 -70 v 36"/>
+    </g>
+  </g>
+
+  <!-- carrying pole laid down with ropes -->
+  <g>
+    <path d="M340 598 L 760 572" fill="none" stroke="url(#pole)" stroke-width="16" stroke-linecap="round"/>
+    <path d="M340 598 L 760 572" fill="none" stroke="#C59A66" stroke-width="4" stroke-linecap="round" opacity="0.6" transform="translate(0 -4)"/>
+    <!-- rope loops -->
+    <g fill="none" stroke="#C9B48A" stroke-width="5" stroke-linecap="round">
+      <path d="M420 568 c -18 20, -30 46, -8 60 c 24 14, 54 -2, 46 -26 c -6 -18, -30 -20, -40 -6"/>
+      <path d="M640 560 c 22 18, 36 42, 14 58 c -24 16, -58 2, -50 -22 c 6 -18, 32 -22, 44 -8"/>
+    </g>
+    <g fill="none" stroke="#8E7A52" stroke-width="2" opacity="0.7">
+      <path d="M418 572 c -14 18, -24 40, -6 52 M644 564 c 18 16, 30 36, 10 50"/>
+    </g>
+    <!-- soft shadow under pole -->
+    <path d="M345 612 L 762 586" fill="none" stroke="#3E4A2A" stroke-width="10" opacity="0.25" filter="url(#soft)"/>
+  </g>
+
+  <!-- morning mist wisps (vapor that fades) -->
+  <g fill="#FFF8E6" opacity="0.28" filter="url(#softer)">
+    <ellipse cx="400" cy="470" rx="90" ry="14"/>
+    <ellipse cx="300" cy="500" rx="70" ry="11"/>
+    <ellipse cx="930" cy="470" rx="80" ry="12"/>
+  </g>
+
+  <!-- small warm light pooling on the path -->
+  <ellipse cx="610" cy="520" rx="150" ry="40" fill="#FFF2CF" opacity="0.35" filter="url(#softer)"/>
+</svg>

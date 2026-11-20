@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="아침 햇살 아래 언덕 위 성읍의 성문으로 오르막길이 이어져 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CFE0E6"/><stop offset="0.65" stop-color="#F6EBD3"/><stop offset="1" stop-color="#F8EED8"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.18" r="0.4">
+      <stop offset="0" stop-color="#FFF7DF" stop-opacity="1"/><stop offset="1" stop-color="#FFF7DF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B9A57A"/><stop offset="1" stop-color="#8C7651"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6D3AE"/><stop offset="1" stop-color="#CDB58A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#sun)"/>
+  <circle cx="600" cy="120" r="40" fill="#FFF3D2"/>
+  <!-- far hills -->
+  <path d="M0 420 C 200 380, 360 400, 520 360 C 700 320, 880 380, 1200 360 L1200 675 L0 675 Z" fill="#B7BDA1" opacity="0.6"/>
+  <!-- the city hill -->
+  <path d="M0 520 C 220 470, 380 360, 600 330 C 820 360, 980 470, 1200 520 L1200 675 L0 675 Z" fill="url(#hill)"/>
+  <!-- city wall on hill top -->
+  <g>
+    <rect x="430" y="250" width="340" height="92" fill="url(#stone)"/>
+    <g fill="url(#stone)">
+      <rect x="430" y="236" width="22" height="16"/><rect x="470" y="236" width="22" height="16"/><rect x="510" y="236" width="22" height="16"/>
+      <rect x="668" y="236" width="22" height="16"/><rect x="708" y="236" width="22" height="16"/><rect x="748" y="236" width="22" height="16"/>
+    </g>
+    <rect x="540" y="204" width="120" height="138" fill="#DCC69C"/>
+    <g fill="#DCC69C"><rect x="540" y="190" width="20" height="16"/><rect x="580" y="190" width="20" height="16"/><rect x="620" y="190" width="20" height="16"/><rect x="640" y="190" width="20" height="16"/></g>
+    <!-- gate opening with warm light -->
+    <path d="M572 342 L572 278 C 572 254, 628 254, 628 278 L628 342 Z" fill="#FFE8B0"/>
+    <g stroke="#B79E70" stroke-width="2" opacity="0.6">
+      <line x1="430" y1="280" x2="540" y2="280"/><line x1="660" y1="280" x2="770" y2="280"/>
+      <line x1="430" y1="312" x2="540" y2="312"/><line x1="660" y1="312" x2="770" y2="312"/>
+    </g>
+  </g>
+  <!-- winding path up to the gate -->
+  <path d="M500 675 C 520 620, 640 600, 660 560 C 680 520, 560 500, 570 460 C 580 420, 640 410, 620 380 L 600 342 L 586 342 L 600 382 C 612 402, 556 418, 548 460 C 540 504, 650 520, 630 560 C 612 596, 470 620, 430 675 Z" fill="#EEDDB8"/>
+  <!-- olive trees -->
+  <g fill="#7E8A5A">
+    <ellipse cx="300" cy="470" rx="38" ry="26"/><rect x="296" y="480" width="8" height="30" fill="#6B5236"/>
+    <ellipse cx="900" cy="470" rx="34" ry="24"/><rect x="896" y="480" width="8" height="28" fill="#6B5236"/>
+    <ellipse cx="180" cy="560" rx="44" ry="30"/><rect x="176" y="572" width="9" height="34" fill="#6B5236"/>
+    <ellipse cx="1020" cy="570" rx="46" ry="30"/><rect x="1016" y="582" width="9" height="34" fill="#6B5236"/>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="등잔불 곁 나무 탁자 위에 펼쳐진 두루마리 앞에 두 갈래 길 그림이 있고, 한 길은 어둡고 한 길은 아침빛을 향해 열려 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C3A4A"/><stop offset="0.55" stop-color="#C9A26C"/><stop offset="1" stop-color="#F3E3C2"/></linearGradient>
+    <radialGradient id="sun" cx="0.72" cy="0.38" r="0.4"><stop offset="0" stop-color="#FFF4D4" stop-opacity="1"/><stop offset="1" stop-color="#FFF4D4" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8E6239"/><stop offset="1" stop-color="#5E3F24"/></linearGradient>
+    <radialGradient id="lamp" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFE9A8" stop-opacity="0.9"/><stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#sun)"/>
+  <circle cx="870" cy="255" r="54" fill="#FFF1C8"/>
+  <!-- two paths over hills -->
+  <path d="M0 420 Q300 360 600 400 T1200 380 L1200 500 L0 500 Z" fill="#9C8B63"/>
+  <path d="M520 500 Q560 440 640 400 Q760 340 870 300" fill="none" stroke="#F5E6BF" stroke-width="22" stroke-linecap="round"/>
+  <path d="M520 500 Q470 440 380 410 Q280 380 200 330" fill="none" stroke="#4A4238" stroke-width="22" stroke-linecap="round"/>
+  <!-- table -->
+  <path d="M60 500 L1140 500 L1200 560 L0 560 Z" fill="url(#wood)"/>
+  <rect y="560" width="1200" height="115" fill="#4C3320"/>
+  <!-- lamp -->
+  <circle cx="990" cy="470" r="150" fill="url(#lamp)"/>
+  <rect x="965" y="455" width="50" height="60" rx="8" fill="#B07E3C"/>
+  <rect x="950" y="510" width="80" height="12" rx="6" fill="#8E6239"/>
+  <path d="M990 455 q-14 -26 0 -46 q14 20 0 46 z" fill="#FFD36E"/>
+  <!-- scroll -->
+  <rect x="300" y="420" width="560" height="110" rx="6" fill="#F7EBD0" stroke="#C9B48C" stroke-width="4"/>
+  <rect x="270" y="408" width="40" height="134" rx="18" fill="#C79C5C" stroke="#8E6239" stroke-width="4"/>
+  <rect x="850" y="408" width="40" height="134" rx="18" fill="#C79C5C" stroke="#8E6239" stroke-width="4"/>
+  <g stroke="#9A8762" stroke-width="5" stroke-linecap="round" opacity="0.75">
+    <line x1="340" y1="450" x2="700" y2="450"/><line x1="340" y1="476" x2="780" y2="476"/><line x1="340" y1="502" x2="640" y2="502"/>
+  </g>
+</svg>

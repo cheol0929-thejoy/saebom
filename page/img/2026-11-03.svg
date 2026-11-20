@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+<defs>
+<linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A4632"/><stop offset="1" stop-color="#7A6146"/></linearGradient>
+<radialGradient id="glow" cx="790" cy="230" r="460" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFE3A3" stop-opacity=".9"/><stop offset=".35" stop-color="#E9B66A" stop-opacity=".45"/><stop offset="1" stop-color="#E9B66A" stop-opacity="0"/></radialGradient>
+<linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A4865F"/><stop offset="1" stop-color="#7B6243"/></linearGradient>
+<linearGradient id="jar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9A5A36"/><stop offset=".5" stop-color="#C47F4E"/><stop offset="1" stop-color="#8A4E2E"/></linearGradient>
+<linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE3E2" stop-opacity=".95"/><stop offset="1" stop-color="#9EC3C2" stop-opacity=".85"/></linearGradient>
+</defs>
+<rect width="1200" height="675" fill="url(#wall)"/>
+<!-- 장막 천 -->
+<path d="M0 0 H1200 V60 Q900 100 600 70 T0 60Z" fill="#E7D7B6" opacity=".25"/>
+<rect x="960" y="40" width="70" height="480" fill="#4A3826"/><rect x="170" y="40" width="70" height="480" fill="#4A3826"/>
+<rect width="1200" height="675" fill="url(#glow)"/>
+<path d="M0 470 H1200 V675 H0Z" fill="url(#floor)"/>
+<g stroke="#6A5338" stroke-width="2" opacity=".6"><path d="M0 540 H1200"/><path d="M0 615 H1200"/><path d="M200 470 V540 M520 470 V540 M860 470 V540 M360 540 V615 M700 540 V615 M1040 540 V615"/></g>
+<!-- 등잔대 -->
+<rect x="782" y="250" width="16" height="230" fill="#8E6A3A"/><ellipse cx="790" cy="482" rx="55" ry="12" fill="#6E5230"/>
+<path d="M760 250 Q790 268 820 250 Q812 238 790 236 Q768 238 760 250Z" fill="#B08445"/>
+<path d="M790 236 C780 222 784 205 790 190 C796 205 800 222 790 236Z" fill="#FFD27A"/><path d="M790 232 C786 222 788 212 790 204 C792 212 794 222 790 232Z" fill="#FFF3CF"/>
+<!-- 기울어진 물동이 (가운데) -->
+<g transform="translate(560 405) rotate(-118)">
+<path d="M-60 -10 C-80 60 -55 120 0 130 C55 120 80 60 60 -10 C50 -40 30 -55 22 -60 L-22 -60 C-30 -55 -50 -40 -60 -10Z" fill="url(#jar)" stroke="#6E3C22" stroke-width="3"/>
+<rect x="-26" y="-78" width="52" height="22" rx="6" fill="#B06E42" stroke="#6E3C22" stroke-width="3"/>
+<path d="M-50 20 Q0 34 50 20" stroke="#E2AE7E" stroke-width="5" fill="none" opacity=".7"/>
+</g>
+<!-- 쏟아지는 물 -->
+<path d="M490 372 C470 410 470 450 480 492 L540 500 C520 460 515 420 520 380Z" fill="url(#water)"/>
+<path d="M500 380 C488 420 490 460 498 495" stroke="#F4FBFA" stroke-width="5" fill="none" opacity=".8"/>
+<ellipse cx="560" cy="510" rx="190" ry="26" fill="#BFD7D5" opacity=".75"/>
+<ellipse cx="560" cy="510" rx="120" ry="14" fill="#E6F2F1" opacity=".6"/>
+<g fill="#E6F2F1" opacity=".85"><circle cx="440" cy="488" r="5"/><circle cx="455" cy="470" r="3"/><circle cx="600" cy="486" r="4"/><circle cx="620" cy="472" r="3"/></g>
+</svg>
