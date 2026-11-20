@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="위에서 내려오는 빛을 따라 계단이 아래로 이어지고, 맨 아래에 나무 십자가가 서 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7EBD1"/><stop offset="0.55" stop-color="#E9D9C0"/><stop offset="1" stop-color="#CDB896"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.05" r="0.7">
+      <stop offset="0" stop-color="#FFF9E8" stop-opacity="1"/><stop offset="1" stop-color="#FFF9E8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="step" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EADBBF"/><stop offset="1" stop-color="#C9B28B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <g fill="#FFF8E6" opacity="0.4">
+    <polygon points="120,0 300,0 900,675 640,675"/>
+    <polygon points="340,0 420,0 1000,675 920,675"/>
+  </g>
+  <!-- descending steps -->
+  <g>
+    <rect x="140" y="150" width="200" height="34" fill="url(#step)"/><rect x="140" y="184" width="200" height="10" fill="#B59D77"/>
+    <rect x="260" y="230" width="200" height="34" fill="url(#step)"/><rect x="260" y="264" width="200" height="10" fill="#B59D77"/>
+    <rect x="380" y="310" width="200" height="34" fill="url(#step)"/><rect x="380" y="344" width="200" height="10" fill="#B59D77"/>
+    <rect x="500" y="390" width="160" height="34" fill="url(#step)"/><rect x="500" y="424" width="160" height="10" fill="#B59D77"/>
+  </g>
+  <path d="M0 600 C 300 570, 700 560, 1200 580 L1200 675 L0 675 Z" fill="#A89070"/>
+  <g>
+    <ellipse cx="740" cy="590" rx="90" ry="12" fill="#7A6447" opacity="0.4"/>
+    <rect x="726" y="330" width="28" height="262" fill="#6E5034"/>
+    <rect x="680" y="390" width="120" height="26" fill="#6E5034"/>
+    <rect x="730" y="330" width="6" height="262" fill="#8A6745" opacity="0.6"/>
+  </g>
+  <g transform="translate(200,118)">
+    <path d="M0 32 L6 6 L22 22 L36 0 L50 22 L66 6 L72 32 Z" fill="#D7B25A" stroke="#A9842E" stroke-width="2"/>
+    <rect x="0" y="30" width="72" height="8" rx="2" fill="#C49C42"/>
+  </g>
+  <g fill="#9C8668" opacity="0.5"><ellipse cx="980" cy="560" rx="60" ry="10"/><ellipse cx="1100" cy="575" rx="40" ry="8"/></g>
+</svg>

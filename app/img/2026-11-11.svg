@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 번지는 언덕길 위로 두 개의 채에 메인 언약궤가 올라오고, 그 앞 땅에는 베 에봇 한 벌과 나팔이 놓였으며 흩날리는 금빛 꽃잎과 길가의 떡과 건포도 바구니가 함께 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2B3442"/>
+      <stop offset="0.38" stop-color="#7A6F6B"/>
+      <stop offset="0.7" stop-color="#E1C291"/>
+      <stop offset="1" stop-color="#F5E6CC"/>
+    </linearGradient>
+    <radialGradient id="dawn" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF5D8" stop-opacity="1"/>
+      <stop offset="0.45" stop-color="#F5D9A6" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#F5D9A6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="arkglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFEDB8" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#F3C56C" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F3C56C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6DE9A"/>
+      <stop offset="0.5" stop-color="#D9B262"/>
+      <stop offset="1" stop-color="#A67F35"/>
+    </linearGradient>
+    <linearGradient id="goldSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A24E"/>
+      <stop offset="1" stop-color="#8A6827"/>
+    </linearGradient>
+    <linearGradient id="goldTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFF0C2"/>
+      <stop offset="1" stop-color="#E3C170"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9A6B3E"/>
+      <stop offset="1" stop-color="#5E3E21"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7C9466"/>
+      <stop offset="1" stop-color="#3F5035"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8D3A8"/>
+      <stop offset="1" stop-color="#C9AE7E"/>
+    </linearGradient>
+    <linearGradient id="linen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBF5E6"/>
+      <stop offset="1" stop-color="#E4D7BC"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9B592"/>
+      <stop offset="1" stop-color="#8E7A58"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sky and dawn -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="600" cy="280" r="300" fill="url(#dawn)"/>
+  <g fill="#FFF6DD" opacity="0.7">
+    <circle cx="110" cy="60" r="2.2"/><circle cx="240" cy="110" r="1.6"/><circle cx="380" cy="50" r="1.8"/>
+    <circle cx="840" cy="70" r="2"/><circle cx="990" cy="40" r="1.6"/><circle cx="1110" cy="120" r="2.1"/>
+    <circle cx="660" cy="30" r="1.4"/><circle cx="160" cy="170" r="1.3"/>
+  </g>
+
+  <!-- far city wall (다윗 성) on the hill crest, warm stone -->
+  <g opacity="0.85">
+    <path d="M300 300 L300 250 L330 250 L330 262 L352 262 L352 250 L382 250 L382 262 L404 262 L404 250 L434 250 L434 300 Z" fill="url(#wall)"/>
+    <path d="M434 300 L434 236 L464 236 L464 250 L490 250 L490 236 L520 236 L520 300 Z" fill="url(#wall)"/>
+    <path d="M680 300 L680 236 L710 236 L710 250 L736 250 L736 236 L766 236 L766 300 Z" fill="url(#wall)"/>
+    <path d="M766 300 L766 250 L796 250 L796 262 L818 262 L818 250 L848 250 L848 262 L870 262 L870 250 L900 250 L900 300 Z" fill="url(#wall)"/>
+    <!-- open gate in the middle, filled with dawn light -->
+    <path d="M520 300 L520 232 L548 232 L548 300 Z" fill="url(#wall)"/>
+    <path d="M652 300 L652 232 L680 232 L680 300 Z" fill="url(#wall)"/>
+    <path d="M548 300 L548 262 Q600 220 652 262 L652 300 Z" fill="#FFF0C8"/>
+  </g>
+
+  <!-- hills -->
+  <path d="M-20 380 L160 300 L320 350 L470 300 L600 330 L740 300 L900 350 L1060 300 L1220 380 L1220 420 L-20 420 Z" fill="#5C6C5E" opacity="0.85"/>
+  <path d="M-20 440 Q200 380 420 400 Q600 300 780 400 Q1000 380 1220 440 L1220 700 L-20 700 Z" fill="url(#hill)"/>
+
+  <!-- path winding up to the gate -->
+  <path d="M470 700 C500 600 520 520 560 440 C580 400 590 340 600 300 C610 340 620 400 640 440 C680 520 700 600 730 700 Z" fill="url(#path)"/>
+  <path d="M560 560 C590 540 610 540 640 560" stroke="#FFF2D0" stroke-opacity="0.5" stroke-width="3" fill="none"/>
+  <path d="M545 620 C580 600 620 600 655 620" stroke="#FFF2D0" stroke-opacity="0.4" stroke-width="3" fill="none"/>
+
+  <!-- glow around the ark -->
+  <ellipse cx="600" cy="470" rx="260" ry="140" fill="url(#arkglow)"/>
+
+  <!-- the ark on two carrying poles (채) -->
+  <g>
+    <!-- poles -->
+    <path d="M340 520 L860 505" stroke="url(#wood)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M330 556 L870 541" stroke="url(#wood)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M340 520 L860 505" stroke="#D9A86B" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"/>
+    <path d="M330 556 L870 541" stroke="#D9A86B" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"/>
+    <!-- rings -->
+    <g fill="none" stroke="#E8C76F" stroke-width="7">
+      <circle cx="470" cy="520" r="11"/><circle cx="730" cy="514" r="11"/>
+      <circle cx="470" cy="556" r="11"/><circle cx="730" cy="550" r="11"/>
+    </g>
+    <!-- chest body (front, slightly tilted toward viewer) -->
+    <path d="M460 470 L740 470 L740 560 L460 560 Z" fill="url(#gold)" stroke="#8A6827" stroke-width="2"/>
+    <path d="M740 470 L770 450 L770 540 L740 560 Z" fill="url(#goldSide)" stroke="#8A6827" stroke-width="2"/>
+    <path d="M460 470 L490 450 L770 450 L740 470 Z" fill="url(#goldTop)" stroke="#8A6827" stroke-width="2"/>
+    <!-- decorative rim (관) -->
+    <path d="M452 468 L748 468 L748 476 L452 476 Z" fill="#F7E2A4"/>
+    <path d="M452 552 L748 552 L748 560 L452 560 Z" fill="#B8923E"/>
+    <!-- two wings over the mercy seat, meeting in the middle, no faces -->
+    <path d="M520 450 C540 400 585 388 600 420 C590 432 570 440 545 448 Z" fill="#FFF2C9" stroke="#C9A24E" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M680 450 C660 400 615 388 600 420 C610 432 630 440 655 448 Z" fill="#FFF2C9" stroke="#C9A24E" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M530 447 C560 430 585 420 600 420 M670 447 C640 430 615 420 600 420" stroke="#E3C170" stroke-width="2" fill="none"/>
+    <!-- light rising from between the wings -->
+    <path d="M600 420 L600 350" stroke="#FFF6DC" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M588 412 L560 360 M612 412 L640 360" stroke="#FFF6DC" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- linen ephod (베 에봇) laid on a stone at the left front -->
+  <g transform="translate(300 590)">
+    <path d="M-60 40 C-70 10 -40 -5 0 -5 C40 -5 70 10 60 40 C40 50 -40 50 -60 40 Z" fill="#8B7A5E"/>
+    <path d="M-40 10 C-30 -20 -10 -28 0 -28 C10 -28 30 -20 40 10 C30 30 20 36 0 36 C-20 36 -30 30 -40 10 Z" fill="url(#linen)" stroke="#CDBE9C" stroke-width="2"/>
+    <path d="M-14 -24 C-8 -14 8 -14 14 -24" stroke="#CDBE9C" stroke-width="2" fill="none"/>
+    <path d="M-30 14 C-10 20 10 20 30 14" stroke="#D7B36A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- trumpet (나팔) at the right front -->
+  <g transform="translate(900 600) rotate(-22)">
+    <path d="M-80 0 L30 0" stroke="#D9B262" stroke-width="9" stroke-linecap="round"/>
+    <path d="M30 -8 C60 -18 80 -22 92 -24 L92 24 C80 22 60 18 30 8 Z" fill="url(#gold)" stroke="#8A6827" stroke-width="2"/>
+    <path d="M-78 0 L-60 0" stroke="#F6DE9A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- basket of bread and raisin cakes (떡·건포도 떡) lower right by the path -->
+  <g transform="translate(770 640)">
+    <path d="M-50 -10 L50 -10 L40 30 L-40 30 Z" fill="#A47B4C" stroke="#6B4A28" stroke-width="2"/>
+    <path d="M-44 0 L44 0 M-42 10 L42 10 M-40 20 L40 20" stroke="#6B4A28" stroke-width="1.5" opacity="0.6"/>
+    <ellipse cx="-20" cy="-14" rx="18" ry="10" fill="#E2B57A" stroke="#9C6B3C" stroke-width="1.5"/>
+    <ellipse cx="12" cy="-16" rx="18" ry="10" fill="#EAC08A" stroke="#9C6B3C" stroke-width="1.5"/>
+    <ellipse cx="34" cy="-12" rx="14" ry="9" fill="#7A4A52" stroke="#4E2A33" stroke-width="1.5"/>
+    <ellipse cx="-4" cy="-26" rx="13" ry="8" fill="#7A4A52" stroke="#4E2A33" stroke-width="1.5"/>
+  </g>
+
+  <!-- scattered golden petals in the air, joy -->
+  <g fill="#F7D98A" opacity="0.85">
+    <ellipse cx="420" cy="380" rx="7" ry="4" transform="rotate(-30 420 380)"/>
+    <ellipse cx="500" cy="340" rx="6" ry="3.5" transform="rotate(20 500 340)"/>
+    <ellipse cx="700" cy="350" rx="7" ry="4" transform="rotate(35 700 350)"/>
+    <ellipse cx="790" cy="400" rx="6" ry="3.5" transform="rotate(-20 790 400)"/>
+    <ellipse cx="380" cy="470" rx="6" ry="3.5" transform="rotate(50 380 470)"/>
+    <ellipse cx="830" cy="470" rx="6" ry="3.5" transform="rotate(-45 830 470)"/>
+    <ellipse cx="560" cy="300" rx="5" ry="3" transform="rotate(10 560 300)"/>
+    <ellipse cx="650" cy="290" rx="5" ry="3" transform="rotate(-15 650 290)"/>
+    <ellipse cx="450" cy="610" rx="6" ry="3.5" transform="rotate(25 450 610)"/>
+    <ellipse cx="760" cy="590" rx="6" ry="3.5" transform="rotate(-35 760 590)"/>
+  </g>
+
+  <!-- grasses by the path -->
+  <g stroke="#8CB07A" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M150 600 q8 -34 18 -4 M170 606 q4 -40 16 -8 M130 610 q2 -28 12 -6"/>
+    <path d="M1040 600 q8 -34 18 -4 M1060 606 q4 -40 16 -8 M1020 610 q2 -28 12 -6"/>
+    <path d="M250 500 q6 -26 14 -2 M268 506 q3 -30 12 -6"/>
+    <path d="M940 505 q6 -26 14 -2 M958 511 q3 -30 12 -6"/>
+    <path d="M400 655 q6 -24 14 -2 M860 660 q6 -24 14 -2"/>
+  </g>
+</svg>

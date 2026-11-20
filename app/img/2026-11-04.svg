@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FA3AE"/><stop offset=".45" stop-color="#E9C99A"/><stop offset=".75" stop-color="#F6DDAF"/><stop offset="1" stop-color="#EBC98E"/></linearGradient>
+<radialGradient id="sun" cx="600" cy="360" r="380" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF7DE"/><stop offset=".12" stop-color="#FFE7AA"/><stop offset=".4" stop-color="#F7CF85" stop-opacity=".5"/><stop offset="1" stop-color="#F7CF85" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="675" fill="url(#sky)"/>
+<rect width="1200" height="675" fill="url(#sun)"/>
+<circle cx="600" cy="360" r="70" fill="#FFF3D0"/>
+<g stroke="#FFF1C7" stroke-width="3" opacity=".35"><path d="M600 360 L600 120 M600 360 L420 160 M600 360 L780 160 M600 360 L300 260 M600 360 L900 260"/></g>
+<path d="M0 410 Q200 360 420 395 Q600 425 780 390 Q1000 350 1200 400 V675 H0Z" fill="#A99266"/>
+<path d="M0 460 Q300 430 600 455 T1200 445 V675 H0Z" fill="#8C7A50"/>
+<!-- 무너진 성벽 -->
+<g fill="#B9A685" stroke="#7E6C4F" stroke-width="3">
+<path d="M60 470 V390 h50 v-25 h40 v25 h50 v-40 h40 v40 h45 v-20 h35 v40 l40 70Z"/>
+<path d="M800 470 l35 -60 v-20 h40 v-35 h45 v35 h40 v-30 h40 v30 h50 v-20 h40 v100Z"/>
+</g>
+<g stroke="#7E6C4F" stroke-width="2" opacity=".7" fill="none"><path d="M60 425 H330 M110 390 V470 M200 425 V470 M260 390 V425 M860 425 H1150 M920 390 V470 M1010 425 V470 M1080 390 V425"/></g>
+<g fill="#A89573" stroke="#7E6C4F" stroke-width="2"><path d="M340 520 l30 -22 l38 10 l8 26 l-40 12Z"/><path d="M760 530 l26 -20 l34 6 l10 24 l-36 14Z"/><path d="M430 560 l20 -14 l26 6 l4 18 l-28 8Z"/></g>
+<path d="M0 560 Q300 535 600 560 T1200 550 V675 H0Z" fill="#6F6440"/>
+<!-- 돌 틈 새싹 (가운데 아래) -->
+<path d="M560 600 q40 -18 80 0 q-10 20 -40 22 q-30 -2 -40 -22Z" fill="#8C7B5A" stroke="#5E5238" stroke-width="2"/>
+<path d="M600 598 C598 570 600 545 604 520" stroke="#5F8A45" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M603 545 C580 525 560 525 548 536 C565 548 585 550 603 545Z" fill="#7FAE5C" stroke="#557A3C" stroke-width="2"/>
+<path d="M604 528 C628 505 650 505 662 516 C645 530 625 533 604 528Z" fill="#8FBE6A" stroke="#557A3C" stroke-width="2"/>
+<g fill="#F4FBFF" opacity=".95"><circle cx="560" cy="534" r="4"/><circle cx="650" cy="514" r="4.5"/><circle cx="604" cy="518" r="3"/></g>
+</svg>

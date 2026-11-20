@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 비치는 세 산 아래, 두 손처럼 감싸 안은 둔덕 안에 등잔불과 펼쳐진 두루마리가 놓여 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E3A4A"/>
+      <stop offset="0.45" stop-color="#8A7A6A"/>
+      <stop offset="0.75" stop-color="#E6C9A0"/>
+      <stop offset="1" stop-color="#F3E3C9"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF4D6" stop-opacity="1"/>
+      <stop offset="0.35" stop-color="#F4D9A4" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#F4D9A4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="flame" cx="0.5" cy="0.6" r="0.5">
+      <stop offset="0" stop-color="#FFFBEA"/>
+      <stop offset="0.5" stop-color="#F6C96A"/>
+      <stop offset="1" stop-color="#E08A3C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F6D98F" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#F6D98F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6F8A5C"/>
+      <stop offset="1" stop-color="#4C5F3D"/>
+    </linearGradient>
+    <linearGradient id="cradle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B98A5C"/>
+      <stop offset="1" stop-color="#7E5A3A"/>
+    </linearGradient>
+    <linearGradient id="cradleIn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7CBA4"/>
+      <stop offset="1" stop-color="#C9A377"/>
+    </linearGradient>
+    <linearGradient id="scroll" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF3E2"/>
+      <stop offset="1" stop-color="#EBD9B8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="600" cy="330" r="260" fill="url(#sun)"/>
+
+  <!-- far mountains: 시내 · 세일 · 바란 -->
+  <path d="M-20 420 L140 250 L260 340 L380 230 L520 360 L600 300 L700 380 L820 240 L940 350 L1060 270 L1220 420 Z" fill="#5E6B6A" opacity="0.85"/>
+  <path d="M-20 450 L120 330 L300 420 L430 330 L600 440 L760 340 L930 430 L1090 350 L1220 450 Z" fill="#4D5A52" opacity="0.9"/>
+
+  <!-- ground -->
+  <path d="M-20 450 Q300 400 600 470 T1220 450 L1220 700 L-20 700 Z" fill="url(#ground)"/>
+  <path d="M-20 520 Q400 480 700 540 T1220 520 L1220 700 L-20 700 Z" fill="#3E4F33" opacity="0.8"/>
+
+  <!-- warm glow behind the cradle -->
+  <ellipse cx="600" cy="470" rx="330" ry="200" fill="url(#glow)"/>
+
+  <!-- cradle: two earthen curves like cupped palms, left and right -->
+  <path d="M330 470 C300 560 360 630 480 640 L600 650 L600 500 C520 440 420 430 330 470 Z" fill="url(#cradle)"/>
+  <path d="M870 470 C900 560 840 630 720 640 L600 650 L600 500 C680 440 780 430 870 470 Z" fill="url(#cradle)"/>
+  <!-- inner hollow -->
+  <ellipse cx="600" cy="560" rx="235" ry="78" fill="url(#cradleIn)"/>
+  <ellipse cx="600" cy="560" rx="235" ry="78" fill="none" stroke="#8C6440" stroke-opacity="0.5" stroke-width="3"/>
+  <!-- soft folds -->
+  <path d="M360 500 C400 530 440 560 470 600" stroke="#A47A50" stroke-opacity="0.6" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M840 500 C800 530 760 560 730 600" stroke="#A47A50" stroke-opacity="0.6" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- open scroll resting in the hollow -->
+  <g transform="translate(600 575)">
+    <rect x="-150" y="-36" width="300" height="72" rx="4" fill="url(#scroll)" stroke="#B49468" stroke-width="2"/>
+    <rect x="-172" y="-44" width="30" height="88" rx="14" fill="#C8A878" stroke="#8C6440" stroke-width="2"/>
+    <rect x="142" y="-44" width="30" height="88" rx="14" fill="#C8A878" stroke="#8C6440" stroke-width="2"/>
+    <g stroke="#9C8A6A" stroke-width="3" stroke-linecap="round" opacity="0.8">
+      <line x1="-120" y1="-14" x2="110" y2="-14"/>
+      <line x1="-120" y1="2" x2="90" y2="2"/>
+      <line x1="-120" y1="18" x2="120" y2="18"/>
+    </g>
+  </g>
+
+  <!-- oil lamp, centered above the scroll -->
+  <g transform="translate(600 498)">
+    <ellipse cx="0" cy="-28" rx="70" ry="60" fill="url(#flame)" opacity="0.9"/>
+    <path d="M-40 10 C-44 -6 -26 -14 0 -14 C26 -14 44 -6 40 10 L48 10 C52 18 40 26 0 26 C-40 26 -52 18 -48 10 Z" fill="#8C5A32" stroke="#5F3C20" stroke-width="2"/>
+    <path d="M36 2 C46 -4 56 2 52 10" fill="none" stroke="#5F3C20" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-40 -8 C-22 -16 22 -16 40 -8" fill="none" stroke="#C98B52" stroke-width="2" opacity="0.8"/>
+    <path d="M0 -58 C12 -42 14 -32 8 -20 C4 -14 -4 -14 -8 -20 C-14 -32 -12 -42 0 -58 Z" fill="#F7C45C"/>
+    <path d="M0 -46 C6 -38 7 -32 4 -24 C2 -20 -2 -20 -4 -24 C-7 -32 -6 -38 0 -46 Z" fill="#FFF6DA"/>
+  </g>
+
+  <!-- grass tufts -->
+  <g stroke="#7FA06A" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8">
+    <path d="M150 600 q6 -24 14 -2 M165 605 q4 -30 12 -6"/>
+    <path d="M1030 610 q6 -24 14 -2 M1045 615 q4 -30 12 -6"/>
+    <path d="M260 650 q6 -20 12 -2"/>
+    <path d="M940 655 q6 -20 12 -2"/>
+  </g>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6d6a5c"/>
+      <stop offset="1" stop-color="#a2977c"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7e8f8c"/>
+      <stop offset="0.55" stop-color="#e6cfa0"/>
+      <stop offset="1" stop-color="#f7e6bf"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="600" cy="300" r="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff3d2" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#fff3d2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a6544"/>
+      <stop offset="1" stop-color="#5e432c"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e9e1cf"/>
+      <stop offset="0.5" stop-color="#fbf6ea"/>
+      <stop offset="1" stop-color="#d8cdb6"/>
+    </linearGradient>
+    <linearGradient id="bottle" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6f9a6a"/>
+      <stop offset="0.5" stop-color="#9cc392"/>
+      <stop offset="1" stop-color="#5f8a5b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 벽 -->
+  <rect width="1200" height="675" fill="url(#wall)"/>
+
+  <!-- 열린 창 (가운데 위) -->
+  <rect x="390" y="40" width="420" height="330" fill="url(#sky)"/>
+  <circle cx="600" cy="300" r="46" fill="#fff4d6" opacity="0.9"/>
+  <path d="M390 300 C470 276 540 290 600 292 C670 294 740 276 810 286 L810 370 L390 370 Z" fill="#8f9a6c" opacity="0.8"/>
+  <path d="M390 330 C500 318 600 326 700 324 C760 322 790 318 810 320 L810 370 L390 370 Z" fill="#6f7f52"/>
+  <!-- 창틀 -->
+  <rect x="380" y="30" width="440" height="350" fill="none" stroke="#efe4cb" stroke-width="16"/>
+  <line x1="600" y1="30" x2="600" y2="380" stroke="#efe4cb" stroke-width="10"/>
+  <line x1="380" y1="200" x2="820" y2="200" stroke="#efe4cb" stroke-width="10"/>
+  <!-- 바깥으로 열린 창문짝 (원근) -->
+  <path d="M380 30 L300 70 L300 350 L380 380 Z" fill="#d9ccae" opacity="0.9"/>
+  <path d="M820 30 L900 70 L900 350 L820 380 Z" fill="#d9ccae" opacity="0.9"/>
+  <path d="M312 86 L370 58 L370 362 L312 338 Z" fill="#c7d3c4" opacity="0.55"/>
+  <path d="M888 86 L830 58 L830 362 L888 338 Z" fill="#c7d3c4" opacity="0.55"/>
+  <!-- 창턱 -->
+  <rect x="360" y="378" width="480" height="16" rx="4" fill="#e3d6b8"/>
+
+  <!-- 들어오는 빛 -->
+  <circle cx="600" cy="300" r="420" fill="url(#glow)"/>
+  <path d="M400 394 L800 394 L1020 675 L180 675 Z" fill="#fff2cf" opacity="0.10"/>
+
+  <!-- 탁자 -->
+  <path d="M0 470 L1200 470 L1200 675 L0 675 Z" fill="url(#table)"/>
+  <rect x="0" y="462" width="1200" height="14" fill="#9a7552"/>
+  <g stroke="#4f3824" stroke-width="2" opacity="0.35" fill="none">
+    <path d="M0 520 C300 512 600 528 1200 516"/><path d="M0 580 C400 570 800 590 1200 576"/><path d="M0 635 C350 628 850 645 1200 632"/>
+  </g>
+
+  <!-- 왼쪽: 빈 잔 -->
+  <ellipse cx="430" cy="566" rx="118" ry="22" fill="#3d2a1a" opacity="0.35"/>
+  <ellipse cx="430" cy="556" rx="104" ry="18" fill="#efe7d6"/>
+  <path d="M362 440 L498 440 L486 540 C484 556 470 562 430 562 C390 562 376 556 374 540 Z" fill="url(#cup)"/>
+  <path d="M498 462 C540 462 548 510 492 516" fill="none" stroke="#e3d9c3" stroke-width="12" stroke-linecap="round"/>
+  <ellipse cx="430" cy="440" rx="68" ry="13" fill="#f5efe1"/>
+  <ellipse cx="430" cy="442" rx="60" ry="10" fill="#e2d7c0"/>
+  <ellipse cx="430" cy="446" rx="38" ry="5" fill="#b89a74" opacity="0.35"/>
+
+  <!-- 오른쪽: 가득 찬 잔 (김) -->
+  <ellipse cx="770" cy="566" rx="118" ry="22" fill="#3d2a1a" opacity="0.35"/>
+  <ellipse cx="770" cy="556" rx="104" ry="18" fill="#efe7d6"/>
+  <path d="M702 440 L838 440 L826 540 C824 556 810 562 770 562 C730 562 716 556 714 540 Z" fill="url(#cup)"/>
+  <path d="M838 462 C880 462 888 510 832 516" fill="none" stroke="#e3d9c3" stroke-width="12" stroke-linecap="round"/>
+  <ellipse cx="770" cy="440" rx="68" ry="13" fill="#f5efe1"/>
+  <ellipse cx="770" cy="443" rx="60" ry="10" fill="#5a3a22"/>
+  <ellipse cx="760" cy="441" rx="22" ry="3" fill="#8a5f3a" opacity="0.7"/>
+  <g fill="none" stroke="#fff6e2" stroke-width="5" stroke-linecap="round" opacity="0.55">
+    <path d="M750 420 C736 396 764 380 748 352"/>
+    <path d="M780 422 C794 398 768 382 786 350"/>
+  </g>
+
+  <!-- 가운데: 작은 안약 병 -->
+  <ellipse cx="600" cy="560" rx="40" ry="9" fill="#3d2a1a" opacity="0.4"/>
+  <rect x="574" y="478" width="52" height="80" rx="12" fill="url(#bottle)"/>
+  <rect x="582" y="500" width="36" height="34" rx="4" fill="#f4ecd8"/>
+  <path d="M594 512 L606 512 M600 506 L600 518" stroke="#6f9a6a" stroke-width="4" stroke-linecap="round"/>
+  <rect x="586" y="462" width="28" height="20" rx="4" fill="#ede3cc"/>
+  <path d="M592 462 L596 436 C597 430 603 430 604 436 L608 462 Z" fill="#f6efdf"/>
+  <rect x="580" y="484" width="8" height="64" rx="4" fill="#ffffff" opacity="0.35"/>
+  <!-- 병에 닿는 빛 -->
+  <circle cx="600" cy="500" r="70" fill="#fff4d6" opacity="0.10"/>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5d6b6a"/>
+      <stop offset="0.45" stop-color="#c9b08a"/>
+      <stop offset="0.75" stop-color="#f1dcb0"/>
+      <stop offset="1" stop-color="#f6e7c6"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="600" cy="402" r="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff6dc" stop-opacity="0.95"/>
+      <stop offset="0.35" stop-color="#fbe7b8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f6e7c6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7f8c5a"/>
+      <stop offset="1" stop-color="#4f5b38"/>
+    </linearGradient>
+    <radialGradient id="soil" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0" stop-color="#5a3c24"/>
+      <stop offset="1" stop-color="#3b2716"/>
+    </radialGradient>
+    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5b4632"/>
+      <stop offset="0.5" stop-color="#7d6347"/>
+      <stop offset="1" stop-color="#4a3826"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 새벽 하늘과 빛 -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="600" cy="402" r="330" fill="url(#sun)"/>
+  <circle cx="600" cy="404" r="38" fill="#fff3d2" opacity="0.9"/>
+
+  <!-- 먼 언덕 -->
+  <path d="M0 410 C180 372 330 392 470 402 C610 412 760 380 930 392 C1050 400 1130 392 1200 384 L1200 470 L0 470 Z" fill="#8f8f68" opacity="0.75"/>
+  <path d="M0 440 C220 418 420 432 600 436 C800 440 990 420 1200 430 L1200 675 L0 675 Z" fill="url(#field)"/>
+
+  <!-- 포도원 줄 (양옆, 멀리) -->
+  <g stroke="#3e4a2c" stroke-width="3" fill="none" opacity="0.7">
+    <path d="M40 470 L330 452"/><path d="M20 520 L320 488"/><path d="M0 580 L300 530"/>
+    <path d="M870 452 L1160 470"/><path d="M880 488 L1180 520"/><path d="M900 530 L1200 580"/>
+  </g>
+  <g fill="#5f7a3f" opacity="0.85">
+    <ellipse cx="90" cy="462" rx="26" ry="12"/><ellipse cx="170" cy="458" rx="26" ry="12"/><ellipse cx="250" cy="454" rx="24" ry="11"/>
+    <ellipse cx="70" cy="510" rx="32" ry="14"/><ellipse cx="170" cy="502" rx="32" ry="14"/><ellipse cx="265" cy="494" rx="28" ry="13"/>
+    <ellipse cx="60" cy="568" rx="40" ry="17"/><ellipse cx="175" cy="550" rx="38" ry="16"/><ellipse cx="270" cy="536" rx="32" ry="14"/>
+    <ellipse cx="950" cy="454" rx="24" ry="11"/><ellipse cx="1030" cy="458" rx="26" ry="12"/><ellipse cx="1110" cy="462" rx="26" ry="12"/>
+    <ellipse cx="935" cy="494" rx="28" ry="13"/><ellipse cx="1030" cy="502" rx="32" ry="14"/><ellipse cx="1130" cy="510" rx="32" ry="14"/>
+    <ellipse cx="930" cy="536" rx="32" ry="14"/><ellipse cx="1025" cy="550" rx="38" ry="16"/><ellipse cx="1140" cy="568" rx="40" ry="17"/>
+  </g>
+
+  <!-- 새로 판 흙 둘레 (밑동 둘레) -->
+  <ellipse cx="600" cy="560" rx="210" ry="52" fill="#2f2012" opacity="0.35"/>
+  <ellipse cx="600" cy="552" rx="196" ry="46" fill="url(#soil)"/>
+  <!-- 파낸 흙 둔덕 -->
+  <path d="M410 552 C430 520 470 512 500 522 C520 506 552 508 566 520 L566 548 C520 560 450 566 410 552 Z" fill="#6b4a2c"/>
+  <path d="M634 520 C652 506 684 506 700 522 C730 512 772 520 790 552 C750 566 680 560 634 548 Z" fill="#6b4a2c"/>
+  <!-- 거름 (짙은 덩이) -->
+  <g fill="#3a2a19">
+    <ellipse cx="520" cy="558" rx="22" ry="8"/><ellipse cx="556" cy="568" rx="18" ry="7"/>
+    <ellipse cx="650" cy="568" rx="20" ry="7"/><ellipse cx="690" cy="558" rx="22" ry="8"/>
+    <ellipse cx="600" cy="576" rx="26" ry="7"/>
+  </g>
+  <g fill="#8a6440" opacity="0.8">
+    <circle cx="470" cy="530" r="4"/><circle cx="492" cy="520" r="3"/><circle cx="540" cy="514" r="3"/>
+    <circle cx="660" cy="514" r="3"/><circle cx="712" cy="522" r="4"/><circle cx="748" cy="532" r="3"/>
+  </g>
+
+  <!-- 무화과나무 줄기와 가지 -->
+  <path d="M584 548 C588 500 580 450 586 400 C590 368 600 350 600 330 C602 350 612 370 616 400 C622 450 612 500 618 548 Z" fill="url(#trunk)"/>
+  <g stroke="#5b4632" stroke-linecap="round" fill="none">
+    <path d="M598 380 C560 350 520 330 480 318" stroke-width="12"/>
+    <path d="M604 372 C640 344 684 328 724 318" stroke-width="12"/>
+    <path d="M600 340 C590 300 572 270 556 244" stroke-width="9"/>
+    <path d="M602 336 C616 298 636 270 652 246" stroke-width="9"/>
+    <path d="M520 330 C500 300 494 280 492 262" stroke-width="6"/>
+    <path d="M690 328 C712 304 718 284 720 264" stroke-width="6"/>
+  </g>
+  <!-- 잎 (넓은 무화과 잎 무리 · 성긴 편) -->
+  <g fill="#6f8f4c">
+    <ellipse cx="478" cy="304" rx="48" ry="30"/><ellipse cx="530" cy="276" rx="44" ry="28"/>
+    <ellipse cx="556" cy="232" rx="42" ry="28"/><ellipse cx="604" cy="214" rx="50" ry="32"/>
+    <ellipse cx="652" cy="234" rx="42" ry="28"/><ellipse cx="676" cy="278" rx="44" ry="28"/>
+    <ellipse cx="726" cy="304" rx="48" ry="30"/><ellipse cx="604" cy="268" rx="56" ry="34"/>
+    <ellipse cx="494" cy="252" rx="30" ry="20"/><ellipse cx="716" cy="254" rx="30" ry="20"/>
+  </g>
+  <g fill="#8fae62" opacity="0.9">
+    <ellipse cx="590" cy="206" rx="28" ry="16"/><ellipse cx="540" cy="266" rx="24" ry="14"/>
+    <ellipse cx="664" cy="268" rx="24" ry="14"/><ellipse cx="470" cy="294" rx="22" ry="12"/>
+    <ellipse cx="736" cy="294" rx="22" ry="12"/><ellipse cx="626" cy="250" rx="26" ry="14"/>
+  </g>
+  <!-- 새순 몇 개 -->
+  <g fill="#b9d58a">
+    <ellipse cx="452" cy="318" rx="9" ry="5"/><ellipse cx="752" cy="318" rx="9" ry="5"/>
+    <ellipse cx="604" cy="186" rx="10" ry="6"/>
+  </g>
+
+  <!-- 삽 (나무 오른쪽 흙더미에 기대어) -->
+  <g transform="rotate(-18 812 470)">
+    <rect x="806" y="352" width="10" height="150" rx="4" fill="#8a6a46"/>
+    <rect x="796" y="344" width="30" height="10" rx="4" fill="#6e5236"/>
+    <path d="M794 500 L828 500 L824 548 C820 560 802 560 798 548 Z" fill="#9aa0a0"/>
+    <path d="M800 502 L806 502 L804 546 C802 548 800 546 800 544 Z" fill="#d6d8d2" opacity="0.6"/>
+  </g>
+  <ellipse cx="828" cy="560" rx="34" ry="8" fill="#2f2012" opacity="0.35"/>
+
+  <!-- 빛줄기 -->
+  <g fill="#fff4d6" opacity="0.12">
+    <path d="M600 404 L380 0 L470 0 Z"/><path d="M600 404 L700 0 L800 0 Z"/><path d="M600 404 L1000 0 L1120 0 Z"/><path d="M600 404 L120 0 L220 0 Z"/>
+  </g>
+</svg>

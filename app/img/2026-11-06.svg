@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="아침빛이 드는 창가 탁자 위 은혜를 적는 종이와 펜, 등잔, 창밖에 날아오르는 독수리">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3E3C2"/>
+      <stop offset="0.55" stop-color="#F7D9A8"/>
+      <stop offset="1" stop-color="#E9C58F"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6DC" stop-opacity="1"/>
+      <stop offset="0.45" stop-color="#FBE3B2" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#F7D9A8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9DCC4"/>
+      <stop offset="1" stop-color="#D9C8A8"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9A6B3F"/>
+      <stop offset="1" stop-color="#6E4A2B"/>
+    </linearGradient>
+    <linearGradient id="woodTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#B5844F"/>
+      <stop offset="0.5" stop-color="#C9985F"/>
+      <stop offset="1" stop-color="#B5844F"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFBF0"/>
+      <stop offset="1" stop-color="#F6EEDA"/>
+    </linearGradient>
+    <radialGradient id="flame" cx="0.5" cy="0.6" r="0.5">
+      <stop offset="0" stop-color="#FFF4C8"/>
+      <stop offset="0.5" stop-color="#F6B84B"/>
+      <stop offset="1" stop-color="#E07B2A" stop-opacity="0.9"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE9A8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hills" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9DB98F"/>
+      <stop offset="1" stop-color="#6F8F66"/>
+    </linearGradient>
+    <linearGradient id="hills2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B9CCA6"/>
+      <stop offset="1" stop-color="#8FAA80"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF1CC" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFF1CC" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- wall -->
+  <rect width="1200" height="675" fill="url(#wall)"/>
+
+  <!-- window frame -->
+  <rect x="300" y="40" width="600" height="420" rx="10" fill="#7C5A38"/>
+  <rect x="318" y="58" width="564" height="384" rx="6" fill="url(#sky)"/>
+  <!-- sun -->
+  <circle cx="470" cy="150" r="150" fill="url(#sun)"/>
+  <circle cx="470" cy="150" r="46" fill="#FFF8E3"/>
+  <!-- distant hills -->
+  <path d="M318 330 C 400 290, 470 300, 540 318 C 620 338, 690 300, 760 312 C 820 322, 850 300, 882 296 L 882 442 L 318 442 Z" fill="url(#hills2)"/>
+  <path d="M318 372 C 390 348, 460 352, 530 366 C 610 382, 680 356, 760 368 C 830 378, 860 362, 882 358 L 882 442 L 318 442 Z" fill="url(#hills)"/>
+  <!-- eagle soaring (right of sun, high) -->
+  <g fill="#5B4A36" opacity="0.92" transform="translate(700,150)">
+    <path d="M0 6 C -18 -4, -42 -16, -74 -22 C -58 -10, -44 -2, -30 2 C -20 5, -10 6, 0 8 Z"/>
+    <path d="M0 6 C 18 -4, 42 -16, 74 -22 C 58 -10, 44 -2, 30 2 C 20 5, 10 6, 0 8 Z"/>
+    <path d="M-6 2 L 0 -4 L 6 2 L 4 14 L -4 14 Z"/>
+    <path d="M-5 14 L 0 22 L 5 14 Z"/>
+  </g>
+  <!-- small far bird -->
+  <path d="M790 200 c 8 -6 16 -6 24 0 c -8 -2 -16 -2 -24 0 z" fill="#5B4A36" opacity="0.6"/>
+  <!-- window cross bars -->
+  <rect x="593" y="58" width="14" height="384" fill="#7C5A38"/>
+  <rect x="318" y="243" width="564" height="14" fill="#7C5A38"/>
+  <!-- window sill -->
+  <rect x="284" y="452" width="632" height="22" rx="4" fill="#6E4A2B"/>
+
+  <!-- light beam from window onto table -->
+  <path d="M330 470 L 870 470 L 1010 675 L 190 675 Z" fill="url(#beam)"/>
+
+  <!-- table -->
+  <rect x="0" y="470" width="1200" height="40" fill="url(#woodTop)"/>
+  <rect x="0" y="510" width="1200" height="165" fill="url(#wood)"/>
+  <path d="M0 520 L1200 520" stroke="#5A3B22" stroke-width="2" opacity="0.6"/>
+  <g stroke="#5A3B22" stroke-width="1.5" opacity="0.35">
+    <path d="M0 560 Q 300 548 600 562 T 1200 556"/>
+    <path d="M0 610 Q 300 622 600 606 T 1200 614"/>
+    <path d="M0 655 Q 300 645 600 660 T 1200 652"/>
+  </g>
+
+  <!-- oil lamp (right) -->
+  <g transform="translate(880,600)">
+    <ellipse cx="0" cy="-70" rx="120" ry="80" fill="url(#glow)"/>
+    <path d="M-30 -62 Q 0 -112 30 -62 Z" fill="url(#flame)"/>
+    <path d="M-12 -62 Q 0 -86 12 -62 Z" fill="#FFF6D6"/>
+    <rect x="-6" y="-62" width="12" height="14" fill="#3E2A18"/>
+    <path d="M-38 -48 C -38 -36, -28 -26, 0 -26 C 28 -26, 38 -36, 38 -48 Z" fill="#B88B4A"/>
+    <path d="M-44 -48 L 44 -48" stroke="#D9AE62" stroke-width="5" stroke-linecap="round"/>
+    <rect x="-7" y="-26" width="14" height="18" fill="#9C7238"/>
+    <path d="M-30 -8 C -30 -2, 30 -2, 30 -8 L 30 -4 C 30 2, -30 2, -30 -4 Z" fill="#B88B4A"/>
+    <ellipse cx="0" cy="-2" rx="32" ry="6" fill="#8E6730"/>
+  </g>
+
+  <!-- paper with five lines (center) -->
+  <g transform="translate(600,540) rotate(-5)">
+    <rect x="-150" y="-84" width="300" height="188" rx="4" fill="#CBB48C" opacity="0.5" transform="translate(6,8)"/>
+    <rect x="-150" y="-84" width="300" height="188" rx="4" fill="url(#paper)" stroke="#D9CBA8" stroke-width="2"/>
+    <g stroke="#6F5A3C" stroke-width="3.5" stroke-linecap="round" opacity="0.85">
+      <path d="M-116 -48 q 20 -6 44 0 q 20 6 42 0 q 18 -5 36 0 q 16 4 34 0"/>
+      <path d="M-116 -18 q 18 -6 40 0 q 22 6 44 0 q 20 -5 40 0 q 14 4 28 0"/>
+      <path d="M-116 12 q 20 -5 42 0 q 20 5 40 0 q 20 -6 44 0 q 12 4 24 0"/>
+      <path d="M-116 42 q 18 -6 38 0 q 22 5 46 0 q 18 -5 36 0"/>
+      <path d="M-116 72 q 20 -5 40 0 q 20 6 40 0"/>
+    </g>
+    <g fill="#9C7A4A" font-family="serif" font-size="18" opacity="0.8">
+      <text x="-140" y="-42">1</text><text x="-140" y="-12">2</text><text x="-140" y="18">3</text><text x="-140" y="48">4</text><text x="-140" y="78">5</text>
+    </g>
+  </g>
+
+  <!-- pen resting on paper edge -->
+  <g transform="translate(700,598) rotate(-28)">
+    <rect x="-100" y="-7" width="200" height="14" rx="7" fill="#3F2E1E"/>
+    <rect x="-100" y="-7" width="60" height="14" rx="7" fill="#6B4E2E"/>
+    <path d="M100 -7 L 126 0 L 100 7 Z" fill="#C9A24E"/>
+    <path d="M118 -1 L 128 0 L 118 1 Z" fill="#3F2E1E"/>
+  </g>
+
+  <!-- small potted sprig (left, warmth) -->
+  <g transform="translate(360,470)">
+    <path d="M-34 0 L -28 -46 L 28 -46 L 34 0 Z" fill="#A9794A"/>
+    <rect x="-36" y="-52" width="72" height="10" rx="3" fill="#C19059"/>
+    <g stroke="#5F8A5A" stroke-width="4" fill="none" stroke-linecap="round">
+      <path d="M0 -52 C 0 -80, -6 -100, -4 -120"/>
+      <path d="M0 -52 C 6 -74, 20 -90, 30 -104"/>
+      <path d="M0 -52 C -8 -70, -24 -84, -32 -96"/>
+    </g>
+    <g fill="#7FA873">
+      <ellipse cx="-4" cy="-122" rx="9" ry="16" transform="rotate(-8 -4 -122)"/>
+      <ellipse cx="32" cy="-106" rx="8" ry="15" transform="rotate(40 32 -106)"/>
+      <ellipse cx="-34" cy="-98" rx="8" ry="15" transform="rotate(-40 -34 -98)"/>
+      <ellipse cx="12" cy="-84" rx="7" ry="13" transform="rotate(30 12 -84)"/>
+      <ellipse cx="-16" cy="-80" rx="7" ry="13" transform="rotate(-30 -16 -80)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="시냇가에 심겨 잎이 무성한 나무와 그 곁을 흐르는 맑은 시냇물">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F0E4"/><stop offset="1" stop-color="#EAE3CF"/></linearGradient>
+    <radialGradient id="glow" cx="0.25" cy="0.1" r="0.8"><stop offset="0" stop-color="#FFF8E6" stop-opacity="0.95"/><stop offset="1" stop-color="#FFF8E6" stop-opacity="0"/></radialGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9C99A"/><stop offset="1" stop-color="#93AC77"/></linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D3D9B8"/><stop offset="1" stop-color="#C2CDA3"/></linearGradient>
+    <linearGradient id="stream" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D6E6E2"/><stop offset="1" stop-color="#8FB4AE"/></linearGradient>
+    <radialGradient id="leaf" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#8DB27A"/><stop offset="1" stop-color="#4F7A5A"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <path d="M0 360 C 200 320, 380 340, 560 330 C 760 318, 960 300, 1200 330 L1200 675 L0 675 Z" fill="url(#hill)"/>
+  <path d="M0 420 C 240 400, 460 410, 700 400 C 900 392, 1060 395, 1200 405 L1200 675 L0 675 Z" fill="url(#grass)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <!-- stream -->
+  <path d="M690 400 C 720 430, 640 460, 660 500 C 690 560, 560 600, 520 675 L 820 675 C 820 610, 900 560, 860 500 C 830 455, 900 430, 760 400 Z" fill="url(#stream)"/>
+  <g fill="none" stroke="#F4FAF7" stroke-width="3" stroke-linecap="round" opacity="0.8">
+    <path d="M700 450 C 720 455, 740 452, 760 446"/><path d="M640 560 C 670 568, 710 566, 740 556"/><path d="M600 630 C 640 640, 690 638, 730 626"/>
+  </g>
+  <!-- roots toward stream -->
+  <g fill="none" stroke="#6F4A2E" stroke-width="5" stroke-linecap="round">
+    <path d="M470 560 C 520 575, 560 585, 610 590"/><path d="M470 560 C 520 590, 560 610, 590 625"/><path d="M455 562 C 430 585, 400 595, 370 600"/>
+  </g>
+  <!-- trunk -->
+  <path d="M440 565 C 452 480, 448 400, 430 320 L 480 320 C 470 400, 474 480, 492 565 Z" fill="#7E5535"/>
+  <path d="M455 380 C 420 350, 390 330, 360 300" stroke="#7E5535" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M462 360 C 500 330, 530 310, 570 290" stroke="#7E5535" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <!-- canopy -->
+  <g fill="url(#leaf)">
+    <circle cx="460" cy="220" r="120"/><circle cx="350" cy="270" r="90"/><circle cx="575" cy="260" r="95"/>
+    <circle cx="410" cy="160" r="80"/><circle cx="530" cy="170" r="85"/><circle cx="470" cy="300" r="80"/>
+  </g>
+  <g fill="#A9C690" opacity="0.6"><circle cx="420" cy="180" r="40"/><circle cx="520" cy="200" r="34"/><circle cx="360" cy="250" r="28"/></g>
+  <!-- fruit -->
+  <g fill="#C9873E"><circle cx="390" cy="230" r="9"/><circle cx="500" cy="250" r="9"/><circle cx="560" cy="210" r="9"/><circle cx="440" cy="300" r="9"/><circle cx="600" cy="285" r="9"/><circle cx="330" cy="290" r="9"/></g>
+  <!-- chaff drifting on the far right -->
+  <g fill="#C8B48A" opacity="0.8">
+    <ellipse cx="1040" cy="300" rx="9" ry="3" transform="rotate(-20 1040 300)"/><ellipse cx="1090" cy="260" rx="7" ry="2.5" transform="rotate(15 1090 260)"/>
+    <ellipse cx="1000" cy="240" rx="6" ry="2" transform="rotate(-35 1000 240)"/><ellipse cx="1130" cy="320" rx="8" ry="2.5" transform="rotate(25 1130 320)"/>
+    <ellipse cx="1060" cy="200" rx="6" ry="2" transform="rotate(5 1060 200)"/>
+  </g>
+  <g fill="none" stroke="#D8C9A8" stroke-width="2" stroke-linecap="round" opacity="0.7">
+    <path d="M960 280 C 1000 270, 1040 280, 1080 270"/><path d="M980 230 C 1020 220, 1060 230, 1100 222"/>
+  </g>
+</svg>

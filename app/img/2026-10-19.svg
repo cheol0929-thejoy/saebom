@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="아직 밝기 전 새벽, 빈 들판 너머 지평선에 첫 빛이 번진다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2F3E52"/><stop offset="0.55" stop-color="#6E7D8C"/><stop offset="0.8" stop-color="#D9B98A"/><stop offset="1" stop-color="#F3DDB4"/>
+    </linearGradient>
+    <radialGradient id="dawn" cx="0.62" cy="0.66" r="0.45"><stop offset="0" stop-color="#FFE7B8" stop-opacity="0.95"/><stop offset="1" stop-color="#FFE7B8" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#dawn)"/>
+  <g fill="#F4EEDD"><circle cx="160" cy="90" r="2.5"/><circle cx="320" cy="60" r="2"/><circle cx="520" cy="110" r="1.8"/><circle cx="900" cy="70" r="2.2"/><circle cx="1060" cy="130" r="1.8"/><circle cx="760" cy="40" r="1.6"/><circle cx="240" cy="170" r="1.5"/></g>
+  <path d="M1010 120 a34 34 0 1 0 22 60 a28 28 0 1 1 -22 -60 Z" fill="#F4EEDD" opacity="0.85"/>
+  <!-- far hills -->
+  <path d="M0 470 C 160 430, 300 445, 460 425 C 620 405, 760 440, 900 430 C 1030 420, 1120 432, 1200 440 L1200 675 L0 675 Z" fill="#5E6A6E"/>
+  <!-- near wilderness -->
+  <path d="M0 520 C 220 490, 420 505, 640 495 C 860 486, 1020 500, 1200 510 L1200 675 L0 675 Z" fill="#46524F"/>
+  <!-- path into the quiet place -->
+  <path d="M520 675 C 560 610, 640 570, 700 530 C 720 517, 735 508, 745 500 L 760 502 C 745 515, 720 535, 700 552 C 660 590, 640 630, 640 675 Z" fill="#7C7A66" opacity="0.8"/>
+  <!-- a lone rock (place of prayer) -->
+  <path d="M735 503 C 745 485, 790 480, 810 492 C 822 500, 820 508, 805 510 L 742 510 Z" fill="#3A4542"/>
+  <!-- grasses -->
+  <g stroke="#2F3936" stroke-width="3" stroke-linecap="round">
+    <line x1="120" y1="640" x2="112" y2="605"/><line x1="128" y1="640" x2="134" y2="600"/><line x1="136" y1="640" x2="150" y2="612"/>
+    <line x1="1040" y1="630" x2="1032" y2="596"/><line x1="1048" y1="630" x2="1052" y2="590"/><line x1="1056" y1="630" x2="1070" y2="604"/>
+  </g>
+</svg>

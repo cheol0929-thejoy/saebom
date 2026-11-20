@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 번지는 물가에 꺾여 휘어진 갈대와 작은 등불">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E3A3C"/>
+      <stop offset="0.45" stop-color="#6E6A5A"/>
+      <stop offset="0.75" stop-color="#C9A574"/>
+      <stop offset="1" stop-color="#E9D6B2"/>
+    </linearGradient>
+    <radialGradient id="dawn" cx="0.5" cy="0.62" r="0.55">
+      <stop offset="0" stop-color="#F6E3B4" stop-opacity="0.95"/>
+      <stop offset="0.35" stop-color="#E8C98E" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#E8C98E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FA38F"/>
+      <stop offset="0.5" stop-color="#5F7566"/>
+      <stop offset="1" stop-color="#3C4E43"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5E6E57"/>
+      <stop offset="1" stop-color="#3B4836"/>
+    </linearGradient>
+    <linearGradient id="rock" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8A7B66"/>
+      <stop offset="1" stop-color="#4F4538"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE9A8" stop-opacity="0.9"/>
+      <stop offset="0.4" stop-color="#F3C86E" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#F3C86E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="flame" cx="0.5" cy="0.7" r="0.6">
+      <stop offset="0" stop-color="#FFF6D6"/>
+      <stop offset="0.5" stop-color="#F2B74A"/>
+      <stop offset="1" stop-color="#C96D2A"/>
+    </radialGradient>
+    <linearGradient id="reed" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8FA86A"/>
+      <stop offset="1" stop-color="#5F7A45"/>
+    </linearGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF1C8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFF1C8" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="softer" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#dawn)"/>
+
+  <!-- light from above -->
+  <polygon points="520,-20 680,-20 820,430 380,430" fill="url(#ray)" filter="url(#softer)"/>
+  <polygon points="575,-20 625,-20 700,430 500,430" fill="url(#ray)" filter="url(#soft)" opacity="0.7"/>
+
+  <!-- far hills -->
+  <path d="M0,400 C150,350 260,370 380,395 C470,412 560,392 600,398 L600,470 L0,470 Z" fill="url(#hill)" opacity="0.75"/>
+  <path d="M600,398 C700,380 820,345 950,372 C1060,395 1130,390 1200,380 L1200,470 L600,470 Z" fill="url(#hill)" opacity="0.75"/>
+
+  <!-- water -->
+  <rect x="0" y="430" width="1200" height="245" fill="url(#water)"/>
+  <!-- reflections of dawn on water -->
+  <ellipse cx="600" cy="470" rx="320" ry="26" fill="#F0D8A2" opacity="0.35" filter="url(#soft)"/>
+  <g stroke="#E8D3A4" stroke-width="2" opacity="0.5" stroke-linecap="round">
+    <path d="M350,500 q40,-4 80,0 q40,4 80,0"/>
+    <path d="M700,520 q35,-4 70,0 q35,4 70,0"/>
+    <path d="M430,560 q50,-5 100,0 q50,5 100,0"/>
+    <path d="M620,595 q45,-4 90,0 q45,4 90,0"/>
+    <path d="M250,610 q40,-4 80,0 q40,4 80,0"/>
+    <path d="M820,640 q40,-4 80,0 q40,4 80,0"/>
+  </g>
+
+  <!-- shore / rock -->
+  <path d="M300,675 C360,600 470,560 600,562 C730,564 830,600 900,675 Z" fill="#6B5E4A"/>
+  <path d="M470,650 C500,595 560,580 625,586 C690,592 730,620 745,660 L740,675 L470,675 Z" fill="url(#rock)"/>
+  <path d="M485,650 C515,610 560,598 620,604 C660,608 700,626 715,652 Z" fill="#9D8C72" opacity="0.4"/>
+
+  <!-- reed roots, some straight reeds far back -->
+  <g stroke="#6F8A50" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.75">
+    <path d="M405,650 C407,590 410,530 418,470"/>
+    <path d="M440,655 C438,600 440,545 446,500"/>
+    <path d="M790,655 C792,590 795,530 788,480"/>
+    <path d="M820,660 C824,600 826,540 835,500"/>
+  </g>
+  <g fill="#8B7345" opacity="0.8">
+    <ellipse cx="419" cy="462" rx="6" ry="20"/>
+    <ellipse cx="447" cy="493" rx="5" ry="16"/>
+    <ellipse cx="787" cy="472" rx="6" ry="20"/>
+    <ellipse cx="836" cy="493" rx="5" ry="16"/>
+  </g>
+
+  <!-- the bruised reed: tall stem, bent sharply but not broken, head hanging -->
+  <path d="M520,650 C515,580 518,500 528,420 C534,370 540,330 544,300" stroke="url(#reed)" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- bend joint -->
+  <path d="M544,300 C548,282 560,270 582,268 C608,266 626,284 630,310 C633,330 626,352 616,372" stroke="url(#reed)" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <!-- crease marks at the bend -->
+  <path d="M552,290 L560,282 M556,300 L566,290" stroke="#3F5530" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- hanging seed head -->
+  <ellipse cx="620" cy="388" rx="12" ry="30" fill="#A98554"/>
+  <ellipse cx="620" cy="388" rx="7" ry="24" fill="#C8A36E" opacity="0.7"/>
+  <!-- leaves -->
+  <path d="M523,560 C470,540 440,500 428,460 C470,480 505,515 523,560 Z" fill="#6F8A50"/>
+  <path d="M530,470 C590,450 630,415 648,380 C600,392 560,425 530,470 Z" fill="#7C975A"/>
+  <path d="M518,610 C480,615 450,600 430,585 C462,578 492,586 518,610 Z" fill="#5F7A45"/>
+
+  <!-- lamp glow -->
+  <circle cx="665" cy="590" r="120" fill="url(#glow)" filter="url(#soft)"/>
+
+  <!-- clay lamp -->
+  <path d="M615,612 C615,598 640,590 668,590 C696,590 722,598 722,612 L718,626 C700,636 636,636 619,626 Z" fill="#8F6B45"/>
+  <path d="M615,612 C630,604 650,600 668,600 C686,600 706,604 722,612 C705,606 640,606 615,612 Z" fill="#B48B5E"/>
+  <ellipse cx="668" cy="610" rx="40" ry="8" fill="#3E2E1F"/>
+  <!-- spout -->
+  <path d="M718,606 C734,600 744,604 748,612 C740,616 728,616 718,618 Z" fill="#A47D52"/>
+  <!-- wick -->
+  <path d="M743,606 L745,596" stroke="#2A1F14" stroke-width="3" stroke-linecap="round"/>
+  <!-- small flame, faint -->
+  <path d="M745,598 C738,588 740,578 745,570 C750,578 752,588 745,598 Z" fill="url(#flame)" opacity="0.95"/>
+  <circle cx="745" cy="588" r="14" fill="#FFE9A8" opacity="0.35" filter="url(#soft)"/>
+  <!-- thin smoke -->
+  <path d="M746,566 C740,552 752,544 746,530 C740,516 752,506 747,492" stroke="#D8D0C2" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+  <path d="M748,490 C742,478 752,470 748,458" stroke="#D8D0C2" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.35"/>
+
+  <!-- small pebbles -->
+  <ellipse cx="590" cy="660" rx="14" ry="6" fill="#7C6A52"/>
+  <ellipse cx="760" cy="662" rx="10" ry="5" fill="#7C6A52"/>
+  <ellipse cx="640" cy="668" rx="9" ry="4" fill="#9A8669"/>
+
+  <!-- soft dawn mist over water edge -->
+  <rect x="0" y="420" width="1200" height="60" fill="#F0DDB4" opacity="0.18" filter="url(#softer)"/>
+</svg>

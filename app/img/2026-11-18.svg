@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t">
+  <title id="t">새벽빛 아래 돌 제단 위에 타오르는 감사의 불과 하늘로 오르는 연기</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B3F57"/>
+      <stop offset="0.45" stop-color="#8E7D86"/>
+      <stop offset="0.75" stop-color="#E7B98A"/>
+      <stop offset="1" stop-color="#F6E3C4"/>
+    </linearGradient>
+    <radialGradient id="dawn" cx="0.5" cy="0.62" r="0.45">
+      <stop offset="0" stop-color="#FFF1CC" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#F3C98E" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#F3C98E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="farhill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FA37C"/>
+      <stop offset="1" stop-color="#6F8763"/>
+    </linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6E8A5C"/>
+      <stop offset="1" stop-color="#4E6B46"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A88A64"/>
+      <stop offset="1" stop-color="#7E6446"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9B8A0"/>
+      <stop offset="1" stop-color="#8E7A62"/>
+    </linearGradient>
+    <linearGradient id="stone2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B9A58B"/>
+      <stop offset="1" stop-color="#7C6951"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE39A" stop-opacity="0.85"/>
+      <stop offset="0.55" stop-color="#F7B35A" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F7B35A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#F08A2E"/>
+      <stop offset="0.55" stop-color="#F8C04A"/>
+      <stop offset="1" stop-color="#FFF0B8"/>
+    </linearGradient>
+    <linearGradient id="flameIn" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#FBD36B"/>
+      <stop offset="1" stop-color="#FFFBE6"/>
+    </linearGradient>
+    <linearGradient id="smoke" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#F6E7D2" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#F6E7D2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF4D2" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFF4D2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 하늘 -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <rect width="1200" height="675" fill="url(#dawn)"/>
+  <!-- 내려오는 빛줄기 -->
+  <g opacity="0.7">
+    <polygon points="600,0 440,470 760,470" fill="url(#ray)"/>
+    <polygon points="600,0 520,470 680,470" fill="url(#ray)"/>
+  </g>
+  <!-- 새벽 별 -->
+  <g fill="#FFF7DF" opacity="0.8">
+    <circle cx="150" cy="80" r="2"/><circle cx="310" cy="130" r="1.6"/><circle cx="980" cy="70" r="2"/>
+    <circle cx="1090" cy="150" r="1.4"/><circle cx="820" cy="40" r="1.3"/><circle cx="90" cy="190" r="1.5"/>
+  </g>
+
+  <!-- 먼 산 -->
+  <path d="M0 420 C 160 360, 260 400, 380 380 S 600 330, 760 372 S 1000 350, 1200 400 L1200 470 L0 470Z" fill="url(#farhill)" opacity="0.9"/>
+  <!-- 들판 -->
+  <path d="M0 470 C 220 440, 420 462, 600 452 S 980 430, 1200 462 L1200 675 L0 675Z" fill="url(#field)"/>
+  <!-- 제단 주변 흙 땅 -->
+  <ellipse cx="600" cy="590" rx="330" ry="58" fill="url(#ground)"/>
+  <ellipse cx="600" cy="588" rx="250" ry="40" fill="#6E5740" opacity="0.35"/>
+
+  <!-- 불빛 번짐 -->
+  <ellipse cx="600" cy="430" rx="260" ry="200" fill="url(#glow)"/>
+
+  <!-- 연기 -->
+  <g fill="url(#smoke)" opacity="0.9">
+    <path d="M585 395 C 560 350, 640 330, 605 285 C 575 245, 650 220, 618 170 C 595 135, 660 115, 640 60 L 660 60 C 690 125, 615 150, 645 190 C 672 230, 600 255, 630 300 C 655 338, 585 360, 612 395 Z"/>
+    <path d="M612 400 C 650 365, 600 340, 640 310 C 672 285, 625 255, 665 225 C 690 205, 668 175, 690 150 L 705 158 C 688 182, 712 205, 684 232 C 650 262, 700 288, 662 318 C 630 344, 676 368, 640 402 Z" opacity="0.6"/>
+  </g>
+
+  <!-- 돌 제단 -->
+  <g>
+    <!-- 바닥 돌단 -->
+    <path d="M430 560 L770 560 L740 600 L460 600 Z" fill="url(#stone2)"/>
+    <path d="M430 560 L770 560 L770 548 L430 548 Z" fill="#D2C3AA"/>
+    <!-- 중간 단 -->
+    <rect x="470" y="490" width="260" height="60" rx="6" fill="url(#stone)"/>
+    <g fill="none" stroke="#6F5E48" stroke-width="2" opacity="0.6">
+      <path d="M470 520 H730"/>
+      <path d="M520 490 V520 M600 490 V520 M680 490 V520"/>
+      <path d="M560 520 V550 M640 520 V550"/>
+    </g>
+    <!-- 윗 단 -->
+    <rect x="500" y="440" width="200" height="52" rx="5" fill="url(#stone)"/>
+    <g fill="none" stroke="#6F5E48" stroke-width="2" opacity="0.6">
+      <path d="M500 466 H700"/>
+      <path d="M560 440 V466 M640 440 V466 M520 466 V492 M600 466 V492 M680 466 V492"/>
+    </g>
+    <!-- 제단 위 나무 -->
+    <path d="M520 442 L680 442 L672 430 L528 430 Z" fill="#6B4A2E"/>
+    <path d="M540 430 L660 430 L650 420 L550 420 Z" fill="#7E5A38"/>
+  </g>
+
+  <!-- 불꽃 -->
+  <g>
+    <path d="M600 420 C 560 395, 548 352, 575 325 C 585 345, 600 350, 598 332 C 596 312, 582 300, 600 270 C 612 300, 640 310, 630 345 C 625 362, 648 368, 650 388 C 652 408, 630 420, 600 420 Z" fill="url(#flame)"/>
+    <path d="M600 418 C 578 405, 572 378, 590 360 C 597 372, 604 374, 603 362 C 602 350, 596 342, 605 325 C 612 342, 626 350, 622 372 C 620 384, 630 390, 630 400 C 630 412, 616 418, 600 418 Z" fill="url(#flameIn)"/>
+    <!-- 불씨 -->
+    <g fill="#FFE6A8">
+      <circle cx="556" cy="330" r="2.5" opacity="0.9"/><circle cx="660" cy="300" r="2" opacity="0.8"/>
+      <circle cx="572" cy="282" r="1.8" opacity="0.7"/><circle cx="645" cy="262" r="1.6" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- 질그릇 -->
+  <g>
+    <path d="M382 560 C 378 535, 388 515, 400 512 L 440 512 C 452 515, 462 535, 458 560 C 452 580, 388 580, 382 560 Z" fill="#9C6A45"/>
+    <path d="M396 512 L444 512 C 446 505, 440 500, 420 500 C 400 500, 394 505, 396 512 Z" fill="#B47E54"/>
+    <ellipse cx="420" cy="506" rx="18" ry="4" fill="#5E3E27" opacity="0.8"/>
+    <path d="M388 540 C 405 548, 440 548, 454 540" fill="none" stroke="#7A4F32" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- 이삭 -->
+  <g stroke="#D9B35E" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M790 572 C 798 540, 812 510, 835 480"/>
+    <path d="M806 574 C 820 545, 840 520, 870 500"/>
+    <path d="M774 575 C 772 548, 778 520, 792 496"/>
+  </g>
+  <g fill="#E8C878">
+    <ellipse cx="840" cy="474" rx="5" ry="10" transform="rotate(-40 840 474)"/><ellipse cx="830" cy="486" rx="5" ry="10" transform="rotate(-40 830 486)"/><ellipse cx="848" cy="464" rx="5" ry="10" transform="rotate(-40 848 464)"/>
+    <ellipse cx="874" cy="496" rx="5" ry="10" transform="rotate(-60 874 496)"/><ellipse cx="862" cy="504" rx="5" ry="10" transform="rotate(-60 862 504)"/><ellipse cx="884" cy="488" rx="5" ry="10" transform="rotate(-60 884 488)"/>
+    <ellipse cx="794" cy="492" rx="5" ry="10" transform="rotate(-20 794 492)"/><ellipse cx="788" cy="504" rx="5" ry="10" transform="rotate(-20 788 504)"/><ellipse cx="800" cy="480" rx="5" ry="10" transform="rotate(-20 800 480)"/>
+  </g>
+
+  <!-- 앞쪽 풀 -->
+  <g stroke="#4F6D47" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.9">
+    <path d="M120 640 C 128 620, 134 605, 146 592"/><path d="M140 644 C 142 625, 150 610, 162 600"/>
+    <path d="M1040 648 C 1046 628, 1056 612, 1072 600"/><path d="M1060 650 C 1066 632, 1078 618, 1094 608"/>
+    <path d="M300 660 C 305 645, 312 634, 322 626"/><path d="M900 662 C 905 646, 912 636, 924 628"/>
+  </g>
+</svg>

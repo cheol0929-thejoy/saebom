@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="새벽빛이 스며드는 장막 앞, 등잔불 곁 돌바닥에 왕관이 조용히 내려져 있고 그 옆에 종의 앞치마와 무릎을 꿇을 작은 자리가 놓여 있다">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B2F2A"/>
+      <stop offset="0.45" stop-color="#8A6A52"/>
+      <stop offset="0.75" stop-color="#D9B98F"/>
+      <stop offset="1" stop-color="#F3E3C6"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9C7E62"/>
+      <stop offset="1" stop-color="#5E4634"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE7B0" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#F5C97A" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#F5C97A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lampglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF1C8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFD98A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5A4231"/>
+      <stop offset="0.5" stop-color="#7A5A42"/>
+      <stop offset="1" stop-color="#4E3828"/>
+    </linearGradient>
+    <linearGradient id="door" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE6AE"/>
+      <stop offset="1" stop-color="#E9B96A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2D68A"/>
+      <stop offset="0.5" stop-color="#D3B370"/>
+      <stop offset="1" stop-color="#A47E3C"/>
+    </linearGradient>
+    <linearGradient id="linen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F6EEDC"/>
+      <stop offset="1" stop-color="#D9CBAE"/>
+    </linearGradient>
+    <linearGradient id="mat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5E7D5A"/>
+      <stop offset="1" stop-color="#8DBE97"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 하늘과 새벽빛 -->
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <ellipse cx="600" cy="300" rx="420" ry="220" fill="url(#glow)"/>
+  <g stroke="#FFE7B0" stroke-opacity="0.18" stroke-width="40" stroke-linecap="round">
+    <line x1="600" y1="300" x2="330" y2="40"/>
+    <line x1="600" y1="300" x2="600" y2="10"/>
+    <line x1="600" y1="300" x2="870" y2="40"/>
+  </g>
+  <g stroke="#FFE7B0" stroke-opacity="0.1" stroke-width="80" stroke-linecap="round">
+    <line x1="600" y1="300" x2="200" y2="130"/>
+    <line x1="600" y1="300" x2="1000" y2="130"/>
+  </g>
+
+  <!-- 먼 언덕 -->
+  <path d="M0 420 C 180 360, 330 395, 470 380 C 600 365, 720 400, 860 380 C 980 362, 1100 395, 1200 385 L1200 675 L0 675 Z" fill="#6E5440" opacity="0.8"/>
+
+  <!-- 장막 -->
+  <g>
+    <path d="M600 150 L905 420 L295 420 Z" fill="url(#tent)"/>
+    <path d="M600 150 L295 420 L380 420 L600 190 Z" fill="#8C6B50" opacity="0.5"/>
+    <line x1="600" y1="150" x2="600" y2="420" stroke="#3E2B1E" stroke-width="3" opacity="0.5"/>
+    <!-- 열린 문에서 새어 나오는 빛 -->
+    <path d="M600 215 L676 420 L524 420 Z" fill="url(#door)"/>
+    <path d="M600 215 L640 420 L560 420 Z" fill="#FFF4D2" opacity="0.8"/>
+    <!-- 장막 줄 -->
+    <line x1="295" y1="420" x2="230" y2="470" stroke="#3E2B1E" stroke-width="3"/>
+    <line x1="905" y1="420" x2="970" y2="470" stroke="#3E2B1E" stroke-width="3"/>
+    <line x1="230" y1="470" x2="222" y2="462" stroke="#3E2B1E" stroke-width="6"/>
+    <line x1="970" y1="470" x2="978" y2="462" stroke="#3E2B1E" stroke-width="6"/>
+  </g>
+
+  <!-- 돌바닥 -->
+  <rect x="0" y="420" width="1200" height="255" fill="url(#ground)"/>
+  <g fill="#B49A7C" opacity="0.5">
+    <ellipse cx="180" cy="520" rx="110" ry="22"/>
+    <ellipse cx="1030" cy="540" rx="120" ry="24"/>
+    <ellipse cx="420" cy="620" rx="150" ry="26"/>
+    <ellipse cx="820" cy="640" rx="140" ry="24"/>
+  </g>
+  <!-- 문에서 바닥으로 번지는 빛 -->
+  <path d="M524 420 L676 420 L760 675 L440 675 Z" fill="#FFE7B0" opacity="0.28"/>
+
+  <!-- 무릎 꿇을 자리(초록 깔개) -->
+  <path d="M470 560 L730 560 L760 615 L440 615 Z" fill="url(#mat)"/>
+  <path d="M470 560 L730 560 L735 568 L465 568 Z" fill="#B7D6BB" opacity="0.6"/>
+  <g stroke="#1A221C" stroke-opacity="0.35" stroke-width="2">
+    <line x1="490" y1="585" x2="710" y2="585"/>
+    <line x1="480" y1="600" x2="720" y2="600"/>
+  </g>
+
+  <!-- 내려놓은 왕관 (깔개 앞, 조금 기울어짐) -->
+  <g transform="translate(600 500) rotate(-8)">
+    <ellipse cx="0" cy="26" rx="92" ry="22" fill="#7A5A1E" opacity="0.5"/>
+    <path d="M-90 20 L-90 -14 L-62 8 L-34 -30 L-8 6 L18 -32 L44 6 L70 -14 L90 -14 L90 20 Z" fill="url(#gold)" stroke="#8A6A2E" stroke-width="2"/>
+    <ellipse cx="0" cy="20" rx="90" ry="20" fill="#C9A45E" stroke="#8A6A2E" stroke-width="2"/>
+    <ellipse cx="0" cy="20" rx="72" ry="13" fill="#5E4318" opacity="0.6"/>
+    <circle cx="-34" cy="-28" r="5" fill="#8DBE97"/>
+    <circle cx="18" cy="-30" r="5" fill="#B33E3E"/>
+    <circle cx="-62" cy="6" r="4" fill="#F6EEDC"/>
+    <circle cx="44" cy="4" r="4" fill="#F6EEDC"/>
+  </g>
+
+  <!-- 종의 앞치마 (접힌 베옷) -->
+  <g transform="translate(395 505)">
+    <ellipse cx="0" cy="34" rx="78" ry="16" fill="#3B2A1E" opacity="0.35"/>
+    <path d="M-70 30 C -60 8, -20 -2, 10 2 C 40 6, 66 18, 72 32 L-70 32 Z" fill="url(#linen)"/>
+    <path d="M-62 32 C -50 16, -10 10, 20 14 C 45 17, 62 26, 70 32" fill="none" stroke="#B9A98A" stroke-width="2"/>
+    <path d="M-30 8 C -10 2, 20 4, 45 12" fill="none" stroke="#C9B998" stroke-width="2"/>
+    <path d="M-72 32 L-60 50 L-40 48 L-50 32 Z" fill="#E6DAC0"/>
+  </g>
+
+  <!-- 등잔 -->
+  <g transform="translate(800 490)">
+    <ellipse cx="0" cy="-30" rx="110" ry="70" fill="url(#lampglow)"/>
+    <ellipse cx="0" cy="48" rx="44" ry="10" fill="#3B2A1E" opacity="0.4"/>
+    <path d="M-34 30 C -34 46, 34 46, 34 30 L30 22 L-30 22 Z" fill="#7A5A42"/>
+    <ellipse cx="0" cy="22" rx="31" ry="9" fill="#9C7E62"/>
+    <path d="M-40 40 L40 40 L44 48 L-44 48 Z" fill="#5E4634"/>
+    <path d="M0 12 C -10 2, -8 -16, 0 -26 C 8 -16, 10 2, 0 12 Z" fill="#FFB84A"/>
+    <path d="M0 8 C -5 2, -4 -8, 0 -14 C 4 -8, 5 2, 0 8 Z" fill="#FFF1C8"/>
+  </g>
+
+  <!-- 바닥 작은 돌들 -->
+  <g fill="#C9B193" opacity="0.5">
+    <ellipse cx="300" cy="650" rx="12" ry="5"/>
+    <ellipse cx="920" cy="600" rx="10" ry="4"/>
+    <ellipse cx="990" cy="655" rx="14" ry="5"/>
+    <ellipse cx="230" cy="595" rx="9" ry="4"/>
+  </g>
+</svg>
