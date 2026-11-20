@@ -134,6 +134,9 @@ footer{color:var(--muted);font-size:.75rem;text-align:center}
 #settings .small{color:var(--muted);font-size:.85rem}
 #settings dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
 #settings dt{color:var(--muted)}#settings dd{margin:0}
+#settings #build{overflow-wrap:anywhere;font-variant-numeric:tabular-nums} /* v2.0.3 앱 정보 · 업데이트: 날짜 / 빌드 코드 두 줄 */
+#settings #build .bc{color:var(--muted);font-size:.85em}
+#settings #upd-btn:disabled{opacity:.55;cursor:default}
 
 /* ===== B: player/nav (worker-5) — appended block, vars only ===== */
 .tts .pp{width:60px;height:60px}

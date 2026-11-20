@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-b74eba5e4a";
+var VERSION="v1-b247f56a74", APP_VER="2.0.3", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://claude.ai/artifact/83acT3uNMUC3NGidY5284F";
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -143,7 +143,8 @@ function wirePlayer(){
   a.addEventListener("ended",()=>{pp.textContent="▶";pp.setAttribute("aria-label","재생");});
   pp.addEventListener("click",()=>{if(a.paused)a.play().catch(()=>{});else a.pause();}); /* 앱: 재생 시작 중 목소리를 바꾸면 이전 재생 요청이 취소된다 - 오류로 남기지 않음 */
   st.addEventListener("click",()=>{a.pause();a.currentTime=0;upd();posClear(a);});
-  seek.addEventListener("input",()=>{noRestore(a);if(a.duration)a.currentTime=seek.value/1000*a.duration;});
+  seek.addEventListener("input",()=>{if(typeof UPD==="object")UPD.input=Date.now();noRestore(a);if(a.duration)a.currentTime=seek.value/1000*a.duration;}); /* r2 (Gemini m1): 끄는 동안은 손댄 것으로 */
+  const dg=on=>()=>{if(typeof UPD==="object"){UPD.drag=on;UPD.input=Date.now();}};["pointerdown","touchstart"].forEach(n=>seek.addEventListener(n,dg(true),{passive:true}));["pointerup","pointercancel","touchend","touchcancel","change"].forEach(n=>seek.addEventListener(n,dg(false),{passive:true}));
   wireExtras(a,upd);
 }
 document.addEventListener("change",ev=>{
@@ -175,10 +176,10 @@ applyFs();
 document.getElementById("fs-up").onclick=()=>{fs=Math.min(27,fs+2);applyFs();};
 document.getElementById("fs-down").onclick=()=>{fs=Math.max(15,fs-2);applyFs();};
 /* ===== 앱 추가분 ===== */
-function boot(){loadIndex().then(route).catch(()=>{document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없고 저장된 묵상도 없습니다. 인터넷에 연결한 뒤 다시 열어 주세요.</p>';});}
+function boot(){loadIndex().then(route).then(()=>{if(typeof updAfterBoot==="function")updAfterBoot();}).catch(()=>{document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없고 저장된 묵상도 없습니다. 인터넷에 연결한 뒤 다시 열어 주세요.</p>';});}
 /* 앱으로 돌아올 때마다 목록을 다시 받는다 — 05:00 넘어 새 묵상, 나중에 붙은 녹음·그림 반영 */
 var REG=null;if("serviceWorker" in navigator)navigator.serviceWorker.getRegistration().then(r=>{REG=r||null;}).catch(()=>{});
-function checkNew(){if(document.visibilityState!=="visible")return;try{if(REG)REG.update();else if("serviceWorker" in navigator)navigator.serviceWorker.getRegistration().then(r=>{REG=r||null;if(REG)REG.update();});}catch(err){}const a=document.getElementById("player");if(a&&!a.paused)return;
+function checkNew(){if(document.visibilityState!=="visible")return;if(typeof updCheck==="function")updCheck(); /* v2.0.3: 새 판 확인 + 마지막 확인 시각 기록 */const a=document.getElementById("player");if(a&&!a.paused)return;
   /* F36 (Gemini quick r1): 같은 날이고 그날 자료가 그대로면 다시 그리지 않는다 — 같은 <audio> 가 남아 멈춘 위치·상태가 그대로(음원 서버가 Range 를 안 받아 새 재생기에서는 위치를 되돌릴 수 없음). 날이 바뀌었거나 자료가 바뀌었을 때만 다시 그린다. */
   const was=CURRENT,top=VISIBLE[0]&&VISIBLE[0].id,old=VISIBLE.find(x=>x.id===was),oldTxt=old&&DAYS[old.iso]?JSON.stringify(DAYS[old.iso]):null;
   loadIndex().then(()=>{newDayNote(top);if(!document.getElementById("settings").hidden)return;const h=normId(location.hash.slice(1)),want=h&&h!==top?h:"",meta=VISIBLE.find(x=>x.id===want||x.iso===want)||VISIBLE[0];
@@ -193,12 +194,22 @@ let THEME="dark";try{const t=localStorage.getItem("theme");if(t==="light"||t==="
 applyTheme(THEME);
 document.addEventListener("click",ev=>{const b=ev.target.closest("[data-theme-set]");if(!b)return;THEME=b.dataset.themeSet;try{localStorage.setItem("theme",THEME)}catch(err){}applyTheme(THEME);});
 /* 홈 화면에 추가 */
-let DEFER=null;window.addEventListener("beforeinstallprompt",ev=>{ev.preventDefault();DEFER=ev;const b=document.getElementById("inst-btn");if(b)b.hidden=false;});
-document.getElementById("inst-btn").addEventListener("click",()=>{if(!DEFER)return;DEFER.prompt();DEFER.userChoice.finally(()=>{DEFER=null;document.getElementById("inst-btn").hidden=true;});});
+/* v2.0.3 (오너 「설정에서 앱 다운로드 및 설치 하게 하라」, CEO 05:29): 「앱 설치」 단추는 늘 보인다(이미 설치됐으면 숨김).
+   안드로이드 크롬·엣지·삼성 인터넷 = 브라우저 설치 창(beforeinstallprompt) / 그 창이 없으면(아이폰·사파리 등) = 2단계 그림 안내를 펼친다 */
+let DEFER=null,INSTALLED=false,GUIDE=false;
+const isStandalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+window.addEventListener("beforeinstallprompt",ev=>{ev.preventDefault();DEFER=ev;instUI();});
+window.addEventListener("appinstalled",()=>{DEFER=null;INSTALLED=true;GUIDE=false;instUI();});
+document.getElementById("inst-btn").addEventListener("click",()=>{
+  if(DEFER){const e=DEFER;DEFER=null;try{e.prompt();}catch(err){}Promise.resolve(e.userChoice).then(c=>{if(c&&c.outcome==="accepted")INSTALLED=true;},()=>{}).then(instUI);return;}
+  GUIDE=!GUIDE;instUI();if(GUIDE){const g=document.getElementById(IOS?"g-ios":"g-android");if(g)setTimeout(()=>g.scrollIntoView({block:"nearest"}),30);}});
+function instUI(){const $=id=>document.getElementById(id),sa=isStandalone(),done=sa||INSTALLED,b=$("inst-btn"),d=$("inst-done");if(!b)return;
+  d.hidden=!done;d.textContent=sa?"이미 설치되어 있습니다. 홈 화면 아이콘으로 열려 있습니다.":INSTALLED?"설치되었습니다. 홈 화면의 새봄묵상 아이콘으로 여시면 됩니다.":"";
+  b.hidden=done;$("inst-note").hidden=done;b.setAttribute("aria-expanded",String(!DEFER&&GUIDE));
+  const show=!done&&!DEFER&&GUIDE;$("g-ios").hidden=!(show&&IOS);$("g-android").hidden=!(show&&!IOS);}
 function showSettings(top){applyTheme(THEME);
-  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;document.getElementById("inst-done").hidden=!standalone;
-  const and=/Android/i.test(navigator.userAgent);document.getElementById("g-android").hidden=IOS;document.getElementById("g-ios").hidden=and;
-  document.getElementById("ver").textContent=VERSION;
+  instUI();
+  updUI();
   const n=DATA_IDX&&DATA_IDX.days.length?DATA_IDX.days.length:0;document.getElementById("datainfo").textContent=VISIBLE[0]?(VISIBLE[0].short+" 묵상까지 · "+VISIBLE.length+"일"):"-";
   if(top!==false)window.scrollTo(0,0);}
 
@@ -229,7 +240,8 @@ function at0500(){const t=nowMs(),D=864e5,off=((t-20*3600e3)%D+D)%D;setTimeout(f
 at0500();
 if("serviceWorker" in navigator){const had=!!navigator.serviceWorker.controller;
   navigator.serviceWorker.addEventListener("message",ev=>{if(ev.data&&ev.data.type==="saebom:new-day")checkNew();});
-  navigator.serviceWorker.addEventListener("controllerchange",()=>{if(had)toast("새 버전이 준비됐습니다","다시 열기",()=>location.reload());});}
+  let CTL=navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener("controllerchange",()=>{const prev=CTL;CTL=navigator.serviceWorker.controller;if(had||prev)updFound();});} /* v2.0.3: 「다시 열기」 대신 안전한 때 자동 적용. 처음 연 화면(아직 SW 없음)이 첫 설치 뒤 열린 채 다음 판을 받아도 적용 */
+var HAD_CTL=!!("serviceWorker" in navigator&&navigator.serviceWorker.controller);
 /* 재생기 추가분: ±15초 · 날짜별 위치 기억 · 잠금화면 */
 function skipBy(s){const a=document.getElementById("player");if(!a)return;noRestore(a);let t=(a.currentTime||0)+s;if(isFinite(a.duration))t=Math.min(t,Math.max(0,a.duration-0.25));a.currentTime=Math.max(0,t);}
 const posKey=a=>"pos:"+((document.getElementById("day")||{dataset:{}}).dataset.iso||"")+":"+(a.dataset.kind||"");
@@ -264,3 +276,56 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 /* ===== /B ===== */
 /* 오너 지시 21:11: 새봄묵상 로고(머리글, 설정 화면에서도 보임)를 누르면 오늘 묵상 화면으로 */
 document.addEventListener("click",ev=>{const h=ev.target.closest("a.home");if(!h)return;ev.preventDefault();if(location.hash&&location.hash!=="#"){NAVDIR="";location.hash="";}else{window.scrollTo(0,0);}});
+/* ===== v2.0.3 자동 업데이트 (worker-8, 2026-11-21 · 오너 「설정에 업데이트 여부 알리고 자동업데이트 되도록 해라」) =====
+   새 서비스워커는 받자마자 자리를 잡고(skipWaiting·clients.claim), 이 화면은 안전한 때 조용히 다시 열린다:
+   음성이 재생 중이면 절대 다시 열지 않는다. 적용하는 때 = ①앱을 연 직후·돌아온 직후 15초 안 ②20초 동안 손대지 않음 ③화면이 가려짐(듣다 멈춘 중간이 아니면)
+   ④재생이 끝남·■(처음으로) ⑤설정의 「지금 확인」. 다시 열기 전에 날짜(#주소)·스크롤·들은 위치·고른 목소리를 남기고, 열린 뒤 「새 버전으로 업데이트되었습니다」를 한 번 띄운다.
+   새 판 확인 = 열 때·돌아올 때(checkNew)·열려 있는 동안 30분마다·「지금 확인». */
+var UPD={pending:false,shown:Date.now(),input:0,user:0,checking:false,err:false,found:false,drag:false};
+const UPD_KEY="saebom:updRestore";
+function updPlaying(){const a=document.getElementById("player");return !!(a&&!a.paused&&!a.ended);}
+function updMidway(){const a=document.getElementById("player");return !!(a&&a.paused&&!a.ended&&a.currentTime>0);}
+["pointerdown","keydown","touchstart","wheel"].forEach(n=>document.addEventListener(n,()=>{UPD.input=Date.now();},{passive:true,capture:true}));
+["pointerup","pointercancel","touchend","touchcancel"].forEach(n=>document.addEventListener(n,()=>{if(UPD.drag){UPD.drag=false;UPD.input=Date.now();}},{passive:true,capture:true})); /* r2: 재생 막대 밖에서 손을 떼도 끌기 끝 */
+try{const m=JSON.parse(sessionStorage.getItem(UPD_KEY)||"null");if(m&&Date.now()-m.t<120000){UPD.restore=m;if(m.vc)VCLICK=true;}else sessionStorage.removeItem(UPD_KEY);}catch(err){}
+function updApply(){if(UPD.applied)return;UPD.applied=true;
+  try{sessionStorage.setItem(UPD_KEY,JSON.stringify({t:Date.now(),y:Math.round(window.scrollY||0),h:location.hash,vc:VCLICK,from:VERSION}));}catch(err){}
+  try{if(SAVEPOS)SAVEPOS();}catch(err){}
+  location.reload();}
+function updTry(why){if(!UPD.pending||UPD.applied)return;updUI();if(updPlaying())return; /* 듣는 중에는 다시 열지 않는다 */
+  const sk=document.getElementById("seek");if(UPD.drag||(sk&&sk.matches(":active")))return; /* 재생 위치를 끄는 중 (r2 Gemini m1: :active 만으로는 iOS 터치 끌기를 못 잡음) */
+  if(PENDING!==null)return; /* 다른 날·목소리를 불러오는 중 (r2 Gemini M2) */
+  const t=Date.now(),hid=document.visibilityState==="hidden";
+  /* r2 (Gemini M2): 열기·돌아온 직후 15초 창은 그 뒤로 아직 아무것도 만지지 않았을 때만. 한 번이라도 만졌으면 20초 동안 손대지 않을 때까지 기다린다 */
+  if(why==="user"||why==="stop"||(hid&&!updMidway())||(!hid&&((t-UPD.shown<15000&&UPD.input<UPD.shown)||t-UPD.input>20000)))updApply();}
+function updFound(){UPD.pending=true;UPD.err=false;updTry(Date.now()-UPD.user<60000?"user":"ctl");}
+function updCheck(user){if(!("serviceWorker" in navigator))return Promise.resolve();if(user)UPD.user=Date.now();UPD.checking=true;updUI();
+  /* r2 (Gemini M1): 처음 연 화면은 sw.js 등록(window load) 전에 여기 올 수 있다 - 등록을 기다린다(15초까지), 「확인하지 못했습니다」로 단정하지 않는다 */
+  /* WebKit(r2 gate): 첫 SW 가 설치 중일 때 update() 가 실패한다 - 늘 ready(활성 SW 있음)를 기다린 뒤 확인 */
+  const regP=Promise.race([navigator.serviceWorker.ready,new Promise((_,no)=>setTimeout(()=>no(new Error("no sw")),15000))]);
+  return regP.then(r=>{REG=r||null;if(!r)throw new Error("no sw");return r.update().then(()=>r);}).then(r=>{UPD.checking=false;UPD.err=false;
+    try{localStorage.setItem("updChk",String(Date.now()));}catch(err){}
+    if(r.waiting&&!r.installing)r.waiting.postMessage({type:"saebom:skip"});
+    /* r2 (Gemini M1): 「적용 중」은 이 화면을 이미 맡은 SW 가 있고 새 SW 가 설치·대기 중일 때만(처음 설치는 새 판이 아님). 새 SW 가 실패(redundant)하면 다시 지운다 */
+    const nw=r.installing||r.waiting;UPD.found=!!(nw&&navigator.serviceWorker.controller&&!UPD.pending);
+    if(nw&&UPD.found)nw.addEventListener("statechange",()=>{if(nw.state==="redundant"&&!UPD.pending){UPD.found=false;updUI();}});
+    updUI();}).catch(()=>{UPD.checking=false;UPD.err=true;if(!UPD.pending)UPD.found=false;updUI();});}
+function updUI(){const $=id=>document.getElementById(id);if(!$("upd-st"))return;
+  $("ver").textContent="v"+APP_VER;$("build").innerHTML=esc(BUILT)+'<br><span class="bc">'+esc(VERSION)+'</span>';
+  let c=0;try{c=parseInt(localStorage.getItem("updChk"),10)||0;}catch(err){}
+  let ct="아직 확인하지 않았습니다";if(c){try{ct=new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",month:"long",day:"numeric",hour:"numeric",minute:"2-digit"}).format(new Date(c));}catch(err){ct=new Date(c).toLocaleString();}}
+  $("upd-chk").textContent=ct;
+  $("upd-st").textContent=!("serviceWorker" in navigator)?"이 브라우저는 자동 업데이트를 지원하지 않습니다":(UPD.pending||UPD.found)?(updPlaying()?"새 버전 적용 중… (재생이 멈추면 적용됩니다)":"새 버전 적용 중…"):UPD.checking?"확인 중…":UPD.err?"확인하지 못했습니다 (인터넷 연결을 확인해 주세요)":"최신 버전입니다";
+  $("upd-btn").disabled=UPD.checking||!("serviceWorker" in navigator);} /* r2 (Gemini m2) */
+function updAfterBoot(){const m=UPD.restore;UPD.restore=null;try{sessionStorage.removeItem(UPD_KEY);}catch(err){}
+  if(m&&m.h===location.hash&&m.y>0){const go=()=>window.scrollTo(0,m.y);go();setTimeout(go,300);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>setTimeout(go,50));}
+  let last=null;try{last=localStorage.getItem("appBuild");}catch(err){}
+  if(last!==VERSION){if(last||HAD_CTL)toast("새 버전으로 업데이트되었습니다 (v"+APP_VER+")");try{localStorage.setItem("appBuild",VERSION);}catch(err){}} /* 판마다 한 번 */
+  UPD.shown=Date.now();updCheck();}
+document.addEventListener("click",ev=>{if(ev.target.closest("#upd-btn"))updCheck(true).then(()=>{if(UPD.pending)updTry("user");});
+  if(ev.target.closest("#st"))setTimeout(()=>updTry("stop"),0);});
+document.addEventListener("ended",()=>updTry("stop"),true);document.addEventListener("pause",()=>setTimeout(()=>updTry("pause"),0),true);
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")UPD.shown=Date.now();updTry("vis");});
+setInterval(()=>{if(UPD.pending)updTry("tick");},5000);
+setInterval(()=>{if(document.visibilityState==="visible")updCheck();},30*60e3);
+/* ===== /v2.0.3 ===== */

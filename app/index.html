@@ -155,6 +155,9 @@ footer{color:var(--muted);font-size:.75rem;text-align:center}
 #settings .small{color:var(--muted);font-size:.85rem}
 #settings dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
 #settings dt{color:var(--muted)}#settings dd{margin:0}
+#settings #build{overflow-wrap:anywhere;font-variant-numeric:tabular-nums} /* v2.0.3 앱 정보 · 업데이트: 날짜 / 빌드 코드 두 줄 */
+#settings #build .bc{color:var(--muted);font-size:.85em}
+#settings #upd-btn:disabled{opacity:.55;cursor:default}
 
 /* ===== B: player/nav (worker-5) — appended block, vars only ===== */
 .tts .pp{width:60px;height:60px}
@@ -240,6 +243,16 @@ header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;fon
   <div id="settings" hidden>
     <a class="back" href="#">← 묵상으로</a>
     <h1>설정</h1>
+    <section class="card" id="set-install"><h2>앱 설치</h2>
+      <p id="inst-done" class="small" role="status" hidden></p>
+      <button type="button" class="btn fill" id="inst-btn" aria-expanded="false">앱 설치</button>
+      <p class="small" id="inst-note">무료입니다. 설치하면 홈 화면 아이콘으로 바로 열리고, 최근 14일 묵상은 인터넷 없이도 볼 수 있습니다.</p>
+      <div class="guide" id="g-android" hidden><b>안드로이드 (크롬·삼성 인터넷)</b>
+        <ol><li>오른쪽 위 <b>⋮</b>(점 세 개) 메뉴를 누릅니다. (삼성 인터넷은 아래 <b>≡</b>)</li><li><b>「앱 설치」</b> 또는 <b>「홈 화면에 추가」</b>를 누르고 <b>「설치」</b>를 누르면 홈 화면에 새봄묵상 아이콘이 생깁니다.</li></ol>
+        <img src="guide/android.svg" alt="크롬 오른쪽 위 점 세 개 메뉴에서 앱 설치를 누르는 그림" width="360" height="300" loading="lazy"></div>
+      <div class="guide" id="g-ios" hidden><b>아이폰 (사파리)</b>
+        <ol><li>화면 아래 <b>공유 버튼</b>(네모에 위쪽 화살표)을 누릅니다.</li><li>목록을 올려 <b>「홈 화면에 추가」</b>를 누르고 오른쪽 위 <b>「추가」</b>를 누르면 홈 화면에 아이콘이 생깁니다.</li></ol>
+        <img src="guide/ios.svg" alt="사파리 아래 공유 버튼을 누르고 홈 화면에 추가를 고르는 그림" width="360" height="300" loading="lazy"></div></section>
     <section class="card" id="set-help"><h2>사용 안내</h2>
       <ul class="howto">
         <li><b>아이콘 누르기</b> — 위쪽 SAEBOM 아이콘을 누르면 어느 화면에서든 오늘 묵상(홈)으로 돌아갑니다.</li>
@@ -252,23 +265,16 @@ header.top .offline{position:absolute;right:0;bottom:1px;top:auto;width:auto;fon
     <section class="card" id="set-theme"><h2>화면</h2>
       <div class="seg" role="group" aria-label="화면 밝기"><button type="button" data-theme-set="light">밝게</button><button type="button" data-theme-set="dark">어둡게</button></div>
       <p class="small">이 휴대폰에서만 기억합니다. 처음에는 묵상 페이지처럼 어둡게 보입니다.</p></section>
-    <section class="card" id="set-install"><h2>홈 화면에 추가</h2>
-      <p id="inst-done" class="small" hidden>이미 홈 화면에서 앱으로 열려 있습니다.</p>
-      <button type="button" class="btn fill" id="inst-btn" hidden>앱 설치</button>
-      <div class="guide" id="g-android"><b>안드로이드 (크롬)</b>
-        <ol><li>오른쪽 위 <b>⋮</b>(점 세 개)를 누릅니다.</li><li><b>「앱 설치」</b> 또는 <b>「홈 화면에 추가」</b>를 누릅니다.</li><li><b>「설치」</b>를 누르면 홈 화면에 새봄묵상 아이콘이 생깁니다.</li></ol>
-        <img src="guide/android.svg" alt="크롬 오른쪽 위 점 세 개 메뉴에서 앱 설치를 누르는 그림" width="360" height="300" loading="lazy"></div>
-      <div class="guide" id="g-ios"><b>아이폰 (사파리)</b>
-        <ol><li>화면 아래 <b>공유 버튼</b>(네모에 위쪽 화살표)을 누릅니다.</li><li>목록을 올려 <b>「홈 화면에 추가」</b>를 누릅니다.</li><li>오른쪽 위 <b>「추가」</b>를 누르면 홈 화면에 아이콘이 생깁니다.</li></ol>
-        <img src="guide/ios.svg" alt="사파리 아래 공유 버튼을 누르고 홈 화면에 추가를 고르는 그림" width="360" height="300" loading="lazy"></div></section>
     <section class="card" id="set-alarm"><h2>알림</h2>
       <p>휴대폰 알림(푸시)은 아직 제공하지 않습니다. 무료로 안정되게 보낼 방법이 없어서입니다.</p>
       <p>대신 <b>휴대폰 달력에 「매일 오전 5시 새봄묵상」 일정</b>을 넣으면, 달력이 매일 아침 알려 줍니다. 새 묵상은 오전 5시에 열립니다.</p>
       <a class="btn" id="ics" href="saebom-0500.ics" download="새봄묵상_매일오전5시.ics">달력에 매일 오전 5시 알림 넣기</a>
       <p class="small">파일을 열면 달력 앱이 「추가」를 묻습니다. 알림을 끄려면 달력에서 이 일정을 지우면 됩니다.</p>
       <p class="small">카카오톡: 자동 알림 메시지는 비용이 들어 보내지 않습니다. 묵상 화면 아래 「카카오톡으로 보내기」로 가족·이웃에게 오늘 묵상을 보낼 수 있습니다.</p></section>
-    <section class="card" id="set-info"><h2>앱 정보</h2>
-      <dl><dt>버전</dt><dd id="ver">v1-0000000000</dd><dt>묵상</dt><dd id="datainfo">-</dd><dt>성경</dt><dd>개역개정</dd><dt>문의</dt><dd>새봄교회</dd></dl>
+    <section class="card" id="set-info"><h2>앱 정보 · 업데이트</h2>
+      <dl><dt>버전</dt><dd id="ver">-</dd><dt>빌드</dt><dd id="build">-</dd><dt>마지막 확인</dt><dd id="upd-chk">-</dd><dt>상태</dt><dd id="upd-st" role="status" aria-live="polite">-</dd><dt>묵상</dt><dd id="datainfo">-</dd><dt>성경</dt><dd>개역개정</dd><dt>문의</dt><dd>새봄교회</dd></dl>
+      <button type="button" class="btn" id="upd-btn">지금 확인</button>
+      <p class="small">새 버전은 자동으로 적용됩니다. 음성을 듣는 중이면 재생이 멈춘 뒤에 적용합니다.</p>
       <p class="small">아이콘이 예전 그림이면 홈 화면 아이콘을 지우고 다시 추가해 주세요</p></section>
   </div>
 
