@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" width="360" height="300" font-family="Noto Sans KR, Malgun Gothic, sans-serif">
+<rect width="360" height="300" fill="#ffffff"/>
+<rect x="20" y="14" width="200" height="272" rx="22" fill="#F1F3F4" stroke="#5F6368" stroke-width="3"/>
+<rect x="30" y="34" width="180" height="30" rx="15" fill="#fff" stroke="#DADCE0"/>
+<text x="44" y="54" font-size="12" fill="#5F6368">cheol0929-thejoy.github.io</text>
+<circle cx="198" cy="49" r="13" fill="none" stroke="#D93025" stroke-width="3"/>
+<g fill="#202124"><circle cx="198" cy="43" r="2"/><circle cx="198" cy="49" r="2"/><circle cx="198" cy="55" r="2"/></g>
+<rect x="34" y="76" width="172" height="196" rx="8" fill="#fff" opacity=".6"/>
+<path d="M210 60 L232 82" stroke="#D93025" stroke-width="3"/>
+<rect x="150" y="80" width="196" height="150" rx="10" fill="#fff" stroke="#DADCE0" stroke-width="2"/>
+<text x="166" y="108" font-size="14" fill="#202124">새 탭</text>
+<text x="166" y="136" font-size="14" fill="#202124">북마크</text>
+<rect x="156" y="148" width="184" height="32" rx="6" fill="#FCE8E6" stroke="#D93025" stroke-width="2"/>
+<text x="166" y="170" font-size="15" font-weight="700" fill="#202124">앱 설치 · 홈 화면에 추가</text>
+<text x="166" y="210" font-size="14" fill="#202124">설정</text>
+<text x="20" y="296" font-size="0">.</text>
+<text x="236" y="262" font-size="13" fill="#5F6368">① ⋮ 누르기</text>
+<text x="236" y="280" font-size="13" fill="#5F6368">② 「앱 설치」</text></svg>
