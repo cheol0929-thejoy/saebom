@@ -1,6 +1,21 @@
 {
- "generated_for": "2026-11-21",
+ "generated_for": "2026-11-23",
  "days": [
+  {
+   "id": "d20261123",
+   "iso": "2026-11-23",
+   "short": "11.23",
+   "date": "2026년 11월 23일 월요일",
+   "title": "여호와는 나의 목자시니",
+   "ref": "시편 23편 1~6절",
+   "book": "시편",
+   "topics": [
+    "하나님"
+   ],
+   "special": false,
+   "hasPastorAudio": false,
+   "hasAiAudio": true
+  },
   {
    "id": "d20261121",
    "iso": "2026-11-21",
