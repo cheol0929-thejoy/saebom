@@ -97,7 +97,7 @@
    "label": "여성 낭독",
    "short": "여",
    "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-23_f.mp3",
-   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-11-23-f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/2026/2026-11-23_f.mp3",
    "path": "audio/2026-11-23-f.mp3",
    "dur": "7분 8초"
   },
@@ -106,7 +106,7 @@
    "label": "남성 낭독",
    "short": "남",
    "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-23_m.mp3",
-   "fallback": "https://390c2bfa-a026-419c-8ba4-610297f81a00.frame.claudeusercontent.com/_f/1795058595-16e9/audio/2026-11-23-m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/2026/2026-11-23_m.mp3",
    "path": "audio/2026-11-23-m.mp3",
    "dur": "7분 42초"
   }
