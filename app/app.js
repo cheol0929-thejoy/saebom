@@ -1,8 +1,8 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-704fd1a068", APP_VER="2.2.1", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
+var VERSION="v1-6c69d313a0", APP_VER="2.2.2", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
 var DATA_IDX=null, DAYS={};
-var ARTIFACT="https://claude.ai/artifact/83acT3uNMUC3NGidY5284F";
+var ARTIFACT="https://cheol0929-thejoy.github.io/saebom/page/"; /* v2.2.2 (owner GO via CEO 11-21): 아이폰 「묵상 페이지에서 듣기」 = GitHub 페이지(#dYYYYMMDD), claude.ai 아티팩트로 가지 않음 */
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 var OFFLINE=false;
 function offlineFlag(on){OFFLINE=!!on;const o=document.getElementById("offline");if(o)o.hidden=!on;} /* 인터넷 없음이면 음성 미리 받기를 하지 않는다(페이지 자산은 저장하지 않음) */
