@@ -45,7 +45,7 @@ open(sj, 'w').write(f"const {{chromium}}=require('playwright');(async()=>{{const
 env = dict(os.environ); env.setdefault('NODE_PATH', subprocess.run(['npm', 'root', '-g'], capture_output=True, text=True).stdout.strip())
 subprocess.run(['node', sj], check=True, env=env)
 base = 'https://cheol0929-thejoy.github.io/saebom'
-target = f'https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d{iso.replace("-", "")}'
+target = f'https://cheol0929-thejoy.github.io/saebom/page/#d{iso.replace("-", "")}'  # 2026-11-21 (owner GO via CEO): Kakao card -> GitHub page, not the artifact
 title, desc = "새봄 2026", "교회, 사명의 자리에 서라"
 out = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
