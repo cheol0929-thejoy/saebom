@@ -17,6 +17,7 @@
 <meta name="apple-mobile-web-app-title" content="새봄묵상">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <script>/* 밝게/어둡게: 그리기 전에 적용 (기본 = 페이지와 같은 어둡게) */try{var th=localStorage.getItem("theme");if(th==="light"||th==="dark")document.documentElement.setAttribute("data-theme",th);}catch(e){}</script>
+<script>/* v2.1.1 (오너 폰 시험 11-21 12:59): 카카오톡 안 브라우저에서는 앱 설치가 안 된다 - 처음 한 번만 크롬·삼성 인터넷 등 기본 브라우저로 넘긴다(되돌아와도 다시 넘기지 않음) */try{if(/KAKAOTALK/i.test(navigator.userAgent)&&!sessionStorage.getItem("kkx")){sessionStorage.setItem("kkx","1");location.href="kakaotalk://web/openExternal?url="+encodeURIComponent(location.href);}}catch(e){}</script>
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 <style id="appcss">/* = app.css (inline_css.py) */
 /* Layout: single reading column like a printed devotional booklet; date strip on top, audio card, then 본문→관찰→해석→적용→기도, archive list at the end */
@@ -252,6 +253,8 @@ header.top .unread[hidden]{display:none}
     <h1>설정</h1>
     <section class="card" id="set-install"><h2>앱 설치</h2>
       <p id="inst-done" class="small" role="status" hidden></p>
+      <div id="inst-kakao" hidden><p class="small">카카오톡 안에서는 설치가 안 됩니다 — 아래 [다른 브라우저로 열기]를 누르세요</p>
+        <button type="button" class="btn fill" id="inst-kakao-btn">다른 브라우저로 열기</button></div>
       <button type="button" class="btn fill" id="inst-btn" aria-expanded="false">앱 설치</button>
       <p class="small" id="inst-note">무료입니다. 설치하면 홈 화면 아이콘으로 바로 열리고, 최근 14일 묵상은 인터넷 없이도 볼 수 있습니다.</p>
       <div class="guide" id="g-android" hidden><b>안드로이드 (크롬·삼성 인터넷)</b>

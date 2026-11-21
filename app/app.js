@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-48352a3b19", APP_VER="2.1.0", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
+var VERSION="v1-576b857ec8", APP_VER="2.1.1", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://claude.ai/artifact/83acT3uNMUC3NGidY5284F";
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -197,6 +197,9 @@ document.addEventListener("click",ev=>{const b=ev.target.closest("[data-theme-se
 /* v2.0.3 (오너 「설정에서 앱 다운로드 및 설치 하게 하라」, CEO 05:29): 「앱 설치」 단추는 늘 보인다(이미 설치됐으면 숨김).
    안드로이드 크롬·엣지·삼성 인터넷 = 브라우저 설치 창(beforeinstallprompt) / 그 창이 없으면(아이폰·사파리 등) = 2단계 그림 안내를 펼친다 */
 let DEFER=null,INSTALLED=false,GUIDE=false;
+const KAKAO=/KAKAOTALK/i.test(navigator.userAgent); /* v2.1.1: 카카오톡 안 브라우저 = 설치 불가 → 「다른 브라우저로 열기」 */
+const openExternal=()=>{location.href="kakaotalk://web/openExternal?url="+encodeURIComponent(location.href);};
+{const kb=document.getElementById("inst-kakao-btn");if(kb)kb.addEventListener("click",openExternal);}
 const isStandalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
 window.addEventListener("beforeinstallprompt",ev=>{ev.preventDefault();DEFER=ev;instUI();});
 window.addEventListener("appinstalled",()=>{DEFER=null;INSTALLED=true;GUIDE=false;instUI();});
@@ -206,7 +209,8 @@ document.getElementById("inst-btn").addEventListener("click",()=>{
 function instUI(){const $=id=>document.getElementById(id),sa=isStandalone(),done=sa||INSTALLED,b=$("inst-btn"),d=$("inst-done");if(!b)return;
   d.hidden=!done;d.textContent=sa?"이미 설치되어 있습니다. 홈 화면 아이콘으로 열려 있습니다.":INSTALLED?"설치되었습니다. 홈 화면의 새봄묵상 아이콘으로 여시면 됩니다.":"";
   b.hidden=done;$("inst-note").hidden=done;b.setAttribute("aria-expanded",String(!DEFER&&GUIDE));
-  const show=!done&&!DEFER&&GUIDE;$("g-ios").hidden=!(show&&IOS);$("g-android").hidden=!(show&&!IOS);}
+  const show=!done&&!DEFER&&GUIDE;$("g-ios").hidden=!(show&&IOS);$("g-android").hidden=!(show&&!IOS);
+  const k=$("inst-kakao");if(k){k.hidden=!(KAKAO&&!done);if(KAKAO&&!done){b.hidden=true;$("inst-note").hidden=true;$("g-ios").hidden=true;$("g-android").hidden=true;}}}
 function showSettings(top){applyTheme(THEME);
   instUI();
   updUI();
