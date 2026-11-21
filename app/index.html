@@ -220,6 +220,17 @@ header.top .unread[hidden]{display:none}
 @media (max-width:400px){header.top .unread{left:28px}}
 #set-badge .lines{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;word-break:keep-all}
 /* ===== /v2.1 ===== */
+/* v2.2.0 설치 배너 (오너 쉬운 설치, CEO 11-21) */
+.ibanner{position:relative;margin:10px 0 14px;padding:18px 18px 16px;border:2px solid var(--gold);border-radius:16px;background:var(--leaf-soft)}
+.ib-t{margin:0 40px 4px 0;font-size:1.45rem;font-weight:800;color:var(--ink);line-height:1.3}
+.ib-s{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+.ib-go{width:100%;font-size:1.25rem;padding:14px 0;background:var(--leaf);color:#0b130d;border:0;border-radius:12px;font-weight:800;cursor:pointer}
+.ib-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:1.3rem;cursor:pointer}
+.ib-x:focus-visible,.ib-go:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ib-steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ib-steps li{display:flex;align-items:center;gap:12px}
+.ib-steps img{width:120px;height:auto;flex:none;border-radius:10px}
+.ib-steps span{font-size:1.05rem;line-height:1.4}
 </style>
 </head>
 <body>
@@ -235,6 +246,18 @@ header.top .unread[hidden]{display:none}
     </div>
     <span id="offline" class="offline" hidden>인터넷 없음 · 저장된 묵상</span>
   </header>
+
+  <section id="ibanner" class="ibanner" hidden aria-label="앱 설치 안내">
+    <button type="button" id="ib-x" class="ib-x" aria-label="설치 안내 닫기 (7일 동안 숨김)">✕</button>
+    <p class="ib-t">홈 화면에 새봄묵상 설치</p>
+    <p class="ib-s">무료입니다. 설치하면 홈 화면 아이콘으로 바로 열립니다.</p>
+    <button type="button" id="ib-go" class="btn fill ib-go" hidden>설치하기</button>
+    <ol id="ib-ios" class="ib-steps" hidden>
+      <li><img src="guide/ios1.svg" alt="" width="240" height="200"><span>① 화면 아래 <b>공유 버튼</b>을 누릅니다</span></li>
+      <li><img src="guide/ios2.svg" alt="" width="240" height="200"><span>② <b>「홈 화면에 추가」</b>를 누릅니다</span></li>
+      <li><img src="guide/ios3.svg" alt="" width="240" height="200"><span>③ 오른쪽 위 <b>「추가」</b>를 누릅니다</span></li>
+    </ol>
+  </section>
 
   <main id="today"><p class="loadmsg">묵상을 불러오는 중…</p></main>
 

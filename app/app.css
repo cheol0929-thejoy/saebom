@@ -198,3 +198,14 @@ header.top .unread[hidden]{display:none}
 @media (max-width:400px){header.top .unread{left:28px}}
 #set-badge .lines{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;word-break:keep-all}
 /* ===== /v2.1 ===== */
+/* v2.2.0 설치 배너 (오너 쉬운 설치, CEO 11-21) */
+.ibanner{position:relative;margin:10px 0 14px;padding:18px 18px 16px;border:2px solid var(--gold);border-radius:16px;background:var(--leaf-soft)}
+.ib-t{margin:0 40px 4px 0;font-size:1.45rem;font-weight:800;color:var(--ink);line-height:1.3}
+.ib-s{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+.ib-go{width:100%;font-size:1.25rem;padding:14px 0;background:var(--leaf);color:#0b130d;border:0;border-radius:12px;font-weight:800;cursor:pointer}
+.ib-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:1.3rem;cursor:pointer}
+.ib-x:focus-visible,.ib-go:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ib-steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ib-steps li{display:flex;align-items:center;gap:12px}
+.ib-steps img{width:120px;height:auto;flex:none;border-radius:10px}
+.ib-steps span{font-size:1.05rem;line-height:1.4}
