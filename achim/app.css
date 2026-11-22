@@ -3,13 +3,23 @@
 *{box-sizing:border-box}
 html{font-size:var(--fs);background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.75;-webkit-text-size-adjust:100%;
-  padding:calc(14px + env(safe-area-inset-top,0px)) max(14px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px))}
+  padding:0 max(14px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px))}
 img{max-width:100%;height:auto}
 [hidden]{display:none!important}
 a{color:var(--acc2)}
 .wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
-header.top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.brandrow{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;min-width:0}
+/* 머리줄 고정 (오너 지시 2026-11-22): 스크롤해도 위에 붙어 있다. 아이폰 노치 = safe-area 를 머리줄 안쪽 여백으로 */
+header.top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:10;background:var(--bg);
+  margin:0 -4px;padding:calc(10px + env(safe-area-inset-top,0px)) 4px 10px;box-shadow:0 1px 0 var(--line)}
+.brandrow{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;min-width:0;flex:1 1 0}
+.brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.brand small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.guide,#ibanner{scroll-margin-top:90px}
+/* 고정 머리줄은 본문 글자 크기(가−/가+)를 따라 커지지 않는다 — 큰 글자에서 '아침한권'이 잘리지 않게 (기본 19px 일 때와 같은 크기) */
+header.top{font-size:19px}
+header.top .brand{font-size:22px}
+header.top .brand small{font-size:13px}
+header.top .sizer button,header.top .gear{font-size:15px}
 .mark{width:2.3em;height:2.3em;border-radius:22%;flex:none}
 .brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--acc2);white-space:nowrap;line-height:1.2}
 .brand small{display:block;font-family:var(--sans);font-weight:400;font-size:.68rem;color:var(--muted)}
@@ -19,10 +29,13 @@ header.top{display:flex;align-items:center;justify-content:space-between;gap:10p
 .sizer.big button{min-width:80px}
 #fs-now{min-width:3.5em;text-align:center;color:var(--muted);font-size:.85rem}
 .offline{width:100%;font-size:.75rem;color:var(--acc2)}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:4px;position:sticky;top:0;z-index:5}
-.tabs a{text-align:center;text-decoration:none;color:var(--muted);font-size:.86rem;padding:9px 2px;border-radius:9px;white-space:nowrap;font-weight:600}
-.tabs a.on{background:var(--acc);color:#fff}
-.tabs a:focus-visible,.btn:focus-visible,.sizer button:focus-visible,.gear:focus-visible,.list a:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+/* 목록 세 개는 설정(⚙) 안의 링크로만 (탭 줄 삭제, 오너 지시 2026-11-22) */
+.lists{display:flex;flex-direction:column}
+.lists a{display:flex;flex-direction:column;padding:12px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font-weight:700;min-height:44px}
+.lists a:last-child{border-bottom:0}
+.lists a small{font-weight:400;font-size:.78rem;color:var(--muted)}
+.back{align-self:flex-start;font-size:.85rem;text-decoration:none;min-height:40px;display:inline-flex;align-items:center}
+.lists a:focus-visible,.back:focus-visible,.btn:focus-visible,.sizer button:focus-visible,.gear:focus-visible,.list a:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
 .loadmsg{color:var(--muted);text-align:center;padding:40px 0}
 .meta{font-size:.78rem;color:var(--acc2);letter-spacing:.02em;text-align:center;margin:4px 0 0}
 .hero{text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
@@ -86,17 +99,27 @@ details li.cur{color:var(--ink);font-weight:700}
 .ib-steps li{flex:0 0 46%;display:flex;flex-direction:column;gap:4px;font-size:.75rem}
 .ib-steps img{border-radius:8px;background:#fff}
 .foot{text-align:center;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
-.player{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 12px 10px}
-.tts{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
-.tts .pp{width:48px;height:48px;border-radius:50%;border:0;background:var(--acc);color:#fff;font-size:1.05rem;cursor:pointer}
-.tts .sk,.tts .st{min-width:44px;height:40px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:.78rem;cursor:pointer}
+/* 재생기 한 줄 (오너 지시 2026-11-22): −15 ▶ +15 ■ 속도 여/남 — 360px 에서도 줄바꿈 없음, 누르는 자리 40px 이상.
+   글자 크기(가−/가+)와 상관없이 px 고정 — 큰 글자에서도 한 줄 유지 */
+.player{display:flex;flex-direction:column;gap:2px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 6px 6px;font-size:15px}
+.tts{display:flex;align-items:center;justify-content:center;gap:3px;flex-wrap:nowrap}
+.tts button,.tts select{flex:none}
+.tts .pp{width:44px;height:44px;border-radius:50%;border:0;background:var(--acc);color:#fff;font-size:16px;cursor:pointer;padding:0}
+.tts .sk,.tts .st{width:40px;height:40px;padding:0;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+.tts .st{font-size:12px}
 .tts .st:disabled{opacity:.35;cursor:default}
-.tts .rate{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 8px;min-height:40px}
-.tts .vsel{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-.tts .vsel button{font:inherit;font-size:.8rem;border:0;background:transparent;color:var(--muted);padding:6px 12px;min-height:40px;cursor:pointer}
+.tts .rate{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:0 2px 0 7px;height:40px;width:54px}
+.tts .vsel{display:inline-flex;flex:none;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.tts .vsel button{font:inherit;font-size:14px;border:0;background:transparent;color:var(--muted);width:40px;height:40px;padding:0;cursor:pointer}
 .tts .vsel button.on{background:var(--acc);color:#fff;font-weight:700}
 .tts button:focus-visible,.tts select:focus-visible,.bar input:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
-.bar{display:flex;align-items:center;gap:10px}
-.bar .tm{flex:none;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-.bar input[type=range]{flex:1;min-width:40px;accent-color:var(--acc);height:30px}
-.aiNote{text-align:center;font-size:.76rem;color:var(--muted)}
+/* 진행 막대 = 줄 바로 아래 가는 선, 시간은 오른쪽 끝에 작게. 잡는 자리는 20px 로 넉넉히 */
+.bar{display:flex;align-items:center;gap:8px;padding:0 4px}
+.bar .tm{flex:none;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar input[type=range]{flex:1;min-width:40px;margin:0;height:20px;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer}
+.bar input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(to right,var(--acc2) var(--p,0%),var(--line) var(--p,0%))}
+.bar input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--acc2);border:0;margin-top:-4.5px}
+.bar input[type=range]::-moz-range-track{height:3px;border-radius:2px;background:var(--line)}
+.bar input[type=range]::-moz-range-progress{height:3px;border-radius:2px;background:var(--acc2)}
+.bar input[type=range]::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--acc2);border:0}
+.aiNote{text-align:center;font-size:12px;color:var(--muted)}

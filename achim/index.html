@@ -49,17 +49,17 @@
     </ol>
   </section>
 
-  <nav class="tabs" aria-label="화면">
-    <a href="#/today" data-v="today">오늘</a>
-    <a href="#/date" data-v="date">날짜순</a>
-    <a href="#/book" data-v="book">책별</a>
-    <a href="#/queue" data-v="queue">읽을 책</a>
-  </nav>
-
   <main id="view"><p class="loadmsg">글을 불러오는 중…</p></main>
 
   <section id="settings" hidden>
     <h1 class="ptitle">설정</h1>
+    <section class="card"><h2>지난 글 보기</h2>
+      <nav class="lists" aria-label="목록">
+        <a href="#/date">날짜순 <small>모든 글, 최근 글부터</small></a>
+        <a href="#/book">책별 <small>읽은 책·읽는 중인 책</small></a>
+        <a href="#/queue">읽을 책 <small>읽기 계획</small></a>
+      </nav>
+    </section>
     <section class="card"><h2>앱 설치</h2>
       <p id="inst-done" class="small" role="status" hidden></p>
       <div id="inst-kakao" hidden><p class="small">카카오톡 안에서는 설치가 안 됩니다 — 아래 [다른 브라우저로 열기]를 누르세요</p>

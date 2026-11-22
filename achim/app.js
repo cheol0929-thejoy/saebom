@@ -1,6 +1,6 @@
-/* 아침한권 앱 1.1.0 — 새봄묵상 앱(saebom/app)의 설치 배너·아이폰 안내·카카오톡 바깥 열기·글자 크기·서비스워커 방식을 따른다 */
+/* 아침한권 앱 1.2.0 (머리줄 고정·탭 줄 삭제·한 줄 재생기·빨간 MORNING 아이콘, 오너 지시 2026-11-22) — 새봄묵상 앱(saebom/app)의 설치 배너·아이폰 안내·카카오톡 바깥 열기·글자 크기·서비스워커 방식을 따른다 */
 "use strict";
-var APP_VER="1.1.0";
+var APP_VER="1.2.0";
 var IDX=null,CACHE={},OFF=false;
 var V=document.getElementById("view"),SET=document.getElementById("settings");
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -48,9 +48,9 @@ function pickVoice(d){var vs=d.voices||[];return vs.filter(function(v){return v.
 function posKey(d,v){return "achim-pos:"+d.id+":"+v.key;}
 function playerHTML(d){var v=pickVoice(d);if(!v)return "";var vs=d.voices;
   return '<div class="player" id="pl"><div class="tts"><button type="button" class="sk" id="sk-b" aria-label="15초 뒤로">−15</button><button type="button" class="pp" id="pp" aria-label="재생">▶</button><button type="button" class="sk" id="sk-f" aria-label="15초 앞으로">+15</button><button type="button" class="st" id="st" aria-label="처음으로" disabled>■</button>'+
-   '<select class="rate" id="rate" aria-label="읽는 속도">'+RATES.map(function(r){return '<option value="'+r[0]+'"'+(r[0]===RATE?" selected":"")+'>'+r[1]+' ('+r[0]+'배)</option>';}).join("")+'</select>'+
-   (vs.length>1?'<span class="vsel" role="group" aria-label="목소리">'+vs.map(function(x){return '<button type="button" data-voice="'+x.key+'" class="'+(x.key===v.key?"on":"")+'" aria-pressed="'+(x.key===v.key)+'">'+esc(x.short)+'</button>';}).join("")+'</span>':"")+'</div>'+
-   '<div class="bar"><span class="tm"><span id="cur">0:00</span> / <span id="tot">'+fmtT(v.sec)+'</span></span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="재생 위치"></div>'+
+   '<select class="rate" id="rate" aria-label="읽는 속도">'+RATES.map(function(r){return '<option value="'+r[0]+'"'+(r[0]===RATE?" selected":"")+' aria-label="'+r[1]+' '+r[0]+'배">'+r[0]+'x</option>';}).join("")+'</select>'+
+   (vs.length>1?'<span class="vsel" role="group" aria-label="목소리">'+vs.map(function(x){return '<button type="button" data-voice="'+x.key+'" class="'+(x.key===v.key?"on":"")+'" aria-pressed="'+(x.key===v.key)+'" aria-label="'+esc(x.label)+'" title="'+esc(x.label)+'">'+esc(String(x.short).charAt(0))+'</button>';}).join("")+'</span>':"")+'</div>'+
+   '<div class="bar"><input type="range" id="seek" min="0" max="1000" value="0" aria-label="재생 위치"><span class="tm"><span id="cur">0:00</span> / <span id="tot">'+fmtT(v.sec)+'</span></span></div>'+
    '<p class="aiNote" id="resume-note">'+esc(v.label)+'으로 읽어 드립니다</p>'+
    '<audio id="player" preload="metadata" src="'+esc(v.src)+'"'+(v.fallback&&v.fallback!==v.src?' data-fb="'+esc(v.fallback)+'"':"")+'></audio></div>';}
 function applyRate(a){a.preservesPitch=true;a.webkitPreservesPitch=true;a.playbackRate=RATE;a.defaultPlaybackRate=RATE;}
@@ -60,7 +60,7 @@ function wirePlayer(d){var a=document.getElementById("player");if(!a)return;var 
   if(saved>5)note.textContent="지난번 "+fmtT(saved)+"까지 들으셨습니다 — ▶ 를 누르면 이어서 듣습니다";
   var restored=false,lastSave=0;
   function restore(){if(restored||!(saved>5)||!a.duration)return;restored=true;if(saved<a.duration-3){try{a.currentTime=saved;}catch(e){}}}
-  function upd(){if(a.duration&&isFinite(a.duration)){tot.textContent=fmtT(a.duration);if(!seek.matches(":active"))seek.value=Math.round(a.currentTime/a.duration*1000);}cur.textContent=fmtT(a.currentTime);st.disabled=a.paused&&a.currentTime===0;}
+  function upd(){if(a.duration&&isFinite(a.duration)){tot.textContent=fmtT(a.duration);if(!seek.matches(":active"))seek.value=Math.round(a.currentTime/a.duration*1000);seek.style.setProperty("--p",(seek.value/10)+"%");}cur.textContent=fmtT(a.currentTime);st.disabled=a.paused&&a.currentTime===0;}
   a.addEventListener("loadedmetadata",function(){applyRate(a);restore();upd();});
   a.addEventListener("timeupdate",function(){upd();var n=Date.now();if(n-lastSave>2000&&a.currentTime>0){lastSave=n;try{localStorage.setItem(K,String(a.currentTime));}catch(e){}}});
   a.addEventListener("play",function(){applyRate(a);pp.textContent="❚❚";pp.setAttribute("aria-label","일시정지");st.disabled=false;});
@@ -72,13 +72,15 @@ function wirePlayer(d){var a=document.getElementById("player");if(!a)return;var 
   document.getElementById("sk-b").addEventListener("click",function(){a.currentTime=Math.max(0,a.currentTime-15);upd();});
   document.getElementById("sk-f").addEventListener("click",function(){if(a.duration)a.currentTime=Math.min(a.duration-0.5,a.currentTime+15);upd();});
   st.addEventListener("click",function(){a.pause();a.currentTime=0;try{localStorage.removeItem(K);}catch(e){}saved=0;upd();});
-  seek.addEventListener("input",function(){restored=true;if(a.duration)a.currentTime=seek.value/1000*a.duration;});
+  seek.addEventListener("input",function(){restored=true;seek.style.setProperty("--p",(seek.value/10)+"%");if(a.duration)a.currentTime=seek.value/1000*a.duration;});
   document.getElementById("rate").addEventListener("change",function(ev){var r=parseFloat(ev.target.value);if(RATES.some(function(x){return x[0]===r;}))RATE=r;try{localStorage.setItem("achim-rate",String(RATE));}catch(e){}applyRate(a);});
   document.querySelectorAll(".vsel button[data-voice]").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.voice===v.key)return;var was=!a.paused;a.pause();VOICE=b.dataset.voice;try{localStorage.setItem("achim-voice",VOICE);}catch(e){}
     renderDay(d);if(was){var n=document.getElementById("player");if(n)n.play().catch(function(){});}});});
 }
+/* 탭 줄이 없어졌으므로 목록 위에 오늘 글로 돌아가는 링크 */
+var BACK='<a class="back" href="#/today">← 오늘 글로</a>';
 function renderDate(){
-  V.innerHTML='<h1 class="ptitle">날짜순</h1><p class="small">모두 '+IDX.count+'편 · 최근 글부터</p><ul class="list">'+IDX.days.map(function(x){
+  V.innerHTML=BACK+'<h1 class="ptitle">날짜순</h1><p class="small">모두 '+IDX.count+'편 · 최근 글부터</p><ul class="list">'+IDX.days.map(function(x){
     return '<li><a href="#/'+x.id+'"><span class="d">'+sdate(x.date)+'<br>Day '+x.day+'</span><span class="t"><small>'+esc(x.book)+' ('+esc(x.part_no)+')</small><span>'+esc(x.theme)+'</span></span></a></li>';}).join("")+'</ul>';
 }
 function prog(b){var p=b.S?Math.round(100*b.j/b.S):0;return '<div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="'+b.S+'" aria-valuenow="'+b.j+'" aria-label="'+esc(b.book)+' '+b.j+'/'+b.S+'"><i style="width:'+p+'%"></i></div>';}
@@ -86,7 +88,7 @@ var ST={reading:"읽는 중",upcoming:"읽을 책",done:"다 읽음"};
 function renderBook(){
   var groups=[],seen={};
   IDX.queue.filter(function(b){return b.days.length;}).forEach(function(b){if(!seen[b.series]){seen[b.series]=[];groups.push([b.series,seen[b.series]]);}seen[b.series].push(b);});
-  V.innerHTML='<h1 class="ptitle">책별</h1><p class="small">읽은 책과 읽는 중인 책 · 회차를 누르면 그날 글이 열립니다</p>'+groups.map(function(g){
+  V.innerHTML=BACK+'<h1 class="ptitle">책별</h1><p class="small">읽은 책과 읽는 중인 책 · 회차를 누르면 그날 글이 열립니다</p>'+groups.map(function(g){
     return '<p class="series">'+esc(g[0])+'</p>'+g[1].map(function(b){return '<div class="card book"><div class="bt"><b>'+esc(b.book)+'</b><em>'+b.j+'/'+b.S+'</em></div><div class="by">'+esc(b.author)+' · '+esc(b.recommender)+' 추천 · <span class="tag '+b.status+'">'+ST[b.status]+'</span></div>'+prog(b)+
       '<div class="chips">'+b.days.map(function(id,k){var x=IDX.days.find(function(y){return y.id===id;});return '<a href="#/'+id+'">'+esc(x?x.part_no:(k+1))+'</a>';}).join("")+'</div></div>';}).join("");}).join("");
 }
@@ -94,22 +96,21 @@ function renderQueue(){
   var by={reading:[],upcoming:[],done:[]};IDX.queue.forEach(function(b){(by[b.status]||by.upcoming).push(b);});
   function card(b){var plan="";if(b.plan){var cur=b.status==="reading"?b.j:-1;plan='<details'+(b.status==="reading"?" open":"")+'><summary>읽기 계획 '+b.plan.length+'회</summary><ol>'+b.plan.map(function(p,k){return '<li class="'+(k===cur?"cur":"")+'">'+esc(p)+'</li>';}).join("")+'</ol></details>';}
     return '<div class="card book"><div class="bt"><b>'+esc(b.book)+'</b><em>'+(b.status==="upcoming"?b.S+"회":b.j+"/"+b.S)+'</em></div><div class="by">'+esc(b.author)+' · '+esc(b.recommender)+' 추천 · '+esc(b.series)+'</div>'+(b.status!=="upcoming"?prog(b):"")+plan+'</div>';}
-  V.innerHTML='<h1 class="ptitle">읽을 책</h1>'+
+  V.innerHTML=BACK+'<h1 class="ptitle">읽을 책</h1>'+
    '<p class="series">읽는 중</p>'+(by.reading.map(card).join("")||'<p class="small">없음</p>')+
    '<p class="series">다음에 읽을 책 · '+by.upcoming.length+'권</p>'+by.upcoming.map(card).join("")+
    '<p class="series">다 읽은 책 · '+by.done.length+'권</p>'+by.done.map(card).join("");
 }
-function tabs(v){document.querySelectorAll(".tabs a").forEach(function(a){var on=a.getAttribute("data-v")===v;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
 function route(){
   var h=(location.hash||"#/today").replace(/^#\/?/,"")||"today";
   SET.hidden=h!=="settings";V.hidden=h==="settings";
-  if(h==="settings"){tabs("");instUI();document.getElementById("fs-now").textContent=fs+"px";window.scrollTo(0,0);return Promise.resolve();}
+  if(h==="settings"){instUI();document.getElementById("fs-now").textContent=fs+"px";window.scrollTo(0,0);return Promise.resolve();}
   if(!IDX)return Promise.resolve();
   var p;
-  if(h==="date"){tabs("date");renderDate();p=Promise.resolve();}
-  else if(h==="book"){tabs("book");renderBook();p=Promise.resolve();}
-  else if(h==="queue"){tabs("queue");renderQueue();p=Promise.resolve();}
-  else{var id=/^d\d{4}$/.test(h)?h:IDX.latest;tabs(id===IDX.latest?"today":"");
+  if(h==="date"){renderDate();p=Promise.resolve();}
+  else if(h==="book"){renderBook();p=Promise.resolve();}
+  else if(h==="queue"){renderQueue();p=Promise.resolve();}
+  else{var id=/^d\d{4}$/.test(h)?h:IDX.latest;
     p=loadDay(id).then(renderDay).catch(function(){V.innerHTML='<p class="loadmsg">이 글은 아직 이 기기에 저장되어 있지 않습니다. 인터넷에 연결한 뒤 다시 열어 주세요.</p>';});}
   window.scrollTo(0,0);return p;
 }
