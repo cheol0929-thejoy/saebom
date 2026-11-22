@@ -35,7 +35,26 @@
   "나는 사람을 나와 똑같이 만들려는 쪽과 남의 아픔을 상관없다고 여기는 쪽 가운데 요즘 어디로 더 기울어 있습니까?",
   "한쪽 잘못이 싫어서 반대쪽 잘못으로 달려간 적은 없습니까? 두 오류 사이를 곧게 걷기 위해 오늘 붙들어야 할 진실은 무엇입니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0036_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0036_f.mp3",
+   "dur": "9분 5초",
+   "sec": 545.0
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0036_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0036_m.mp3",
+   "dur": "9분 33초",
+   "sec": 572.9
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/a2246038d5792624115ca2967bfe0030",
   "audio_m": "/_blob/7782b5ac8835f3487218ee1b648d46c0"

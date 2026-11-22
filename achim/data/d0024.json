@@ -35,7 +35,26 @@
   "나는 설렘이 식은 것을 사랑이 식은 것으로 착각하며 우리 부부의 관계를 가볍게 여기고 있지 않은가?",
   "나는 오늘 감정이 아니라 약속에 따라 아내를 대할 수 있는 작은 선택 하나를 무엇으로 고를 것인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0024_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0024_f.mp3",
+   "dur": "7분 44초",
+   "sec": 464.4
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0024_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0024_m.mp3",
+   "dur": "8분 11초",
+   "sec": 490.6
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/ad20e7dbce60603dac97b12c1933e5cd",
   "audio_m": "/_blob/9aafeaa35a02a56b88dfdc2cb7d02f98"

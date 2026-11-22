@@ -35,7 +35,26 @@
   "나는 남의 잘못을 볼 때와 내 잘못을 볼 때 서로 다른 잣대를 쓰고 있지는 않은가?",
   "내가 자주 대는 변명은 무엇이며, 그 변명 아래 숨어 있는 내 정직한 고백은 무엇인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0009_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0009_f.mp3",
+   "dur": "8분 16초",
+   "sec": 495.7
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0009_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0009_m.mp3",
+   "dur": "8분 44초",
+   "sec": 523.9
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/907c4dcc89da76bacbd5f66489688800",
   "audio_m": "/_blob/d7f3cd4ad1997478a04e5361a2137762"

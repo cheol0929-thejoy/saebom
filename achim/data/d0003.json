@@ -35,7 +35,26 @@
   "가구가 모두 치워진 방에서 내가 마지막까지 붙들 '액자'는 무엇인가?",
   "내가 던진 말 가운데 아직 누군가의 등에 박혀 있는 것은 없는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0003_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0003_f.mp3",
+   "dur": "5분 31초",
+   "sec": 330.7
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0003_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0003_m.mp3",
+   "dur": "5분 56초",
+   "sec": 356.1
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/48dbe7b1a06c17820bd3ac068385f69d",
   "audio_m": "/_blob/01904484c0a70b679c3219b014fe8799"

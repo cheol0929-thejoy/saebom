@@ -35,7 +35,26 @@
   "나는 누군가의 고통 앞에서 내 불편함을 피하려고 서둘러 '괜찮다'고 말한 적은 없는가?",
   "내게는 두려움을 털어놓을 게라심 같은 사람이 있는가, 그리고 나는 누군가에게 그런 사람인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0007_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0007_f.mp3",
+   "dur": "7분 31초",
+   "sec": 451.2
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0007_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0007_m.mp3",
+   "dur": "7분 59초",
+   "sec": 478.6
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/a3248b6652989daf28715c534cdbde9e",
   "audio_m": "/_blob/dbdd9877e8542819541e21b65040f97d"

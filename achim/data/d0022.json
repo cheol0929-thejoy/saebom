@@ -35,7 +35,26 @@
   "내가 스스로 괜찮은 사람이라고 여기는 근거 가운데, 실은 내가 고른 것이 아니라 받은 것은 무엇인가?",
   "나는 누군가의 굳은 겉모습만 보고, 그가 애써 고르고 있는 작은 선택들을 놓치고 있지 않은가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0022_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0022_f.mp3",
+   "dur": "8분 8초",
+   "sec": 488.4
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0022_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0022_m.mp3",
+   "dur": "8분 31초",
+   "sec": 510.8
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/33db6eae5dc995e65c2f742abfbc3502",
   "audio_m": "/_blob/5fadfd4787825996aa48fbce6f7221e6"

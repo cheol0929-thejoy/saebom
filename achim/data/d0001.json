@@ -35,7 +35,26 @@
   "내일 아침 내가 '벌레'가 되어 있다면, 나는 무엇을 가장 먼저 걱정하게 될까?",
   "나는 언제 마지막으로 일이 아니라 내 영혼의 안부를 물었는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0001_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0001_f.mp3",
+   "dur": "5분 50초",
+   "sec": 349.7
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0001_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0001_m.mp3",
+   "dur": "6분 15초",
+   "sec": 375.0
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/0d703f50d1143942ea6409e67815a1a1",
   "audio_m": "/_blob/eae9c5623edd98b7b63b1bf715176e97"

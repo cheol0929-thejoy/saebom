@@ -35,7 +35,26 @@
   "내 신앙과 목회에서 모양은 반듯하지만 숨이 멎어 있는 곳은 어디입니까?",
   "교리를 어렵다고 피해 온 마음 뒤에, 하나님에 대한 어떤 낡고 뒤엉킨 생각이 숨어 있지는 않습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0031_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0031_f.mp3",
+   "dur": "8분 32초",
+   "sec": 512.5
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0031_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0031_m.mp3",
+   "dur": "9분 1초",
+   "sec": 541.2
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/263cb995fd203d18967bde45ef63048c",
   "audio_m": "/_blob/bab8f7681994275a0b739ecc85931f68"

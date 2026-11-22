@@ -35,7 +35,26 @@
   "나는 남에게 피해만 주지 않으면 괜찮다는 생각으로 내 안의 어떤 부분을 돌보지 않고 미뤄 두고 있는가?",
   "내 삶이라는 배는 지금 어디를 향해 가고 있으며, 그 키는 누구의 손에 있는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0019_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0019_f.mp3",
+   "dur": "8분 6초",
+   "sec": 486.5
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0019_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0019_m.mp3",
+   "dur": "8분 34초",
+   "sec": 513.9
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/007ea6f7bcf8e404d5649936ac3e9cd8",
   "audio_m": "/_blob/055b8c5c47909dc143cb52a4d0e46936"

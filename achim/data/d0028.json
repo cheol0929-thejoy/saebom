@@ -35,7 +35,26 @@
   "나는 요즘 무엇이 이루어지면 내 마음이 채워질 것이라고 기대하며 살고 있습니까?",
   "나는 다음 것을 좇는 길과 체념하는 길 가운데 어느 쪽에 더 자주 서 있으며, 하늘 소망은 오늘 나의 섬김을 어떻게 바꿀 수 있겠습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0028_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0028_f.mp3",
+   "dur": "8분 42초",
+   "sec": 521.7
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0028_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0028_m.mp3",
+   "dur": "9분 5초",
+   "sec": 545.4
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/c0fe26d3769ef9e73e9adfd708bb3923",
   "audio_m": "/_blob/c130896715e6cd34c1e4ff098124fe2b"

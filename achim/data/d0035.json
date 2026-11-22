@@ -35,7 +35,26 @@
   "요즘 내가 은혜가 아니라 공격으로 받아들이며 방패를 들었던 말은 무엇입니까? 그 말 속에 하나님이 손대시려던 내 주석은 무엇이었습니까?",
   "나는 변화를 원한다고 기도하면서, 실은 지금의 나를 그대로 둔 채 조금 나아지기만을 바라고 있지는 않습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0035_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0035_f.mp3",
+   "dur": "8분 33초",
+   "sec": 513.3
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0035_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0035_m.mp3",
+   "dur": "8분 57초",
+   "sec": 537.5
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/06c7627f3a85212590da6d5e2254db9e",
   "audio_m": "/_blob/1698d00ba816163c5df4883bbaabf6b9"

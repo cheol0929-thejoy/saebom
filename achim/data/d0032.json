@@ -35,7 +35,26 @@
   "나는 기도를 혼자 해내야 하는 일로 여기고 있지는 않습니까? 곁에서 함께 구하시는 그리스도를 떠올리면 내 기도는 어떻게 달라지겠습니까?",
   "하나님을 더 밝게 보지 못하게 내 마음의 거울을 흐리고 있는 먼지는 무엇이며, 함께 기다리는 공동체는 그것을 닦는 데 어떤 도움이 되고 있습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0032_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0032_f.mp3",
+   "dur": "8분 17초",
+   "sec": 496.6
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0032_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0032_m.mp3",
+   "dur": "8분 42초",
+   "sec": 522.4
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/0b886aadccbe3ed4365917307052e51b",
   "audio_m": "/_blob/37ec4a9c013b3b9bc5981a192cc65bff"

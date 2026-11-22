@@ -35,7 +35,26 @@
   "나는 좋은 사회를 말할 때 남이 바뀌는 그림만 그리고, 정작 내가 내어 놓을 것은 빼놓고 있지 않은가?",
   "나의 나눔을 가로막는 것은 욕심인가, 아니면 신중함이라는 이름을 단 앞날에 대한 두려움인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0021_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0021_f.mp3",
+   "dur": "8분 21초",
+   "sec": 500.5
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0021_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0021_m.mp3",
+   "dur": "8분 47초",
+   "sec": 526.6
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/306fbb293264be2f032e14a22ec228a0",
   "audio_m": "/_blob/211cc102ab4e4bf6de39323bb3345822"

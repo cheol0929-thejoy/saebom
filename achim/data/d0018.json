@@ -35,7 +35,26 @@
   "나는 같은 일로 또 넘어졌을 때 하나님과 교회로 더 가까이 가는가, 아니면 숨어 버리는가?",
   "하나님이 오래 참고 기다려 주시는 지금, 내가 미루지 말고 그분 편에 서야 할 일은 무엇인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0018_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0018_f.mp3",
+   "dur": "8분 11초",
+   "sec": 491.0
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0018_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0018_m.mp3",
+   "dur": "8분 37초",
+   "sec": 517.4
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/1d9efaefe4255920afb879e0e485db4d",
   "audio_m": "/_blob/9247a057c0f62e05d2fe2c1c49dbaf55"

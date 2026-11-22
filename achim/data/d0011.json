@@ -35,7 +35,26 @@
   "나는 남에게는 의도를 묻고, 나 자신에게는 결과만 묻고 있지 않은가?",
   "아무 일 없이 지나갔다는 이유로 정직하게 돌아보지 않은 내 마음의 한 자리는 어디인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0011_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0011_f.mp3",
+   "dur": "8분 0초",
+   "sec": 480.3
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0011_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0011_m.mp3",
+   "dur": "8분 26초",
+   "sec": 505.5
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/ac4c6e38e7b9d8ac71d3ed711be8c72f",
   "audio_m": "/_blob/faedf723ac64122bd89fad900e47faec"

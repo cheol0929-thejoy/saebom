@@ -35,7 +35,26 @@
   "나는 몸의 죄를 짓지 않았다는 사실을 내가 괜찮은 사람이라는 근거로 삼고 있지 않은가?",
   "넘어진 사람의 소식을 들을 때 내 마음에 먼저 일어나는 것은 기도인가, 아니면 은근한 우월감과 이야깃거리인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0023_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0023_f.mp3",
+   "dur": "8분 11초",
+   "sec": 490.6
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0023_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0023_m.mp3",
+   "dur": "8분 37초",
+   "sec": 517.1
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/e926b5911fa52abae98c472ccb8c7e1a",
   "audio_m": "/_blob/c245b441c61f4f967f04edc84fe90594"

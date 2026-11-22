@@ -35,7 +35,26 @@
   "누군가의 죽음 소식 앞에서 나는 먼저 무엇을 계산하는가?",
   "내 삶이 오늘 끝난다면, 붙들고 있던 것 중 무엇이 남는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0005_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0005_f.mp3",
+   "dur": "5분 28초",
+   "sec": 328.2
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0005_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0005_m.mp3",
+   "dur": "5분 48초",
+   "sec": 348.4
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/2181ff13cf0a67777d1b906a0f1d44fa",
   "audio_m": "/_blob/4a8e7963d73438f5a8d502964de5e7dd"

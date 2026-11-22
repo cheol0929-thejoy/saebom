@@ -35,7 +35,26 @@
   "나는 마음이 가지 않는다는 이유로 미뤄 두고 있는 사랑의 행동이 무엇인가?",
   "내가 하나님을 정말 사랑한다면 오늘 하루를 어떻게 다르게 살겠는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0027_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0027_f.mp3",
+   "dur": "8분 11초",
+   "sec": 491.1
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0027_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0027_m.mp3",
+   "dur": "8분 36초",
+   "sec": 516.1
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/e5a08d52b62e5117bba5fc61d06c0f84",
   "audio_m": "/_blob/187c500e1a5eb4f70f7b81129ffd4250"

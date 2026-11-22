@@ -35,7 +35,26 @@
   "나는 예수님의 말씀 가운데 어떤 부분을 조언 정도로만 받아들이고 넘어가고 있는가?",
   "요즘 내 영혼을 움직이는 연료는 하나님이신가, 아니면 다른 무엇인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0016_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0016_f.mp3",
+   "dur": "8분 17초",
+   "sec": 497.0
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0016_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0016_m.mp3",
+   "dur": "8분 40초",
+   "sec": 520.4
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/ba22c8a1f890e2eae134fd6442922de1",
   "audio_m": "/_blob/fa639fa880e35b01fbae92b44c88b06d"

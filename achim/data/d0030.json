@@ -35,7 +35,26 @@
   "나는 지금 하나님과 은근히 어떤 거래를 하고 있습니까? 이만큼 했으니 이만큼은 해 주셔야 한다고 여기는 것이 있습니까?",
   "최근 넘어진 실패를 부끄러움으로만 덮어 두지 않고 하나님께 더 맡기는 문으로 삼는다면, 오늘 무엇이 달라지겠습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0030_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0030_f.mp3",
+   "dur": "8분 45초",
+   "sec": 524.7
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0030_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0030_m.mp3",
+   "dur": "9분 9초",
+   "sec": 549.0
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/7182832479bd919b16917fd80a0ff292",
   "audio_m": "/_blob/7b332f55df96af231ae247b636bae8a0"

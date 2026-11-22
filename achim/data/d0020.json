@@ -35,7 +35,26 @@
   "술이 아닌 무엇이 지금 내 삶의 중심을 차지하며 알맞은 선을 넘고 있는가?",
   "나는 옳은 일을 하면서 어떤 사람이 되어 가고 있는가, 아니면 옳은 일을 마지못해 해치우고만 있는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0020_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0020_f.mp3",
+   "dur": "8분 15초",
+   "sec": 495.0
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0020_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0020_m.mp3",
+   "dur": "8분 47초",
+   "sec": 527.4
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/0c0d46a1f4318ff2d5f99bb16ffcda31",
   "audio_m": "/_blob/521b5677f62e7704d77ef6910523e743"

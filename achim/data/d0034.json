@@ -35,7 +35,26 @@
   "나는 평안과 기쁨을 하나님께 잘한 만큼 받아 내는 상처럼 여겨 오지 않았습니까? 그 생각이 내 기도와 사역을 어떻게 지치게 만들었습니까?",
   "요즘 나는 장작을 나르는 데만 바빠 불 곁에 앉는 시간을 잃어버리지 않았습니까? 이번 주에 하나님 곁에 머무는 시간을 어디에 마련할 수 있겠습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0034_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0034_f.mp3",
+   "dur": "8분 26초",
+   "sec": 505.6
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0034_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0034_m.mp3",
+   "dur": "8분 47초",
+   "sec": 527.1
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/54fbb169878f4e10c4b00e8cf3c19a48",
   "audio_m": "/_blob/afd88da19c53cc665ea6cbc198ebcfad"

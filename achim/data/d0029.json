@@ -35,7 +35,26 @@
   "최근 내 믿음이 흔들린다고 느꼈던 순간은 언제였고, 그때 나를 흔든 것은 새로운 증거였습니까, 아니면 지친 기분이었습니까?",
   "남을 먹이기 위한 말씀이 아니라 내 영혼을 먹이는 말씀의 시간이 지금 내 하루의 어디에 있습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0029_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0029_f.mp3",
+   "dur": "8분 2초",
+   "sec": 481.9
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0029_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0029_m.mp3",
+   "dur": "8분 29초",
+   "sec": 509.2
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/8e208bd73ec5c60c5d7926fe30a49776",
   "audio_m": "/_blob/e1e02d5c8454c176143a2e120ba2eb14"

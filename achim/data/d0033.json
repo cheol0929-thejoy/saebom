@@ -35,7 +35,26 @@
   "나는 하나님을 내 기도를 차례로 처리하시느라 바쁜 분으로 그려 오지 않았습니까? 그 그림이 내 기도를 어떻게 짧고 조급하게 만들어 왔습니까?",
   "하나님이 나를 서두르지 않고 대하신다는 사실을 믿는다면, 이번 주에 만나는 성도와 가족을 대하는 내 모습은 무엇이 달라지겠습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0033_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0033_f.mp3",
+   "dur": "8분 29초",
+   "sec": 508.7
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0033_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0033_m.mp3",
+   "dur": "8분 54초",
+   "sec": 533.5
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/5a28f9a2630d7f22e2d968634feb1125",
   "audio_m": "/_blob/a3d9b6ac1a79bb8c2da368928023af90"

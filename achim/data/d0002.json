@@ -35,7 +35,26 @@
   "나는 나 자신을 존재로 보는가, 하는 일로 보는가?",
   "내 짐 가운데 실제 무게와 생각의 무게는 각각 얼마나 될까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0002_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0002_f.mp3",
+   "dur": "5분 38초",
+   "sec": 338.3
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0002_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0002_m.mp3",
+   "dur": "6분 5초",
+   "sec": 365.1
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/bc2107e69e6f6cc48fc14f485df4e560",
   "audio_m": "/_blob/73bdb883a0cfce81a7876bf3e219108a"

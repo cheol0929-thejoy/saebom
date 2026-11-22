@@ -35,7 +35,26 @@
   "나는 위선이 싫다는 이유로 기도나 섬김을 멈추고 싶었던 적은 없습니까? 그것은 정직함이었습니까, 자라기를 포기한 것이었습니까?",
   "요즘 갑작스러운 순간에 드러난 내 지하실의 쥐는 무엇입니까? 그것을 그리스도께 보여 드리며 함께 다루어 달라고 구할 수 있겠습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0037_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0037_f.mp3",
+   "dur": "8분 38초",
+   "sec": 518.1
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0037_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0037_m.mp3",
+   "dur": "9분 8초",
+   "sec": 548.3
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/ce87bf27bbe15131885efb912953c51a",
   "audio_m": "/_blob/51465ba71bac9a65d1c7fdf4d5a3d88d"

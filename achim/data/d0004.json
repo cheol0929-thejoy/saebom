@@ -35,7 +35,26 @@
   "내가 오늘 쓸모를 잃는다면, 그래도 남는 나는 무엇인가?",
   "내 곁에서 조금씩 '그것'이 되어 가는 사람은 없는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0004_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0004_f.mp3",
+   "dur": "5분 18초",
+   "sec": 318.0
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0004_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0004_m.mp3",
+   "dur": "5분 41초",
+   "sec": 340.9
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/8448bb2a849200fbfa7626e68c147a5d",
   "audio_m": "/_blob/5c5eea3f86f6cf6ec8d616331df98bc2"

@@ -35,7 +35,26 @@
   "나는 요즘 어떤 일을 하나님과 맞먹는 힘처럼 크게 여기며 두려워하고 있는가?",
   "오늘 내 자리에서 왕의 소식을 따라 할 수 있는 작은 저항은 무엇인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0015_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0015_f.mp3",
+   "dur": "7분 47초",
+   "sec": 467.4
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0015_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0015_m.mp3",
+   "dur": "8분 12초",
+   "sec": 492.4
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/4a5d8f10e4173a64c8257374fbde9423",
   "audio_m": "/_blob/14aa748b2c43819d695ac53bc9e18e1b"

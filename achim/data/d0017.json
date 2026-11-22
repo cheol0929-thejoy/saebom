@@ -35,7 +35,26 @@
   "나는 회개를 하나님께 치러야 할 값처럼 여기며 스스로를 몰아세우고 있지는 않은가?",
   "체면이나 계산 때문에 지금 미루고 있는 사과는 누구를 향한 것인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0017_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0017_f.mp3",
+   "dur": "7분 53초",
+   "sec": 473.0
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0017_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0017_m.mp3",
+   "dur": "8분 21초",
+   "sec": 500.6
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/525bb2a7f246dbe19b438a2b07e91c97",
   "audio_m": "/_blob/39b98fc87e94087033e4bded08112063"

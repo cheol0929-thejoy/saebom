@@ -35,7 +35,26 @@
   "내가 내린 중요한 결정 가운데, 남들이 바람직하다고 여겨서 한 것은 무엇인가?",
   "나는 가정의 어려움을 마주하는 대신 일 속으로 피하고 있지는 않은가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0006_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0006_f.mp3",
+   "dur": "5분 19초",
+   "sec": 318.9
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0006_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0006_m.mp3",
+   "dur": "5분 42초",
+   "sec": 342.3
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/785eab875fe08168d9d676cce0970e70",
   "audio_m": "/_blob/e4327f9a075c4c6121275fcbe21a74a4"

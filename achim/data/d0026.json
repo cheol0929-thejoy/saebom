@@ -35,7 +35,26 @@
   "요즘 다른 사람의 어떤 모습이 유독 거슬린다면, 그것은 혹시 내 안의 같은 교만과 부딪히기 때문은 아닌가?",
   "나는 내 신앙과 사역이 나를 남보다 낫다고 느끼게 만들 때, 그것을 은혜라고 착각하고 있지는 않은가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0026_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0026_f.mp3",
+   "dur": "8분 41초",
+   "sec": 520.9
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0026_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0026_m.mp3",
+   "dur": "9분 8초",
+   "sec": 548.1
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/bf483bd12a8f95e1543cc0fd98b9d67e",
   "audio_m": "/_blob/cea57fc4afe6c22331cfb024ce073657"

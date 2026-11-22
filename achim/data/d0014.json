@@ -35,7 +35,26 @@
   "나는 고통 앞에서 체념과 냉소 가운데 어느 쪽으로 더 자주 끌려가는가?",
   "하나님께 불공평하다고 정직하게 아뢰지 못하고 덮어 둔 마음이 지금 내 안에 있는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0014_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0014_f.mp3",
+   "dur": "8분 20초",
+   "sec": 500.5
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0014_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0014_m.mp3",
+   "dur": "8분 46초",
+   "sec": 526.5
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/cfea6abdeb740263c7fe2c67b7ae9f81",
   "audio_m": "/_blob/bb104f02375b4b06d27f9df2258fca2c"

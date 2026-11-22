@@ -35,7 +35,26 @@
   "내 마음속 장부에는 요즘 어떤 억울함이 적혀 있습니까? 그 장부를 하나님께 청구서처럼 내밀고 있지는 않습니까?",
   "나는 하나님께 내 시간과 일의 일부를 드리는 데 머물러 있습니까, 아니면 나 자신을 드리고 있습니까? 오늘 아침 첫 몇 분은 누구의 목소리로 채워졌습니까?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0038_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0038_f.mp3",
+   "dur": "8분 26초",
+   "sec": 505.7
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0038_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0038_m.mp3",
+   "dur": "8분 54초",
+   "sec": 534.3
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/81d2835806a3ef4bbf15ccc719094812",
   "audio_m": "/_blob/7d15d808a8ca19942d3693d094d6952d"

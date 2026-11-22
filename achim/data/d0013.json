@@ -35,7 +35,26 @@
   "나는 하나님 앞에서 진리보다 위로를 먼저 찾고 있지는 않은가?",
   "이미 들인 시간과 체면 때문에 돌아서지 못하고 있는 내 삶의 길은 어디인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0013_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0013_f.mp3",
+   "dur": "8분 32초",
+   "sec": 512.4
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0013_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0013_m.mp3",
+   "dur": "9분 2초",
+   "sec": 542.3
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/db58a82fb1e1053df2bffa827b48d182",
   "audio_m": "/_blob/028eef4359f1c6a4b47c6b7e0b284d90"

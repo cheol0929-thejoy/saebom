@@ -35,7 +35,26 @@
   "나는 어떤 좋은 마음을 절대 기준처럼 붙들고 있어서 다른 소중한 것을 놓치고 있지는 않은가?",
   "양심이 약한 목소리로 오래 말해 왔는데, 더 큰 소리에 묻혀 외면해 온 일은 무엇인가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0010_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0010_f.mp3",
+   "dur": "8분 14초",
+   "sec": 494.5
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0010_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0010_m.mp3",
+   "dur": "8분 41초",
+   "sec": 520.9
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/956ff1fd195cf5bab934652c6a198752",
   "audio_m": "/_blob/996e69735b84668f2522f734df40c112"

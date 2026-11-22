@@ -35,7 +35,26 @@
   "나는 무엇을 근거로 내 삶이 옳았다고 스스로를 변호하고 있는가?",
   "지금 내 곁에서 나를 돌려세울 수 있는 가장 가까운 얼굴은 누구이며, 나는 그 얼굴을 보고 있는가?"
  ],
- "voices": [],
+ "voices": [
+  {
+   "key": "f",
+   "label": "여성 AI 음성",
+   "short": "여성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0008_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0008_f.mp3",
+   "dur": "7분 31초",
+   "sec": 450.8
+  },
+  {
+   "key": "m",
+   "label": "남성 AI 음성",
+   "short": "남성",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/achim/d0008_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/achim/d0008_m.mp3",
+   "dur": "7분 55초",
+   "sec": 474.9
+  }
+ ],
  "artifact_audio_ref": {
   "audio": "/_blob/84f07e456e0261d91cd61a34bd0ac374",
   "audio_m": "/_blob/f7832ef549a927f03564b55f0ca44bdb"
