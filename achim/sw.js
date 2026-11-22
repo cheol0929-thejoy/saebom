@@ -1,5 +1,5 @@
-/* 아침한권 서비스워커 1.1.0 — 새봄묵상 sw.js 방식: 껍데기는 캐시 우선(판 이름 = 판), index.json·날짜별 글은 네트워크 우선(안 되면 저장본), 최근 14일 글 보관 */
-var SHELL="achim-shell-1.2.0",DATA="achim-data",KEEP=14,NET_MS=4000;
+/* 아침한권 서비스워커 1.3.0 (1.1.0 — 새봄묵상 sw.js 방식: 껍데기는 캐시 우선(판 이름 = 판), index.json·날짜별 글은 네트워크 우선(안 되면 저장본), 최근 14일 글 보관) */
+var SHELL="achim-shell-1.3.0",DATA="achim-data",KEEP=14,NET_MS=4000;
 /* 네트워크 우선이지만 4초 안에 답이 없으면 저장본(약한 신호에서 멈추지 않게) · 저장본도 없으면 504 응답(오류를 던지지 않음) */
 function net(req){return new Promise(function(ok,no){var t=setTimeout(function(){no(new Error("timeout"));},NET_MS);fetch(req,{cache:"no-cache"}).then(function(r){clearTimeout(t);ok(r);},function(e){clearTimeout(t);no(e);});});}
 function miss(){return new Response("",{status:504,headers:{"X-Achim-Offline":"1"}});}

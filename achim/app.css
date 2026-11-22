@@ -20,6 +20,8 @@ header.top{font-size:19px}
 header.top .brand{font-size:22px}
 header.top .brand small{font-size:13px}
 header.top .sizer button,header.top .gear{font-size:15px}
+/* 380px 미만에서는 부제목을 숨기고 '아침한권'만 (CEO 2026-11-22). 머리줄 높이는 아이콘(44px)이 정하므로 변하지 않는다 */
+@media (max-width:379.98px){header.top .brand small{display:none}}
 .mark{width:2.3em;height:2.3em;border-radius:22%;flex:none}
 .brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--acc2);white-space:nowrap;line-height:1.2}
 .brand small{display:block;font-family:var(--sans);font-weight:400;font-size:.68rem;color:var(--muted)}
@@ -123,3 +125,41 @@ details li.cur{color:var(--ink);font-weight:700}
 .bar input[type=range]::-moz-range-progress{height:3px;border-radius:2px;background:var(--acc2)}
 .bar input[type=range]::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--acc2);border:0}
 .aiNote{text-align:center;font-size:12px;color:var(--muted)}
+/* 1.3.0 설정 = 홈 위에 오른쪽에서 들어오는 판 (오너 지시 2026-11-23 '왼쪽으로 밀기'). 판 안에서만 세로 스크롤 */
+#settings{position:fixed;inset:0;z-index:40;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  padding:calc(10px + env(safe-area-inset-top,0px)) max(14px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));
+  box-shadow:-8px 0 24px rgba(0,0,0,.5);will-change:transform}
+#settings .sinner{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+body.setopen{overflow:hidden}
+.wrap,#settings{touch-action:pan-y pinch-zoom}
+@media (prefers-reduced-motion:reduce){#settings{transition:none!important}}
+.setlink{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;text-decoration:none;font-size:.9rem}
+.ib-list{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px;font-size:.85rem}
+.ib-list li,.guide li,.guide p,.ib-s{word-break:keep-all;overflow-wrap:anywhere}
+.ib-list b,.nw{white-space:nowrap}
+.ib-ipad,.ib-notsafari{display:flex;flex-direction:column;gap:6px}
+.ib-url{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:.8rem;word-break:break-all}
+.swhint{font-size:.8rem;color:var(--muted);margin-bottom:4px}
+/* 색인 */
+/* 고정 줄은 한 줄 가로 넘김(큰 글자에서 3줄이 화면을 가리지 않게) */
+.jump{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;font-size:15px;gap:4px;margin:4px 0 6px;position:sticky;top:0;z-index:2;background:var(--paper);padding:6px 0;box-shadow:0 calc(-12px - env(safe-area-inset-top,0px)) 0 0 var(--paper),0 1px 0 var(--line)}
+.jump a,.jump span{flex:none;min-width:44px;min-height:44px;display:inline-grid;place-items:center;border:1px solid var(--line);border-radius:10px;text-decoration:none;font-size:15px}
+.jump::-webkit-scrollbar{display:none}
+.jump a{color:var(--acc2);background:var(--paper)}
+.jump span{color:var(--muted);opacity:.4}
+.ixg{scroll-margin-top:8px;outline:none}
+.ixg h3{margin:12px 0 4px;font-size:.95rem;color:var(--acc2);border-bottom:1px solid var(--line);padding-bottom:2px}
+.ixl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ixl>li{padding:6px 0;border-bottom:1px solid var(--line);word-break:keep-all;overflow-wrap:anywhere;font-size:.9rem}
+.ixb button.ixt{font:inherit;background:none;border:0;color:var(--ink);text-align:left;padding:6px 0;min-height:44px;width:100%;cursor:pointer;font-weight:700}
+.ixb button.ixt::before{content:"▸ ";color:var(--acc2)}
+.ixb button.ixt[aria-expanded=true]::before{content:"▾ "}
+.ixb button.ixt em{font-style:normal;font-weight:400;font-size:.78rem;color:var(--acc2)}
+.ixb.up .ixt{color:var(--muted)}
+.ixs{margin:2px 0 6px;padding-left:1.2em;display:flex;flex-direction:column}
+.ixs a{display:block;padding:8px 0;min-height:40px;text-decoration:none;font-size:.85rem}
+.ixa{color:var(--muted)}
+.ixa .ixt{color:var(--ink)}
+.ixa a{display:inline-block;padding:6px 2px;min-height:40px;line-height:28px}
+.tag.upcoming{border-color:var(--line);color:var(--muted)}
+.ixb button.ixt:focus-visible,.jump a:focus-visible,.ixs a:focus-visible,.ixa a:focus-visible,.setlink:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
