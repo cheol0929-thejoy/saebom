@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-6c69d313a0", APP_VER="2.2.2", BUILT="2026-11-21"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
+var VERSION="v1-d856683b6d", APP_VER="2.3.0", BUILT="2026-11-23"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://cheol0929-thejoy.github.io/saebom/page/"; /* v2.2.2 (owner GO via CEO 11-21): 아이폰 「묵상 페이지에서 듣기」 = GitHub 페이지(#dYYYYMMDD), claude.ai 아티팩트로 가지 않음 */
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -83,7 +83,7 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
         <button type="button" class="share-btn" data-title="${esc(e.title)}" data-url="${esc((e.share&&typeof e.share==="object"&&e.share.page)||e.card_page||("https://cheol0929-thejoy.github.io/saebom/"+(e.iso||"").slice(5).replace("-","")+".html"))}">🔗 링크 복사하기</button>`}
         <p class="share-msg" role="status"></p></section>
     </article>
-  </div>`; /* v2.0.2 owner 05:28 (via CEO): 이전/다음 묵상 카드 없앰 - 옆으로 밀기·화살표 키·지난 묵상 찾기로 넘긴다 */
+  </div>`; /* v2.0.2 owner 05:28 (via CEO): 이전/다음 묵상 카드 없앰. v2.3.0 (2026-11-23): 손가락 날짜 넘기기도 뺐다(왼쪽 밀기 = 설정) - 날짜는 지난 묵상 찾기·화살표 키(컴퓨터)로 넘긴다 */
   CURRENT=e.id;dayIn(dir);unreadSync(e.iso); /* v2.1: 이 날을 열었다 */
   renderArchive();
   }).catch(()=>{if(tok!==RTOK)return;PENDING=null;document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없어 이 날 묵상을 불러오지 못했습니다. 최근 14일은 인터넷 없이도 볼 수 있습니다.</p>';});
@@ -119,7 +119,7 @@ function renderArchive(){
 }
 document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;try{localStorage.setItem("tab",TAB)}catch(err){}renderArchive();}));
 function route(){const h=location.hash.slice(1);const set=h==="settings"||h.indexOf("set-")===0;
-  document.getElementById("settings").hidden=!set;document.getElementById("today").hidden=set;document.querySelector("nav.arch").hidden=set;
+  document.getElementById("settings").hidden=!set;document.getElementById("today").hidden=set;document.querySelector("nav.arch").hidden=set;{const sl=document.getElementById("setlink");if(sl)sl.hidden=set;}if(!set)SETFROM=false;setTimeout(setAnim,0);
   if(set){showSettings(h==="settings");if(h!=="settings"){const t=document.getElementById(h);if(t)setTimeout(()=>t.scrollIntoView(),60);}return Promise.resolve();}
   return render(/^\d{4}-\d{2}-\d{2}$/.test(h)?"d"+h.replace(/-/g,""):h).then(()=>{if(typeof applyRate==="function")applyRate();});} /* B: 딥링크 #YYYY-MM-DD */
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0);});
@@ -238,11 +238,44 @@ function go(dir){if(!document.getElementById("settings").hidden)return false;con
 function dayIn(dir){const d=document.getElementById("day");if(d&&dir)d.classList.add(dir==="next"?"in-next":"in-prev");}
 function normId(h){return /^\d{4}-\d{2}-\d{2}$/.test(h)?"d"+h.replace(/-/g,""):h;}
 function refreshNav(iso){renderArchive();}
-/* 좌우로 넘기기: 왼쪽으로 밀면 다음(새) 묵상, 오른쪽으로 밀면 이전 묵상 — 재생 막대·선택 상자 위에서는 넘기지 않는다 */
-(function(){const m=document.getElementById("today");if(!m)return;let sx=0,sy=0,st=0,ok=false;
-  m.addEventListener("touchstart",ev=>{ok=ev.touches.length===1&&!ev.target.closest("input,select,textarea,.bar");if(!ok)return;sx=ev.touches[0].clientX;sy=ev.touches[0].clientY;st=Date.now();},{passive:true});
-  m.addEventListener("touchend",ev=>{if(!ok)return;ok=false;const t=ev.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
-    if(Date.now()-st<800&&Math.abs(dx)>=60&&Math.abs(dx)>Math.abs(dy)*1.6&&!(window.getSelection&&String(window.getSelection()).length))go(dx<0?"next":"prev");},{passive:true});})();
+/* v2.3.0 (오너 「홈에서 설정으로 넘어갈때 설정버튼이 아니라 왼쪽으로 밀어 넘기게 하라」 via CEO 2026-11-23): 날짜 좌우 넘기기(손가락)는 뺐다 —
+   홈(오늘 묵상·지난 묵상 찾기)에서 왼쪽으로 밀면 설정, 설정에서 오른쪽으로 밀면 홈. 날짜 이동 = 지난 묵상 찾기·← → 키(컴퓨터).
+   |가로| >= 60px 이고 |가로| > 1.5 × |세로| 일 때만(세로 스크롤은 그대로), 재생기·단추·입력·선택 글자·두 손가락·확대 중에는 무시. */
+const SWX="input,select,textarea,button,label,audio,.tts,.bar,.vsel,summary,[contenteditable]";
+var SETFROM=false; /* 앱 안에서 홈 → 설정으로 열었으면 돌아올 때 history.back() (브라우저 뒤로 = 설정 닫기와 같은 길) */
+function homeEls(){return [document.getElementById("today"),document.querySelector("nav.arch"),document.getElementById("setlink")].filter(Boolean);}
+function openSet(){if(!document.getElementById("settings").hidden)return;hintSeen();SETFROM=true;SETIN="set";location.hash="settings";}
+function closeSet(){if(document.getElementById("settings").hidden)return;SETIN="home";if(SETFROM&&history.length>1){SETFROM=false;history.back();}else{SETFROM=false;location.replace(location.pathname+location.search+"#");}}
+var SETIN="";
+document.addEventListener("click",ev=>{const b=ev.target.closest("#settings a.back");if(b){ev.preventDefault();closeSet();}});
+document.addEventListener("click",ev=>{const a=ev.target.closest('a[href="#settings"]');if(a&&document.getElementById("settings").hidden){SETFROM=true;SETIN="set";hintSeen();}});
+function setAnim(){const k=SETIN;SETIN="";if(!k||(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches))return;
+  const els=k==="set"?[document.getElementById("settings")]:homeEls();els.forEach(e=>{e.classList.remove("in-set","in-home");void e.offsetWidth;e.classList.add(k==="set"?"in-set":"in-home");});}
+(function(){let sx=0,sy=0,st=0,ok=false,mode="",drag=false,els=[];
+  const peek=document.createElement("div");peek.id="swpeek";peek.className="swpeek";peek.setAttribute("aria-hidden","true");peek.textContent="설정 ›";document.body.appendChild(peek);
+  function reset(anim){els.forEach(e=>{e.style.transition=anim?"transform .2s ease-out":"";e.style.transform="";});peek.style.transform="";peek.classList.remove("on");drag=false;
+    if(anim)setTimeout(()=>els.forEach(e=>{e.style.transition="";}),220);}
+  document.addEventListener("touchstart",ev=>{ok=false;if(ev.touches.length!==1||ev.target.closest(SWX)||(window.visualViewport&&visualViewport.scale>1.01))return;
+    const onSet=!document.getElementById("settings").hidden;
+    if(onSet){if(!ev.target.closest("#settings"))return;mode="set";}else{if(!ev.target.closest("#today,nav.arch,#setlink"))return;mode="home";}
+    ok=true;sx=ev.touches[0].clientX;sy=ev.touches[0].clientY;st=Date.now();els=mode==="home"?homeEls():[document.getElementById("settings")];},{passive:true});
+  document.addEventListener("touchmove",ev=>{if(!ok)return;if(ev.touches.length>1){ok=false;reset(false);return;}
+    const dx=ev.touches[0].clientX-sx,dy=ev.touches[0].clientY-sy;
+    if(!drag){if(Math.abs(dy)>12&&Math.abs(dy)*1.5>=Math.abs(dx)){ok=false;return;} if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy)*1.5)drag=true;else return;}
+    const want=mode==="home"?Math.min(0,dx):Math.max(0,dx);els.forEach(e=>{e.style.transform="translateX("+want*0.5+"px)";});
+    if(mode==="home"){peek.classList.add("on");peek.style.transform="translateX("+Math.max(0,100+want*0.9)+"%)";}},{passive:true});
+  document.addEventListener("touchend",ev=>{if(!ok)return;ok=false;const t=ev.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+    const hit=Date.now()-st<1200&&Math.abs(dx)>=60&&Math.abs(dx)>Math.abs(dy)*1.5&&!(window.getSelection&&String(window.getSelection()).length);
+    if(hit&&mode==="home"&&dx<0){reset(false);openSet();}else if(hit&&mode==="set"&&dx>0){reset(false);closeSet();}else reset(drag);},{passive:true});
+  document.addEventListener("touchcancel",()=>{if(ok){ok=false;reset(true);}},{passive:true});})();
+/* 처음 3번 열 때만 홈 아래에 한 줄 안내(손가락 기기만, 글을 가리지 않음 = 누르기·스크롤 통과) */
+function hintSeen(){const h=document.getElementById("swhint");if(h)h.remove();}
+function hint(){let n=0;try{n=+localStorage.getItem("setHintN")||0;}catch(e){return;}if(n>=3||!(window.matchMedia&&matchMedia("(pointer:coarse)").matches)||!document.getElementById("settings").hidden)return;
+  try{localStorage.setItem("setHintN",String(n+1));}catch(e){}
+  const h=document.createElement("div");h.id="swhint";h.className="swhint";h.setAttribute("role","note");h.textContent="← 왼쪽으로 밀면 설정 · 날짜 이동은 아래 ‘지난 묵상 찾기’";document.body.appendChild(h);
+  let done=false;const fade=()=>{if(done)return;done=true;removeEventListener("touchstart",fade,true);removeEventListener("scroll",fade,true);h.classList.add("out");setTimeout(()=>h.remove(),600);};
+  setTimeout(fade,8000);setTimeout(()=>{addEventListener("touchstart",fade,{capture:true,passive:true});addEventListener("scroll",fade,{capture:true,passive:true});},300);}
+window.addEventListener("load",()=>setTimeout(hint,1200));
 document.addEventListener("keydown",ev=>{if(ev.altKey||ev.ctrlKey||ev.metaKey||ev.shiftKey||ev.target.closest("input,select,textarea,[contenteditable]"))return;if(ev.key==="ArrowLeft")go("prev");else if(ev.key==="ArrowRight")go("next");});
 /* 알림 띠(토스트): 화면 아래에 떠서 글 배치를 밀지 않는다 */
 let TT=0;const TOAST=document.createElement("div");TOAST.id="toast";TOAST.className="toast";TOAST.setAttribute("role","status");TOAST.setAttribute("aria-live","polite");TOAST.hidden=true;document.body.appendChild(TOAST);

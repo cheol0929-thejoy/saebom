@@ -209,3 +209,20 @@ header.top .unread[hidden]{display:none}
 .ib-steps li{display:flex;align-items:center;gap:12px}
 .ib-steps img{width:120px;height:auto;flex:none;border-radius:10px}
 .ib-steps span{font-size:1.05rem;line-height:1.4}
+
+/* v2.3.0 홈 ↔ 설정 밀기 (오너 via CEO 2026-11-23): 설정 버튼 대신 왼쪽으로 밀기 · 맨 아래 「설정 ›」 · 처음 3번 안내 */
+#today,nav.arch,#setlink{touch-action:pan-y pinch-zoom}
+#settings{touch-action:pan-y pinch-zoom}
+.wrap{overflow-x:clip}
+@keyframes setin{from{transform:translateX(100%)}to{transform:none}}
+@keyframes homein{from{opacity:.4;transform:translateX(-30%)}to{opacity:1;transform:none}}
+#settings.in-set{animation:setin .26s ease-out}
+#today.in-home,nav.arch.in-home,#setlink.in-home{animation:homein .22s ease-out}
+.setlink{margin:6px 0 0;text-align:right}
+.setlink a{display:inline-flex;align-items:center;min-height:44px;padding:8px 6px;font-size:1.1rem;color:var(--leaf);font-weight:700;text-decoration:none}
+.setlink a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.swpeek{position:fixed;top:50%;right:0;z-index:40;transform:translateX(100%);background:var(--leaf);color:var(--paper);font-weight:700;font-size:16px;padding:14px 14px 14px 18px;border-radius:14px 0 0 14px;pointer-events:none;opacity:0;transition:opacity .12s}
+.swpeek.on{opacity:1}
+.swhint{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;background:var(--leaf);color:var(--paper);font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.35);font-size:15px;line-height:1.45;padding:10px 18px;border-radius:16px;pointer-events:none;text-align:center;word-break:keep-all;transition:opacity .5s}
+.swhint.out{opacity:0}
+@media (prefers-reduced-motion:reduce){#settings.in-set,#today.in-home,nav.arch.in-home,#setlink.in-home{animation:none}}

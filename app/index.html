@@ -231,6 +231,23 @@ header.top .unread[hidden]{display:none}
 .ib-steps li{display:flex;align-items:center;gap:12px}
 .ib-steps img{width:120px;height:auto;flex:none;border-radius:10px}
 .ib-steps span{font-size:1.05rem;line-height:1.4}
+
+/* v2.3.0 홈 ↔ 설정 밀기 (오너 via CEO 2026-11-23): 설정 버튼 대신 왼쪽으로 밀기 · 맨 아래 「설정 ›」 · 처음 3번 안내 */
+#today,nav.arch,#setlink{touch-action:pan-y pinch-zoom}
+#settings{touch-action:pan-y pinch-zoom}
+.wrap{overflow-x:clip}
+@keyframes setin{from{transform:translateX(100%)}to{transform:none}}
+@keyframes homein{from{opacity:.4;transform:translateX(-30%)}to{opacity:1;transform:none}}
+#settings.in-set{animation:setin .26s ease-out}
+#today.in-home,nav.arch.in-home,#setlink.in-home{animation:homein .22s ease-out}
+.setlink{margin:6px 0 0;text-align:right}
+.setlink a{display:inline-flex;align-items:center;min-height:44px;padding:8px 6px;font-size:1.1rem;color:var(--leaf);font-weight:700;text-decoration:none}
+.setlink a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.swpeek{position:fixed;top:50%;right:0;z-index:40;transform:translateX(100%);background:var(--leaf);color:var(--paper);font-weight:700;font-size:16px;padding:14px 14px 14px 18px;border-radius:14px 0 0 14px;pointer-events:none;opacity:0;transition:opacity .12s}
+.swpeek.on{opacity:1}
+.swhint{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;background:var(--leaf);color:var(--paper);font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.35);font-size:15px;line-height:1.45;padding:10px 18px;border-radius:16px;pointer-events:none;text-align:center;word-break:keep-all;transition:opacity .5s}
+.swhint.out{opacity:0}
+@media (prefers-reduced-motion:reduce){#settings.in-set,#today.in-home,nav.arch.in-home,#setlink.in-home{animation:none}}
 </style>
 </head>
 <body>
@@ -242,7 +259,6 @@ header.top .unread[hidden]{display:none}
         <button id="fs-down" type="button">글자 작게</button>
         <button id="fs-up" type="button">글자 크게</button>
       </div>
-      <a class="gear" id="gear" href="#settings" aria-label="설정" title="설정">⚙ 설정</a>
     </div>
     <span id="offline" class="offline" hidden>인터넷 없음 · 저장된 묵상</span>
   </header>
@@ -271,6 +287,8 @@ header.top .unread[hidden]{display:none}
     <div id="archive"></div>
   </nav>
 
+  <p id="setlink" class="setlink"><a href="#settings">설정 ›</a></p>
+
   <div id="settings" hidden>
     <a class="back" href="#">← 묵상으로</a>
     <h1>설정</h1>
@@ -295,7 +313,8 @@ header.top .unread[hidden]{display:none}
         <li><b>음성</b> — 담임목사·남성·여성 중 고를 수 있습니다. 그날 준비된 음성만 누를 수 있습니다.</li>
         <li><b>글자 작게·크게</b> — 위쪽 「글자 작게」「글자 크게」로 글씨 크기를 바꿉니다.</li>
         <li><b>밝게·어둡게</b> — 이 설정 화면의 「화면」에서 고릅니다.</li>
-        <li><b>날짜 넘기기</b> — 옆으로 밀거나 아래 '지난 묵상 찾기'에서 다른 날을 엽니다.</li>
+        <li><b>설정 열기</b> — 오늘 묵상 화면을 왼쪽으로 밀거나 맨 아래 「설정 ›」을 누릅니다. 설정에서 오른쪽으로 밀거나 뒤로 가기를 누르면 묵상으로 돌아갑니다.</li>
+        <li><b>날짜 넘기기</b> — 묵상 화면 맨 아래 「지난 묵상 찾기」에서 다른 날을 엽니다. 컴퓨터에서는 ← → 키도 됩니다.</li>
       </ul></section>
     <section class="card" id="set-theme"><h2>화면</h2>
       <div class="seg" role="group" aria-label="화면 밝기"><button type="button" data-theme-set="light">밝게</button><button type="button" data-theme-set="dark">어둡게</button></div>
