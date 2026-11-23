@@ -15,11 +15,11 @@
  ],
  "ref": "시편 24편 1~10절",
  "audio": "audio/2026-11-24.mp3",
- "dur": "9분 47초",
+ "dur": "8분 54초",
  "audio_f": "audio/2026-11-24-f.mp3",
- "dur_f": "8분 37초",
+ "dur_f": "7분 29초",
  "audio_m": "audio/2026-11-24-m.mp3",
- "dur_m": "9분 14초",
+ "dur_m": "8분 1초",
  "verses": [
   [
    1,
@@ -105,5 +105,38 @@
  "listen": "https://claude.ai/artifact/83acT3uNMUC3NGidY5284F#d20261124",
  "share": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1124",
  "hasPastorAudio": true,
- "hasAiAudio": true
+ "hasAiAudio": true,
+ "v": 2,
+ "voices": [
+  {
+   "key": "p",
+   "label": "신철 목사 음성",
+   "short": "목사",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-24_pastor.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/2026/2026-11-24_pastor.mp3",
+   "path": "audio/2026-11-24.mp3",
+   "dur": "8분 54초"
+  },
+  {
+   "key": "f",
+   "label": "여성 낭독",
+   "short": "여",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-24_f.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/2026/2026-11-24_f.mp3",
+   "path": "audio/2026-11-24-f.mp3",
+   "dur": "7분 29초"
+  },
+  {
+   "key": "m",
+   "label": "남성 낭독",
+   "short": "남",
+   "src": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-24_m.mp3",
+   "fallback": "https://raw.githubusercontent.com/cheol0929-thejoy/saebom-audio/main/2026/2026-11-24_m.mp3",
+   "path": "audio/2026-11-24-m.mp3",
+   "dur": "8분 1초"
+  }
+ ],
+ "pastor_release_url": "https://cheol0929-thejoy.github.io/saebom-audio/2026/2026-11-24_pastor.mp3",
+ "card": "https://cheol0929-thejoy.github.io/saebom/kakao.html?d=1124",
+ "card_page": "https://cheol0929-thejoy.github.io/saebom/1124.html"
 }

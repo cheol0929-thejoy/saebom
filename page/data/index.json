@@ -1,6 +1,21 @@
 {
- "generated_for": "2026-11-23",
+ "generated_for": "2026-11-24",
  "days": [
+  {
+   "id": "d20261124",
+   "iso": "2026-11-24",
+   "short": "11.24",
+   "date": "2026년 11월 24일 화요일",
+   "title": "영광의 왕이 들어가시리로다",
+   "ref": "시편 24편 1~10절",
+   "book": "시편",
+   "topics": [
+    "예배"
+   ],
+   "special": false,
+   "hasPastorAudio": true,
+   "hasAiAudio": true
+  },
   {
    "id": "d20261123",
    "iso": "2026-11-23",
