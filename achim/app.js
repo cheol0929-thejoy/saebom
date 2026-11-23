@@ -1,6 +1,6 @@
-/* 아침한권 앱 1.4.0 (지난 글 찾기 5탭·밑줄·댓글, 오너 지시 2026-11-23) · 1.3.0 (아이패드 설치 안내·색인·홈→설정 밀기, 오너 지시 2026-11-23) · 1.2.0 (머리줄 고정·탭 줄 삭제·한 줄 재생기·빨간 MORNING 아이콘, 오너 지시 2026-11-22) — 새봄묵상 앱(saebom/app)의 설치 배너·아이폰 안내·카카오톡 바깥 열기·글자 크기·서비스워커 방식을 따른다 */
+/* 아침한권 앱 1.5.0 (댓글 켜짐 — 우리 Cloudflare Worker achim-comments) · 1.4.0 (지난 글 찾기 5탭·밑줄, 오너 지시 2026-11-23) · 1.3.0 (아이패드 설치 안내·색인·홈→설정 밀기, 오너 지시 2026-11-23) · 1.2.0 (머리줄 고정·탭 줄 삭제·한 줄 재생기·빨간 MORNING 아이콘, 오너 지시 2026-11-22) — 새봄묵상 앱(saebom/app)의 설치 배너·아이폰 안내·카카오톡 바깥 열기·글자 크기·서비스워커 방식을 따른다 */
 "use strict";
-var APP_VER="1.4.0";
+var APP_VER="1.5.0";
 var IDX=null,CACHE={},OFF=false;
 var V=document.getElementById("view"),SET=document.getElementById("settings");
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -173,7 +173,7 @@ function wrapText(root,q,want,bi){var w=document.createTreeWalker(root,NodeFilte
     var mk=document.createElement("mark");mk.className="hl";mk.dataset.q=q;mk.dataset.b=bi==null?"":String(bi);mk.dataset.o=String(pos);mk.appendChild(r.extractContents());r.insertNode(mk);return true;}catch(err){return false;}}
 /* ── 1.4.0 댓글 (오너 지시 2026-11-23 「댓글 기능을 넣어라」): 우리 Cloudflare Worker(제3자 스크립트 아님) · 로그인 없음 · 별명(없으면 익명)·글(500자)·날짜만.
    기기 표시 = 이 기기에서 만든 무작위 값(서버는 그 해시만 저장) — 「내 댓글」과 내가 쓴 글 지우기에만 쓴다. COMMENTS_API 가 비어 있으면 댓글 칸을 숨긴다 */
-var COMMENTS_API="";
+var COMMENTS_API="https://achim-comments.saebom-achim.workers.dev";
 var CM_MAX=500,CM_NICK=20;
 function devId(){var k="achim-dev",v=null;try{v=localStorage.getItem(k);}catch(e){}if(v&&/^[0-9a-f]{32}$/.test(v))return v;var b=new Uint8Array(16);crypto.getRandomValues(b);v=Array.prototype.map.call(b,function(x){return ("0"+x.toString(16)).slice(-2);}).join("");try{localStorage.setItem(k,v);}catch(e){}return v;}
 function adminTok(){try{return localStorage.getItem("achim-admin")||"";}catch(e){return "";}}
@@ -182,7 +182,7 @@ function adminTok(){try{return localStorage.getItem("achim-admin")||"";}catch(e)
 function api(path,opt){opt=opt||{};var h={"X-Achim-Device":devId()};if(opt.body)h["Content-Type"]="application/json";if(opt.admin)h["Authorization"]="Bearer "+adminTok();
   return fetch(COMMENTS_API+path,{method:opt.method||"GET",headers:h,body:opt.body?JSON.stringify(opt.body):undefined,cache:"no-store",credentials:"omit",mode:"cors"}).then(function(r){return r.json().catch(function(){return {};}).then(function(j){j.status=r.status;return j;});});}
 function fmtWhen(iso){var t=new Date(iso);if(isNaN(t))return "";return (t.getMonth()+1)+"."+String(t.getDate()).padStart(2,"0")+" "+String(t.getHours()).padStart(2,"0")+":"+String(t.getMinutes()).padStart(2,"0");}
-var CM_ERR={rate_min:"조금 천천히 남겨 주세요. 1분에 5개까지 남길 수 있습니다.",rate_day:"오늘은 이 기기에서 더 남길 수 없습니다(하루 30개까지).",banned:"쓸 수 없는 낱말이 들어 있습니다. 고쳐서 다시 남겨 주세요.",empty:"댓글 내용을 적어 주세요.",too_long:"댓글은 500자까지 남길 수 있습니다.",bad_day:"이 글에는 댓글을 남길 수 없습니다.",link:"인터넷 주소는 남길 수 없습니다(광고 막기)."};
+var CM_ERR={rate_min:"조금 천천히 남겨 주세요. 1분에 5개까지 남길 수 있습니다.",rate_day:"오늘은 이 기기에서 더 남길 수 없습니다(하루 30개까지).",banned:"쓸 수 없는 낱말이 들어 있습니다. 고쳐서 다시 남겨 주세요.",empty:"댓글 내용을 적어 주세요.",too_long:"댓글은 500자까지 남길 수 있습니다.",bad_day:"이 글에는 댓글을 남길 수 없습니다.",link:"광고 방지를 위해 인터넷 주소는 남길 수 없습니다.",rate_busy:"지금은 댓글이 많이 몰려 있습니다. 잠시 후 다시 남겨 주세요."};
 function cmHTML(){if(!COMMENTS_API)return "";var nick="";try{nick=localStorage.getItem("achim-nick")||"";}catch(e){}
   return '<section class="cm" id="cm" aria-label="댓글"><div class="hdrow"><h2>댓글 <span class="cnt" id="cmCount"></span></h2>'+(adminTok()?'<button type="button" class="mybtn" id="cmAdminOff">관리자 모드 끄기</button>':'')+'</div>'+
   '<ul id="cmList"></ul><p class="msg" id="cmEmpty">댓글을 불러오는 중…</p>'+
@@ -200,15 +200,16 @@ function cmList(d){var ul=document.getElementById("cmList"),em=document.getEleme
           del.disabled=true;var adm=!c.mine&&adminTok();api(adm?"/v1/admin/comments/"+encodeURIComponent(c.id):"/v1/comments/"+encodeURIComponent(c.id),{method:"DELETE",admin:adm}).then(function(r){if(!r.ok)throw 0;myCmDrop(c.id);cmList(d);if(TAB==="cm")renderArch();}).catch(function(){del.disabled=false;del.textContent="삭제하지 못했습니다";});};
         hd.appendChild(del);}
       tx.className="tx";tx.textContent=c.text;li.appendChild(hd);li.appendChild(tx);ul.appendChild(li);});
-  }).catch(function(){if(!CUR||CUR.id!==d.id)return;ul.innerHTML="";cnt.textContent="";em.hidden=false;em.textContent="인터넷 연결 후 표시됩니다.";});}
+  }).catch(function(){if(!CUR||CUR.id!==d.id)return;ul.innerHTML="";cnt.textContent="";em.hidden=false;em.textContent=navigator.onLine===false?"인터넷 연결 후 표시됩니다.":"지금은 댓글을 불러올 수 없습니다. 잠시 후 다시 해 보세요.";});}
 function wireCm(d){if(!COMMENTS_API)return;var f=document.getElementById("cmForm");if(!f)return;cmList(d);
   var off=document.getElementById("cmAdminOff");if(off)off.onclick=function(){try{localStorage.removeItem("achim-admin");}catch(e){}RENDERED=null;route();};
   f.addEventListener("submit",function(ev){ev.preventDefault();var ta=document.getElementById("cmText"),msg=document.getElementById("cmMsg"),go=document.getElementById("cmGo"),nk=document.getElementById("cmNick").value.trim().slice(0,CM_NICK),text=ta.value.trim();
-    if(!text){msg.textContent=CM_ERR.empty;return;}if(text.length>CM_MAX){msg.textContent=CM_ERR.too_long;return;}
+    function say(t,err){msg.textContent=t;msg.classList.toggle("err",!!err);}
+    if(!text){say(CM_ERR.empty,1);return;}if(text.length>CM_MAX){say(CM_ERR.too_long,1);return;}
     try{localStorage.setItem("achim-nick",nk);}catch(e){}
-    go.disabled=true;msg.textContent="남기는 중입니다…";
-    api("/v1/comments",{method:"POST",body:{day:d.id,nick:nk,text:text}}).then(function(j){if(j.ok){ta.value="";msg.textContent="댓글을 남겼습니다.";myCmAdd(j.comment);cmList(d);if(TAB==="cm")renderArch();}else msg.textContent=CM_ERR[j.error]||"남기지 못했습니다. 잠시 후 다시 해 보세요.";})
-      .catch(function(){msg.textContent="인터넷에 연결된 뒤 다시 남겨 주세요.";}).then(function(){go.disabled=false;});});}
+    go.disabled=true;say("남기는 중입니다…");
+    api("/v1/comments",{method:"POST",body:{day:d.id,nick:nk,text:text}}).then(function(j){if(j.ok){ta.value="";say("댓글을 남겼습니다.");myCmAdd(j.comment);cmList(d);if(TAB==="cm")renderArch();}else say(CM_ERR[j.error]||"남기지 못했습니다. 잠시 후 다시 해 보세요.",1);})
+      .catch(function(){say(navigator.onLine===false?"인터넷에 연결된 뒤 다시 남겨 주세요.":"지금은 댓글을 남길 수 없습니다. 잠시 후 다시 해 보세요.",1);}).then(function(){go.disabled=false;});});}
 /* 내 댓글: 서버의 이 기기 댓글(GET /v1/mine) — 인터넷이 없으면 마지막으로 받은 목록(이 기기 저장) */
 function myCmGet(){try{var a=JSON.parse(localStorage.getItem("achim-mycm")||"[]");return Array.isArray(a)?a:[];}catch(e){return [];}}
 function myCmPut(a){try{localStorage.setItem("achim-mycm",JSON.stringify(a.slice(0,300)));}catch(e){}}
