@@ -1,6 +1,21 @@
 {
- "generated_for": "2026-11-24",
+ "generated_for": "2026-11-25",
  "days": [
+  {
+   "id": "d20261125",
+   "iso": "2026-11-25",
+   "short": "11.25",
+   "date": "2026년 11월 25일 수요일",
+   "title": "주의 길을 내게 가르치소서",
+   "ref": "시편 25편 1~10절",
+   "book": "시편",
+   "topics": [
+    "기도"
+   ],
+   "special": false,
+   "hasPastorAudio": false,
+   "hasAiAudio": true
+  },
   {
    "id": "d20261124",
    "iso": "2026-11-24",
