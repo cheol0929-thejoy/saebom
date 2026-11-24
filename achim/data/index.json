@@ -1,9 +1,35 @@
 {
  "app": "아침한권",
  "schema": 1,
- "latest": "d0040",
- "count": 40,
+ "latest": "d0042",
+ "count": 42,
  "days": [
+  {
+   "id": "d0042",
+   "day": 42,
+   "date": "2026-11-25",
+   "book": "스크루테이프의 편지",
+   "author": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "recommender": "C.S. 루이스",
+   "part": "편지 1 — 논증보다 일상과 상식으로 환자를 붙드는 법",
+   "part_no": "1/31",
+   "theme": "점심 먹고 다시 생각하자 — 논증보다 무서운 일상의 소음",
+   "audio": 2
+  },
+  {
+   "id": "d0041",
+   "day": 41,
+   "date": "2026-11-24",
+   "book": "순전한 기독교",
+   "author": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "recommender": "C.S. 루이스",
+   "part": "4부 11장 '새사람'",
+   "part_no": "33/33",
+   "theme": "목사 되더니 재미없어졌다 — 나를 내어 드릴 때 비로소 내가 된다",
+   "audio": 2
+  },
   {
    "id": "d0040",
    "day": 40,
@@ -575,11 +601,11 @@
    "author": "C.S. 루이스",
    "recommender": "C.S. 루이스",
    "series": "C.S. 루이스 읽기",
-   "status": "reading",
+   "status": "done",
    "sessions": 33,
-   "progress": "32/33",
+   "progress": "33/33",
    "S": 33,
-   "j": 32,
+   "j": 33,
    "days": [
     "d0009",
     "d0010",
@@ -612,7 +638,8 @@
     "d0037",
     "d0038",
     "d0039",
-    "d0040"
+    "d0040",
+    "d0041"
    ],
    "plan": [
     "1부 「옳고 그름, 우주의 의미를 푸는 실마리」 1장 '인간 본성의 법칙'",
@@ -658,12 +685,14 @@
    "author": "C.S. 루이스",
    "recommender": "C.S. 루이스",
    "series": "C.S. 루이스 읽기",
-   "status": "upcoming",
+   "status": "reading",
    "sessions": 31,
-   "progress": null,
+   "progress": "1/31",
    "S": 31,
-   "j": 0,
-   "days": [],
+   "j": 1,
+   "days": [
+    "d0042"
+   ],
    "plan": [
     "편지 1 — 논증보다 일상과 '상식'으로 환자를 붙드는 법",
     "편지 2 — 갓 회심한 환자가 교회 옆자리 사람들에게 실망하게 만들기",
@@ -1227,14 +1256,14 @@
        {
         "q": "q021",
         "book": "순전한 기독교",
-        "status": "reading",
+        "status": "done",
         "read": true
        },
        {
         "q": "q022",
         "book": "스크루테이프의 편지",
-        "status": "upcoming",
-        "read": false
+        "status": "reading",
+        "read": true
        },
        {
         "q": "q023",
@@ -1400,7 +1429,7 @@
       "text": "순전한 기독교",
       "label": "순전한 기독교 — C.S. 루이스",
       "q": "q021",
-      "status": "reading",
+      "status": "done",
       "sessions": [
        {
         "id": "d0009",
@@ -1593,6 +1622,12 @@
         "day": 40,
         "part_no": "32/33",
         "theme": "교회 다니는 사람이 왜 더 까다로워요 — 착한 사람이 아니라 새사람"
+       },
+       {
+        "id": "d0041",
+        "day": 41,
+        "part_no": "33/33",
+        "theme": "목사 되더니 재미없어졌다 — 나를 내어 드릴 때 비로소 내가 된다"
        }
       ]
      },
@@ -1601,8 +1636,15 @@
       "text": "스크루테이프의 편지",
       "label": "스크루테이프의 편지 — C.S. 루이스",
       "q": "q022",
-      "status": "upcoming",
-      "sessions": []
+      "status": "reading",
+      "sessions": [
+       {
+        "id": "d0042",
+        "day": 42,
+        "part_no": "1/31",
+        "theme": "점심 먹고 다시 생각하자 — 논증보다 무서운 일상의 소음"
+       }
+      ]
      }
     ]
    },
