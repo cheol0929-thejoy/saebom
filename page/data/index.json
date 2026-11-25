@@ -1,6 +1,21 @@
 {
- "generated_for": "2026-11-25",
+ "generated_for": "2026-11-26",
  "days": [
+  {
+   "id": "d20261126",
+   "iso": "2026-11-26",
+   "short": "11.26",
+   "date": "2026년 11월 26일 목요일",
+   "title": "내 백성을 위로하라",
+   "ref": "이사야 40장 1~11절",
+   "book": "이사야",
+   "topics": [
+    "말씀"
+   ],
+   "special": false,
+   "hasPastorAudio": true,
+   "hasAiAudio": true
+  },
   {
    "id": "d20261125",
    "iso": "2026-11-25",
