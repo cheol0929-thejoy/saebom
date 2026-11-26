@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-d856683b6d", APP_VER="2.3.0", BUILT="2026-11-23"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
+var VERSION="v1-2037bc032a", APP_VER="2.4.0", BUILT="2026-11-26"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://cheol0929-thejoy.github.io/saebom/page/"; /* v2.2.2 (owner GO via CEO 11-21): 아이폰 「묵상 페이지에서 듣기」 = GitHub 페이지(#dYYYYMMDD), claude.ai 아티팩트로 가지 않음 */
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -86,7 +86,8 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
   </div>`; /* v2.0.2 owner 05:28 (via CEO): 이전/다음 묵상 카드 없앰. v2.3.0 (2026-11-23): 손가락 날짜 넘기기도 뺐다(왼쪽 밀기 = 설정) - 날짜는 지난 묵상 찾기·화살표 키(컴퓨터)로 넘긴다 */
   CURRENT=e.id;dayIn(dir);unreadSync(e.iso); /* v2.1: 이 날을 열었다 */
   renderArchive();
-  }).catch(()=>{if(tok!==RTOK)return;PENDING=null;document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없어 이 날 묵상을 불러오지 못했습니다. 최근 14일은 인터넷 없이도 볼 수 있습니다.</p>';});
+  if(typeof SBC!=="undefined")SBC.show(e.id); /* 2.4.0 댓글: 글을 그린 뒤 */
+  }).catch(()=>{if(tok!==RTOK)return;PENDING=null;if(typeof SBC!=="undefined")SBC.show("");document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없어 이 날 묵상을 불러오지 못했습니다. 최근 14일은 인터넷 없이도 볼 수 있습니다.</p>';});
 }
 
 /* ── 색인: 성경 권별 · 주제별 ── */
@@ -98,7 +99,7 @@ const bookOf=x=>x.book||BYLEN.find(b=>(x.ref||"").startsWith(b))||"";
 const chap=x=>{const m=(x.ref||"").match(/(\d+)장\s*(\d+)?/);return m?(+m[1])*1000+(+(m[2]||0)):0;};
 let CURRENT="", TAB="date";
 try{const t=localStorage.getItem("tab");if(["date","book","topic"].includes(t))TAB=t;}catch(err){}
-const item=x=>`<li><a href="#${x.id}" aria-current="${x.id===CURRENT}"><span class="d">${esc(x.short)}</span><span class="t">${esc(x.title)}${x.ref?`<span class="r">${esc(x.ref)}</span>`:""}</span>${x.audio?'<span class="ear">🎧 음성</span>':(x.audio_f||x.audio_m)?'<span class="ear">🎧 AI</span>':""}</a></li>`;
+const item=x=>`<li><a href="#${x.id}" aria-current="${x.id===CURRENT}"><span class="d">${esc(x.short)}</span><span class="t">${esc(x.title)}${x.ref?`<span class="r">${esc(x.ref)}</span>`:""}<span class="cmn-li" data-cmn="${esc(x.id)}" hidden></span></span>${x.audio?'<span class="ear">🎧 음성</span>':(x.audio_f||x.audio_m)?'<span class="ear">🎧 AI</span>':""}</a></li>`; /* 2.4.0: 댓글 수(SBC.paint) */
 const fold=(label,list,open)=>`<details${open?" open":""}><summary><span>${esc(label)} <span class="n">(${list.length})</span></span></summary><ul>${list.map(item).join("")}</ul></details>`;
 function renderArchive(){
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===TAB)));
@@ -116,10 +117,11 @@ function renderArchive(){
     h=hit.length?hit.map(t=>fold(t,by[t],false)).join(""):'<p class="empty">아직 묵상이 없습니다.</p>';
   }
   document.getElementById("archive").innerHTML=h;
+  if(typeof SBC!=="undefined")SBC.paint(); /* 2.4.0 */
 }
 document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;try{localStorage.setItem("tab",TAB)}catch(err){}renderArchive();}));
 function route(){const h=location.hash.slice(1);const set=h==="settings"||h.indexOf("set-")===0;
-  document.getElementById("settings").hidden=!set;document.getElementById("today").hidden=set;document.querySelector("nav.arch").hidden=set;{const sl=document.getElementById("setlink");if(sl)sl.hidden=set;}if(!set)SETFROM=false;setTimeout(setAnim,0);
+  document.getElementById("settings").hidden=!set;document.getElementById("today").hidden=set;{const cb=document.getElementById("cmbox");if(cb)cb.hidden=set;}document.querySelector("nav.arch").hidden=set;{const sl=document.getElementById("setlink");if(sl)sl.hidden=set;}if(!set)SETFROM=false;setTimeout(setAnim,0);
   if(set){showSettings(h==="settings");if(h!=="settings"){const t=document.getElementById(h);if(t)setTimeout(()=>t.scrollIntoView(),60);}return Promise.resolve();}
   return render(/^\d{4}-\d{2}-\d{2}$/.test(h)?"d"+h.replace(/-/g,""):h).then(()=>{if(typeof applyRate==="function")applyRate();});} /* B: 딥링크 #YYYY-MM-DD */
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0);});
@@ -176,7 +178,7 @@ applyFs();
 document.getElementById("fs-up").onclick=()=>{fs=Math.min(27,fs+2);applyFs();};
 document.getElementById("fs-down").onclick=()=>{fs=Math.max(15,fs-2);applyFs();};
 /* ===== 앱 추가분 ===== */
-function boot(){loadIndex().then(route).then(()=>{if(typeof updAfterBoot==="function")updAfterBoot();}).catch(()=>{document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없고 저장된 묵상도 없습니다. 인터넷에 연결한 뒤 다시 열어 주세요.</p>';});}
+function boot(){loadIndex().then(route).then(()=>{if(typeof updAfterBoot==="function")updAfterBoot();if(typeof SBC!=="undefined")SBC.counts();}).catch(()=>{document.getElementById("today").innerHTML='<p class="loadmsg">인터넷이 없고 저장된 묵상도 없습니다. 인터넷에 연결한 뒤 다시 열어 주세요.</p>';});}
 /* 앱으로 돌아올 때마다 목록을 다시 받는다 — 05:00 넘어 새 묵상, 나중에 붙은 녹음·그림 반영 */
 var REG=null;if("serviceWorker" in navigator)navigator.serviceWorker.getRegistration().then(r=>{REG=r||null;}).catch(()=>{});
 function checkNew(){if(document.visibilityState!=="visible")return;if(typeof updCheck==="function")updCheck(); /* v2.0.3: 새 판 확인 + 마지막 확인 시각 기록 */const a=document.getElementById("player");if(a&&!a.paused)return;
@@ -227,6 +229,7 @@ function showSettings(top){applyTheme(THEME);
   instUI();
   updUI();
   const bs=document.getElementById("badge-sup");if(bs){const m=badgeMode();bs.textContent=m==="icon"?"홈 화면 앱 아이콘에도 숫자가 보입니다":"이 폰은 앱 안에서만 숫자가 보입니다";bs.dataset.mode=m;}unreadSync(); /* v2.1 */
+  admUI(); /* 2.4.0 */
   const n=DATA_IDX&&DATA_IDX.days.length?DATA_IDX.days.length:0;document.getElementById("datainfo").textContent=VISIBLE[0]?(VISIBLE[0].short+" 묵상까지 · "+VISIBLE.length+"일"):"-";
   if(top!==false)window.scrollTo(0,0);}
 
@@ -243,7 +246,7 @@ function refreshNav(iso){renderArchive();}
    |가로| >= 60px 이고 |가로| > 1.5 × |세로| 일 때만(세로 스크롤은 그대로), 재생기·단추·입력·선택 글자·두 손가락·확대 중에는 무시. */
 const SWX="input,select,textarea,button,label,audio,.tts,.bar,.vsel,summary,[contenteditable]";
 var SETFROM=false; /* 앱 안에서 홈 → 설정으로 열었으면 돌아올 때 history.back() (브라우저 뒤로 = 설정 닫기와 같은 길) */
-function homeEls(){return [document.getElementById("today"),document.querySelector("nav.arch"),document.getElementById("setlink")].filter(Boolean);}
+function homeEls(){return [document.getElementById("today"),document.getElementById("cmbox"),document.querySelector("nav.arch"),document.getElementById("setlink")].filter(Boolean);}
 function openSet(){if(!document.getElementById("settings").hidden)return;hintSeen();SETFROM=true;SETIN="set";location.hash="settings";}
 function closeSet(){if(document.getElementById("settings").hidden)return;SETIN="home";if(SETFROM&&history.length>1){SETFROM=false;history.back();}else{SETFROM=false;location.replace(location.pathname+location.search+"#");}}
 var SETIN="";
@@ -257,7 +260,7 @@ function setAnim(){const k=SETIN;SETIN="";if(!k||(window.matchMedia&&matchMedia(
     if(anim)setTimeout(()=>els.forEach(e=>{e.style.transition="";}),220);}
   document.addEventListener("touchstart",ev=>{ok=false;if(ev.touches.length!==1||ev.target.closest(SWX)||(window.visualViewport&&visualViewport.scale>1.01))return;
     const onSet=!document.getElementById("settings").hidden;
-    if(onSet){if(!ev.target.closest("#settings"))return;mode="set";}else{if(!ev.target.closest("#today,nav.arch,#setlink"))return;mode="home";}
+    if(onSet){if(!ev.target.closest("#settings"))return;mode="set";}else{if(!ev.target.closest("#today,#cmbox,nav.arch,#setlink"))return;mode="home";}
     ok=true;sx=ev.touches[0].clientX;sy=ev.touches[0].clientY;st=Date.now();els=mode==="home"?homeEls():[document.getElementById("settings")];},{passive:true});
   document.addEventListener("touchmove",ev=>{if(!ok)return;if(ev.touches.length>1){ok=false;reset(false);return;}
     const dx=ev.touches[0].clientX-sx,dy=ev.touches[0].clientY-sy;
@@ -404,3 +407,93 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 function unreadAt0500(){const t=nowMs(),D=864e5,off=((t-20*3600e3)%D+D)%D;setTimeout(()=>{unreadSync();unreadAt0500();},D-off+2000);} /* 05:00 KST = 20:00 UTC, 목록 다시 받기(at0500, +3 s)보다 먼저 — 받아 둔 목록으로 센다 */
 unreadAt0500();
 /* ===== /v2.1 ===== */
+
+/* ===== 2.4.0 댓글 관리자 (설정 「관리자」): 비밀값을 붙여 넣으면 서버에 한 번 확인 → 이 기기 localStorage 에만 저장. 주소에 넣지 않는다 ===== */
+function admUI(){const on=typeof SBC!=="undefined"&&SBC.isAdmin(),i=document.getElementById("adm-in"),o=document.getElementById("adm-off"),s=document.getElementById("adm-st");if(!i)return;
+  i.hidden=on;o.hidden=!on;s.textContent=on?"이 기기는 관리자 모드입니다. 묵상 화면 댓글에 숨기기·삭제 단추가 보이고, 남기는 댓글에 「목사님」 표시가 붙습니다.":"";}
+{const g=document.getElementById("adm-go"),o=document.getElementById("adm-off"),t=document.getElementById("adm-tok"),s=document.getElementById("adm-st");
+  if(g)g.addEventListener("click",()=>{if(typeof SBC==="undefined")return;g.disabled=true;s.textContent="확인하는 중…";SBC.adminOn(t.value).then(ok=>{g.disabled=false;
+    if(ok){t.value="";admUI();}else s.textContent=ok===null?"인터넷 연결을 확인한 뒤 다시 해 보세요.":"비밀값이 맞지 않습니다.";});});
+  if(o)o.addEventListener("click",()=>{if(typeof SBC==="undefined")return;SBC.adminOff();admUI();});}
+/* ===== /2.4.0 ===== */
+/* SBC:BEGIN 새봄묵상 댓글 2.4.0 (CEO 지시 2026-11-26 · 오너 「새봄묵상 앱에 '댓글' 기능 추가하라」) — 우리 Cloudflare Worker saebom-comments(제3자 스크립트 아님).
+   로그인 없음 · 쿠키 없음. 저장 = 별명·내용·작성시각(서버). 이 기기 표시(무작위 값)는 「내가 쓴 댓글 24시간 안에 지우기」에만 쓰고 서버는 그 해시만 둔다.
+   관리자(목사님) = 설정 「관리자」에 비밀값을 한 번 붙여 넣으면 이 기기에만 저장 → 숨기기·지우기, 쓴 댓글에 「목사님」 표시. 글을 먼저 보이고 댓글은 그 뒤에 불러온다(실패해도 글은 그대로) */
+var SBC=(function(){
+  var API="https://saebom-comments.saebom-achim.workers.dev", NICK_MAX=12, TEXT_MAX=300, STEP=20, DAY24=864e5;
+  var K_DEV="saebom-cm-dev", K_NICK="saebom-cm-nick", K_ADM="saebom-cm-admin";
+  var DAY="", LIST=[], SHOWN=STEP, GEN=0, COUNTS=null, CBUSY=null, CAT=0;
+  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k)||"";if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(e){}return "";}
+  function dev(){var d=ls(K_DEV);if(!/^[0-9a-f]{32}$/.test(d)){var b=new Uint8Array(16);crypto.getRandomValues(b);d=Array.prototype.map.call(b,function(x){return ("0"+x.toString(16)).slice(-2);}).join("");ls(K_DEV,d);}return d;}
+  function admin(){var t=ls(K_ADM);return /^[A-Za-z0-9_-]{24,128}$/.test(t)?t:"";}
+  function h(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function api(path,o){o=o||{};var hd={"X-Saebom-Device":dev()};if(o.body)hd["Content-Type"]="application/json";var a=o.auth===false?"":(o.auth||admin());if(a)hd.Authorization="Bearer "+a;
+    return fetch(API+path,{method:o.method||"GET",headers:hd,body:o.body?JSON.stringify(o.body):undefined,cache:"no-store",credentials:"omit",mode:"cors",referrerPolicy:"no-referrer"})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){j.status=r.status;return j;});});}
+  var ERR={nick:"별명을 1~12자로 적어 주세요.",empty:"댓글 내용을 적어 주세요.",too_long:"댓글은 300자까지 남길 수 있습니다.",nick_long:"별명은 12자까지 쓸 수 있습니다.",
+    banned:"쓸 수 없는 낱말이 들어 있습니다. 고쳐서 다시 남겨 주세요.",link:"광고를 막기 위해 인터넷 주소는 남길 수 없습니다.",rate_20s:"조금 천천히 남겨 주세요. 20초에 한 개씩 남길 수 있습니다.",
+    rate_day:"오늘은 더 남길 수 없습니다. 하루에 5개까지 남길 수 있습니다.",rate_busy:"지금은 댓글이 많이 몰려 있습니다. 잠시 뒤 다시 남겨 주세요.",full:"이 날은 댓글이 가득 찼습니다(200개).",
+    bad_day:"이 날에는 댓글을 남길 수 없습니다.",expired:"24시간이 지나 지울 수 없습니다. 지워야 하면 교회에 말씀해 주세요.",not_found:"이미 지워진 댓글입니다.",forbidden:"관리자 비밀값이 맞지 않습니다."};
+  function when(iso){var t=Date.parse(iso);if(isNaN(t))return "";var s=(Date.now()-t)/1000;if(s<60)return "방금";if(s<3600)return Math.floor(s/60)+"분 전";if(s<86400)return Math.floor(s/3600)+"시간 전";
+    try{return new Intl.DateTimeFormat("ko-KR",{timeZone:"Asia/Seoul",month:"long",day:"numeric",hour:"numeric",minute:"2-digit"}).format(new Date(t));}catch(e){return iso.slice(0,10);}}
+  function box(){return document.getElementById("cmbox");}
+  function shell(){var b=box();if(!b)return null;var adm=admin();
+    b.innerHTML='<section class="cm" aria-labelledby="cmH"><h2 id="cmH">댓글 <span class="cmcnt" id="cmCnt"></span></h2>'+
+      '<p class="cmst" id="cmSt" role="status">댓글을 불러오는 중…</p><ul class="cmlist" id="cmList"></ul>'+
+      '<button type="button" class="cmmore" id="cmMore" hidden>더 보기</button>'+
+      '<form class="cmform" id="cmForm" novalidate><label class="cmlab" for="cmNick">이름(별명)</label>'+
+      '<input id="cmNick" name="nick" maxlength="'+NICK_MAX+'" autocomplete="nickname" placeholder="별명 1~12자" value="'+h(ls(K_NICK))+'">'+
+      '<label class="cmlab" for="cmText">내용</label><textarea id="cmText" name="text" maxlength="'+TEXT_MAX+'" rows="3" placeholder="오늘 묵상에 대한 생각이나 기도를 남겨 주세요."></textarea>'+
+      '<div class="cmrow"><span class="cmmsg" id="cmMsg" role="status" aria-live="polite"></span><span class="cmn" id="cmLen">0/'+TEXT_MAX+'</span><button type="submit" class="cmgo" id="cmGo">남기기</button></div>'+
+      (adm?'<p class="cmadm">관리자 모드 · 남기는 댓글에 「목사님」 표시가 붙습니다</p>':'')+
+      '<p class="cmpriv">댓글은 별명·내용·작성시각만 저장되며 IP는 하루 뒤 삭제됩니다</p></form></section>';
+    wire();return b;}
+  function li(c){var adm=admin(),mine=c.mine&&Date.now()-Date.parse(c.at)<DAY24;
+    return '<li class="cmitem'+(c.hidden?' cmhid':'')+'" data-id="'+h(c.id)+'"><div class="cmmeta"><b class="cmnick">'+h(c.nick)+'</b>'+(c.pastor?'<span class="cmbadge">목사님</span>':'')+
+      '<span class="cmtime">'+h(when(c.at))+'</span>'+(c.hidden?'<span class="cmhidtag">숨김</span>':'')+'</div><p class="cmtext">'+h(c.text)+'</p>'+
+      ((mine||adm)?'<div class="cmact">'+(adm?'<button type="button" data-act="'+(c.hidden?'show':'hide')+'">'+(c.hidden?'다시 보이기':'숨기기')+'</button>':'')+'<button type="button" data-act="'+(adm&&!mine?'delete':'own')+'">삭제</button></div>':'')+'</li>';}
+  function draw(){var ul=document.getElementById("cmList"),st=document.getElementById("cmSt"),mo=document.getElementById("cmMore"),cn=document.getElementById("cmCnt");if(!ul)return;
+    var vis=LIST.filter(function(c){return !c.hidden;}).length;cn.textContent=vis?String(vis):"";
+    ul.innerHTML=LIST.slice(0,SHOWN).map(li).join("");mo.hidden=LIST.length<=SHOWN;
+    st.hidden=LIST.length>0;st.className="cmst";st.textContent="아직 댓글이 없습니다. 첫 댓글을 남겨 보세요.";}
+  function fail(){var st=document.getElementById("cmSt"),ul=document.getElementById("cmList");if(!st)return;ul.innerHTML="";document.getElementById("cmMore").hidden=true;
+    st.hidden=false;st.className="cmst cmerr";st.innerHTML='댓글을 불러오지 못했습니다 <button type="button" class="cmretry" id="cmRetry">다시 시도</button>';}
+  function load(){var g=++GEN,d=DAY;return api("/v1/comments?day="+encodeURIComponent(d)).then(function(j){if(g!==GEN||d!==DAY)return;if(!j.ok)throw 0;LIST=j.comments||[];draw();counts();})
+    .catch(function(){if(g===GEN&&d===DAY)fail();});}
+  function say(t,bad){var m=document.getElementById("cmMsg");if(m){m.textContent=t;m.className="cmmsg"+(bad?" cmbad":"");}}
+  function wire(){var f=document.getElementById("cmForm"),ta=document.getElementById("cmText"),nk=document.getElementById("cmNick"),len=document.getElementById("cmLen"),go=document.getElementById("cmGo");
+    ta.addEventListener("input",function(){len.textContent=Array.from(ta.value).length+"/"+TEXT_MAX;});
+    f.addEventListener("submit",function(ev){ev.preventDefault();var n=nk.value.trim(),t=ta.value.trim(),nl=Array.from(n).length,tl=Array.from(t).length;
+      if(!nl||nl>NICK_MAX){say(ERR.nick,1);nk.focus();return;}if(!tl){say(ERR.empty,1);ta.focus();return;}if(tl>TEXT_MAX){say(ERR.too_long,1);return;}
+      go.disabled=true;say("남기는 중…");var d=DAY;
+      api("/v1/comments",{method:"POST",body:{day:d,nick:n,text:t}}).then(function(j){if(d!==DAY)return;
+        if(j.ok){ta.value="";len.textContent="0/"+TEXT_MAX;ls(K_NICK,n);say("댓글을 남겼습니다.");LIST.unshift(j.comment);draw();bump(d,1);}
+        else say(ERR[j.error]||"남기지 못했습니다. 잠시 뒤 다시 해 보세요.",1);})
+      .catch(function(){say(navigator.onLine===false?"인터넷에 연결된 뒤 다시 남겨 주세요.":"지금은 댓글을 남길 수 없습니다. 잠시 뒤 다시 해 보세요.",1);})
+      .then(function(){go.disabled=false;});});
+    box().addEventListener("click",function(ev){var r=ev.target.closest("#cmRetry");if(r){document.getElementById("cmSt").textContent="댓글을 불러오는 중…";load();return;}
+      if(ev.target.closest("#cmMore")){SHOWN+=STEP;draw();return;}
+      var b=ev.target.closest(".cmact button");if(!b)return;var it=b.closest(".cmitem"),id=it.dataset.id,act=b.dataset.act,d=DAY;
+      if((act==="own"||act==="delete")&&!confirm("이 댓글을 지울까요?"))return;b.disabled=true;
+      var p=act==="own"?api("/v1/comments/"+encodeURIComponent(d)+"/"+encodeURIComponent(id),{method:"DELETE",auth:false})
+        :api("/v1/admin/comments/"+encodeURIComponent(d)+"/"+encodeURIComponent(id),{method:"POST",body:{action:act}});
+      p.then(function(j){if(!j.ok){b.disabled=false;say(ERR[j.error]||"처리하지 못했습니다.",1);return;}
+        var c=LIST.filter(function(x){return x.id===id;})[0];if(act==="own"||act==="delete"){LIST=LIST.filter(function(x){return x.id!==id;});if(c&&!c.hidden)bump(d,-1);}
+        else if(c){c.hidden=act==="hide";bump(d,act==="hide"?-1:1);}draw();say(act==="hide"?"숨겼습니다.":act==="show"?"다시 보이게 했습니다.":"지웠습니다.");})
+      .catch(function(){b.disabled=false;say("처리하지 못했습니다. 인터넷 연결을 확인해 주세요.",1);});});}
+  /* 날 하나 보이기: 그날 글이 그려진 뒤에 부른다. 같은 날이면 다시 받지 않는다(force 만) */
+  function show(day,force){var b=box();if(!b)return;if(!/^d\d{8}$/.test(day||"")){b.innerHTML="";DAY="";return;}if(day===DAY&&!force&&document.getElementById("cmForm"))return;
+    DAY=day;LIST=[];SHOWN=STEP;shell();setTimeout(load,0);}
+  /* 지난 묵상 목록의 댓글 수: 한 번 받아 두고(앱 열 때·댓글 남긴 뒤), 목록을 다시 그릴 때마다 채운다 */
+  function paint(){if(!COUNTS)return;var els=document.querySelectorAll("[data-cmn]");for(var i=0;i<els.length;i++){var n=COUNTS[els[i].getAttribute("data-cmn")]||0;els[i].textContent=n?"💬 "+n:"";els[i].hidden=!n;}}
+  function counts(force){if(CBUSY)return CBUSY;if(!force&&COUNTS&&Date.now()-CAT<3e5)return Promise.resolve(); /* 받은 지 5분 안이면 다시 받지 않는다 · 실패하면 다음에 다시 */
+    CBUSY=api("/v1/counts",{auth:false}).then(function(j){if(j.ok&&j.counts&&typeof j.counts==="object"){COUNTS=j.counts;CAT=Date.now();paint();}}).catch(function(){}).then(function(){CBUSY=null;});return CBUSY;}
+  function bump(d,n){if(!COUNTS)COUNTS={};COUNTS[d]=Math.max(0,(COUNTS[d]||0)+n);paint();}
+  /* 관리자 켜기·끄기 (설정): 비밀값을 서버에 한 번 확인한 뒤 이 기기에만 저장 */
+  function adminOn(tok){tok=String(tok||"").trim();if(!/^[A-Za-z0-9_-]{24,128}$/.test(tok))return Promise.resolve(false);
+    return api("/v1/admin/check",{auth:tok}).then(function(j){if(j.ok){ls(K_ADM,tok);if(DAY)show(DAY,true);return true;}return false;}).catch(function(){return null;});}
+  function adminOff(){ls(K_ADM,null);if(DAY)show(DAY,true);}
+  window.addEventListener("online",function(){var st=document.getElementById("cmSt");if(DAY&&st&&/cmerr/.test(st.className))load();});
+  return {show:show,counts:counts,paint:paint,adminOn:adminOn,adminOff:adminOff,isAdmin:function(){return !!admin();},api:API};
+})();
+/* SBC:END */

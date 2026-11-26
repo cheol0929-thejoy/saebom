@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 서비스워커 (perf A 2026-11-20: 구글 글꼴 대신 날짜별 글꼴 fonts/<날짜>-r|b.woff2 저장 · 새 날 알림 메시지 / 재작업 2026-11-20: 음성은 저장 안 함 = 페이지 자산 주소 그대로) — 껍데기는 캐시 우선(판 이름 = 빌드 해시), index.json·날짜별 묵상은 네트워크 우선(안 되면 저장본), 그림은 이름이 바뀌면 새로 받음, 최근 14일 보관 */
-var SHELL="saebom-shell-v1-d856683b6d", DATA="saebom-data";
-var APP_VER="2.3.0", BUILT="2026-11-23"; /* v2.0.3: 사람이 읽는 판(manifest.webmanifest 의 version 이 원본 - stamp_app.py 가 여기와 app.js 에 똑같이 넣는다) */
+var SHELL="saebom-shell-v1-2037bc032a", DATA="saebom-data";
+var APP_VER="2.4.0", BUILT="2026-11-26"; /* v2.0.3: 사람이 읽는 판(manifest.webmanifest 의 version 이 원본 - stamp_app.py 가 여기와 app.js 에 똑같이 넣는다) */
 var SHELL_FILES=["./","index.html","app.css","app.js","manifest.webmanifest","icons/icon-48.png","icons/icon-96.png","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-192.png","icons/icon-maskable-512.png","icons/apple-touch-icon.png","icons/icon.svg","icons/favicon.svg","icons/favicon-16.png","icons/favicon-32.png","guide/android.svg","guide/ios.svg","guide/ios1.svg","guide/ios2.svg","guide/ios3.svg","saebom-0500.ics"];
 var KEEP=14;
 self.addEventListener("install",function(ev){ev.waitUntil(caches.open(SHELL).then(function(c){return c.addAll(SHELL_FILES.map(function(u){return new Request(u,{cache:"reload"});})); /* v2.0.3: 새 판은 브라우저 HTTP 캐시(Pages 10분)를 거치지 않고 받는다 - 새 SW 이름에 예전 파일이 담기지 않게 */}).then(function(){return self.skipWaiting();}));});
@@ -13,7 +13,7 @@ function prune(c,days){var keepJ={},keepI={};days.forEach(function(d){keepJ["dat
   return c.keys().then(function(reqs){return Promise.all(reqs.map(function(q){var p=new URL(q.url).pathname,m=p.match(/data\/(\d{4}-\d{2}-\d{2})\.json$/),i=p.match(/img\/(\d{4}-\d{2}-\d{2})/),f=p.match(/fonts\/(\d{4}-\d{2}-\d{2})-[rb]\.woff2$/);
     if(m&&!keepJ["data/"+m[1]+".json"])return c.delete(q);if(i&&!days.some(function(d){return d.iso===i[1];}))return c.delete(q);if(f&&!days.some(function(d){return d.iso===f[1]&&d.font;}))return c.delete(q);}));});}
 self.addEventListener("fetch",function(ev){var u=new URL(ev.request.url);if(ev.request.method!=="GET")return;
-  if(u.origin!==location.origin)return;
+  if(u.origin!==location.origin)return; /* 2.4.0: 댓글 API(saebom-comments Worker = 다른 출처)는 서비스워커가 손대지 않는다 = 저장·캐시 안 함(앱도 cache:"no-store") */
   var p=u.pathname;
   if(/\/sw\.js$/.test(p))return;
   if(/\/data\/index\.json$/.test(p)){ev.respondWith(fetch(ev.request,{cache:"no-cache"}).then(function(r){if(r.ok){var cl=r.clone(),cn=r.clone();ev.waitUntil(caches.open(DATA).then(function(c){return c.match("data/index.json").then(function(old){return Promise.all([old?old.json():null,cn.json()]);}).then(function(v){var o=v[0]&&v[0].days&&v[0].days[0],n=v[1]&&v[1].days&&v[1].days[0];if(o&&n&&o.iso!==n.iso)self.clients.matchAll().then(function(cs){cs.forEach(function(x){x.postMessage({type:"saebom:new-day",iso:n.iso});});});}).catch(function(){}).then(function(){return c.put("data/index.json",cl);});}).then(prefetch));}return r;}).catch(function(){return caches.open(DATA).then(function(c){return c.match("data/index.json");}).then(function(hit){if(!hit)throw new Error("offline");

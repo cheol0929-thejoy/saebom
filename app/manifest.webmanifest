@@ -2,7 +2,7 @@
  "name": "새봄묵상",
  "short_name": "새봄묵상",
  "description": "새봄교회 매일 묵상 · 신철 목사",
- "version": "2.3.0",
+ "version": "2.4.0",
  "lang": "ko",
  "start_url": "./",
  "scope": "./",

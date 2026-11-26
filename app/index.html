@@ -248,6 +248,41 @@ header.top .unread[hidden]{display:none}
 .swhint{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;background:var(--leaf);color:var(--paper);font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.35);font-size:15px;line-height:1.45;padding:10px 18px;border-radius:16px;pointer-events:none;text-align:center;word-break:keep-all;transition:opacity .5s}
 .swhint.out{opacity:0}
 @media (prefers-reduced-motion:reduce){#settings.in-set,#today.in-home,nav.arch.in-home,#setlink.in-home{animation:none}}
+/* SBC-CSS:BEGIN 댓글 2.4.0 */
+#cmbox{max-width:680px;margin:0 auto}
+.cm{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px;margin-top:4px}
+.cm h2{font-family:var(--serif);font-size:1.15rem;margin:0;color:var(--ink);display:flex;align-items:center;gap:.5em}
+.cmcnt:not(:empty){font-family:var(--sans);font-size:.75rem;font-weight:700;background:var(--leaf);color:var(--bg);border-radius:999px;padding:1px 9px;line-height:1.5}
+.cmst{margin:0;color:var(--muted);font-size:.9rem}
+.cmst.cmerr{color:var(--gold)}
+.cmretry,.cmmore,.cmact button{font:inherit;font-size:.85rem;color:var(--leaf);background:transparent;border:1px solid var(--leaf);border-radius:999px;padding:6px 14px;min-height:40px;cursor:pointer}
+.cmmore{align-self:center}
+.cmlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.cmitem{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.cmitem.cmhid{opacity:.55;border-style:dashed}
+.cmmeta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.82rem;color:var(--muted)}
+.cmnick{color:var(--ink);font-weight:700;font-size:.9rem;overflow-wrap:anywhere}
+.cmbadge{background:var(--gold);color:#000;border-radius:6px;padding:0 7px;font-size:.75rem;font-weight:700;line-height:1.6}
+.cmhidtag{border:1px solid var(--muted);border-radius:6px;padding:0 6px;font-size:.72rem}
+.cmtext{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+.cmact{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.cmform{display:flex;flex-direction:column;gap:6px;background:var(--leaf-soft);border-radius:14px;padding:14px 16px}
+.cmlab{font-size:.85rem;color:var(--muted)}
+.cmform input,.cmform textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box}
+.cmform textarea{resize:vertical;min-height:5.2em}
+.cmform input:focus-visible,.cmform textarea:focus-visible,.cmgo:focus-visible,.cm button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cmrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px}
+.cmmsg{flex:1 1 10em;font-size:.85rem;color:var(--leaf);min-height:1.2em}
+.cmmsg.cmbad{color:var(--gold)}
+.cmn{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.cmgo{font:inherit;font-weight:700;background:var(--leaf);color:var(--bg);border:0;border-radius:999px;padding:10px 22px;min-height:44px;cursor:pointer}
+.cmgo:disabled{opacity:.6}
+.cmadm{margin:2px 0 0;font-size:.8rem;color:var(--gold)}
+.cmpriv{margin:2px 0 0;font-size:.78rem;color:var(--muted)}
+.cmn-li{display:block;margin-top:2px;font-size:.78rem;color:var(--leaf);white-space:nowrap}
+#set-cm input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box;margin:6px 0 10px}
+.adm summary{cursor:pointer;color:var(--muted);font-size:.9rem;min-height:40px;display:flex;align-items:center}
+/* SBC-CSS:END */
 </style>
 </head>
 <body>
@@ -276,6 +311,7 @@ header.top .unread[hidden]{display:none}
   </section>
 
   <main id="today"><p class="loadmsg">묵상을 불러오는 중…</p></main>
+  <div id="cmbox"></div> <!-- 2.4.0 댓글 (CEO 2026-11-26): 그날 글이 그려진 뒤 SBC.show 가 채운다 -->
 
   <nav class="arch" aria-label="지난 묵상 찾기">
     <h3>지난 묵상 찾기</h3>
@@ -333,6 +369,13 @@ header.top .unread[hidden]{display:none}
         <li>이 폰에만 저장됩니다</li>
         <li id="badge-sup" data-mode="app">이 폰은 앱 안에서만 숫자가 보입니다</li>
       </ul></section>
+    <section class="card" id="set-cm"><h2>댓글</h2>
+      <p>댓글은 별명·내용·작성시각만 저장되며 IP는 하루 뒤 삭제됩니다</p>
+      <p class="small">댓글은 새봄교회 댓글 서버(Cloudflare)에만 저장됩니다. 로그인·쿠키·분석 도구는 쓰지 않습니다. 내가 쓴 댓글은 24시간 안에 그 댓글의 「삭제」로 지울 수 있습니다.</p>
+      <details class="adm" id="set-admin"><summary>관리자</summary>
+        <p class="small" id="adm-st" role="status" aria-live="polite"></p>
+        <div id="adm-in"><label class="small" for="adm-tok">관리자 비밀값을 붙여 넣으세요 (이 기기에만 저장)</label><input id="adm-tok" type="password" autocomplete="off" autocapitalize="off" spellcheck="false"><button type="button" class="btn" id="adm-go">관리자 켜기</button></div>
+        <button type="button" class="btn" id="adm-off" hidden>관리자 끄기</button></details></section>
     <section class="card" id="set-info"><h2>앱 정보 · 업데이트</h2>
       <dl><dt>버전</dt><dd id="ver">-</dd><dt>빌드</dt><dd id="build">-</dd><dt>마지막 확인</dt><dd id="upd-chk">-</dd><dt>상태</dt><dd id="upd-st" role="status" aria-live="polite">-</dd><dt>묵상</dt><dd id="datainfo">-</dd><dt>성경</dt><dd>개역개정</dd><dt>문의</dt><dd>새봄교회</dd></dl>
       <button type="button" class="btn" id="upd-btn">지금 확인</button>

@@ -226,3 +226,38 @@ header.top .unread[hidden]{display:none}
 .swhint{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;background:var(--leaf);color:var(--paper);font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.35);font-size:15px;line-height:1.45;padding:10px 18px;border-radius:16px;pointer-events:none;text-align:center;word-break:keep-all;transition:opacity .5s}
 .swhint.out{opacity:0}
 @media (prefers-reduced-motion:reduce){#settings.in-set,#today.in-home,nav.arch.in-home,#setlink.in-home{animation:none}}
+/* SBC-CSS:BEGIN 댓글 2.4.0 */
+#cmbox{max-width:680px;margin:0 auto}
+.cm{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:22px;margin-top:4px}
+.cm h2{font-family:var(--serif);font-size:1.15rem;margin:0;color:var(--ink);display:flex;align-items:center;gap:.5em}
+.cmcnt:not(:empty){font-family:var(--sans);font-size:.75rem;font-weight:700;background:var(--leaf);color:var(--bg);border-radius:999px;padding:1px 9px;line-height:1.5}
+.cmst{margin:0;color:var(--muted);font-size:.9rem}
+.cmst.cmerr{color:var(--gold)}
+.cmretry,.cmmore,.cmact button{font:inherit;font-size:.85rem;color:var(--leaf);background:transparent;border:1px solid var(--leaf);border-radius:999px;padding:6px 14px;min-height:40px;cursor:pointer}
+.cmmore{align-self:center}
+.cmlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.cmitem{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.cmitem.cmhid{opacity:.55;border-style:dashed}
+.cmmeta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.82rem;color:var(--muted)}
+.cmnick{color:var(--ink);font-weight:700;font-size:.9rem;overflow-wrap:anywhere}
+.cmbadge{background:var(--gold);color:#000;border-radius:6px;padding:0 7px;font-size:.75rem;font-weight:700;line-height:1.6}
+.cmhidtag{border:1px solid var(--muted);border-radius:6px;padding:0 6px;font-size:.72rem}
+.cmtext{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+.cmact{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.cmform{display:flex;flex-direction:column;gap:6px;background:var(--leaf-soft);border-radius:14px;padding:14px 16px}
+.cmlab{font-size:.85rem;color:var(--muted)}
+.cmform input,.cmform textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box}
+.cmform textarea{resize:vertical;min-height:5.2em}
+.cmform input:focus-visible,.cmform textarea:focus-visible,.cmgo:focus-visible,.cm button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cmrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px}
+.cmmsg{flex:1 1 10em;font-size:.85rem;color:var(--leaf);min-height:1.2em}
+.cmmsg.cmbad{color:var(--gold)}
+.cmn{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.cmgo{font:inherit;font-weight:700;background:var(--leaf);color:var(--bg);border:0;border-radius:999px;padding:10px 22px;min-height:44px;cursor:pointer}
+.cmgo:disabled{opacity:.6}
+.cmadm{margin:2px 0 0;font-size:.8rem;color:var(--gold)}
+.cmpriv{margin:2px 0 0;font-size:.78rem;color:var(--muted)}
+.cmn-li{display:block;margin-top:2px;font-size:.78rem;color:var(--leaf);white-space:nowrap}
+#set-cm input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box;margin:6px 0 10px}
+.adm summary{cursor:pointer;color:var(--muted);font-size:.9rem;min-height:40px;display:flex;align-items:center}
+/* SBC-CSS:END */
