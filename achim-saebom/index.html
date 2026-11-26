@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>아침한권</title>
+<meta name="description" content="아침한권 · 새봄교회 성도와 함께 · 하루 한 편, 5분 고전 읽기">
+<meta name="theme-color" content="#070b16">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="아침한권">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script>/* 새봄묵상 v2.1.1 그대로: 카카오톡 안 브라우저는 설치가 안 되므로 처음 한 번만 기본 브라우저로 넘긴다 */try{if(/KAKAOTALK/i.test(navigator.userAgent)&&!sessionStorage.getItem("achim-saebom-kkx")){sessionStorage.setItem("achim-saebom-kkx","1");location.href="kakaotalk://web/openExternal?url="+encodeURIComponent(location.href);}}catch(e){}</script>
+<script>try{var s=parseInt(localStorage.getItem("achim-saebom-fs"),10);if(s>=15&&s<=27)document.documentElement.style.setProperty("--fs",s+"px");}catch(e){}</script>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brandrow" href="#/today" aria-label="아침한권 오늘 글">
+      <img class="mark" src="icons/icon.svg" alt="" width="44" height="44">
+      <span class="brand">아침한권<small>새봄교회 성도와 함께</small></span>
+    </a>
+    <div class="tools">
+      <div class="sizer" role="group" aria-label="글자 크기">
+        <button id="fs-down" type="button" aria-label="글자 작게">가−</button>
+        <button id="fs-up" type="button" aria-label="글자 크게">가+</button>
+      </div>
+    </div>
+    <span id="offline" class="offline" hidden>인터넷 없음 · 저장된 글</span>
+  </header>
+
+  <section id="ibanner" class="ibanner" hidden aria-label="앱 설치 안내">
+    <button type="button" id="ib-x" class="ib-x" aria-label="설치 안내 닫기 (7일 동안 숨김)">✕</button>
+    <p class="ib-t">홈 화면에 아침한권 설치</p>
+    <p class="ib-s">무료입니다. 설치하면 홈 화면 아이콘으로 바로 열립니다.</p>
+    <button type="button" id="ib-go" class="btn fill" hidden>설치하기</button>
+    <ol id="ib-ios" class="ib-steps" hidden>
+      <li><img src="guide/ios1.svg" alt="" width="240" height="200"><span>① 화면 아래 <b>공유 버튼</b>을 누릅니다</span></li>
+      <li><img src="guide/ios2.svg" alt="" width="240" height="200"><span>② <b>「홈 화면에 추가」</b>를 누릅니다</span></li>
+      <li><img src="guide/ios3.svg" alt="" width="240" height="200"><span>③ 오른쪽 위 <b>「추가」</b>를 누릅니다</span></li>
+    </ol>
+    <div id="ib-ipad" class="ib-ipad" hidden>
+      <p class="ib-s"><b>사파리 앱</b>(나침반 아이콘)에서 이 주소를 열어야 합니다.</p>
+      <ol class="ib-list" id="ib-ipad-steps">
+        <li>주소창 오른쪽 위 <b>공유 버튼</b>(네모에 위 화살표)을 누릅니다. 안 보이면 주소창 옆 <b>「…」</b> → <b>「공유」</b>를 누릅니다.</li>
+        <li>목록에서 <b>「홈 화면에 추가」</b>를 찾아 누릅니다. 안 보이면 목록을 아래로 밀거나 <b>「더 보기」</b>를 누릅니다.</li>
+        <li>오른쪽 위 <b>「추가」</b>를 누릅니다. (iPadOS 26에서는 <b>「웹 앱으로 열기」</b>가 켜져 있으면 그대로 두고 <span class="nw">「추가」를 누릅니다.)</span></li>
+      </ol>
+    </div>
+    <div id="ib-notsafari" class="ib-notsafari" hidden>
+      <p class="ib-s">지금 브라우저에서는 홈 화면 추가가 안 될 수 있습니다. 아래 주소를 복사해 <b>사파리 앱</b>(나침반 아이콘)에 붙여 넣어 열어 주세요.</p>
+      <p class="ib-url"><span id="ib-url"></span> <button type="button" class="btn" id="ib-copy">주소 복사</button></p>
+    </div>
+  </section>
+
+  <main id="view"><p class="loadmsg">글을 불러오는 중…</p></main>
+
+  <section id="settings" hidden aria-label="설정">
+    <div class="sinner">
+    <a class="back" href="#/today" id="set-back">‹ 오늘 글로</a>
+    <h1 class="ptitle">설정</h1>
+    <section class="card"><h2>지난 글 보기</h2>
+      <nav class="lists" aria-label="목록">
+        <a href="#/date">날짜순 <small>모든 글, 최근 글부터</small></a>
+        <a href="#/book">책별 <small>읽은 책·읽는 중인 책</small></a>
+        <a href="#/queue">읽을 책 <small>읽기 계획</small></a>
+      </nav>
+    </section>
+    <section class="card" id="idx-card"><h2>색인</h2>
+      <p class="small">책과 저자를 가나다순으로 모았습니다. 읽은 책은 눌러서 회차를 펼치고(회차를 누르면 그날 글이 열립니다), 읽을 책은 표시만 됩니다.</p>
+      <div id="idx"><p class="small">불러오는 중…</p></div>
+    </section>
+    <section class="card"><h2>앱 설치</h2>
+      <p id="inst-done" class="small" role="status" hidden></p>
+      <div id="inst-kakao" hidden><p class="small">카카오톡 안에서는 설치가 안 됩니다 — 아래 [다른 브라우저로 열기]를 누르세요</p>
+        <button type="button" class="btn fill" id="inst-kakao-btn">다른 브라우저로 열기</button></div>
+      <button type="button" class="btn fill" id="inst-btn" aria-expanded="false">앱 설치</button>
+      <p class="small">무료입니다. 설치하면 홈 화면 아이콘으로 바로 열리고, 최근 14일 글은 인터넷 없이도 읽을 수 있습니다.</p>
+      <div class="guide" id="g-android" hidden><b>안드로이드 (크롬·삼성 인터넷)</b>
+        <ol><li>주소를 누르면(카카오톡에서도) <b>크롬/삼성 인터넷</b>으로 열립니다.</li><li>화면 맨 위 <b>[설치하기]</b> → <b>[설치]</b></li></ol>
+        <p class="small">버튼이 안 보이면 ⋮ → 앱 설치</p>
+        <img src="guide/android.svg" alt="크롬 오른쪽 위 점 세 개 메뉴에서 앱 설치를 누르는 그림" width="360" height="300" loading="lazy"></div>
+      <div class="guide" id="g-ios" hidden><b>아이폰 (사파리)</b>
+        <ol><li>주소를 누르면 <b>사파리</b>로 열립니다.</li><li>아래 <b>공유 버튼</b> → <b>「홈 화면에 추가」</b> → <b>「추가」</b></li></ol>
+        <img src="guide/ios.svg" alt="사파리 아래 공유 버튼을 누르고 홈 화면에 추가를 고르는 그림" width="360" height="300" loading="lazy"></div>
+      <div class="guide" id="g-ipad" hidden><b>아이패드</b>
+        <p><b>사파리 앱</b>(나침반 아이콘)에서 이 주소를 열어야 합니다. 크롬·카카오톡 안 브라우저에서는 안 될 수 있습니다.</p>
+        <ol><li>주소창 오른쪽 위 <b>공유 버튼</b>(네모에 위 화살표)을 누릅니다. 안 보이면 주소창 옆 <b>「…」</b> → <b>「공유」</b>를 누릅니다.</li><li>목록에서 <b>「홈 화면에 추가」</b>를 찾아 누릅니다. 안 보이면 목록을 아래로 밀거나 <b>「더 보기」</b>를 누릅니다.</li><li>오른쪽 위 <b>「추가」</b>를 누릅니다. (iPadOS 26에서는 <b>「웹 앱으로 열기」</b>가 켜져 있으면 그대로 두고 <span class="nw">「추가」를 누릅니다.)</span></li></ol></div>
+    </section>
+    <section class="card"><h2>글자 크기</h2>
+      <div class="sizer big" role="group" aria-label="글자 크기"><button type="button" data-fs="-2">작게</button><span id="fs-now"></span><button type="button" data-fs="2">크게</button></div>
+      <p class="small">이 기기에서만 기억합니다.</p>
+    </section>
+    <section class="card"><h2>저장과 인터넷</h2>
+      <p class="small">한 번 열면 최근 14일 글을 이 기기에 저장해 두어 인터넷이 없어도 읽을 수 있습니다. 새 글은 인터넷이 될 때 받습니다.</p>
+      <p class="small">밑줄은 이 기기에만 저장되고 어디로도 보내지 않습니다. 브라우저 데이터를 지우면 함께 지워집니다.</p>
+      <p class="small" id="ver"></p>
+    </section>
+    <section class="card" id="priv-cm" hidden><h2>댓글과 개인정보</h2>
+      <p class="small">댓글을 남기면 별명(적지 않으면 「익명」), 댓글 내용, 어느 날 글에 남겼는지, 남긴 시각, 그리고 이 기기에서 만든 무작위 표시를 한 번 더 바꾼 값(누가 쓴 댓글인지 이 기기만 알아보게 하는 값)이 저장됩니다. 이름·전화번호·이메일·인터넷 주소(IP)는 저장하지 않으며, 로그인도 쿠키도 쓰지 않습니다. 저장하는 곳은 Cloudflare(클라우드플레어)라는 회사의 서버이며, 교회 계정으로 운영합니다(Cloudflare 자체의 접속 기록은 그 회사의 방침을 따릅니다). 댓글은 이 앱을 여는 모든 사람에게 보이므로 다른 사람의 이름이나 사적인 이야기는 적지 말아 주세요. 내가 남긴 댓글은 그 댓글 옆 「삭제」를 두 번 눌러 언제든 지울 수 있습니다. 기기를 바꾸었거나 브라우저 데이터를 지워 「삭제」가 보이지 않으면 교회에 말씀해 주시면 관리자가 지워 드립니다. 부적절한 댓글도 관리자가 지웁니다.</p>
+    </section>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>책의 내용은 원문을 옮기지 않고 풀어 썼습니다.</p>
+    <p id="swhint" class="swhint" hidden>← 화면을 왼쪽으로 밀면 설정이 열립니다</p>
+    <p><a class="setlink" href="#/settings">설정 ›</a></p>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,994 @@
+{
+ "app": "아침한권 성도판",
+ "schema": 1,
+ "latest": "d0003",
+ "count": 3,
+ "days": [
+  {
+   "id": "d0003",
+   "day": 3,
+   "date": "2026-11-27",
+   "book": "스크루테이프의 편지",
+   "author": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "recommender": "C.S. 루이스",
+   "part": "편지 3 — 어머니와 함께 사는 집 안의 작은 짜증들",
+   "part_no": "3/31",
+   "theme": "그냥 물어본 건데 — 식탁 위의 말투가 신앙을 갉아먹을 때",
+   "audio": 2
+  },
+  {
+   "id": "d0002",
+   "day": 2,
+   "date": "2026-11-26",
+   "book": "스크루테이프의 편지",
+   "author": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "recommender": "C.S. 루이스",
+   "part": "편지 2 — 갓 회심한 환자가 교회 옆자리 사람들에게 실망하게 만들기",
+   "part_no": "2/31",
+   "theme": "옆자리 교인에게 실망할 때 — 보이는 교회와 보이지 않는 교회",
+   "audio": 2
+  },
+  {
+   "id": "d0001",
+   "day": 1,
+   "date": "2026-11-25",
+   "book": "스크루테이프의 편지",
+   "author": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "recommender": "C.S. 루이스",
+   "part": "편지 1 — 논증보다 일상과 '상식'으로 환자를 붙드는 법",
+   "part_no": "1/31",
+   "theme": "출근하고 다시 생각하자 — 논증보다 무서운 아침의 소음",
+   "audio": 2
+  }
+ ],
+ "queue": [
+  {
+   "id": "q022",
+   "order": 2.2,
+   "book": "스크루테이프의 편지",
+   "author": "C.S. 루이스",
+   "recommender": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "status": "reading",
+   "sessions": 31,
+   "progress": "3/31",
+   "S": 31,
+   "j": 3,
+   "days": [
+    "d0001",
+    "d0002",
+    "d0003"
+   ],
+   "plan": [
+    "편지 1 — 논증보다 일상과 '상식'으로 환자를 붙드는 법",
+    "편지 2 — 갓 회심한 환자가 교회 옆자리 사람들에게 실망하게 만들기",
+    "편지 3 — 어머니와 함께 사는 집 안의 작은 짜증들",
+    "편지 4 — 기도를 자기 감정 만들기로 바꾸는 계략",
+    "편지 5 — 전쟁 소식에 들뜬 웜우드를 나무람",
+    "편지 6 — 불안과 미래에 대한 걱정, 가까운 이웃과 먼 사람",
+    "편지 7 — 악마의 존재를 숨기기, 대의를 신앙보다 앞세우게 하기",
+    "편지 8 — 영적 오르내림(기복)의 법칙",
+    "편지 9 — 메마른 골짜기의 시기를 이용하는 법",
+    "편지 10 — 세련되고 냉소적인 새 친구들",
+    "편지 11 — 웃음의 네 가지 원인(기쁨·재미·농담·경박)",
+    "편지 12 — 큰 죄가 아니라 '아무것도 아닌 것'으로 흘려보내기",
+    "편지 13 — 환자가 되찾은 참된 즐거움",
+    "편지 14 — 겸손을 자의식으로 바꾸기",
+    "편지 15 — 현재와 영원, 그리고 미래에 사는 사람",
+    "편지 16 — 마음에 맞는 교회를 찾아 떠도는 교인",
+    "편지 17 — '조금만 주면 된다'는 까다로운 탐식",
+    "편지 18 — 사랑에 빠짐과 결혼",
+    "편지 19 — 사랑에 대한 '원수'의 뜻을 헤아리지 못하는 악마",
+    "편지 20 — 이성에 대한 취향을 조작하기",
+    "편지 21 — '내 시간'이라는 소유욕",
+    "편지 22 — 환자가 그리스도인 여인과 사랑에 빠지다",
+    "편지 23 — 신앙을 수단으로, '역사적 예수'로 흐리기",
+    "편지 24 — 새 동아리 안의 영적 교만",
+    "편지 25 — '기독교, 그리고 무엇' — 늘 새것을 찾게 하기",
+    "편지 26 — 비이기심을 서로의 불만으로 바꾸기",
+    "편지 27 — 기도에 대한 혼란과 '역사적 관점'",
+    "편지 28 — 오래 살게 해서 세상에 묶어 두기",
+    "편지 29 — 비겁과 용기",
+    "편지 30 — 피로와 '실재'라는 말의 속임수",
+    "편지 31 — 환자의 죽음, 그리고 놓쳐 버린 영혼"
+   ],
+   "author_index": "루이스, C.S."
+  },
+  {
+   "id": "q023",
+   "order": 2.3,
+   "book": "예기치 못한 기쁨",
+   "author": "C.S. 루이스",
+   "recommender": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "status": "upcoming",
+   "sessions": 15,
+   "progress": null,
+   "S": 15,
+   "j": 0,
+   "days": [],
+   "plan": [
+    "1장 '어린 시절'",
+    "2장 '강제수용소'",
+    "3장 '마운트브라켄과 캠벨'",
+    "4장 '시야를 넓히다'",
+    "5장 '르네상스'",
+    "6장 '왕족'",
+    "7장 '빛과 그림자'",
+    "8장 '해방'",
+    "9장 '위대한 노크 선생님'",
+    "10장 '운명의 미소'",
+    "11장 '체크'",
+    "12장 '무기와 전우'",
+    "13장 '새로운 외양'",
+    "14장 '체크메이트'",
+    "15장 '시작'"
+   ],
+   "author_index": "루이스, C.S."
+  },
+  {
+   "id": "q024",
+   "order": 2.4,
+   "book": "헤아려 본 슬픔",
+   "author": "C.S. 루이스",
+   "recommender": "C.S. 루이스",
+   "series": "C.S. 루이스 읽기",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": [
+    "1부 — 아내 조이를 잃은 직후, 슬픔이 두려움처럼 느껴지는 날들",
+    "2부 — 하나님은 어떤 분이신가를 묻는 정직한 항변",
+    "3부 — 슬픔 한가운데서 생각이 달라지기 시작하다",
+    "4부 — 슬픔은 상태가 아니라 과정이라는 깨달음과 맡김"
+   ],
+   "author_index": "루이스, C.S."
+  },
+  {
+   "id": "q003",
+   "order": 3,
+   "book": "돈키호테",
+   "author": "세르반테스",
+   "recommender": "고명환",
+   "series": "① 나는 누구인가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "세르반테스"
+  },
+  {
+   "id": "q004",
+   "order": 4,
+   "book": "칼 융 레드 북",
+   "author": "칼 구스타프 융",
+   "recommender": "고명환",
+   "series": "① 나는 누구인가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "융, 칼 구스타프"
+  },
+  {
+   "id": "q005",
+   "order": 5,
+   "book": "팡세",
+   "author": "블레즈 파스칼",
+   "recommender": "고명환",
+   "series": "① 나는 누구인가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "파스칼, 블레즈"
+  },
+  {
+   "id": "q006",
+   "order": 6,
+   "book": "논리철학논고",
+   "author": "비트겐슈타인",
+   "recommender": "고명환",
+   "series": "① 나는 누구인가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "비트겐슈타인"
+  },
+  {
+   "id": "q007",
+   "order": 7,
+   "book": "그리스인 조르바",
+   "author": "니코스 카잔차키스",
+   "recommender": "고명환",
+   "series": "② 어떻게 살아야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "카잔차키스, 니코스"
+  },
+  {
+   "id": "q008",
+   "order": 8,
+   "book": "토지 (서문·1부)",
+   "author": "박경리",
+   "recommender": "고명환",
+   "series": "② 어떻게 살아야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "박경리"
+  },
+  {
+   "id": "q009",
+   "order": 9,
+   "book": "에밀",
+   "author": "장 자크 루소",
+   "recommender": "고명환",
+   "series": "② 어떻게 살아야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "루소, 장 자크"
+  },
+  {
+   "id": "q010",
+   "order": 10,
+   "book": "젊은 베르테르의 슬픔",
+   "author": "괴테",
+   "recommender": "고명환",
+   "series": "② 어떻게 살아야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "괴테"
+  },
+  {
+   "id": "q011",
+   "order": 11,
+   "book": "도덕경",
+   "author": "노자",
+   "recommender": "고명환",
+   "series": "② 어떻게 살아야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "노자"
+  },
+  {
+   "id": "q012",
+   "order": 12,
+   "book": "장자",
+   "author": "장자",
+   "recommender": "고명환",
+   "series": "② 어떻게 살아야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "장자"
+  },
+  {
+   "id": "q013",
+   "order": 13,
+   "book": "우상의 황혼",
+   "author": "프리드리히 니체",
+   "recommender": "고명환",
+   "series": "② 어떻게 살아야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "니체, 프리드리히"
+  },
+  {
+   "id": "q014",
+   "order": 14,
+   "book": "사기열전",
+   "author": "사마천",
+   "recommender": "고명환",
+   "series": "③ 무엇을 행해야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "사마천"
+  },
+  {
+   "id": "q015",
+   "order": 15,
+   "book": "손자병법",
+   "author": "손무",
+   "recommender": "고명환",
+   "series": "③ 무엇을 행해야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "손무"
+  },
+  {
+   "id": "q016",
+   "order": 16,
+   "book": "몰입 Flow",
+   "author": "미하이 칙센트미하이",
+   "recommender": "고명환",
+   "series": "③ 무엇을 행해야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "칙센트미하이, 미하이"
+  },
+  {
+   "id": "q017",
+   "order": 17,
+   "book": "보랏빛 소가 온다",
+   "author": "세스 고딘",
+   "recommender": "고명환",
+   "series": "③ 무엇을 행해야 하는가",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "고딘, 세스"
+  },
+  {
+   "id": "q018",
+   "order": 18,
+   "book": "잃어버린 시간을 찾아서",
+   "author": "마르셀 프루스트",
+   "recommender": "고명환",
+   "series": "④ 깊이 읽기",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "프루스트, 마르셀"
+  },
+  {
+   "id": "q019",
+   "order": 19,
+   "book": "너무 시끄러운 고독",
+   "author": "보후밀 흐라발",
+   "recommender": "고명환",
+   "series": "④ 깊이 읽기",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "흐라발, 보후밀"
+  },
+  {
+   "id": "q020",
+   "order": 20,
+   "book": "고전이 답했다 마땅히 살아야 할 삶에 대하여",
+   "author": "고명환",
+   "recommender": "고명환",
+   "series": "④ 깊이 읽기",
+   "status": "upcoming",
+   "sessions": 4,
+   "progress": null,
+   "S": 4,
+   "j": 0,
+   "days": [],
+   "plan": null,
+   "author_index": "고명환"
+  }
+ ],
+ "index": {
+  "jump": [
+   "ㄱ",
+   "ㄴ",
+   "ㄷ",
+   "ㄹ",
+   "ㅁ",
+   "ㅂ",
+   "ㅅ",
+   "ㅇ",
+   "ㅈ",
+   "ㅊ",
+   "ㅋ",
+   "ㅌ",
+   "ㅍ",
+   "ㅎ"
+  ],
+  "active": [
+   "ㄱ",
+   "ㄴ",
+   "ㄷ",
+   "ㄹ",
+   "ㅁ",
+   "ㅂ",
+   "ㅅ",
+   "ㅇ",
+   "ㅈ",
+   "ㅊ",
+   "ㅋ",
+   "ㅌ",
+   "ㅍ",
+   "ㅎ"
+  ],
+  "groups": [
+   {
+    "g": "ㄱ",
+    "items": [
+     {
+      "t": "author",
+      "text": "고딘, 세스",
+      "label": "고딘, 세스",
+      "books": [
+       {
+        "q": "q017",
+        "book": "보랏빛 소가 온다",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "author",
+      "text": "고명환",
+      "label": "고명환",
+      "books": [
+       {
+        "q": "q020",
+        "book": "고전이 답했다 마땅히 살아야 할 삶에 대하여",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "고전이 답했다 마땅히 살아야 할 삶에 대하여",
+      "label": "고전이 답했다 마땅히 살아야 할 삶에 대하여 — 고명환",
+      "q": "q020",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "괴테",
+      "label": "괴테",
+      "books": [
+       {
+        "q": "q010",
+        "book": "젊은 베르테르의 슬픔",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "그리스인 조르바",
+      "label": "그리스인 조르바 — 니코스 카잔차키스",
+      "q": "q007",
+      "status": "upcoming",
+      "sessions": []
+     }
+    ]
+   },
+   {
+    "g": "ㄴ",
+    "items": [
+     {
+      "t": "book",
+      "text": "너무 시끄러운 고독",
+      "label": "너무 시끄러운 고독 — 보후밀 흐라발",
+      "q": "q019",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "노자",
+      "label": "노자",
+      "books": [
+       {
+        "q": "q011",
+        "book": "도덕경",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "논리철학논고",
+      "label": "논리철학논고 — 비트겐슈타인",
+      "q": "q006",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "니체, 프리드리히",
+      "label": "니체, 프리드리히",
+      "books": [
+       {
+        "q": "q013",
+        "book": "우상의 황혼",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "g": "ㄷ",
+    "items": [
+     {
+      "t": "book",
+      "text": "도덕경",
+      "label": "도덕경 — 노자",
+      "q": "q011",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "book",
+      "text": "돈키호테",
+      "label": "돈키호테 — 세르반테스",
+      "q": "q003",
+      "status": "upcoming",
+      "sessions": []
+     }
+    ]
+   },
+   {
+    "g": "ㄹ",
+    "items": [
+     {
+      "t": "author",
+      "text": "루소, 장 자크",
+      "label": "루소, 장 자크",
+      "books": [
+       {
+        "q": "q009",
+        "book": "에밀",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "author",
+      "text": "루이스, C.S.",
+      "label": "루이스, C.S.",
+      "books": [
+       {
+        "q": "q022",
+        "book": "스크루테이프의 편지",
+        "status": "reading",
+        "read": true
+       },
+       {
+        "q": "q023",
+        "book": "예기치 못한 기쁨",
+        "status": "upcoming",
+        "read": false
+       },
+       {
+        "q": "q024",
+        "book": "헤아려 본 슬픔",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "g": "ㅁ",
+    "items": [
+     {
+      "t": "book",
+      "text": "몰입 Flow",
+      "label": "몰입 Flow — 미하이 칙센트미하이",
+      "q": "q016",
+      "status": "upcoming",
+      "sessions": []
+     }
+    ]
+   },
+   {
+    "g": "ㅂ",
+    "items": [
+     {
+      "t": "author",
+      "text": "박경리",
+      "label": "박경리",
+      "books": [
+       {
+        "q": "q008",
+        "book": "토지 (서문·1부)",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "보랏빛 소가 온다",
+      "label": "보랏빛 소가 온다 — 세스 고딘",
+      "q": "q017",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "비트겐슈타인",
+      "label": "비트겐슈타인",
+      "books": [
+       {
+        "q": "q006",
+        "book": "논리철학논고",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "g": "ㅅ",
+    "items": [
+     {
+      "t": "book",
+      "text": "사기열전",
+      "label": "사기열전 — 사마천",
+      "q": "q014",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "사마천",
+      "label": "사마천",
+      "books": [
+       {
+        "q": "q014",
+        "book": "사기열전",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "author",
+      "text": "세르반테스",
+      "label": "세르반테스",
+      "books": [
+       {
+        "q": "q003",
+        "book": "돈키호테",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "author",
+      "text": "손무",
+      "label": "손무",
+      "books": [
+       {
+        "q": "q015",
+        "book": "손자병법",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "손자병법",
+      "label": "손자병법 — 손무",
+      "q": "q015",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "book",
+      "text": "스크루테이프의 편지",
+      "label": "스크루테이프의 편지 — C.S. 루이스",
+      "q": "q022",
+      "status": "reading",
+      "sessions": [
+       {
+        "id": "d0001",
+        "day": 1,
+        "part_no": "1/31",
+        "theme": "출근하고 다시 생각하자 — 논증보다 무서운 아침의 소음"
+       },
+       {
+        "id": "d0002",
+        "day": 2,
+        "part_no": "2/31",
+        "theme": "옆자리 교인에게 실망할 때 — 보이는 교회와 보이지 않는 교회"
+       },
+       {
+        "id": "d0003",
+        "day": 3,
+        "part_no": "3/31",
+        "theme": "그냥 물어본 건데 — 식탁 위의 말투가 신앙을 갉아먹을 때"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "g": "ㅇ",
+    "items": [
+     {
+      "t": "book",
+      "text": "에밀",
+      "label": "에밀 — 장 자크 루소",
+      "q": "q009",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "book",
+      "text": "예기치 못한 기쁨",
+      "label": "예기치 못한 기쁨 — C.S. 루이스",
+      "q": "q023",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "book",
+      "text": "우상의 황혼",
+      "label": "우상의 황혼 — 프리드리히 니체",
+      "q": "q013",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "융, 칼 구스타프",
+      "label": "융, 칼 구스타프",
+      "books": [
+       {
+        "q": "q004",
+        "book": "칼 융 레드 북",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "잃어버린 시간을 찾아서",
+      "label": "잃어버린 시간을 찾아서 — 마르셀 프루스트",
+      "q": "q018",
+      "status": "upcoming",
+      "sessions": []
+     }
+    ]
+   },
+   {
+    "g": "ㅈ",
+    "items": [
+     {
+      "t": "author",
+      "text": "장자",
+      "label": "장자",
+      "books": [
+       {
+        "q": "q012",
+        "book": "장자",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "장자",
+      "label": "장자 — 장자",
+      "q": "q012",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "book",
+      "text": "젊은 베르테르의 슬픔",
+      "label": "젊은 베르테르의 슬픔 — 괴테",
+      "q": "q010",
+      "status": "upcoming",
+      "sessions": []
+     }
+    ]
+   },
+   {
+    "g": "ㅊ",
+    "items": [
+     {
+      "t": "author",
+      "text": "칙센트미하이, 미하이",
+      "label": "칙센트미하이, 미하이",
+      "books": [
+       {
+        "q": "q016",
+        "book": "몰입 Flow",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "g": "ㅋ",
+    "items": [
+     {
+      "t": "author",
+      "text": "카잔차키스, 니코스",
+      "label": "카잔차키스, 니코스",
+      "books": [
+       {
+        "q": "q007",
+        "book": "그리스인 조르바",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "칼 융 레드 북",
+      "label": "칼 융 레드 북 — 칼 구스타프 융",
+      "q": "q004",
+      "status": "upcoming",
+      "sessions": []
+     }
+    ]
+   },
+   {
+    "g": "ㅌ",
+    "items": [
+     {
+      "t": "book",
+      "text": "토지 (서문·1부)",
+      "label": "토지 (서문·1부) — 박경리",
+      "q": "q008",
+      "status": "upcoming",
+      "sessions": []
+     }
+    ]
+   },
+   {
+    "g": "ㅍ",
+    "items": [
+     {
+      "t": "author",
+      "text": "파스칼, 블레즈",
+      "label": "파스칼, 블레즈",
+      "books": [
+       {
+        "q": "q005",
+        "book": "팡세",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     },
+     {
+      "t": "book",
+      "text": "팡세",
+      "label": "팡세 — 블레즈 파스칼",
+      "q": "q005",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "프루스트, 마르셀",
+      "label": "프루스트, 마르셀",
+      "books": [
+       {
+        "q": "q018",
+        "book": "잃어버린 시간을 찾아서",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "g": "ㅎ",
+    "items": [
+     {
+      "t": "book",
+      "text": "헤아려 본 슬픔",
+      "label": "헤아려 본 슬픔 — C.S. 루이스",
+      "q": "q024",
+      "status": "upcoming",
+      "sessions": []
+     },
+     {
+      "t": "author",
+      "text": "흐라발, 보후밀",
+      "label": "흐라발, 보후밀",
+      "books": [
+       {
+        "q": "q019",
+        "book": "너무 시끄러운 고독",
+        "status": "upcoming",
+        "read": false
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
