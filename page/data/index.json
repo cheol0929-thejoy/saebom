@@ -1,6 +1,21 @@
 {
- "generated_for": "2026-11-26",
+ "generated_for": "2026-11-27",
  "days": [
+  {
+   "id": "d20261127",
+   "iso": "2026-11-27",
+   "short": "11.27",
+   "date": "2026년 11월 27일 금요일",
+   "title": "여호와를 앙망하는 자의 새 힘",
+   "ref": "이사야 40장 12~31절",
+   "book": "이사야",
+   "topics": [
+    "고난과 소망"
+   ],
+   "special": false,
+   "hasPastorAudio": true,
+   "hasAiAudio": true
+  },
   {
    "id": "d20261126",
    "iso": "2026-11-26",
