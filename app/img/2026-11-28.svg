@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b3148"/><stop offset="0.45" stop-color="#4d5674"/><stop offset="0.75" stop-color="#d99a63"/><stop offset="1" stop-color="#f6d49a"/></linearGradient>
+<radialGradient id="sun" cx="820" cy="140" r="560" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff7da"/><stop offset="0.2" stop-color="#ffe0a0" stop-opacity="0.8"/><stop offset="0.6" stop-color="#f3b46c" stop-opacity="0.25"/><stop offset="1" stop-color="#f3b46c" stop-opacity="0"/></radialGradient>
+<linearGradient id="hillL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3f4f"/><stop offset="1" stop-color="#22252f"/></linearGradient>
+<linearGradient id="hillR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c8a4c"/><stop offset="1" stop-color="#3e4a26"/></linearGradient>
+<linearGradient id="rock" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9b08a"/><stop offset="0.55" stop-color="#8f7556"/><stop offset="1" stop-color="#5a4733"/></linearGradient>
+<linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a3220"/><stop offset="0.5" stop-color="#6e4a2e"/><stop offset="1" stop-color="#3b2716"/></linearGradient>
+<radialGradient id="leaf" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#9fbf5a"/><stop offset="1" stop-color="#4f7a2c"/></radialGradient>
+<linearGradient id="post" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a7a5a"/><stop offset="1" stop-color="#5d5038"/></linearGradient>
+</defs>
+<rect width="1200" height="675" fill="url(#sky)"/>
+<rect width="1200" height="675" fill="url(#sun)"/>
+<!-- storm clouds left -->
+<g fill="#262a3a" opacity="0.85">
+<ellipse cx="120" cy="90" rx="200" ry="60"/><ellipse cx="300" cy="70" rx="170" ry="50"/><ellipse cx="200" cy="140" rx="230" ry="45"/><ellipse cx="460" cy="110" rx="140" ry="38"/>
+</g>
+<g stroke="#e8e2c8" stroke-width="3" fill="none" opacity="0.55"><path d="M250 150 L232 205 L252 210 L228 270"/></g>
+<!-- light rays right -->
+<g transform="translate(-260,0)" stroke="#fff2c8" stroke-width="10" opacity="0.18" stroke-linecap="round">
+<line x1="1010" y1="150" x2="760" y2="560"/><line x1="1010" y1="150" x2="880" y2="600"/><line x1="1010" y1="150" x2="1010" y2="620"/><line x1="1010" y1="150" x2="1150" y2="600"/><line x1="1010" y1="150" x2="680" y2="430"/>
+</g>
+<!-- hills -->
+<path d="M0 430 C120 390 240 410 360 440 C440 460 520 450 600 470 L600 675 L0 675 Z" fill="url(#hillL)"/>
+<path d="M520 480 C640 430 780 420 900 440 C1020 460 1110 430 1200 420 L1200 675 L520 675 Z" fill="url(#hillR)"/>
+<!-- toppling idol posts on the left (nailed, propped) -->
+<g transform="translate(-120,0)">
+<g transform="rotate(-14 260 520)">
+<rect x="235" y="330" width="52" height="200" rx="6" fill="url(#post)"/>
+<rect x="225" y="318" width="72" height="22" rx="4" fill="#6c5e42"/>
+<g fill="#cfd3d8" stroke="#7b8088" stroke-width="2"><circle cx="248" cy="380" r="5"/><circle cx="274" cy="410" r="5"/><circle cx="250" cy="450" r="5"/><circle cx="276" cy="480" r="5"/></g>
+</g>
+<g stroke="#5a4c34" stroke-width="10" stroke-linecap="round"><line x1="190" y1="540" x2="245" y2="420"/><line x1="350" y1="545" x2="300" y2="430"/></g>
+<g transform="rotate(10 420 545)">
+<rect x="402" y="430" width="36" height="120" rx="5" fill="url(#post)" opacity="0.9"/>
+<g fill="#cfd3d8"><circle cx="413" cy="460" r="4"/><circle cx="428" cy="500" r="4"/></g>
+</g>
+<path d="M150 548 C230 538 330 540 470 552" stroke="#1a1c24" stroke-width="6" fill="none" opacity="0.6"/>
+</g>
+<!-- great rock with a tree gripping it (centre) -->
+<g transform="translate(-330,0)">
+<path d="M760 600 C770 520 800 470 860 455 C930 438 1010 450 1060 480 C1110 510 1130 560 1125 610 L1125 640 L760 640 Z" fill="url(#rock)"/>
+<path d="M800 520 C860 500 940 498 1010 515" stroke="#6b5640" stroke-width="4" fill="none" opacity="0.6"/>
+<path d="M830 580 C900 565 980 566 1080 585" stroke="#5a4733" stroke-width="3" fill="none" opacity="0.5"/>
+<!-- roots wrapping the rock -->
+<g stroke="#4a3220" stroke-width="9" fill="none" stroke-linecap="round">
+<path d="M930 455 C900 470 870 500 850 560 C840 590 845 620 860 640"/>
+<path d="M945 455 C960 490 990 520 1040 540 C1080 556 1100 590 1105 630"/>
+<path d="M938 458 C930 500 935 560 950 640"/>
+<path d="M925 456 C880 460 830 480 800 520"/>
+</g>
+<!-- trunk -->
+<path d="M915 460 C918 400 905 340 912 270 L958 270 C962 340 952 400 960 460 Z" fill="url(#trunk)"/>
+<g stroke="#4a3220" stroke-width="12" fill="none" stroke-linecap="round">
+<path d="M925 300 C890 270 860 250 830 245"/><path d="M948 290 C990 255 1030 240 1065 238"/><path d="M935 280 C935 240 940 210 945 185"/>
+</g>
+<!-- canopy -->
+<g fill="url(#leaf)">
+<ellipse cx="935" cy="190" rx="150" ry="80"/><ellipse cx="830" cy="235" rx="95" ry="60"/><ellipse cx="1050" cy="230" rx="100" ry="62"/><ellipse cx="940" cy="135" rx="105" ry="55"/>
+</g>
+<g fill="#c7de86" opacity="0.5"><ellipse cx="985" cy="150" rx="55" ry="25"/><ellipse cx="1060" cy="210" rx="40" ry="20"/></g>
+<!-- tiny bird sheltering in branch -->
+<path d="M1000 262 c10 -10 24 -8 30 2 c-8 0 -14 4 -16 8 c-6 -4 -10 -6 -14 -10z" fill="#3a2a1c"/>
+</g>
+<!-- foreground grass -->
+<path d="M0 640 C200 625 400 630 600 640 C800 650 1000 635 1200 640 L1200 675 L0 675 Z" fill="#2c3320"/>
+</svg>
