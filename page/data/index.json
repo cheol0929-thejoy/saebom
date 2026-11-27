@@ -1,6 +1,21 @@
 {
- "generated_for": "2026-11-27",
+ "generated_for": "2026-11-28",
  "days": [
+  {
+   "id": "d20261128",
+   "iso": "2026-11-28",
+   "short": "11.28",
+   "date": "2026년 11월 28일 토요일",
+   "title": "두려워하지 말라 내가 너와 함께 함이라",
+   "ref": "이사야 41장 1~20절 (8~14절)",
+   "book": "이사야",
+   "topics": [
+    "믿음과 순종"
+   ],
+   "special": false,
+   "hasPastorAudio": true,
+   "hasAiAudio": true
+  },
   {
    "id": "d20261127",
    "iso": "2026-11-27",
