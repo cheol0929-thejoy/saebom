@@ -1,6 +1,6 @@
 /* 새봄묵상 앱 — 재작업 2026-11-20 (worker-2). 이 파일의 화면 코드(render·색인·재생기·글자 크기)는 새봄묵상 페이지 index.html(ver 1795058595-16e9)의 스크립트를 그대로 옮기고,
    데이터만 app/data(묶음 B: index.json + 날짜별 json)에서 읽도록 몇 줄 바꿨다. 앱에만 있는 것: 설정 화면(밝게/어둡게·홈 화면에 추가·알림·앱 정보), 인터넷 없음 표시, 아이폰 보조 링크. */
-var VERSION="v1-2037bc032a", APP_VER="2.4.0", BUILT="2026-11-26"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
+var VERSION="v1-0b10d9ac22", APP_VER="2.5.0", BUILT="2026-11-28"; /* v2.0.3: VERSION = 빌드 판(해시), APP_VER = 사람이 읽는 판 - 원본은 manifest.webmanifest 의 version, stamp_app.py 가 sw.js 와 여기에 똑같이 넣는다 */
 var DATA_IDX=null, DAYS={};
 var ARTIFACT="https://cheol0929-thejoy.github.io/saebom/page/"; /* v2.2.2 (owner GO via CEO 11-21): 아이폰 「묵상 페이지에서 듣기」 = GitHub 페이지(#dYYYYMMDD), claude.ai 아티팩트로 가지 않음 */
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
@@ -46,10 +46,11 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
   const SRC=["p","f","m"].map(k=>ALL.find(x=>x[0]===k)).filter(x=>x[1]); /* v2.0.1: 단추 순서만 바꿈 — 고른 목소리가 없는 날 기본 순서는 예전 그대로(목사→여성→남성) */
   const pick=(ALL[0][1]&&!VCLICK)?ALL[0]:(SRC.find(x=>x[0]===VOICE)||SRC[0]);
   const cur=pick?{src:pick[1],dur:pick[2]||"",kind:pick[0],fb:pick[5]||""}:null;
-  const RL=[[0.8,"천천히"],[1,"보통"],[1.2,"조금 빠르게"],[1.5,"빠르게"]]; /* v2.0.1 오너 지시(CEO 23:19): 예전 선택 상자, 처음 = 보통, 모든 목소리 같은 기준(BASE=1) */
+  const RL=[[SLOW,"천천히"],[1,"보통"],[1.2,"빠르게"]]; /* 2.5.0 오너 지시(CEO 2026-11-28 20:2x): 큰 단추 천천히·보통·빠르게, 처음 = 보통, 천천히만 목소리별(rateOf) */
   const audio=cur
-    ? `<div class="tts"><span class="lab">듣기</span><button type="button" class="sk" id="sk-b" data-skip="-15" aria-label="15초 뒤로"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4V1L7 5l5 4V6a7 7 0 1 1-7 7H3a9 9 0 1 0 9-9z"/></svg><span aria-hidden="true">15</span></button><button type="button" class="pp" id="pp" aria-label="재생">▶</button><button type="button" class="sk fw" id="sk-f" data-skip="15" aria-label="15초 앞으로"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4V1l5 4-5 4V6a7 7 0 1 0 7 7h2a9 9 0 1 1-9-9z"/></svg><span aria-hidden="true">15</span></button><span class="brk" aria-hidden="true"></span><button type="button" class="st" id="st" aria-label="처음으로" disabled>■</button><select class="rate" id="rate" aria-label="읽는 속도">${RL.map(([r,l])=>`<option value="${r}"${r===RATE?" selected":""}>${l}</option>`).join("")}</select><span class="vsel" role="group" aria-label="목소리">${ALL.map(x=>`<button type="button" data-voice="${x[0]}" class="${pick&&x[0]===pick[0]?"on":""}" aria-pressed="${pick&&x[0]===pick[0]}"${x[1]?"":" disabled"} title="${x[3]}${x[1]?"":" · 아직 없습니다"}">${x[4]}</button>`).join("")}</span></div>
+    ? `<div class="tts"><span class="lab">듣기</span><button type="button" class="sk" id="sk-b" data-skip="-15" aria-label="15초 뒤로"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4V1L7 5l5 4V6a7 7 0 1 1-7 7H3a9 9 0 1 0 9-9z"/></svg><span aria-hidden="true">15</span></button><button type="button" class="pp" id="pp" aria-label="재생">▶</button><button type="button" class="sk fw" id="sk-f" data-skip="15" aria-label="15초 앞으로"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 4V1l5 4-5 4V6a7 7 0 1 0 7 7h2a9 9 0 1 1-9-9z"/></svg><span aria-hidden="true">15</span></button><span class="brk" aria-hidden="true"></span><button type="button" class="st" id="st" aria-label="처음으로" disabled>■</button><span class="vsel" role="group" aria-label="목소리">${ALL.map(x=>`<button type="button" data-voice="${x[0]}" class="${pick&&x[0]===pick[0]?"on":""}" aria-pressed="${pick&&x[0]===pick[0]}"${x[1]?"":" disabled"} title="${x[3]}${x[1]?"":" · 아직 없습니다"}">${x[4]}</button>`).join("")}</span></div>
        <div class="bar"><span class="tm"><span id="cur">0:00</span> / <span id="tot">${esc(cur.dur?cur.dur.replace(/(\d+)분 (\d+)초/,(m,a,b)=>a+":"+b.padStart(2,"0")):"--:--")}</span></span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="재생 위치"></div>
+       <div class="spd" role="group" aria-label="읽는 속도">${RL.map(([r,l])=>`<button type="button" data-rate="${r}" class="${r===RATE?"on":""}" aria-pressed="${r===RATE}">${l}</button>`).join("")}</div>
        <audio id="player" preload="${OFFLINE?"none":"metadata"}" src="${esc(cur.src)}" data-kind="${cur.kind}"${cur.fb&&cur.fb!==cur.src?` data-fb="${esc(cur.fb)}"`:""}></audio>
        ${cur.kind!=="p"?`<p class="aiNote">${cur.kind==="f"?"여성":"남성"} AI 음성으로 읽어 드립니다</p>`:""}
        ${IOS?'<p class="iosNote"><a href="'+esc(ARTIFACT+"#"+e.id)+'" target="_blank" rel="noopener">재생이 안 되면 묵상 페이지에서 듣기</a></p>':""}`
@@ -72,7 +73,7 @@ function render(id){const tok=++RTOK,dir=NAVDIR;NAVDIR="";PENDING=id; /* r2 (Cod
       ${e.image?`<figure class="pic"><img src="${esc(e.image.src)}" alt="${esc(e.image.alt||"")}" loading="lazy" width="1200" height="675">${e.image.caption?`<figcaption>${esc(e.image.caption)}</figcaption>`:""}</figure>`:""}
       <section><h2>적용</h2>${e.applies&&e.applies.length?e.applies.map((a,i)=>`<h3 class="sub"><i>적용 ${i+1}</i>${esc(a.label||"")}</h3>${paras(a.paras)}`).join(""):paras(e.apply)}</section>
       <section class="prayer"><h2>기도</h2>${paras(e.prayer)}</section>
-      <section><div class="practice"><b>오늘의 실천</b>${fmt(e.practice)}</div></section>
+      ${e.practice?`<section><div class="practice"><b>오늘의 실천</b>${fmt(e.practice)}</div></section>`:""}
       <section><h2>함께 드리는 기도제목</h2>
         <ol class="req">${e.requests.map(r=>`<li>${esc(r)}</li>`).join("")}</ol></section>
       <section><h2>오늘의 한 구절</h2>
@@ -126,21 +127,22 @@ function route(){const h=location.hash.slice(1);const set=h==="settings"||h.inde
   return render(/^\d{4}-\d{2}-\d{2}$/.test(h)?"d"+h.replace(/-/g,""):h).then(()=>{if(typeof applyRate==="function")applyRate();});} /* B: 딥링크 #YYYY-MM-DD */
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0);});
 /* 재생 속도·목소리: 이 기기에서만 기억 */
-var RATES=[0.8,1,1.2,1.5]; /* v2.0.1 오너 지시(CEO 23:19): 예전 선택 상자로 — 천천히 0.8·보통 1.0·조금 빠르게 1.2·빠르게 1.5, 처음 = 보통 */
+var STRETCH={pastor:1.10,ai:1.15}; /* 2.5.0 (CEO 결정 2026-11-28 via master 298): 올린 음성 파일을 줄인 배수 — publish_day.py FACTOR 와 같아야 한다(목사님 1.10, AI 여성·남성 1.15). 올리는 배수가 바뀌면 여기 한 곳만 고친다 */
+var SLOW=1/STRETCH.pastor; /* 천천히 단추의 값(이 기기에 기억하는 표지). 실제 재생 속도는 rateOf: 천천히 = 1/STRETCH[목소리] = 녹음·낭독 원래 빠르기 */
+var RATES=[SLOW,1,1.2]; /* 2.5.0: 천천히(목소리별 원래 빠르기) · 보통 1.0 · 빠르게 1.2 (예전 0.8·1.5 는 없앰), 처음 = 보통 */
 var RATE=1;
-var BASE=1; /* 오너 지시 21:11: 고른 배속을 모든 목소리(목사님·AI)에 그대로 (페이지의 목사님 1.2배 기준은 쓰지 않음) */
-try{let r=parseFloat(localStorage.getItem("rate2"));const MIG={"0.9":0.8,"1.25":1.2,"1.75":1.5};if(MIG[r])r=MIG[r];else if(!isNaN(r)&&!RATES.includes(r))r=RATES.reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a);if(!isNaN(r)&&String(r)!==localStorage.getItem("rate2"))localStorage.setItem("rate2",r); /* v2.0 배속 0.9→0.8, 1.25→1.2, 1.75→1.5 */if(RATES.includes(r))RATE=r;}catch(err){}
+try{let r=parseFloat(localStorage.getItem("rate2"));const MIG={"0.8":SLOW,"0.9":SLOW,"1.25":1.2,"1.5":1.2,"1.75":1.2};if(MIG[r])r=MIG[r];else if(!isNaN(r)&&!RATES.includes(r))r=RATES.reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a); /* 2.5.0: 예전 천천히 0.8 → 새 천천히, 1.5 → 빠르게 1.2 */if(!isNaN(r)&&String(r)!==localStorage.getItem("rate2"))localStorage.setItem("rate2",r); /* v2.0 배속 0.9→0.8, 1.25→1.2, 1.75→1.5 */if(RATES.includes(r))RATE=r;}catch(err){}
 const fmtT=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0");};
-const baseOf=a=>a&&a.dataset.kind&&a.dataset.kind!=="p"?1:BASE;
-function applyRate(){const a=document.getElementById("player");if(a){a.preservesPitch=true;a.webkitPreservesPitch=true;a.mozPreservesPitch=true; /* 오너 21:20: 빠르게 들어도 목소리 높이 그대로 (mp3 는 손대지 않음) */a.playbackRate=RATE*baseOf(a);a.defaultPlaybackRate=RATE*baseOf(a);}
-  const sel=document.getElementById("rate");if(sel)sel.value=String(RATE);
+const rateOf=a=>RATE===SLOW?1/STRETCH[a&&a.dataset.kind&&a.dataset.kind!=="p"?"ai":"pastor"]:RATE; /* 2.5.0: 천천히 = 목소리별 원래 빠르기(목사님 0.909·AI 0.870), 보통 1.0·빠르게 1.2 = 모든 목소리 같음 */
+function applyRate(){const a=document.getElementById("player");if(a){a.preservesPitch=true;a.webkitPreservesPitch=true;a.mozPreservesPitch=true; /* 오너 21:20: 빠르게 들어도 목소리 높이 그대로 (mp3 는 손대지 않음) */a.playbackRate=rateOf(a);a.defaultPlaybackRate=rateOf(a);}
+  document.querySelectorAll(".spd button[data-rate]").forEach(b=>{const on=parseFloat(b.dataset.rate)===RATE;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on));}); /* 2.5.0: 고른 속도 단추 밝게 */
   wirePlayer();}
 function wirePlayer(){
   const a=document.getElementById("player");if(!a||a.dataset.wired)return;a.dataset.wired="1";
   const pp=document.getElementById("pp"),st=document.getElementById("st"),seek=document.getElementById("seek"),cur=document.getElementById("cur"),tot=document.getElementById("tot");
   const upd=()=>{if(a.duration){tot.textContent=fmtT(a.duration);if(!seek.matches(":active"))seek.value=Math.round(a.currentTime/a.duration*1000);}cur.textContent=fmtT(a.currentTime);st.disabled=a.paused&&a.currentTime===0;};
   a.addEventListener("loadedmetadata",upd);a.addEventListener("timeupdate",upd);
-  a.addEventListener("play",()=>{a.playbackRate=RATE*baseOf(a);pp.textContent="❚❚";pp.setAttribute("aria-label","일시정지");st.disabled=false;});
+  a.addEventListener("play",()=>{a.playbackRate=rateOf(a);pp.textContent="❚❚";pp.setAttribute("aria-label","일시정지");st.disabled=false;});
   a.addEventListener("pause",()=>{pp.textContent="▶";pp.setAttribute("aria-label","재생");upd();});
   a.addEventListener("ended",()=>{pp.textContent="▶";pp.setAttribute("aria-label","재생");});
   pp.addEventListener("click",()=>{if(a.paused)a.play().catch(()=>{});else a.pause();}); /* 앱: 재생 시작 중 목소리를 바꾸면 이전 재생 요청이 취소된다 - 오류로 남기지 않음 */
@@ -149,10 +151,9 @@ function wirePlayer(){
   const dg=on=>()=>{if(typeof UPD==="object"){UPD.drag=on;UPD.input=Date.now();}};["pointerdown","touchstart"].forEach(n=>seek.addEventListener(n,dg(true),{passive:true}));["pointerup","pointercancel","touchend","touchcancel","change"].forEach(n=>seek.addEventListener(n,dg(false),{passive:true}));
   wireExtras(a,upd);
 }
-document.addEventListener("change",ev=>{
-  if(ev.target.id==="rate"){RATE=parseFloat(ev.target.value)||1;if(!RATES.includes(RATE))RATE=1;try{localStorage.setItem("rate2",RATE)}catch(err){}applyRate();}
-});
 document.addEventListener("click",ev=>{
+  const rb=ev.target.closest(".spd button[data-rate]"); /* 2.5.0: 속도 단추 (예전 선택 상자 대신) */
+  if(rb){RATE=parseFloat(rb.dataset.rate)||1;if(!RATES.includes(RATE))RATE=1;try{localStorage.setItem("rate2",RATE)}catch(err){}applyRate();return;}
   const vb=ev.target.closest(".vsel button[data-voice]");
   if(vb){if(vb.disabled)return;VOICE=vb.dataset.voice;VCLICK=true;try{localStorage.setItem("voice",VOICE)}catch(err){}
     if(PENDING!==null)return; /* r2 (Codex M1): 다른 날을 불러오는 중이면 목소리 뜻만 바꾸고, 그 날이 그려질 때 이 목소리로 */

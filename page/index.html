@@ -125,6 +125,12 @@ footer{color:var(--muted);font-size:.75rem;text-align:center}
 .tts .st{width:calc(40 * var(--u));height:calc(40 * var(--u));font-size:calc(13 * var(--u));padding:0}
 .tts .rate{flex:none;box-sizing:border-box;width:calc(91 * var(--u));-webkit-appearance:none;appearance:none;font-size:calc(13 * var(--u));line-height:1.2;min-height:0;height:calc(40 * var(--u));padding:0 calc(15 * var(--u)) 0 calc(7 * var(--u));background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 10.5 * var(--u)) 54%,calc(100% - 6.5 * var(--u)) 54%;background-size:calc(4 * var(--u)) calc(4 * var(--u));background-repeat:no-repeat}
 .tts .vsel button{font-size:calc(13 * var(--u));line-height:1.2;min-height:0;min-width:calc(40 * var(--u));height:calc(40 * var(--u));padding:0 calc(4 * var(--u))}
+/* ===== 2.5.0 (오너 2026-11-28 via CEO): 읽는 속도 = 큰 단추 셋(천천히·보통·빠르게), 재생 줄 아래 한 줄. 손가락 크기(높이 56px+, 70대 이상 성도님), 고른 단추 = 잎색 채움. 예전 선택 상자(.rate)는 그리지 않음 ===== */
+.spd{display:flex;justify-content:center;gap:8px;margin:10px auto 0;width:100%;max-width:420px;box-sizing:border-box}
+.spd button{flex:1 1 0;min-width:0;min-height:56px;padding:0 6px;border:2px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);font:600 18px/1.2 var(--sans);cursor:pointer;word-break:keep-all}
+.spd button.on{background:var(--leaf);border-color:var(--leaf);color:var(--paper);font-weight:800}
+.spd button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+/* ===== /2.5.0 ===== */
 </style>
 <style>
 /* SBC-CSS:BEGIN 댓글 2.4.0 */
@@ -310,10 +316,11 @@ function renderNow(id){
   const SRC=["p","f","m"].map(k=>ALL.find(x=>x[0]===k)).filter(x=>x[1]); /* v2.0.1: 단추 순서만 바꿈 — 고른 목소리가 없는 날 기본 순서는 예전 그대로(목사→여성→남성) */
   const pick=(e.audio&&!VCLICK)?ALL[0]:(SRC.find(x=>x[0]===VOICE)||SRC[0]);
   const cur=pick?{src:pick[1],dur:pick[2]||"",kind:pick[0]}:null;
-  const RL=[[0.8,"천천히"],[1,"보통"],[1.2,"조금 빠르게"],[1.5,"빠르게"]];
+  const RL=[[SLOW,"천천히"],[1,"보통"],[1.2,"빠르게"]]; /* 2.5.0 오너 지시(CEO 2026-11-28 20:2x): 큰 단추 천천히·보통·빠르게, 처음 = 보통 */
   const audio=cur
-    ? `<div class="tts"><span class="lab">듣기</span><button type="button" class="pp" id="pp" aria-label="재생">▶</button><button type="button" class="st" id="st" aria-label="처음으로" disabled>■</button><select class="rate" id="rate" aria-label="읽는 속도">${RL.map(([r,l])=>`<option value="${r}"${r===RATE?" selected":""}>${l}</option>`).join("")}</select><span class="vsel" role="group" aria-label="목소리">${ALL.map(x=>`<button type="button" data-voice="${x[0]}" class="${pick&&x[0]===pick[0]?"on":""}" aria-pressed="${pick&&x[0]===pick[0]}"${x[1]?"":" disabled"} title="${x[3]}${x[1]?"":" · 아직 없습니다"}">${x[4]}</button>`).join("")}</span></div>
+    ? `<div class="tts"><span class="lab">듣기</span><button type="button" class="pp" id="pp" aria-label="재생">▶</button><button type="button" class="st" id="st" aria-label="처음으로" disabled>■</button><span class="vsel" role="group" aria-label="목소리">${ALL.map(x=>`<button type="button" data-voice="${x[0]}" class="${pick&&x[0]===pick[0]?"on":""}" aria-pressed="${pick&&x[0]===pick[0]}"${x[1]?"":" disabled"} title="${x[3]}${x[1]?"":" · 아직 없습니다"}">${x[4]}</button>`).join("")}</span></div>
        <div class="bar"><span class="tm"><span id="cur">0:00</span> / <span id="tot">${esc(cur.dur?cur.dur.replace(/(\d+)분 (\d+)초/,(m,a,b)=>a+":"+b.padStart(2,"0")):"--:--")}</span></span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="재생 위치"></div>
+       <div class="spd" role="group" aria-label="읽는 속도">${RL.map(([r,l])=>`<button type="button" data-rate="${r}" class="${r===RATE?"on":""}" aria-pressed="${r===RATE}">${l}</button>`).join("")}</div>
        <audio id="player" preload="metadata" src="${esc(cur.src)}" data-kind="${cur.kind}" data-fb="${esc(FB[cur.src]||"")}"></audio>
        ${cur.kind!=="p"?`<p class="aiNote">${cur.kind==="f"?"여성":"남성"} AI 음성으로 읽어 드립니다</p>`:""}`
     : `<p class="aiNote">오늘 묵상 음성은 준비 중입니다.</p>`;
@@ -335,7 +342,7 @@ function renderNow(id){
       ${e.image?`<figure class="pic"><img src="${esc(e.image.src)}" alt="${esc(e.image.alt||"")}" loading="lazy" width="1200" height="675">${e.image.caption?`<figcaption>${esc(e.image.caption)}</figcaption>`:""}</figure>`:""}
       <section><h2>적용</h2>${e.applies&&e.applies.length?e.applies.map((a,i)=>`<h3 class="sub"><i>적용 ${i+1}</i>${esc(a.label||"")}</h3>${paras(a.paras)}`).join(""):paras(e.apply)}</section>
       <section class="prayer"><h2>기도</h2>${paras(e.prayer)}</section>
-      <section><div class="practice"><b>오늘의 실천</b>${fmt(e.practice)}</div></section>
+      ${e.practice?`<section><div class="practice"><b>오늘의 실천</b>${fmt(e.practice)}</div></section>`:""}
       <section><h2>함께 드리는 기도제목</h2>
         <ol class="req">${e.requests.map(r=>`<li>${esc(r)}</li>`).join("")}</ol></section>
       <section><h2>오늘의 한 구절</h2>
@@ -386,14 +393,15 @@ document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",
 function route(){render(location.hash.slice(1));if(typeof applyRate==="function")applyRate();}
 window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0);});
 /* 재생 속도·목소리: 이 기기에서만 기억 */
-var RATES=[0.8,1,1.2,1.5];
+var STRETCH={pastor:1.10,ai:1.15}; /* 2.5.0 (CEO 결정 2026-11-28 via master 298): 올린 음성 파일을 줄인 배수 — publish_day.py FACTOR 와 같아야 한다(목사님 1.10, AI 여성·남성 1.15). 올리는 배수가 바뀌면 여기 한 곳만 고친다 */
+var SLOW=1/STRETCH.pastor; /* 천천히 단추의 값(이 기기에 기억하는 표지). 실제 재생 속도는 rateOf: 천천히 = 1/STRETCH[목소리] = 녹음·낭독 원래 빠르기 */
+var RATES=[SLOW,1,1.2]; /* 2.5.0: 천천히(목소리별 원래 빠르기) · 보통 1.0 · 빠르게 1.2, 처음 = 보통 */
 var RATE=1;
-var BASE=1;
-try{let r=parseFloat(localStorage.getItem("rate_page"));const MIG={"0.9":0.8,"1.25":1.2,"1.75":1.5};if(MIG[r]){r=MIG[r];localStorage.setItem("rate_page",r);}if(RATES.includes(r))RATE=r;}catch(err){}
+try{let r=parseFloat(localStorage.getItem("rate_page"));const MIG={"0.8":SLOW,"0.9":SLOW,"1.25":1.2,"1.5":1.2,"1.75":1.2};if(MIG[r]){r=MIG[r];localStorage.setItem("rate_page",r);}else if(!isNaN(r)&&!RATES.includes(r)){r=RATES.reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a);localStorage.setItem("rate_page",r);}if(RATES.includes(r))RATE=r;}catch(err){} /* 2.5.0: 예전 천천히 0.8 → 새 천천히, 1.5 → 빠르게 1.2 */
 const fmtT=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0");};
-const baseOf=a=>a&&a.dataset.kind&&a.dataset.kind!=="p"?1:BASE;
-function applyRate(){const a=document.getElementById("player");if(a){a.preservesPitch=true;a.webkitPreservesPitch=true;a.mozPreservesPitch=true;a.playbackRate=RATE*baseOf(a);a.defaultPlaybackRate=RATE*baseOf(a);}
-  const sel=document.getElementById("rate");if(sel)sel.value=String(RATE);
+const rateOf=a=>RATE===SLOW?1/STRETCH[a&&a.dataset.kind&&a.dataset.kind!=="p"?"ai":"pastor"]:RATE; /* 2.5.0: 천천히 = 목소리별 원래 빠르기(목사님 0.909·AI 0.870), 보통 1.0·빠르게 1.2 = 모든 목소리 같음 */
+function applyRate(){const a=document.getElementById("player");if(a){a.preservesPitch=true;a.webkitPreservesPitch=true;a.mozPreservesPitch=true;a.playbackRate=rateOf(a);a.defaultPlaybackRate=rateOf(a);}
+  document.querySelectorAll(".spd button[data-rate]").forEach(b=>{const on=parseFloat(b.dataset.rate)===RATE;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on));}); /* 2.5.0: 고른 속도 단추 밝게 */
   wirePlayer();}
 function wirePlayer(){
   const a=document.getElementById("player");if(!a||a.dataset.wired)return;a.dataset.wired="1";
@@ -410,17 +418,16 @@ function wirePlayer(){
   const pp=document.getElementById("pp"),st=document.getElementById("st"),seek=document.getElementById("seek"),cur=document.getElementById("cur"),tot=document.getElementById("tot");
   const upd=()=>{if(a.duration){tot.textContent=fmtT(a.duration);if(!seek.matches(":active"))seek.value=Math.round(a.currentTime/a.duration*1000);}cur.textContent=fmtT(a.currentTime);st.disabled=a.paused&&a.currentTime===0;};
   a.addEventListener("loadedmetadata",upd);a.addEventListener("timeupdate",upd);
-  a.addEventListener("play",()=>{a.playbackRate=RATE*baseOf(a);pp.textContent="❚❚";pp.setAttribute("aria-label","일시정지");st.disabled=false;});
+  a.addEventListener("play",()=>{a.playbackRate=rateOf(a);pp.textContent="❚❚";pp.setAttribute("aria-label","일시정지");st.disabled=false;});
   a.addEventListener("pause",()=>{pp.textContent="▶";pp.setAttribute("aria-label","재생");upd();});
   a.addEventListener("ended",()=>{a.dataset.want="";pp.textContent="▶";pp.setAttribute("aria-label","재생");});
   pp.addEventListener("click",()=>{if(a.dataset.want==="1"||!a.paused){a.dataset.want="";a.pause();pp.textContent="▶";pp.setAttribute("aria-label","재생");}else{a.dataset.want="1";a.play().catch(()=>{});}});
   st.addEventListener("click",()=>{a.dataset.want="";a.dataset.pos="";a.pause();a.currentTime=0;upd();});
   seek.addEventListener("input",()=>{if(a.duration)a.currentTime=seek.value/1000*a.duration;});
 }
-document.addEventListener("change",ev=>{
-  if(ev.target.id==="rate"){RATE=parseFloat(ev.target.value)||1;if(!RATES.includes(RATE))RATE=1;try{localStorage.setItem("rate_page",RATE)}catch(err){}applyRate();}
-});
 document.addEventListener("click",ev=>{
+  const rb=ev.target.closest(".spd button[data-rate]"); /* 2.5.0: 속도 단추 (예전 선택 상자 대신) */
+  if(rb){RATE=parseFloat(rb.dataset.rate)||1;if(!RATES.includes(RATE))RATE=1;try{localStorage.setItem("rate_page",RATE)}catch(err){}applyRate();return;}
   const vb=ev.target.closest(".vsel button[data-voice]");
   if(vb){if(vb.disabled)return;VOICE=vb.dataset.voice;VCLICK=true;try{localStorage.setItem("voice",VOICE)}catch(err){}
     const a=document.getElementById("player");const t=a?a.currentTime:0;const was=a&&!a.paused;
